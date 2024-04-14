@@ -35,8 +35,11 @@
 <div class="row">
   <div class="col-lg-9 mx-auto">
     <div class="row mb-3">
-      <div class="col-md-6">
-      <h1 class="h2 text-success">Recent Transactions</h1>
+      <div class="col-12">
+        <?= flash('msg');?>
+        <h1 class="h2 text-success">Your Saved Transactions<br>
+          <span class="lead text-muted text-dark fs-6">Most recent appears at the top.</span>
+        </h1>
       </div>
     </div>
 

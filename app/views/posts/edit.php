@@ -1,9 +1,9 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <div class="row">
   <div class="col-md-6">
-    <h2 class="text-muted"><?php echo $_SESSION['user_name']; ?><br>
-      <span class="fw-bold fs-4">Sales Invoice</span>
-    </h2>
+    <h6 class="text-muted text-primary">Click on any field to change the details of this transaction
+    </h6>
+    <p class="fs-6 fs-italics text-muted">Note that you cannot edit transaction date.</p>
   </div>
 </div>
 <div class="mb-7">

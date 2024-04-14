@@ -38,7 +38,7 @@ class MYPDF extends TCPDF {
 
 
         $this->SetFont('helvetica', '', 12);
-        $this->cell(190, 2, "Hotline: $user_phone", 0, 1, "R");
+        $this->cell(190, 2, "Hotline: $user_phone", 0, 1, "C");
         $this->cell(86, 0, '__________________________________________________________________________________________________', 0, '', '', '');
         $this->Ln(30);
     }
@@ -51,15 +51,10 @@ class MYPDF extends TCPDF {
         $this->SetFont('helvetica', 'I', 8);
         // Page number
         $this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
-        $this->SetY(-30);
+        $this->SetY(-20);
         // Set font
         $this->SetFont('helvetica', 'B', 10);
         $this->cell(0, 0, "Thanks for your patronage, please call again", 0, 1, "C");
-        $today_date = date('F d, Y');
-        $this->Ln(4);
-        $this->SetTextColor(0, 0, 0);
-        $this->SetFont('times', 'N', '10');
-        $this->Cell(0, 0, "This invoice was generated on $today_date", 0, 1, "C");
 
     }
 }
@@ -241,13 +236,15 @@ $pdf->Ln(6);
 $pdf->SetTextColor(14, 93, 117);
 $pdf->cell(86, 0, '__________________________________________________________________________________________________', 0, '', '', '');
 // set some text to print
+$today_date = date('F d, Y');
+$time = date('h:ia');
 $txt = <<<EOD
 
-Recieved the above goods in good condition , no refund of money after payment.
+This invoice was generated on $today_date at exactlty $time
 EOD;
 
 // print a block of text using Write()
-$pdf->Ln(16);
+//$pdf->Ln(16);
 $pdf->SetTextColor(0, 0, 1);
 $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
 

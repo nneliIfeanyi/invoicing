@@ -1,12 +1,15 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <div class="row">
   <div class="col-md-6">
-    <h2 class="text-muted"><?php echo $_SESSION['user_name']; ?><br>
-      <span class="fw-bold fs-4">Sales Invoice</span>
-    </h2>
+    <?= flash('msg');?>
+    <h4 class="text-muted m-0"><?php echo $_SESSION['user_name']; ?>
+    </h4>
+  </div>
+  <div class="col-md-6">
+    <p class="text-primary lead">Sales Invoice</p>
   </div>
 </div>
-<div class="mb-7">
+<div class="mb-5">
 <form action="<?php echo URLROOT; ?>/posts/add" method="post" id="add_form">
   <div class="row mb-2">
     <div class="col-6">
@@ -165,7 +168,7 @@
 
       <tr>
         <td>
-          <input type="number" min value="" style="width: 60px;">
+          <input type="number" min="1" value="" style="width: 60px;">
         </td>
         <td>
           <input name="dsc[]" class="form-control" type="text" value="" style="width: 55vw;">
@@ -179,12 +182,26 @@
 </table>
 </div>
 
-<label>Cash paid: <span style="font-size: 12px;">(leave this box empty if no amount was paid)</span></label>
-<input type="number" name="paid" class="form-control" value="">
- 
-<button type="submit" class="btn btn-success mt-2">Save Transactions</button>
+<label style="font-size: 12px;">(leave this box empty if no amount was paid)</label>
+<input type="number" name="paid" class="form-control" value="" placeholder="Cash paid">
+<div class="d-grid gap-2">
+  <button type="submit" class="btn btn-success mt-3">Save Transactions</button>
+  <a href="<?= URLROOT;?>/posts" class="btn"><i class="fa fa-backward"></i> Back</a>
+</div>
 
 </form>
+</div>
+
+<div class="row mb-5">
+  <div class="col-md-6">
+    <div class="shadow-lg p-2 border-start border-5 border-success rounded-2">
+      <h1 class="h6 text-muted">Usage tips:</h1>
+      <p class="font-weight-light">
+        Note that the system will automatically do the needed calculations.. <br>
+        No need to punch your calculator.
+      </p>
+    </div>
+  </div>
 </div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

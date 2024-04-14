@@ -2,28 +2,28 @@
 <div class="row">
   <div class="col-md-6">
     <?= flash('msg');?>
-    <h2 class="text-muted">Invoice Preview
-    </h2>
+    <h4 class="text-muted">Invoice Preview
+    </h4>
   </div>
 </div>
 <div class="row mb-2">
   <div class="col-md-6">
-    <label class="fs-6">Customer name: 
+    <label class="fs-6">Customer name: &nbsp; &nbsp;
       <span class="border-bottom fw-semibold"><?= $data['customer_info']->customer_name;?></span>
     </label>
   </div>
   <div class="col-md-6">
-    <label class="fs-6">Customer phone: 
+    <label class="fs-6">Customer phone: &nbsp; &nbsp;
       <span class="border-bottom fw-semibold"><?= $data['customer_info']->customer_phone;?></span>
     </label>
   </div>
   <div class="col-md-6">
-    <label class="fs-6">Address: 
+    <label class="fs-6">Address: &nbsp; &nbsp;
       <span class="border-bottom fw-semibold"><?= $data['customer_info']->customer_address;?></span>
     </label>
   </div>
   <div class="col-md-6">
-    <label class="fs-6">Date: 
+    <label class="fs-6">Date: &nbsp; &nbsp;
       <span class="border-bottom fw-semibold"><?= $data['customer_info']->c_date.' '.$data['customer_info']->c_month.' '.$data['customer_info']->c_year ?></span>
     </label>
   </div>
@@ -89,5 +89,7 @@
     <input class="btn btn-primary" name="generate-invoice" type="submit" value="Generate invoice">
   </form>
   <a href="<?= URLROOT;?>/posts/Edit/<?php echo $data['customer_info']->t_id; ?>" class="btn btn-success"><i class="fa fa-pencil"></i> Edit transaction</a>
-  <a href="<?= URLROOT;?>/posts" class="btn"><i class="fa fa-backward"></i> Back</a>
+  <a href="<?= URLROOT;?>/posts" class="btn"><i class="fa fa-backward"></i> Go Back</a>
 </div>
+
+<?php require APPROOT . '/views/inc/footer.php'; ?>
