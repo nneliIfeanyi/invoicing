@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<div class="row">
+<div class="row mb-5">
   <div class="col-md-6">
     <?= flash('msg');?>
     <h4 class="text-muted m-0"><?php echo $_SESSION['user_name']; ?>
@@ -7,6 +7,15 @@
   </div>
   <div class="col-md-6">
     <p class="text-primary lead">Sales Invoice</p>
+  </div>
+  <div class="col-md-6">
+    <div class="shadow-lg p-2 border-start border-5 border-success rounded-2">
+      <h1 class="h6 text-muted">Usage tips:</h1>
+      <p class="font-weight-light">
+        Note that the system will automatically do the needed calculations.. <br>
+        No need to punch your calculator.
+      </p>
+    </div>
   </div>
 </div>
 <div class="mb-5">
@@ -190,18 +199,6 @@
 </div>
 
 </form>
-</div>
-
-<div class="row mb-5">
-  <div class="col-md-6">
-    <div class="shadow-lg p-2 border-start border-5 border-success rounded-2">
-      <h1 class="h6 text-muted">Usage tips:</h1>
-      <p class="font-weight-light">
-        Note that the system will automatically do the needed calculations.. <br>
-        No need to punch your calculator.
-      </p>
-    </div>
-  </div>
 </div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

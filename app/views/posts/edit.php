@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <div class="row">
   <div class="col-md-6">
-    <h6 class="text-muted text-primary">Click on any field to change the details of this transaction
+    <h6 class="text-primary">Click on any field to change the details of this transaction
     </h6>
     <p class="fs-6 fs-italics text-muted">Note that you cannot edit transaction date.</p>
   </div>
