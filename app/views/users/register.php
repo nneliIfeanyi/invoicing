@@ -42,7 +42,7 @@
             <input type="submit" class="btn btn-success btn-block" value="Register">
           </div>
           <div class="col">
-            <a href="<?php echo URLROOT; ?>/users/login" class="btn btn-light btn-block">Have an account? Login</a>
+            <p class="text-muted pt-3" style="font-size:12px;">You will be redirected to the login page once your registration is completed.</p>
           </div>
         </div>
       </form>
