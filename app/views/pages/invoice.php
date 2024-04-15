@@ -31,14 +31,14 @@ class MYPDF extends TCPDF {
         $this->cell(190, 2, "$user_name", 0, 1, "C");
 
         $this->Ln(1);
-        $this->SetFont('helvetica', 'B', 17);
+        $this->SetFont('helvetica', 'B', 19);
         $this->cell(190, 2, "$user_dsc", 0, 1, "C");
         $this->Ln(1);
-        $this->SetFont('helvetica', '', 17);
+        $this->SetFont('helvetica', '', 18);
         $this->cell(190, 3, "Address: $user_address", 0, 1, "C");
 
 
-        $this->SetFont('helvetica', '', 20);
+        $this->SetFont('helvetica', 'B', 21);
         $this->cell(190, 2, "Hotline: $user_phone", 0, 1, "C");
         $this->SetTextColor(10, 100, 11);
         $this->cell(86, 0, '__________________________________________________________________________________________________', 0, '', '', '');
@@ -55,7 +55,7 @@ class MYPDF extends TCPDF {
         $this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
         $this->SetY(-20);
         // Set font
-        $this->SetFont('helvetica', 'B', 18);
+        $this->SetFont('helvetica', 'B', 16);
         $this->cell(0, 0, "Thanks for your patronage, please call again", 0, 1, "C");
 
     }
@@ -128,20 +128,20 @@ $sum = 0;
   $pdf->Ln(35);
   $pdf->SetFont('times', 'B', '17');
   $pdf->SetTextColor(01,19,20);
-  $pdf->Cell(49, 6, "Customer name: ______________________________________", 0, 0, "L");
+  $pdf->Cell(49, 10, "Customer name: ______________________________________", 0, 0, "L");
   $pdf->SetFont('times', 'B', '20');
   $pdf->Cell(50, 4, "$customer_name", 0, 0, "L");
 
   $pdf->Ln(10);
   $pdf->SetFont('times', 'B', '17');
-  $pdf->Cell(49, 6, "Customer phone: ______________________________________", 0, 0, "L");
+  $pdf->Cell(49, 10, "Customer phone: ______________________________________", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
   $pdf->SetFont('times', 'B', '20');
   $pdf->Cell(50, 4, "$customer_phone", 0, 0, "L");
 
   $pdf->Ln(10);
   $pdf->SetFont('times', 'B', '17');
-  $pdf->Cell(51, 6, "Customer address: _______________________________________", 0, 0, "L");
+  $pdf->Cell(51, 10, "Customer address: _______________________________________", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
   $pdf->SetFont('times', 'N', '20');
   $pdf->Cell(50, 4, "$customer_address", 0, 0, "L");
@@ -157,10 +157,10 @@ $sum = 0;
 $pdf->Ln(26);
 $pdf->SetFillColor(248, 181, 71);
 $pdf->SetFont('times', 'N', '20');
-$pdf->Cell(16, 7, 'qty', 1, 0, 'L', 1);
-$pdf->Cell(65, 7, 'Description', 1, 0, 'L', 1);
-$pdf->Cell(25, 7, 'Rate', 1, 0, 'L', 1);
-$pdf->Cell(45, 7, 'Amount', 1, 0, 'L', 1);
+$pdf->Cell(16, 7, 'qty', 1, 0, 'C', 1);
+$pdf->Cell(65, 7, 'Description', 1, 0, 'C', 1);
+$pdf->Cell(25, 7, 'Rate', 1, 0, 'C', 1);
+$pdf->Cell(45, 7, 'Amount', 1, 0, 'C', 1);
 $pdf->Ln(3);
 while ($result = mysqli_fetch_array($query)) {
   $qty = $result['qty'];
@@ -177,61 +177,61 @@ while ($result = mysqli_fetch_array($query)) {
 
   $pdf->Ln(7); //this will reduce the line height of each subject
   $pdf->SetTextColor(10, 93,11);
-  $pdf->SetFont('times', '', '22');
-  $pdf->Cell(16, 4, $qty, 0, 0, "L");
-  $pdf->Cell(65, 4, $dsc, 0, 0, "L");
-  $pdf->Cell(25, 4, put_coma($rate), 0, 0, "L");
-  $pdf->Cell(45, 5, put_coma($amt), 0, 0, "L");
+  $pdf->SetFont('times', 'B', '23');
+  $pdf->Cell(16, 10, $qty, 0, 0, "C");
+  $pdf->Cell(65, 10, $dsc, 0, 0, "C");
+  $pdf->Cell(25, 10, put_coma($rate), 0, 0, "C");
+  $pdf->Cell(45, 10, put_coma($amt), 0, 0, "C");
 }
 
 $pdf->Ln(20);
 $pdf->SetTextColor(10, 93, 11);
 $pdf->SetFont('times', 'B', '22');
-$pdf->Cell(20, 4, '', 0, 0, "L");
-$pdf->Cell(20, 4, '', 0, 0, "L");
-$pdf->Cell(20, 4, '', 0, 0, "L");
-$pdf->Cell(48, 4, 'Total:', 0, 0, "L");
-$pdf->Cell(20, 4, 'N'.put_coma($total), 0, 0, "L");
+$pdf->Cell(20, 4, '', 0, 0, "C");
+$pdf->Cell(20, 4, '', 0, 0, "C");
+$pdf->Cell(20, 4, '', 0, 0, "C");
+$pdf->Cell(48, 4, 'Total:', 0, 0, "C");
+$pdf->Cell(20, 4, 'N'.put_coma($total), 0, 0, "C");
 
 
 if (!empty($paid)) {
   $pdf->Ln(8);
   $pdf->SetTextColor(10, 93, 11);
   $pdf->SetFont('times', 'B', '22');
-  $pdf->Cell(20, 4, '', 0, 0, "L");
-  $pdf->Cell(20, 4, '', 0, 0, "L");
-  $pdf->Cell(20, 4, '', 0, 0, "L");
-  $pdf->Cell(48, 4, 'Paid:', 0, 0, "L");
-  $pdf->Cell(20, 4, 'N'.put_coma($paid), 0, 0, "L");
+  $pdf->Cell(20, 4, '', 0, 0, "C");
+  $pdf->Cell(20, 4, '', 0, 0, "C");
+  $pdf->Cell(20, 4, '', 0, 0, "C");
+  $pdf->Cell(48, 4, 'Paid:', 0, 0, "C");
+  $pdf->Cell(20, 4, 'N'.put_coma($paid), 0, 0, "C");
 
 
   $pdf->Ln(8);
   $pdf->SetTextColor(10, 93, 11);
   $pdf->SetFont('times', 'B', '22');
-  $pdf->Cell(20, 4, '', 0, 0, "L");
-  $pdf->Cell(20, 4, '', 0, 0, "L");
-  $pdf->Cell(20, 4, '', 0, 0, "L");
-  $pdf->Cell(48, 4, 'Balance:', 0, 0, "L");
-  $pdf->Cell(20, 4, 'N'.put_coma($total - $paid), 0, 0, "L");
+  $pdf->Cell(20, 4, '', 0, 0, "C");
+  $pdf->Cell(20, 4, '', 0, 0, "C");
+  $pdf->Cell(20, 4, '', 0, 0, "C");
+  $pdf->Cell(48, 4, 'Balance:', 0, 0, "C");
+  $pdf->Cell(20, 4, 'N'.put_coma($total - $paid), 0, 0, "C");
 }else{
   $pdf->Ln(8);
   $pdf->SetTextColor(10, 93, 11);
   $pdf->SetFont('times', 'B', '22');
-  $pdf->Cell(20, 4, '', 0, 0, "L");
-  $pdf->Cell(20, 4, '', 0, 0, "L");
-  $pdf->Cell(20, 4, '', 0, 0, "L");
-  $pdf->Cell(48, 4, 'Paid:', 0, 0, "L");
-  $pdf->Cell(20, 4, 'Nill', 0, 0, "L");
+  $pdf->Cell(20, 4, '', 0, 0, "C");
+  $pdf->Cell(20, 4, '', 0, 0, "C");
+  $pdf->Cell(20, 4, '', 0, 0, "C");
+  $pdf->Cell(48, 4, 'Paid:', 0, 0, "C");
+  $pdf->Cell(20, 4, 'Nill', 0, 0, "C");
 
 
   $pdf->Ln(8);
   $pdf->SetTextColor(255, 10, 17);
   $pdf->SetFont('times', 'B', '22');
-  $pdf->Cell(20, 4, '', 0, 0, "L");
-  $pdf->Cell(20, 4, '', 0, 0, "L");
-  $pdf->Cell(20, 4, '', 0, 0, "L");
-  $pdf->Cell(48, 4, 'Balance:', 0, 0, "L");
-  $pdf->Cell(20, 4, '-N'.put_coma($total), 0, 0, "L");
+  $pdf->Cell(20, 4, '', 0, 0, "C");
+  $pdf->Cell(20, 4, '', 0, 0, "C");
+  $pdf->Cell(20, 4, '', 0, 0, "C");
+  $pdf->Cell(48, 4, 'Balance:', 0, 0, "C");
+  $pdf->Cell(20, 4, '-N'.put_coma($total), 0, 0, "C");
 }
 
 $pdf->Ln(6);
