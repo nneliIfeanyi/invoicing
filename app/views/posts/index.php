@@ -1,45 +1,11 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-
-
-<!-- <div class="row my-3">
-  <div class="col-lg-7 mx-auto">
-    <h1 class="h6 mb-3 text-center text-muted"><span class="text-primary">Showing: Week <?php echo $data['week'].' '.'of'.' '.'year'.' '.$data['year']; ?></span></h1>
-    <div class="row">
-      <div class="col-6">
-        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-success rounded-2">
-          <h1 class="h6 text-muted">Income:</h1>
-          <p class="font-weight-light">
-            <?php if(empty($data['income'])):?>
-            &#8358;0.00
-            <?php else:?>
-            &#8358;<?= put_coma($data['income'])?>.00
-            <?php endif;?>
-          </p>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="shadow-lg ps-2 pt-2 border-end border-5 border-danger rounded-2">
-          <h1 class="h6 text-muted">Expense:</h1>
-          <p class="">
-           <?php if(empty($data['expense'])):?>
-           &#8358;0.00
-           <?php else:?>
-           &#8358;<?= put_coma($data['expense'])?>.00
-           <?php endif;?>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 <div class="row">
   <div class="col-lg-9 mx-auto">
     <div class="row mb-3">
       <div class="col-12">
         <?= flash('msg');?>
-        <h1 class="h2 text-success">Your Saved Transactions<br>
-          <span class="lead text-muted text-dark fs-6">Most recent appears at the top.</span>
-        </h1>
+        <h1 class="h2 text-success m-0">Your Saved Transactions</h1>
+          <p class="lead text-muted text-dark fs-6">Most recent appears at the top.</p>
       </div>
     </div>
 

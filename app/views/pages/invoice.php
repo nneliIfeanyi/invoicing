@@ -1,6 +1,6 @@
 <?php
 
-  require_once APPROOT . '/views/TCPDF-main/tcpdf.php';
+require_once APPROOT . '/views/TCPDF-main/tcpdf.php';
 
 if(isset($_POST['generate-invoice'])){ 
   define('ID', $_POST['t_id']);
@@ -26,6 +26,7 @@ class MYPDF extends TCPDF {
         {
           die("failed to connect");
         }
+        $this->SetTextColor(10, 113, 11);
         $this->SetFont('helvetica', 'B', 20);
         $this->cell(190, 2, "$user_name", 0, 1, "L");
 
@@ -34,11 +35,12 @@ class MYPDF extends TCPDF {
         $this->cell(190, 2, "$user_dsc", 0, 1, "L");
         $this->Ln(1);
         $this->SetFont('helvetica', '', 12);
-        $this->cell(190, 3, "Address: $user_address", 0, 1, "L");
+        $this->cell(190, 3, "Address: $user_address", 0, 1, "R");
 
 
         $this->SetFont('helvetica', '', 12);
-        $this->cell(190, 2, "Hotline: $user_phone", 0, 1, "C");
+        $this->cell(190, 2, "Hotline: $user_phone", 0, 1, "R");
+        $this->SetTextColor(10, 100, 11);
         $this->cell(86, 0, '__________________________________________________________________________________________________', 0, '', '', '');
         $this->Ln(30);
     }
@@ -126,23 +128,23 @@ $sum = 0;
   $pdf->Ln(12);
   $pdf->SetFont('times', 'B', '11');
   $pdf->SetTextColor(01,19,20);
-  $pdf->Cell(37, 4, "Customer name: ___________________________________________", 0, 0, "L");
-  $pdf->SetFont('times', 'N', '10');
-  $pdf->Cell(30, 4, "$customer_name", 0, 0, "L");
+  $pdf->Cell(29, 6, "Customer name: ______________________________________", 0, 0, "L");
+  $pdf->SetFont('times', 'N', '14');
+  $pdf->Cell(50, 4, "$customer_name", 0, 0, "L");
 
   $pdf->Ln(7);
   $pdf->SetFont('times', 'B', '11');
-  $pdf->Cell(37, 4, "Customer phone: ___________________________________________", 0, 0, "L");
+  $pdf->Cell(30, 6, "Customer phone: ______________________________________", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'N', '10');
-  $pdf->Cell(30, 4, "$customer_phone", 0, 0, "L");
+  $pdf->SetFont('times', 'N', '14');
+  $pdf->Cell(50, 4, "$customer_phone", 0, 0, "L");
 
   $pdf->Ln(7);
   $pdf->SetFont('times', 'B', '11');
-  $pdf->Cell(37, 4, "Customer address: ___________________________________________", 0, 0, "L");
+  $pdf->Cell(32, 6, "Customer address: _______________________________________", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'N', '10');
-  $pdf->Cell(30, 4, "$customer_address", 0, 0, "L");
+  $pdf->SetFont('times', 'N', '14');
+  $pdf->Cell(50, 4, "$customer_address", 0, 0, "L");
 
   $pdf->Ln(7);
   $pdf->SetFont('times', 'N', '10');
@@ -150,16 +152,10 @@ $sum = 0;
   $pdf->SetTextColor(01,19,20);
   $pdf->SetFont('times', 'B', '12');
   $pdf->Cell(20, 4, "$date", 0, 0, "L");
-  $pdf->Ln(7);
-  $pdf->SetFont('times', 'N', '10');
-  $pdf->Cell(27, 4, "Transaction time:", 0, 0, "L");
-  $pdf->SetTextColor(01, 19, 20);
-  $pdf->SetFont('times', 'B', '12');
-  $pdf->Cell(20, 4, "$time", 0, 0, "L");
   
   
 $pdf->Ln(20);
-$pdf->SetFillColor(224, 225, 255);
+$pdf->SetFillColor(248, 181, 71);
 $pdf->Cell(16, 7, 'qty', 1, 0, 'L', 1);
 $pdf->Cell(65, 7, 'Description of goods', 1, 0, 'L', 1);
 $pdf->Cell(25, 7, 'Rate', 1, 0, 'L', 1);
@@ -169,12 +165,17 @@ while ($result = mysqli_fetch_array($query)) {
   $qty = $result['qty'];
   $dsc = $result['dsc'];
   $rate = $result['rate'];
-  $amt = $qty * $rate;
-  $total = $sum += $amt;
+  if (!empty($qty) && !empty($rate)) {
+    $amt = $qty * $rate;
+    $total = $sum += $amt;
+  }else{
+    $amt = '';
+  }
+
  // $balance = $total - $paid;
 
   $pdf->Ln(7); //this will reduce the line height of each subject
-  $pdf->SetTextColor(14, 93,117);
+  $pdf->SetTextColor(10, 93,11);
   $pdf->SetFont('times', '', '11');
   $pdf->Cell(16, 4, $qty, 0, 0, "L");
   $pdf->Cell(65, 4, $dsc, 0, 0, "L");
@@ -183,7 +184,7 @@ while ($result = mysqli_fetch_array($query)) {
 }
 
 $pdf->Ln(20);
-$pdf->SetTextColor(14, 93, 117);
+$pdf->SetTextColor(10, 93, 11);
 $pdf->SetFont('times', 'B', '15');
 $pdf->Cell(20, 4, '', 0, 0, "L");
 $pdf->Cell(20, 4, '', 0, 0, "L");
@@ -194,7 +195,7 @@ $pdf->Cell(20, 4, 'N'.put_coma($total), 0, 0, "L");
 
 if (!empty($paid)) {
   $pdf->Ln(7);
-  $pdf->SetTextColor(14, 93, 117);
+  $pdf->SetTextColor(10, 93, 11);
   $pdf->SetFont('times', 'B', '15');
   $pdf->Cell(20, 4, '', 0, 0, "L");
   $pdf->Cell(20, 4, '', 0, 0, "L");
@@ -204,7 +205,7 @@ if (!empty($paid)) {
 
 
   $pdf->Ln(7);
-  $pdf->SetTextColor(14, 93, 117);
+  $pdf->SetTextColor(10, 93, 11);
   $pdf->SetFont('times', 'B', '15');
   $pdf->Cell(20, 4, '', 0, 0, "L");
   $pdf->Cell(20, 4, '', 0, 0, "L");
@@ -213,7 +214,7 @@ if (!empty($paid)) {
   $pdf->Cell(20, 4, 'N'.put_coma($total - $paid), 0, 0, "L");
 }else{
   $pdf->Ln(7);
-  $pdf->SetTextColor(14, 93, 117);
+  $pdf->SetTextColor(10, 93, 11);
   $pdf->SetFont('times', 'B', '15');
   $pdf->Cell(20, 4, '', 0, 0, "L");
   $pdf->Cell(20, 4, '', 0, 0, "L");
@@ -233,7 +234,7 @@ if (!empty($paid)) {
 }
 
 $pdf->Ln(6);
-$pdf->SetTextColor(14, 93, 117);
+$pdf->SetTextColor(248, 181, 71);
 $pdf->cell(86, 0, '__________________________________________________________________________________________________', 0, '', '', '');
 // set some text to print
 $today_date = date('F d, Y');
@@ -245,7 +246,7 @@ EOD;
 
 // print a block of text using Write()
 //$pdf->Ln(16);
-$pdf->SetTextColor(0, 0, 1);
+$pdf->SetTextColor(248, 181, 71);
 $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
 
 // ---------------------------------------------------------
@@ -258,4 +259,5 @@ $pdf->Output($customer_name.'_'.$date.'.pdf', 'I');
 //============================================================+
 
 }
+
 

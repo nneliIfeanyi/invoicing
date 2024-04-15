@@ -5,7 +5,19 @@
     }
 
     public function index(){
-      redirect('welcome');
+      if ($_SESSION['user_phone'] != "08122321931") {
+        redirect('users/login');
+      }else{
+        $users = $this->userModel->loadUsers();
+         //Set Data
+        $data = [
+          'users' => $users,
+          'description' => 'Invoicing Admin Management Portal'
+        ];
+
+        // Load index view
+        $this->view('users/index', $data);
+      }
     }
 
     public function register(){
@@ -18,7 +30,6 @@
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Sanitize POST
         $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
         $data = [
           'name' => trim($_POST['name']),
           'phone' => trim($_POST['phone']),
@@ -187,14 +198,18 @@
       $_SESSION['user_name'] = $user->bizname;
       $_SESSION['address'] = $user->bizaddress;
       $_SESSION['user_dsc'] = $user->biz_dsc;
+      $_SESSION['user_status'] = $user->status;
       redirect('posts/add');
     }
 
     // Logout & Destroy Session
     public function logout(){
       unset($_SESSION['user_id']);
-      unset($_SESSION['user_email']);
+      unset($_SESSION['user_phone']);
       unset($_SESSION['user_name']);
+      unset($_SESSION['address']);
+      unset($_SESSION['user_dsc']);
+      unset($_SESSION['user_status']);
       session_destroy();
       redirect('users/login');
     }

@@ -1,7 +1,8 @@
 <?php
   class Pages extends Controller{
     public function __construct(){
-     
+     $this->postModel = $this->model('Post');
+     $this->userModel = $this->model('User');
     }
 
     // Load Homepage
@@ -12,15 +13,6 @@
       }else{
         redirect('users/login');
       }
-
-      //Set Data
-      $data = [
-        'title' => 'Welcome To SharePosts',
-        'description' => 'Simple social network built on the TraversyMVC PHP framework'
-      ];
-
-      // Load homepage/index view
-      $this->view('pages/index', $data);
     }
 
     public function about(){
@@ -33,14 +25,24 @@
       $this->view('pages/about', $data);
     }
 
-    public function invoice(){
+    public function subscribe(){
       //Set Data
       $data = [
         'version' => '1.0.0'
       ];
 
       // Load about view
-      $this->view('pages/invoice', $data);
+      $this->view('pages/subscribe', $data);
+    }
+
+    public function invoice(){
+      $user = $this->userModel->getUserById($_SESSION['user_id']);
+      if ($user->status == 'monthly' OR $user->status == 'yearly') {
+          $this->view('pages/invoice');
+        }else{
+          redirect('pages/subscribe'); 
+      }
+     
     }
 
 

@@ -41,9 +41,19 @@
       <?php $sum = 0; foreach($data['post'] as $post):?>
       <tr>
         <td><?= $post->qty;?></td>
-        <td><?= $post->dsc;?></td>
+        <td>
+          <?php if(empty($post->qty) AND !empty($post->rate)):?>
+           <?= $post->dsc;?>
+          <?php else:?>
+            <?= $post->dsc;?>
+          <?php endif;?>
+        </td>
         <td><?= $post->rate;?></td>
-        <td><?= $total = $post->qty * $post->rate ;?></td>
+        <td>
+          <?php if(!empty($post->qty) AND !empty($post->rate)):?>
+            <?= $total = $post->qty * $post->rate ;?> 
+          <?php endif;?>
+        </td>
       </tr>
     <?php $sum += $total; endforeach;?>
     <tr>

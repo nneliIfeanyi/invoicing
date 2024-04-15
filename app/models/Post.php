@@ -112,7 +112,7 @@
 
     public function deleteEmpty(){
       // Prepare Query
-      $this->db->query("DELETE FROM invoicing WHERE qty = '' AND rate = '' ");
+      $this->db->query("DELETE FROM invoicing WHERE qty = '' AND rate = '' AND dsc = '' ");
       
       //Execute
       if($this->db->execute()){

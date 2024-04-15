@@ -7,6 +7,8 @@
       // Load Models
       $this->postModel = $this->model('Post');
       $this->userModel = $this->model('User');
+
+      $this->isPaid($_SESSION['user_id']);
     }
 
     // Load All Posts
@@ -107,8 +109,10 @@
       }//end server request
       
       else{
+
       $post = $this->postModel->getPost($t_id);
       $customer_info = $this->postModel->getCustomerInfo($t_id);
+      echo $this->isPaid($customer_info->biz_id);
         $data = [
           'post' => $post,
           'info' => $customer_info
@@ -132,4 +136,19 @@
         redirect('posts');
       }
     }
+
+    public function isPaid($id){
+      
+      $user = $this->userModel->getUserById($id);
+      $now = date('Y-m-d h:ia');
+      $exp_date = $user->renew;
+      if ($now > $exp_date) {
+        $this->userModel->freeTrial($id);    
+      }
+      
+    }
+
+
+
+
   }

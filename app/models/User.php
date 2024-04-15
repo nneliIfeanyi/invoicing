@@ -8,9 +8,11 @@
 
     // Add User / Register
     public function register($data){
+      $next_sev_days = strtotime("+7 days");
+      $renew_date = date('Y-m-d h:ia', $next_sev_days);
       // Prepare Query
-      $this->db->query('INSERT INTO bizusers (bizname, biz_dsc, bizphone, bizaddress, bizpassword) 
-      VALUES (:name, :biz_dsc, :phone, :address, :password)');
+      $this->db->query('INSERT INTO bizusers (bizname, biz_dsc, bizphone, bizaddress, bizpassword, status, renew) 
+      VALUES (:name, :biz_dsc, :phone, :address, :password, :status, :renew)');
 
       // Bind Values
       $this->db->bind(':name', $data['name']);
@@ -18,6 +20,8 @@
       $this->db->bind(':address', $data['address']);
       $this->db->bind(':password', $data['password']);     
       $this->db->bind(':biz_dsc', $data['biz_dsc']);
+      $this->db->bind(':status', 'monthly');
+      $this->db->bind(':renew', $renew_date);
       
       //Execute
       if($this->db->execute()){
@@ -40,6 +44,14 @@
       } else {
         return false;
       }
+    }
+
+     // Find USer BY Email
+    public function loadUsers(){
+      $this->db->query("SELECT * FROM bizusers ORDER BY id DESC;");
+
+      $results = $this->db->resultset();
+      return $results;
     }
 
     // Login / Authenticate User
@@ -66,4 +78,54 @@
 
       return $row;
     }
+
+
+    public function updateStatus($id, $length){
+      if ($length == 'monthly') {
+        $next_month = strtotime("+1 month");
+        $renew_date = date('Y-m-d h:ia', $next_month);
+      }elseif ($length == 'yearly') {
+        $next_year = strtotime("+1 year");
+        $renew_date = date('Y-m-d h:ia', $next_year);
+      }
+      // Prepare Query
+      $this->db->query('UPDATE bizusers SET status = :status, renew = :renew WHERE id = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $id);
+      $this->db->bind(':status', $length);
+      $this->db->bind(':renew', $renew_date);
+  
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    public function freeTrial($id){
+      // Prepare Query
+      $this->db->query('UPDATE bizusers SET status = :status WHERE id = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $id);
+      $this->db->bind(':status', 'freeTrial');
+  
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
+
+
+
+
+
+
+
   }
