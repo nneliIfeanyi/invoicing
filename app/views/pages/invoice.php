@@ -125,18 +125,18 @@ $date = $result['c_date'].' '.$result['c_month'].' '.$result['c_year'];
 $time = $result['c_time'];
 $sum = 0;
 
-  $pdf->Ln(40);
+  $pdf->Ln(35);
   $pdf->SetFont('times', 'B', '17');
   $pdf->SetTextColor(01,19,20);
   $pdf->Cell(49, 6, "Customer name: ______________________________________", 0, 0, "L");
-  $pdf->SetFont('times', 'N', '20');
+  $pdf->SetFont('times', 'B', '20');
   $pdf->Cell(50, 4, "$customer_name", 0, 0, "L");
 
   $pdf->Ln(10);
   $pdf->SetFont('times', 'B', '17');
   $pdf->Cell(49, 6, "Customer phone: ______________________________________", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'N', '20');
+  $pdf->SetFont('times', 'B', '20');
   $pdf->Cell(50, 4, "$customer_phone", 0, 0, "L");
 
   $pdf->Ln(10);
@@ -154,7 +154,7 @@ $sum = 0;
   $pdf->Cell(20, 4, "$date", 0, 0, "L");
   
   
-$pdf->Ln(40);
+$pdf->Ln(26);
 $pdf->SetFillColor(248, 181, 71);
 $pdf->SetFont('times', 'N', '20');
 $pdf->Cell(16, 7, 'qty', 1, 0, 'L', 1);
