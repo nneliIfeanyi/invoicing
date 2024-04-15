@@ -9,9 +9,9 @@
     <p class="text-primary lead">Sales Invoice</p>
   </div>
   <div class="col-md-6">
-    <div class="shadow-lg p-2 border-start border-5 border-success rounded-2">
-      <h1 class="h6 text-muted">Usage tips:</h1>
-      <p class="font-weight-light">
+    <div class="shadow-lg pt-1 ps-1 border-start border-5 border-success rounded-2">
+      <h1 class="h6 m-0 text-muted">Usage tips:</h1>
+      <p class="text-muted" style="font-size:12px;">
         Note that the system will automatically do the needed calculations.. <br>
         No need to punch your calculator.
       </p>
