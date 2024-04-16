@@ -158,7 +158,7 @@ $sum = 0;
 $pdf->Ln(18);
 $pdf->SetFillColor(248, 231, 221);
 $pdf->SetFont('times', 'N', '20');
-$pdf->Cell(16, 7, 'qty', 1, 0, 'C', 1);
+$pdf->Cell(16, 7, 'Qty', 1, 0, 'C', 1);
 $pdf->Cell(65, 7, 'Description', 1, 0, 'C', 1);
 $pdf->Cell(25, 7, 'Rate', 1, 0, 'C', 1);
 $pdf->Cell(45, 7, 'Amount', 1, 0, 'C', 1);
@@ -179,10 +179,10 @@ while ($result = mysqli_fetch_array($query)) {
   $pdf->Ln(9); //this will reduce the line height of each subject
   $pdf->SetTextColor(10, 13,11);
   $pdf->SetFont('times', 'B', '23');
-  $pdf->Cell(16, 10, $qty, 0, 0, "C");
-  $pdf->Cell(65, 10, $dsc, 0, 0, "C");
-  $pdf->Cell(25, 10, put_coma($rate), 0, 0, "C");
-  $pdf->Cell(45, 10, put_coma($amt), 0, 0, "C");
+  $pdf->Cell(16, 10, $qty, 0, 0, "L");
+  $pdf->Cell(65, 10, $dsc, 0, 0, "L");
+  $pdf->Cell(25, 10, put_coma($rate), 0, 0, "L");
+  $pdf->Cell(45, 10, put_coma($amt), 0, 0, "L");
 }
 
 $pdf->Ln(14);
