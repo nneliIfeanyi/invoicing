@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<div class="row mb-5">
+<div class="row mb-3">
   <div class="col-md-6">
     <?= flash('msg');?>
     <h4 class="text-muted m-0"><?php echo $_SESSION['user_name']; ?>
@@ -9,7 +9,7 @@
     <p class="text-primary lead">Sales Invoice</p>
   </div>
   <div class="col-md-6">
-    <div class="shadow-lg pt-1 ps-1 border-start border-5 border-success rounded-2">
+    <div class="shadow pt-1 ps-1 border-start border-5 border-success rounded-2">
       <h1 class="h6 m-0 text-muted">Usage tips:</h1>
       <p class="text-muted" style="font-size:12px;">
         Note that the system will automatically do the needed calculations.. <br>
@@ -67,7 +67,7 @@
         <input type="number" name="rate[]"  class="form-control" value="" style="width: 22vw;">
       </td>
     </tr>
-
+<!-- 
     <tr>
       <td>
         <input type="number" min="1" name="qty[]" class="form-control"  value="" style="width: 60px;">
@@ -78,9 +78,9 @@
       <td>
         <input type="number" name="rate[]"  class="form-control" value="" style="width: 22vw;">
       </td>
-    </tr>
+    </tr> -->
 
-    <tr>
+   <!--  <tr>
       <td>
         <input type="number" min="1" name="qty[]" class="form-control" style="width: 60px;">
       </td>
@@ -90,9 +90,9 @@
       <td>
         <input type="number" name="rate[]" class="form-control" value="" style="width: 22vw;">
       </td>
-    </tr>
+    </tr> -->
 
-    <tr>
+   <!--  <tr>
       <td>
         <input type="number" min="1" name="qty[]" class="form-control" style="width: 60px;">
       </td>
@@ -102,7 +102,7 @@
       <td>
         <input type="number" name="rate[]" class="form-control" value="" style="width: 22vw;">
       </td>
-    </tr>
+    </tr> -->
       <tr>
         <td>
           <input type="number" min="1" name="qty[]" class="form-control" value="" style="width: 60px;">

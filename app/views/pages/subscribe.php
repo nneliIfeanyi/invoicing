@@ -46,7 +46,7 @@
 	      						<i class="fa fa-check"></i> Business logo upload
 	      					</li>
 	      					<li class="list-group-item text-bg-dark">
-	      						<i class="fa fa-percent"></i>12 Off &nbsp;<s class="text-danger">-&#8358;2000</s>
+	      						<i class="fa fa-percent"></i>12 Off &nbsp;<s class="text-danger">-&#8358;1500</s>
 	      					</li>
 	      				</ul>
 	      				<div class="d-grid">
