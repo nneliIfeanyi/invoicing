@@ -53,11 +53,11 @@ class MYPDF extends TCPDF {
         // Set font
         $this->SetFont('helvetica', 'I', 16);
         // Page number
-        $this->Cell(0, 10, 'Customer signature', 0, false, 'C', 0, '', 0, false, 'T', 'M');
-        $this->SetY(-20);
+        $this->Cell(0, 10, 'Thanksfor your patronage, pls call again!', 0, false, 'C', 0, '', 0, false, 'T', 'M');
+        //$this->SetY(-20);
         // Set font
-        $this->SetFont('helvetica', 'B', 8);
-        $this->cell(0, 0, "__________________________________", 0, 1, "C");
+        //$this->SetFont('helvetica', 'B', 8);
+        //$this->cell(0, 0, "__________________________________", 0, 1, "C");
 
     }
 }
