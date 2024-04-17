@@ -159,7 +159,7 @@ $pdf->Ln(18);
 $pdf->SetFillColor(248, 231, 221);
 $pdf->SetFont('times', 'N', '20');
 $pdf->Cell(18, 7, 'Qty', 1, 0, 'C', 1);
-$pdf->Cell(95, 7, 'Description of goods', 1, 0, 'C', 1);
+$pdf->Cell(95, 7, 'Description of goods', 1, 0, 'L', 1);
 $pdf->Cell(30, 7, 'Rate', 1, 0, 'L', 1);
 $pdf->Cell(55, 7, 'Amount', 1, 0, 'L', 1);
 $pdf->Ln(3);
@@ -175,7 +175,7 @@ while ($result = mysqli_fetch_array($query)) {
   }
 
   if (strlen($qty == 1)) {
-    $qty = '0'.$qty
+    $qty = '0'.$qty;
   }
   
 
