@@ -72,7 +72,7 @@
           ];
          $this->postModel->addPost($data);
           flash('msg', 'Invoice recorded and saved successfully..');
-           redirect('posts');
+           redirect('posts/show/'.$t_id);
            $this->postModel->deleteEmpty();
         }//end for each
       } else {

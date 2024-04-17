@@ -126,7 +126,7 @@ $date = $result['c_date'].' '.$result['c_month'].' '.$result['c_year'];
 $time = $result['c_time'];
 $sum = 0;
 
-  $pdf->Ln(35);
+  $pdf->Ln(31);
   $pdf->SetFont('times', 'B', '17');
   $pdf->SetTextColor(01,19,20);
   $pdf->Cell(49, 10, "Customer name: ______________________________________", 0, 0, "L");
@@ -174,7 +174,7 @@ while ($result = mysqli_fetch_array($query)) {
     $amt = '';
   }
 
-  if (strlen($qty == 1)) {
+  if (strlen($qty) == 1) {
     $qty = '0'.$qty;
   }
   

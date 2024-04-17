@@ -13,7 +13,9 @@
       <h1 class="h6 m-0 text-muted">Usage tips:</h1>
       <p class="text-muted" style="font-size:12px;">
         Note that the system will automatically do the needed calculations.. <br>
-        No need to punch your calculator.
+        No need to punch your calculator.<br>
+        The <span class="fw-bold">Amount</span> and the <span class="fw-bold">Total</span> will be auto-calculated.
+
       </p>
     </div>
   </div>
@@ -55,9 +57,9 @@
       <td>
         <input type="number" name="rate[]"  required data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
       </td>
-      <td>
+      <!-- <td>
         <input placeholder="auto-calculate" class="form-input" disabled>
-      </td>
+      </td> -->
     </tr>
 
     <tr>
@@ -69,10 +71,10 @@
       </td>
       <td>
         <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
-      </td>
+      </td><!-- 
       <td>
         <input placeholder="auto-calculate" class="form-input" disabled>
-      </td>
+      </td> -->
     </tr>
 <!-- 
     <tr>
@@ -120,9 +122,9 @@
         <td>
           <input type="number" name="rate[]" class="form-input" value="" style="width: 22vw;">
         </td>
-        <td>
+        <!-- <td>
         <input placeholder="auto-calculate" class="form-input" disabled>
-      </td>
+      </td> -->
       </tr>
 
       <tr>
@@ -135,9 +137,9 @@
         <td>
           <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
         </td>
-        <td>
+        <!-- <td>
         <input placeholder="auto-calculate" class="form-input" disabled>
-      </td>
+      </td> -->
       </tr>
 
       <tr>
@@ -150,9 +152,9 @@
         <td>
           <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
         </td>
-        <td>
+        <!-- <td>
         <input placeholder="auto-calculate" class="form-input" disabled>
-      </td>
+      </td> -->
       </tr>
 
       <tr>
@@ -165,9 +167,9 @@
         <td>
           <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
         </td>
-        <td>
+        <!-- <td>
         <input placeholder="auto-calculate" class="form-input" disabled>
-      </td>
+      </td> -->
       </tr>
 
       <tr>
@@ -180,9 +182,9 @@
         <td>
           <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
         </td>
-        <td>
+        <!-- <td>
         <input placeholder="auto-calculate" class="form-input" disabled>
-      </td>
+      </td> -->
       </tr>
 
       <tr>
@@ -195,9 +197,9 @@
         <td>
           <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
         </td>
-        <td>
+        <!-- <td>
         <input placeholder="auto-calculate" class="form-input" disabled>
-      </td>
+      </td> -->
       </tr>
 
       <tr>
@@ -210,9 +212,9 @@
         <td>
           <input type="number" name="rate[]" class="form-input" value="" style="width: 22vw;">
         </td>
-        <td>
+        <!-- <td>
         <input placeholder="auto-calculate" class="form-input" disabled>
-      </td>
+      </td> -->
       </tr>
    
   </tbody>
