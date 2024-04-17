@@ -4,7 +4,11 @@
     header('location: '.URLROOT.'/'.$page);
   }
 
-  function put_coma($amount){
+  function put_coma($amt){
+    // $math = explode('.', $amt);
+    // $amount = $math[0].$math[1];
+    
+    $amount = ceil($amt);
 
     if (strlen($amount) == 12 ) {
 

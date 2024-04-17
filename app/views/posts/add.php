@@ -49,13 +49,13 @@
   <tbody>
     <tr>
       <td>
-        <input type="number" min="1" name="qty[]" class="form-input"  required data-parsley-trigger="keyup" value="" style="width: 60px;">
+        <input min="1" name="qty[]" class="form-input"  required data-parsley-trigger="keyup" data-parsley-pattern="^[0-9.]+$" value="" style="width: 60px;">
       </td>
       <td>
         <input name="dsc[]" class="form-input" required data-parsley-trigger="keyup" type="text" value="" style="width: 55vw;">
       </td>
       <td>
-        <input type="number" name="rate[]"  required data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
+        <input name="rate[]" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup"  required data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
       </td>
       <td data-bs-toggle="tooltip" data-bs-title="automatically calculated">
       </td>
@@ -63,106 +63,31 @@
 
     <tr>
       <td>
-        <input type="number" min="1" name="qty[]" class="form-input"  value="" style="width: 60px;">
+        <input min="1" name="qty[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[0-9.]+$" value="" style="width: 60px;">
       </td>
       <td>
-        <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
+        <input name="dsc[]" class="form-input" data-parsley-trigger="keyup" type="text" value="" style="width: 55vw;">
       </td>
       <td>
-        <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
+        <input name="rate[]" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
       </td>
-      <td data-bs-toggle="tooltip" data-bs-title="automatically calculated"></td>
+      <td data-bs-toggle="tooltip" data-bs-title="automatically calculated">
+      </td>
     </tr>
-      <tr>
-        <td>
-          <input type="number" min="1" name="qty[]" class="form-input" value="" style="width: 60px;">
-        </td>
-        <td>
-          <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
-        </td>
-        <td>
-          <input type="number" name="rate[]" class="form-input" value="" style="width: 22vw;">
-        </td>
-        <td data-bs-toggle="tooltip" data-bs-title="automatically calculated"></td>
-      </tr>
 
-      <tr>
-        <td>
-          <input type="number" min="1" name="qty[]" class="form-input" value="" style="width: 60px;">
-        </td>
-        <td>
-          <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
-        </td>
-        <td>
-          <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
-        </td>
-        <td data-bs-toggle="tooltip" data-bs-title="automatically calculated"></td>
-      </tr>
-
-      <tr>
-        <td>
-          <input type="number" min="1" name="qty[]" class="form-input"  value="" style="width: 60px;">
-        </td>
-        <td>
-          <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
-        </td>
-        <td>
-          <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
-        </td>
-        <td data-bs-toggle="tooltip" data-bs-title="automatically calculated"></td>
-      </tr>
-
-      <tr>
-        <td>
-          <input type="number" min="1" name="qty[]" class="form-input"  value="" style="width: 60px;">
-        </td>
-        <td>
-          <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
-        </td>
-        <td>
-          <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
-        </td>
-        <td data-bs-toggle="tooltip" data-bs-title="automatically calculated"></td>
-      </tr>
-
-      <tr>
-        <td>
-          <input type="number" min="1" name="qty[]" class="form-input"  value="" style="width: 60px;">
-        </td>
-        <td>
-          <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
-        </td>
-        <td>
-          <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
-        </td>
-        <td data-bs-toggle="tooltip" data-bs-title="automatically calculated"></td>
-      </tr>
-
-      <tr>
-        <td>
-          <input type="number" min="1" name="qty[]" class="form-input" value="" style="width: 60px;">
-        </td>
-        <td>
-          <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
-        </td>
-        <td>
-          <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
-        </td>
-        <td data-bs-toggle="tooltip" data-bs-title="automatically calculated"></td>
-      </tr>
-
-      <tr>
-        <td>
-          <input name="qty[]" type="number" min="1" value="" class="form-input" style="width: 60px;">
-        </td>
-        <td>
-          <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
-        </td>
-        <td>
-          <input type="number" name="rate[]" class="form-input" value="" style="width: 22vw;">
-        </td>
-       <td data-bs-toggle="tooltip" data-bs-title="automatically calculated"></td>
-      </tr>
+    <tr>
+      <td>
+        <input min="1" name="qty[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[0-9.]+$" value="" style="width: 60px;">
+      </td>
+      <td>
+        <input name="dsc[]" class="form-input" data-parsley-trigger="keyup" type="text" value="" style="width: 55vw;">
+      </td>
+      <td>
+        <input name="rate[]" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
+      </td>
+      <td data-bs-toggle="tooltip" data-bs-title="automatically calculated">
+      </td>
+    </tr>
    
   </tbody>
 </table>
