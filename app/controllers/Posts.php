@@ -1,15 +1,22 @@
 <?php
   class Posts extends Controller{
     public function __construct(){
-      if(!isset($_SESSION['user_id'])){
+      if (!isset($_COOKIE['user-id']) ) {
         redirect('users/login');
+      }else{
+        $_SESSION['user_id'] = $_COOKIE['user-id'];
+        $_SESSION['user_name'] = $_COOKIE['user-name'];
+        $_SESSION['user_phone'] = $_COOKIE['user-phone'];
+        $_SESSION['address'] = $_COOKIE['user-address'];
+        $_SESSION['user_dsc'] = $_COOKIE['user-dsc'];
+        $_SESSION['user_status'] = $_COOKIE['user-status'];
       }
       // Load Models
       $this->postModel = $this->model('Post');
       $this->userModel = $this->model('User');
 
       $this->isPaid($_SESSION['user_id']);
-    }
+    }//ends construct function
 
     // Load All Posts
     public function index(){
@@ -112,7 +119,7 @@
 
       $post = $this->postModel->getPost($t_id);
       $customer_info = $this->postModel->getCustomerInfo($t_id);
-      echo $this->isPaid($customer_info->biz_id);
+      //echo $this->isPaid($customer_info->biz_id);
         $data = [
           'post' => $post,
           'info' => $customer_info
