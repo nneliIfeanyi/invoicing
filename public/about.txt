@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Freehand
+- Font Author: Copyright 2020 The Freehand Project Authors (https://github.com/danhhong/Freehand)
+- Font Source: https://fonts.gstatic.com/s/freehand/v31/cIf-Ma5eqk01VjKTgAmBTmUOmZJk.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))

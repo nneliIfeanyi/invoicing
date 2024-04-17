@@ -14,6 +14,12 @@
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/font-awesome.css" />
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/bootstrap.css" />
   <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="<?= URLROOT;?>/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?= URLROOT;?>/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?= URLROOT;?>/favicon-16x16.png">
+  <link rel="manifest" href="<?= URLROOT;?>/site.webmanifest">
+
   <title><?php echo (!empty($_SESSION['user_name'])) ? $_SESSION['user_name'].' '.'Sales Invoice': 'Stanvic Concepts'; ?></title>
   <style type="text/css">
     .flash-msg{
