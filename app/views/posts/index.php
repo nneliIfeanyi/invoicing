@@ -25,9 +25,9 @@
      <div class="d-grid gap-2">  
       <form action="<?php echo URLROOT; ?>/pages/invoice" method="POST">
         <input type="hidden" name="t_id" value="<?php echo $post->t_id ; ?>">
-        <input class="btn btn-dark" name="generate-invoice" type="submit" value="Generate invoice">
+        <input class="btn btn-sm btn-dark" name="generate-invoice" type="submit" value="Generate invoice">
       </form>
-      <a href="<?= URLROOT;?>/posts/show/<?php echo $post->t_id;?>" class="btn btn-success">Preview transaction</a>
+      <a href="<?= URLROOT;?>/posts/show/<?php echo $post->t_id;?>" class="btn btn-sm btn-success">Preview transaction</a>
     </div>
     </div>
     <?php endforeach;?> 

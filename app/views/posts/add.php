@@ -41,30 +41,37 @@
       <th>Qty</th>
       <th>Description of Goods</th>
       <th>Rate</th>
+      <th>Amount</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>
-        <input type="number" min="1" name="qty[]" class="form-control"  required data-parsley-trigger="keyup" value="" style="width: 60px;">
+        <input type="number" min="1" name="qty[]" class="form-input"  required data-parsley-trigger="keyup" value="" style="width: 60px;">
       </td>
       <td>
-        <input name="dsc[]" class="form-control" required data-parsley-trigger="keyup" type="text" value="" style="width: 55vw;">
+        <input name="dsc[]" class="form-input" required data-parsley-trigger="keyup" type="text" value="" style="width: 55vw;">
       </td>
       <td>
-        <input type="number" name="rate[]"  required data-parsley-trigger="keyup" class="form-control" value="" style="width: 22vw;">
+        <input type="number" name="rate[]"  required data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
+      </td>
+      <td>
+        <input placeholder="auto-calculate" class="form-input" disabled>
       </td>
     </tr>
 
     <tr>
       <td>
-        <input type="number" min="1" name="qty[]" class="form-control"  value="" style="width: 60px;">
+        <input type="number" min="1" name="qty[]" class="form-input"  value="" style="width: 60px;">
       </td>
       <td>
-        <input name="dsc[]" class="form-control" type="text" value="" style="width: 55vw;">
+        <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
       </td>
       <td>
-        <input type="number" name="rate[]"  class="form-control" value="" style="width: 22vw;">
+        <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
+      </td>
+      <td>
+        <input placeholder="auto-calculate" class="form-input" disabled>
       </td>
     </tr>
 <!-- 
@@ -105,86 +112,107 @@
     </tr> -->
       <tr>
         <td>
-          <input type="number" min="1" name="qty[]" class="form-control" value="" style="width: 60px;">
+          <input type="number" min="1" name="qty[]" class="form-input" value="" style="width: 60px;">
         </td>
         <td>
-          <input name="dsc[]" class="form-control" type="text" value="" style="width: 55vw;">
+          <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
         </td>
         <td>
-          <input type="number" name="rate[]" class="form-control" value="" style="width: 22vw;">
+          <input type="number" name="rate[]" class="form-input" value="" style="width: 22vw;">
         </td>
+        <td>
+        <input placeholder="auto-calculate" class="form-input" disabled>
+      </td>
       </tr>
 
       <tr>
         <td>
-          <input type="number" min="1" name="qty[]" class="form-control" value="" style="width: 60px;">
+          <input type="number" min="1" name="qty[]" class="form-input" value="" style="width: 60px;">
         </td>
         <td>
-          <input name="dsc[]" class="form-control" type="text" value="" style="width: 55vw;">
+          <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
         </td>
         <td>
-          <input type="number" name="rate[]"  class="form-control" value="" style="width: 22vw;">
+          <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
         </td>
+        <td>
+        <input placeholder="auto-calculate" class="form-input" disabled>
+      </td>
       </tr>
 
       <tr>
         <td>
-          <input type="number" min="1" name="qty[]" class="form-control"  value="" style="width: 60px;">
+          <input type="number" min="1" name="qty[]" class="form-input"  value="" style="width: 60px;">
         </td>
         <td>
-          <input name="dsc[]" class="form-control" type="text" value="" style="width: 55vw;">
+          <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
         </td>
         <td>
-          <input type="number" name="rate[]"  class="form-control" value="" style="width: 22vw;">
+          <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
         </td>
+        <td>
+        <input placeholder="auto-calculate" class="form-input" disabled>
+      </td>
       </tr>
 
       <tr>
         <td>
-          <input type="number" min="1" name="qty[]" class="form-control"  value="" style="width: 60px;">
+          <input type="number" min="1" name="qty[]" class="form-input"  value="" style="width: 60px;">
         </td>
         <td>
-          <input name="dsc[]" class="form-control" type="text" value="" style="width: 55vw;">
+          <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
         </td>
         <td>
-          <input type="number" name="rate[]"  class="form-control" value="" style="width: 22vw;">
+          <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
         </td>
+        <td>
+        <input placeholder="auto-calculate" class="form-input" disabled>
+      </td>
       </tr>
 
       <tr>
         <td>
-          <input type="number" min="1" name="qty[]" class="form-control"  value="" style="width: 60px;">
+          <input type="number" min="1" name="qty[]" class="form-input"  value="" style="width: 60px;">
         </td>
         <td>
-          <input name="dsc[]" class="form-control" type="text" value="" style="width: 55vw;">
+          <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
         </td>
         <td>
-          <input type="number" name="rate[]"  class="form-control" value="" style="width: 22vw;">
+          <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
         </td>
+        <td>
+        <input placeholder="auto-calculate" class="form-input" disabled>
+      </td>
       </tr>
 
       <tr>
         <td>
-          <input type="number" min="1" name="qty[]" class="form-control" value="" style="width: 60px;">
+          <input type="number" min="1" name="qty[]" class="form-input" value="" style="width: 60px;">
         </td>
         <td>
-          <input name="dsc[]" class="form-control" type="text" value="" style="width: 55vw;">
+          <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
         </td>
         <td>
-          <input type="number" name="rate[]"  class="form-control" value="" style="width: 22vw;">
+          <input type="number" name="rate[]"  class="form-input" value="" style="width: 22vw;">
         </td>
+        <td>
+        <input placeholder="auto-calculate" class="form-input" disabled>
+      </td>
       </tr>
 
       <tr>
         <td>
-          <input type="number" min="1" value="" style="width: 60px;">
+          <input name="qty[]" type="number" min="1" value="" class="form-input" style="width: 60px;">
         </td>
         <td>
-          <input name="dsc[]" class="form-control" type="text" value="" style="width: 55vw;">
+          <input name="dsc[]" class="form-input" type="text" value="" style="width: 55vw;">
         </td>
         <td>
-          <input type="number" name="rate[]" class="form-control" value="" style="width: 22vw;">
+          <input type="number" name="rate[]" class="form-input" value="" style="width: 22vw;">
         </td>
+        <td>
+        <input placeholder="auto-calculate" class="form-input" disabled>
+      </td>
       </tr>
    
   </tbody>
