@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="<?php echo URLROOT; ?>">Home</a>
+          <a class="nav-link" href="<?php echo URLROOT; ?>"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/posts/add">Add Transaction</a>
+          <a class="nav-link" href="<?php echo URLROOT; ?>/posts/add"><i class="fa fa-plus" aria-hidden="true"></i> Add Transaction</a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">

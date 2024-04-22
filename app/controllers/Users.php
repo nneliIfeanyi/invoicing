@@ -6,7 +6,7 @@
 
     public function index(){
       if ($_SESSION['user_phone'] != "08122321931") {
-        redirect('users/login');
+        redirect('posts');
       }else{
         $users = $this->userModel->loadUsers();
          //Set Data

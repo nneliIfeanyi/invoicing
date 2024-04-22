@@ -35,13 +35,13 @@
     <?php foreach($data['post'] as $post):?>
     <tr>
       <td>
-        <input type="number" min="1" name="qty[]" class="form-control" value="<?= $post->qty;?>" style="width: 60px;">
+        <input type="text" min="0" name="qty[]" class="form-control" value="<?= $post->qty;?>" style="width: 60px;">
       </td>
       <td>
         <input name="dsc[]" class="form-control" type="text" value="<?= $post->dsc;?>" style="width: 55vw;">
       </td>
       <td>
-        <input type="number" name="rate[]"  class="form-control" value="<?= $post->rate;?>" style="width: 22vw;">
+        <input type="text" name="rate[]"  class="form-control" value="<?= $post->rate;?>" style="width: 22vw;">
       </td>
     </tr>
     <input type="hidden" name="post_id[]" value="<?= $post->id;?>">

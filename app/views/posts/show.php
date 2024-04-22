@@ -38,7 +38,8 @@
       <th>Amount</th>
     </thead>
     <tbody>
-      <?php $sum = 0; foreach($data['post'] as $post):?>
+      <?php $sum = 0; foreach($data['post'] as $post):
+      ;?>
       <tr>
         <td><?= $post->qty;?></td>
         <td>
@@ -51,7 +52,9 @@
         <td><?= $post->rate;?></td>
         <td>
           <?php if(!empty($post->qty) AND !empty($post->rate)):?>
-            <?= $total = $post->qty * $post->rate ;?> 
+            <?= $total=$post->qty * $post->rate ;?>
+          <?php else: $total = '0'.$post->rate;?>
+            <?= $post->rate;?>
           <?php endif;?>
         </td>
       </tr>
@@ -67,7 +70,7 @@
         <th></th>
         <th>Paid:</th>
         <th></th>
-        <th>Nill</th>
+        <th>&#8358;0.00</th>
       </tr>
       <tr>
         <th></th>

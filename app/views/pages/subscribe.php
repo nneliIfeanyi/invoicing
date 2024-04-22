@@ -13,16 +13,16 @@
 	      					<p class="text-success">Subscription</p>
 	      				</div>
 	      				<h2 class="fs-1 fw-bold mt-4 mb-5">&#8358;1,100</h2>
-	      				<ul class="list-group list-group-flush fs-5 mb-5">
+	      				<!-- <ul class="list-group list-group-flush fs-5 mb-5">
 	      					<li class="list-group-item ">
 	      						<i class="fa fa-check"></i> Unlimited invoicing
 	      					</li>
 	      					<li class="list-group-item ">
 	      						<i class="fa fa-check"></i> Business logo upload
 	      					</li>
-	      				</ul>
+	      				</ul> -->
 	      				<div class="d-grid">
-	      					<a href="https://paylink.alero.africa/v1/pl/d41a230f-2e8a-4d02-88a1-dffc23e786ec" class="btn btn-dark rounded-4 mt-5 mb-4">
+	      					<a href="https://paylink.alero.africa/v1/pl/d41a230f-2e8a-4d02-88a1-dffc23e786ec" class="btn btn-dark rounded-4 mb-4">
 	      						Subscribe
 	      					</a>
 	      				</div>
@@ -38,7 +38,7 @@
 	      					<p class="text-success">Subscription</p>
 	      				</div>
 	      				<h2 class="fs-1 fw-bold mt-4 mb-5">&#8358;10,500</h2>
-	      				<ul class="list-group list-group-flush fs-5 mb-5">
+	      				<!-- <ul class="list-group list-group-flush fs-5 mb-5">
 	      					<li class="list-group-item text-bg-dark">
 	      						<i class="fa fa-check"></i> Unlimited invoicing
 	      					</li>
@@ -48,7 +48,7 @@
 	      					<li class="list-group-item text-bg-dark">
 	      						<i class="fa fa-percent"></i>12 Off &nbsp;<s class="text-danger">-&#8358;1500</s>
 	      					</li>
-	      				</ul>
+	      				</ul> -->
 	      				<div class="d-grid">
 	      					<a href="https://paylink.alero.africa/v1/pl/fdcb16de-0b1c-4d9c-bbe3-3d61424806c8" class="btn btn-light rounded-4 mb-4">
 	      						Subscribe

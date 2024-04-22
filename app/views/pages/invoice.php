@@ -186,8 +186,8 @@ while ($result = mysqli_fetch_array($query)) {
   $pdf->SetFont('times', 'B', '23');
   $pdf->Cell(18, 10, $qty, 0, 0, "C");
   $pdf->Cell(95, 10, $dsc, 0, 0, "L");
-  $pdf->Cell(30, 10, put_coma($rate), 0, 0, "L");
-  $pdf->Cell(55, 10, put_coma($amt), 0, 0, "L");
+  $pdf->Cell(30, 10, $rate, 0, 0, "L");
+  $pdf->Cell(55, 10, $amt, 0, 0, "L");
 }
 
 $pdf->Ln(14);
