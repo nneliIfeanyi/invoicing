@@ -7,22 +7,22 @@
   </div>
 </div>
 <div class="row mb-2">
-  <div class="col-md-6">
+  <div class="col-md-6 shadow-sm">
     <label class="fs-6">Customer name: &nbsp; &nbsp;
       <span class="border-bottom fw-semibold"><?= $data['customer_info']->customer_name;?></span>
     </label>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6 shadow-sm">
     <label class="fs-6">Customer phone: &nbsp; &nbsp;
       <span class="border-bottom fw-semibold"><?= $data['customer_info']->customer_phone;?></span>
     </label>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6 shadow-sm">
     <label class="fs-6">Address: &nbsp; &nbsp;
       <span class="border-bottom fw-semibold"><?= $data['customer_info']->customer_address;?></span>
     </label>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6 shadow-sm">
     <label class="fs-6">Date: &nbsp; &nbsp;
       <span class="border-bottom fw-semibold"><?= $data['customer_info']->c_date.' '.$data['customer_info']->c_month.' '.$data['customer_info']->c_year ?></span>
     </label>
@@ -102,6 +102,11 @@
     <input class="btn btn-primary" name="generate-invoice" type="submit" value="Generate invoice">
   </form>
   <a href="<?= URLROOT;?>/posts/Edit/<?php echo $data['customer_info']->t_id; ?>" class="btn btn-success"><i class="fa fa-pencil"></i> Edit transaction</a>
+
+  <a href="https://wa.me/<?= $data['customer_info']->customer_phone ;?>?text=invoice%20link%20<?=URLROOT.'/'.'pages'.'/'.'invoice'.'/'.$data['customer_info']->t_id;?>" class="btn btn-success"><i class="fab fa-whatsapp"></i> Share on whatsApp</a>
+
+
+
   <a href="<?= URLROOT;?>/posts" class="btn"><i class="fa fa-backward"></i> Go Back</a>
 </div>
 
