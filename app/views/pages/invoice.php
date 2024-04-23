@@ -129,21 +129,21 @@ $sum = 0;
   $pdf->SetFont('times', 'N', '18');
   $pdf->SetTextColor(01,19,20);
   $pdf->Cell(49, 10, "Customer name: ______________________________________", 0, 0, "L");
-  $pdf->SetFont('times', 'B', '21');
+  $pdf->SetFont('helvetica', 'B', '21');
   $pdf->Cell(50, 4, "$customer_name", 0, 0, "L");
 
   $pdf->Ln(10);
   $pdf->SetFont('times', 'N', '18');
   $pdf->Cell(49, 10, "Customer phone: ______________________________________", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'B', '21');
+  $pdf->SetFont('helvetica', 'B', '21');
   $pdf->Cell(50, 4, "$customer_phone", 0, 0, "L");
 
   $pdf->Ln(10);
   $pdf->SetFont('times', 'N', '18');
   $pdf->Cell(51, 10, "Customer address: _______________________________________", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'B', '21');
+  $pdf->SetFont('helvetica', 'B', '21');
   $pdf->Cell(50, 4, "$customer_address", 0, 0, "L");
 
   $pdf->Ln(10);
