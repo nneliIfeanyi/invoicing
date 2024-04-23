@@ -80,7 +80,7 @@
     }
 
     //This gets uniqe information from the transaction
-    public function getCustomerInfo($t_id){
+    public function getInfo($t_id){
       $this->db->query("SELECT * FROM invoicing WHERE t_id = :t_id");
       $this->db->bind(':t_id', $t_id);
 

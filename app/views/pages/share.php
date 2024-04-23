@@ -1,8 +1,6 @@
 <?php
 
-require_once APPROOT . '/views/TCPDF-main/tcpdf.php';
-
-if(isset($data['t_id']){ 
+require_once APPROOT . '/views/TCPDF-main/tcpdf.php'; 
   define('ID', $data['t_id']);
   define('BIZNAME', $data['user']->bizname);
   define('BIZADDRESS', $data['user']->bizaddress);
@@ -27,30 +25,30 @@ class MYPDF extends TCPDF {
           die("failed to connect");
         }
         $this->SetTextColor(10, 113, 11);
-        $this->SetFont('helvetica', 'B', 30);
-        $this->cell(190, 2, "$user_name", 0, 1, "C");
+        $this->SetFont('helvetica', 'B', 20);
+        $this->cell(190, 2, "$user_name", 0, 1, "L");
 
         $this->Ln(1);
         $this->SetTextColor(10, 10, 11);
-        $this->SetFont('helvetica', 'N', 19);
-        $this->cell(190, 2, "$user_dsc", 0, 1, "C");
+        $this->SetFont('helvetica', 'N', 12);
+        $this->cell(190, 2, "$user_dsc", 0, 1, "L");
         $this->Ln(1);
-        $this->SetFont('helvetica', 'N', 19);
-        $this->cell(190, 3, "Address: $user_address", 0, 1, "C");
+        $this->SetFont('helvetica', 'N', 12);
+        $this->cell(190, 3, "Address: $user_address", 0, 1, "L");
 
 
-        $this->SetFont('helvetica', 'N', 24);
-        $this->cell(190, 2, "Hotline: $user_phone", 0, 1, "C");
+        $this->SetFont('helvetica', 'B', 15);
+        $this->cell(190, 2, "Hotline: $user_phone", 0, 1, "R");
         $this->SetTextColor(28, 81, 5);
-        $this->cell(86, 0, '----------------------------------------------------------------------------', 0, '', '', '');
+        $this->cell(86, 0, '-------------------------------------------------------------------------------------------------------------', 0, '', '', '');
     }
 
     // Page footer
     public function Footer() {
         // Position at 15 mm from bottom
-        $this->SetY(-13);
+        $this->SetY(-15);
         // Set font
-        $this->SetFont('helvetica', 'I', 19);
+        $this->SetFont('helvetica', 'I', 14);
         // Page number
         $this->Cell(0, 10, 'Thanksfor your patronage, pls call again!', 0, false, 'C', 0, '', 0, false, 'T', 'M');
         //$this->SetY(-20);
@@ -125,39 +123,39 @@ $date = $result['c_date'].' '.$result['c_month'].' '.$result['c_year'];
 $time = $result['c_time'];
 $sum = 0;
 
-  $pdf->Ln(31);
-  $pdf->SetFont('times', 'N', '18');
+  $pdf->Ln(21);
+  $pdf->SetFont('times', 'N', '12');
   $pdf->SetTextColor(01,19,20);
-  $pdf->Cell(49, 10, "Customer name: ______________________________________", 0, 0, "L");
-  $pdf->SetFont('helvetica', 'B', '21');
-  $pdf->Cell(50, 4, "$customer_name", 0, 0, "L");
+  $pdf->Cell(34, 5, "Customer name:", 0, 0, "L");
+  $pdf->SetFont('helvetica', 'B', '14');
+  $pdf->Cell(30, 4, "$customer_name", 0, 0, "L");
 
-  $pdf->Ln(10);
-  $pdf->SetFont('times', 'N', '18');
-  $pdf->Cell(49, 10, "Customer phone: ______________________________________", 0, 0, "L");
+  $pdf->Ln(6);
+  $pdf->SetFont('times', 'N', '12');
+  $pdf->Cell(35, 5, "Customer phone:", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('helvetica', 'B', '21');
-  $pdf->Cell(50, 4, "$customer_phone", 0, 0, "L");
+  $pdf->SetFont('helvetica', 'B', '14');
+  $pdf->Cell(30, 4, "$customer_phone", 0, 0, "L");
 
-  $pdf->Ln(10);
-  $pdf->SetFont('times', 'N', '18');
-  $pdf->Cell(51, 10, "Customer address: _______________________________________", 0, 0, "L");
+  $pdf->Ln(6);
+  $pdf->SetFont('times', 'N', '12');
+  $pdf->Cell(35, 5, "Customer address:", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('helvetica', 'B', '21');
-  $pdf->Cell(50, 4, "$customer_address", 0, 0, "L");
+  $pdf->SetFont('helvetica', 'B', '14');
+  $pdf->Cell(30, 4, "$customer_address", 0, 0, "L");
 
-  $pdf->Ln(10);
-  $pdf->SetFont('times', 'N', '18');
-  $pdf->Cell(49, 4, "Transaction date:", 0, 0, "L");
+  $pdf->Ln(6);
+  $pdf->SetFont('times', 'N', '12');
+  $pdf->Cell(34, 4, "Transaction date:", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'B', '21');
+  $pdf->SetFont('times', 'B', '15');
   $pdf->Cell(20, 4, "$date", 0, 0, "L");
   
   
 $pdf->Ln(18);
 $pdf->SetFillColor(0, 0, 0);
 $pdf->SetTextColor(255,255,255);
-$pdf->SetFont('times', 'N', '20');
+$pdf->SetFont('times', 'N', '15');
 $pdf->Cell(18, 7, 'Qty', 1, 0, 'C', 1);
 $pdf->Cell(95, 7, 'Description', 1, 0, 'L', 1);
 $pdf->Cell(30, 7, 'Rate', 1, 0, 'L', 1);
@@ -183,7 +181,7 @@ while ($result = mysqli_fetch_array($query)) {
 
   $pdf->Ln(9); //this will reduce the line height of each subject
   $pdf->SetTextColor(10, 13,11);
-  $pdf->SetFont('helvetica', 'N', '24');
+  $pdf->SetFont('helvetica', 'N', '12');
   $pdf->Cell(18, 10, $qty, 0, 0, "C");
   $pdf->Cell(95, 10, $dsc, 0, 0, "L");
   $pdf->Cell(30, 10, $rate, 0, 0, "L");
@@ -192,7 +190,7 @@ while ($result = mysqli_fetch_array($query)) {
 
 $pdf->Ln(14);
 $pdf->SetTextColor(10, 93, 11);
-$pdf->SetFont('helvetica', 'B', '22');
+$pdf->SetFont('helvetica', 'B', '15');
 $pdf->Cell(18, 4, '', 0, 0, "R");
 $pdf->Cell(95, 4, 'Total:', 0, 0, "R");
 $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -202,7 +200,7 @@ $pdf->Cell(55, 4, 'N'.put_coma($total), 0, 0, "L");
 if (!empty($paid)) {
   $pdf->Ln(8);
   $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('helvetica', 'B', '22');
+  $pdf->SetFont('helvetica', 'B', '15');
   $pdf->Cell(18, 4, '', 0, 0, "R");
   $pdf->Cell(95, 4, 'Paid:', 0, 0, "R");
   $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -211,7 +209,7 @@ if (!empty($paid)) {
 
   $pdf->Ln(8);
   $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('helvetica', 'B', '22');
+  $pdf->SetFont('helvetica', 'B', '15');
   $pdf->Cell(18, 4, '', 0, 0, "R");
   $pdf->Cell(95, 4, 'Balance:', 0, 0, "R");
   $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -219,7 +217,7 @@ if (!empty($paid)) {
 }else{
   $pdf->Ln(8);
   $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('helvetica', 'B', '22');
+  $pdf->SetFont('helvetica', 'B', '15');
   $pdf->Cell(18, 4, '', 0, 0, "R");
   $pdf->Cell(95, 4, 'Paid:', 0, 0, "R");
   $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -228,7 +226,7 @@ if (!empty($paid)) {
 
   $pdf->Ln(8);
   $pdf->SetTextColor(255, 10, 17);
-  $pdf->SetFont('helvetica', 'B', '22');
+  $pdf->SetFont('helvetica', 'B', '15');
   $pdf->Cell(18, 4, '', 0, 0, "R");
   $pdf->Cell(95, 4, 'Balance:', 0, 0, "R");
   $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -261,6 +259,5 @@ $pdf->Output($customer_name.'_'.$d.'.pdf', 'I');
 // END OF FILE
 //============================================================+
 
-}
 
 
