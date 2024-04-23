@@ -45,5 +45,23 @@
      
     }
 
+     public function share($t_id){
+      $t_info = $this->userModel->getInfo($t_id);
+      $user = $this->userModel->getUserById($t_info->biz_id);
+      if ($user->status == 'monthly' OR $user->status == 'yearly') {
+          $data = [
+
+            't_id' => $t_id,
+            't_info' => $t_info,
+            'user' => $user
+
+          ];
+        $this->view('pages/share', $data);
+      }else{
+          redirect('pages/subscribe'); 
+      }
+     
+    }
+
 
   }

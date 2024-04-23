@@ -20,7 +20,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="<?= URLROOT;?>/favicon-16x16.png">
   <link rel="manifest" href="<?= URLROOT;?>/site.webmanifest">
 
-  <title><?php echo (!empty($_SESSION['user_name'])) ? $_SESSION['user_name'].' '.'Sales Invoice': 'Stanvic Concepts'; ?></title>
+  <title><?php echo (!empty($_SESSION['user_name'])) ? $_SESSION['user_name'].' '.'Sales Invoice': 'InvoiceOnline'; ?></title>
   <style type="text/css">
     .flash-msg{
       position: fixed;
