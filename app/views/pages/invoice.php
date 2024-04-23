@@ -42,7 +42,7 @@ class MYPDF extends TCPDF {
         $this->SetFont('helvetica', 'N', 24);
         $this->cell(190, 2, "Hotline: $user_phone", 0, 1, "C");
         $this->SetTextColor(28, 81, 5);
-        $this->cell(86, 0, '**************************************************************************', 0, '', '', '');
+        $this->cell(86, 0, '----------------------------------------------------------------------------', 0, '', '', '');
     }
 
     // Page footer
@@ -129,21 +129,21 @@ $sum = 0;
   $pdf->SetFont('times', 'N', '18');
   $pdf->SetTextColor(01,19,20);
   $pdf->Cell(49, 10, "Customer name: ______________________________________", 0, 0, "L");
-  $pdf->SetFont('times', 'N', '20');
+  $pdf->SetFont('times', 'B', '21');
   $pdf->Cell(50, 4, "$customer_name", 0, 0, "L");
 
   $pdf->Ln(10);
   $pdf->SetFont('times', 'N', '18');
   $pdf->Cell(49, 10, "Customer phone: ______________________________________", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'N', '20');
+  $pdf->SetFont('times', 'B', '21');
   $pdf->Cell(50, 4, "$customer_phone", 0, 0, "L");
 
   $pdf->Ln(10);
   $pdf->SetFont('times', 'N', '18');
   $pdf->Cell(51, 10, "Customer address: _______________________________________", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'N', '20');
+  $pdf->SetFont('times', 'B', '21');
   $pdf->Cell(50, 4, "$customer_address", 0, 0, "L");
 
   $pdf->Ln(10);
@@ -155,7 +155,7 @@ $sum = 0;
   
   
 $pdf->Ln(18);
-//$pdf->SetFillColor(248, 231, 221);
+$pdf->SetFillColor(0, 0, 0);
 $pdf->SetTextColor(255,255,255);
 $pdf->SetFont('times', 'N', '20');
 $pdf->Cell(18, 7, 'Qty', 1, 0, 'C', 1);
@@ -192,7 +192,7 @@ while ($result = mysqli_fetch_array($query)) {
 
 $pdf->Ln(14);
 $pdf->SetTextColor(10, 93, 11);
-$pdf->SetFont('times', 'B', '22');
+$pdf->SetFont('helvetica', 'B', '22');
 $pdf->Cell(18, 4, '', 0, 0, "R");
 $pdf->Cell(95, 4, 'Total:', 0, 0, "R");
 $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -202,7 +202,7 @@ $pdf->Cell(55, 4, 'N'.put_coma($total), 0, 0, "L");
 if (!empty($paid)) {
   $pdf->Ln(8);
   $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('times', 'B', '22');
+  $pdf->SetFont('helvetica', 'B', '22');
   $pdf->Cell(18, 4, '', 0, 0, "R");
   $pdf->Cell(95, 4, 'Paid:', 0, 0, "R");
   $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -211,7 +211,7 @@ if (!empty($paid)) {
 
   $pdf->Ln(8);
   $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('times', 'B', '22');
+  $pdf->SetFont('helvetica', 'B', '22');
   $pdf->Cell(18, 4, '', 0, 0, "R");
   $pdf->Cell(95, 4, 'Balance:', 0, 0, "R");
   $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -219,7 +219,7 @@ if (!empty($paid)) {
 }else{
   $pdf->Ln(8);
   $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('times', 'B', '22');
+  $pdf->SetFont('helvetica', 'B', '22');
   $pdf->Cell(18, 4, '', 0, 0, "R");
   $pdf->Cell(95, 4, 'Paid:', 0, 0, "R");
   $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -228,7 +228,7 @@ if (!empty($paid)) {
 
   $pdf->Ln(8);
   $pdf->SetTextColor(255, 10, 17);
-  $pdf->SetFont('times', 'B', '22');
+  $pdf->SetFont('helvetica', 'B', '22');
   $pdf->Cell(18, 4, '', 0, 0, "R");
   $pdf->Cell(95, 4, 'Balance:', 0, 0, "R");
   $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -237,7 +237,7 @@ if (!empty($paid)) {
 
 $pdf->Ln(10);
 $pdf->SetTextColor(28, 81, 5);
-$pdf->cell(86, 0, '**************************************************************************', 0, '', '', '');
+$pdf->cell(86, 0, '_________________________________________________________________________________________', 0, '', '', '');
 // set some text to print
 $today_date = date('F d, Y');
 $time = date('h:ia');
