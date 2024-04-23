@@ -103,7 +103,7 @@
   </form>
   <a href="<?= URLROOT;?>/posts/Edit/<?php echo $data['customer_info']->t_id; ?>" class="btn btn-success"><i class="fa fa-pencil"></i> Edit transaction</a>
 
-  <a href="https://wa.me/<?= $data['customer_info']->customer_phone ;?>?text=invoice%20link%20<?=URLROOT.'/'.'pages'.'/'.'invoice'.'/'.$data['customer_info']->t_id;?>" class="btn btn-success"><i class="fab fa-whatsapp"></i> Share on whatsApp</a>
+  <!-- <a href="https://wa.me/<?= $data['customer_info']->customer_phone ;?>?text=invoice%20link%20<?=URLROOT.'/'.'pages'.'/'.'invoice'.'/'.$data['customer_info']->t_id;?>" class="btn btn-success"><i class="fab fa-whatsapp"></i> Share on whatsApp</a> -->
 
 
 
