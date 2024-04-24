@@ -252,8 +252,7 @@ $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
 // ---------------------------------------------------------
 
 //Close and output PDF document
-$d = date("d s");
-$pdf->Output($customer_name.'_'.$d.'.pdf', 'I');
+$pdf->Output('invoiceOnline.pdf', 'I');
 
 //============================================================+
 // END OF FILE

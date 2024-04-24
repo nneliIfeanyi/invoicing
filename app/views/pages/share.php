@@ -25,7 +25,7 @@
 </h4>
 <div class="card card-body">
   <div class="row mb-2">
-    <h6 class="fw-semibold h4">Billed From</h6>
+    <h6 class="fw-semibold h4 text-primary">Billed From</h6>
     <div class="col-md-6 shadow-sm p-3">
       <label class="fs-6">Merchant name: &nbsp; &nbsp;
         <span class="border-bottom fw-semibold"><?= $data['user']->bizname;?></span>
@@ -45,7 +45,7 @@
 </div>
 <div class="card card-body">
   <div class="row mb-2">
-    <h6 class="fw-semibold h4">Billed To</h6>
+    <h6 class="fw-semibold h4 text-primary">Billed To</h6>
     <div class="col-md-6 shadow-sm p-3">
       <label class="fs-6">Customer name: &nbsp; &nbsp;
         <span class="border-bottom fw-semibold"><?= $data['customer_info']->customer_name;?></span>
