@@ -20,12 +20,22 @@
 
     // Load All Posts
     public function index(){
-      $transactions = $this->postModel->get_transactions();
-      $data = [
-        'transactions' =>$transactions
-      ];
-      
-      $this->view('posts/index', $data);
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $search_input = trim($_POST['search']);
+        $search_results = $this->postModel->search_results($search_input);
+        $data = [
+          'transactions' =>$search_results
+        ];
+        $this->view('posts/index', $data);
+      }else{
+
+        $transactions = $this->postModel->get_transactions();
+        $data = [
+          'transactions' =>$transactions
+        ];
+        
+        $this->view('posts/index', $data);
+      }
     }
 
     // Show Single Post

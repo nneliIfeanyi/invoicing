@@ -2,10 +2,21 @@
 <div class="row">
   <div class="col-lg-9 mx-auto">
     <div class="row mb-3">
-      <div class="col-12">
+      <div class="col-md-6">
         <?= flash('msg');?>
         <h1 class="h2 text-success m-0">Your Saved Transactions</h1>
           <p class="lead text-muted text-dark fs-6">Most recent appears at the top.</p>
+      </div>
+      <div class="col-md-6">
+        <form action="<?= URLROOT?>/posts/index" method="post">
+          <label>Filter Transactions  <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Search by customer name"></i></label>
+          <div class="input-group mb-2">
+            <input type="text" class="form-control" name="search" placeholder="Type customer name">
+            <button type="submit" class="input-group-text px-3 bg-success text-light">
+              <i class="fa fa-fw fa-search text-white"></i> Search
+            </button>
+          </div>
+        </form>
       </div>
     </div>
 
@@ -46,7 +57,7 @@
 <div style="position: fixed;bottom: 1vh;right: 1vw;">
   <p data-bs-toggle="tooltip" data-bs-title="Add Transaction">
     <a href="<?php echo URLROOT;?>/posts/add" style="font-size: 22px;">
-      <i class="fa fa-plus-circle fa-3x text-success"></i>
+      <i class="fa fa-plus-circle fa-3x text-primary"></i>
     </a>
   </p>
 </div>

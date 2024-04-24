@@ -8,7 +8,14 @@
 
 //This gets the a single transaction
     public function get_transactions(){
-      $this->db->query("SELECT DISTINCT(t_id) FROM invoicing WHERE biz_id = :id ORDER BY id DESC ");
+      $this->db->query("SELECT DISTINCT(t_id) FROM invoicing WHERE biz_id = :id ORDER BY id DESC");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $results = $this->db->resultset();
+      return $results;
+    }
+
+    public function search_results($search_input){
+      $this->db->query("SELECT DISTINCT(t_id) FROM invoicing WHERE customer_name LIKE '%$search_input%' AND biz_id = :id");
       $this->db->bind(':id', $_SESSION['user_id']);
       $results = $this->db->resultset();
       return $results;

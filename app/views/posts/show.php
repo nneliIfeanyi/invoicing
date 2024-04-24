@@ -100,7 +100,7 @@
 </div>
 </div>
 
-<div class="d-flex justify-content-between my-4">  
+<div class="d-flex justify-content-around my-4">  
   <form action="<?php echo URLROOT; ?>/pages/invoice" method="POST">
     <input type="hidden" name="t_id" value="<?php echo $data['customer_info']->t_id ; ?>">
     <input class="btn btn-primary" name="generate-invoice" type="submit" value="Download">
@@ -110,9 +110,9 @@
   <a href="https://wa.me/<?= $data['customer_info']->customer_phone ;?>?text=invoice%20link%20<?=URLROOT.'/'.'pages'.'/'.'share'.'/'.$data['customer_info']->t_id;?>" class="btn btn-success">
     <i class="fab fa-whatsapp"></i> Share
   </a>
-</div>
+</div><hr/>
 <div class="d-flex justify-content-between my-4">
-  <a href="<?= URLROOT;?>/posts/Edit/<?php echo $data['customer_info']->t_id; ?>" class="btn btn-success">
+  <a href="<?= URLROOT;?>/posts/Edit/<?php echo $data['customer_info']->t_id; ?>" class="btn">
     <i class="fa fa-pencil"></i> Edit
   </a>
   <a href="<?= URLROOT;?>/posts" class="btn">
