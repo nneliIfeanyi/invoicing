@@ -20,19 +20,20 @@
       </label>
     </div>
     <div class="col-md-6 shadow-sm p-3">
-      <label class="fs-6">Address: &nbsp; &nbsp;
+      <label class="fs-6">Customer Address: &nbsp; &nbsp;
         <span class="border-bottom fw-semibold"><?= $data['customer_info']->customer_address;?></span>
       </label>
     </div>
     <div class="col-md-6 shadow-sm p-3">
-      <label class="fs-6">Date: &nbsp; &nbsp;
+      <label class="fs-6">Transaction Date: &nbsp; &nbsp;
         <span class="border-bottom fw-semibold"><?= $data['customer_info']->c_date.' '.$data['customer_info']->c_month.' '.$data['customer_info']->c_year ?></span>
       </label>
     </div>
   </div>
-
+</div>
+<div class="card">
 <div class="table-responsive mb-2">
-  <h6 class="fw-semibold my-3 h4">Items</h6>
+  <h6 class="fw-semibold my-3 px-3 h4">Items</h6>
   <table class="table table-striped border">
     <thead class="bg-primary">
       <th>Qty</th>

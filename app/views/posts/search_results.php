@@ -4,8 +4,7 @@
     <div class="row mb-3">
       <div class="col-md-6">
         <?= flash('msg');?>
-        <h1 class="h2 m-0">Your Saved Transactions</h1>
-          <p class="lead text-muted text-dark fs-6">Most recent appears at the top.</p>
+        <h1 class="h4 m-0">Search results for "<?= $data['search_input']; ?>"</h1>
       </div>
       <div class="col-md-6">
         <form action="<?= URLROOT?>/posts/index" method="post">
@@ -47,7 +46,7 @@
       </div>
     <?php else:?>
       <div class="lead">
-        <p>Your transactions will appear here.</p>
+        <p>No results found..</p>
       </div>
     <?php endif;?>
 
@@ -55,9 +54,9 @@
 </div>
 
 <div style="position: fixed;bottom: 1vh;right: 1vw;">
-  <p data-bs-toggle="tooltip" data-bs-title="Add Transaction">
-    <a href="<?php echo URLROOT;?>/posts/add" style="font-size: 22px;">
-      <i class="fa fa-plus-circle fa-3x text-primary"></i>
+  <p data-bs-toggle="tooltip" data-bs-title="Go Back">
+    <a href="<?php echo URLROOT;?>/posts" style="font-size: 22px;">
+      <i class="fa fa-backward fa-3x text-primary"></i>
     </a>
   </p>
 </div>

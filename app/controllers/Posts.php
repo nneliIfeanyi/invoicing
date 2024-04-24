@@ -22,11 +22,19 @@
     public function index(){
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $search_input = trim($_POST['search']);
+        if (empty($search_input)) {
+         echo "
+            <script>
+            window.location = window.location.href;
+          </script>
+         ";
+        }
         $search_results = $this->postModel->search_results($search_input);
         $data = [
+          'search_input' =>$search_input,
           'transactions' =>$search_results
         ];
-        $this->view('posts/index', $data);
+        $this->view('posts/search_results', $data);
       }else{
 
         $transactions = $this->postModel->get_transactions();

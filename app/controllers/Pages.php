@@ -46,6 +46,26 @@
     }
 
      public function share($t_id){
+        $post = $this->postModel->getPost($t_id);
+        $customer_info = $this->postModel->getCustomerInfo($t_id);
+        $t_info = $this->userModel->getInfo($t_id);
+        $user = $this->userModel->getUserById($t_info->biz_id);
+        if ($user->status == 'monthly' OR $user->status == 'yearly') {
+          $data = [
+            'post' => $post, 
+            'customer_info' => $customer_info,
+            'user' => $user
+          ];
+
+        $this->view('pages/share', $data);
+
+      }else{
+          die('Something went wrong.. Contact seller'); 
+      }
+     
+    }
+
+    public function download_invoice($t_id){
       $t_info = $this->userModel->getInfo($t_id);
       $user = $this->userModel->getUserById($t_info->biz_id);
       if ($user->status == 'monthly' OR $user->status == 'yearly') {
@@ -56,9 +76,9 @@
             'user' => $user
 
           ];
-        $this->view('pages/share', $data);
+        $this->view('pages/download_invoice', $data);
       }else{
-          redirect('pages/subscribe'); 
+          die('Something went wrong.. Contact seller');
       }
      
     }
