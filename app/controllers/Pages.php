@@ -46,14 +46,13 @@
     }
 
      public function share($t_id){
-        $post = $this->postModel->getPost($t_id);
-        $customer_info = $this->postModel->getCustomerInfo($t_id);
+        $t_infos = $this->postModel->get_transaction($t_id);
         $t_info = $this->userModel->getInfo($t_id);
         $user = $this->userModel->getUserById($t_info->biz_id);
         if ($user->status == 'monthly' OR $user->status == 'yearly') {
           $data = [
-            'post' => $post, 
-            'customer_info' => $customer_info,
+            'post' => $t_infos, 
+            'customer_info' => $t_info,
             'user' => $user
           ];
 
@@ -61,8 +60,7 @@
 
       }else{
           die('Something went wrong.. Contact seller'); 
-      }
-     
+      } 
     }
 
     public function download_invoice($t_id){

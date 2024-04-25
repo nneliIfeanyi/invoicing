@@ -24,7 +24,7 @@
   <style type="text/css">
     .flash-msg{
       position: fixed;
-      top: 12vh;
+      top: 10vh;
       right: 1vw;
       z-index: 5;
       width: 200px;

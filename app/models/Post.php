@@ -99,6 +99,27 @@
       }
     }
 
+//gets the result set of a specific transaction
+    public function get_transaction($t_id){
+      $this->db->query("SELECT * FROM invoicing WHERE t_id = :t_id");
+      $this->db->bind(':t_id', $t_id);
+
+      $results = $this->db->resultset();
+      return $results;
+    }
+    
+    public function deleteEmpty(){
+      // Prepare Query
+      $this->db->query("DELETE FROM invoicing WHERE qty = '' AND rate = '' AND dsc = '' ");
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     // Delete Post
     public function deletePost($id){
       // Prepare Query
@@ -115,19 +136,6 @@
       }
     }
 
-
-
-    public function deleteEmpty(){
-      // Prepare Query
-      $this->db->query("DELETE FROM invoicing WHERE qty = '' AND rate = '' AND dsc = '' ");
-      
-      //Execute
-      if($this->db->execute()){
-        return true;
-      } else {
-        return false;
-      }
-    }
 
 
 

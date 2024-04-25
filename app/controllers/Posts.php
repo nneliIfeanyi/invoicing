@@ -63,7 +63,7 @@
     public function add(){
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
-        $t_id = date('s').date('i').date('s').rand(10,100) ;
+        $t_id = 's'.date('s').date('i').date('s').'v'.rand(10,99999).'c' ;
         $qty = $_POST['qty'];
         $rate = $_POST['rate'];
         $dsc = $_POST['dsc'];

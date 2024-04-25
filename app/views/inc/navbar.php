@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 sticky-top border-bottom border-primary">
+<nav class="navbar navbar-expand-lg p-0 navbar-dark bg-dark mb-3 sticky-top border-bottom border-primary">
   <div class="container">
     <a class="navbar-brand" href="<?= URLROOT;?>/pages">Invoice<span class="text-primary">Online</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
