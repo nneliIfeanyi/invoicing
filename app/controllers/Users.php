@@ -193,13 +193,14 @@
 
     // Create Session With User Info
     public function createUserSession($user){
-      setcookie('user-id', $user->id, time()+(86400 * 370), '/');
-      setcookie('user-name', $user->bizname, time()+(86400 * 370), '/');
-      setcookie('user-phone', $user->bizphone, time()+(86400 * 370), '/');
-      setcookie('user-address', $user->bizaddress, time()+(86400 * 370), '/');
-      setcookie('user-dsc', $user->biz_dsc, time()+(86400 * 370), '/');
-      setcookie('user-status', $user->status, time()+(86400 * 370), '/');
-      redirect('posts/add');
+      
+        $_SESSION['user_id'] = $user->id;
+        $_SESSION['user_name'] = $user->bizname ;
+        $_SESSION['user_phone'] = $user->bizphone;
+        $_SESSION['address'] = $user->bizaddress;
+        $_SESSION['user_dsc'] = $user->biz_dsc;
+        $_SESSION['user_status'] = $user->status;
+        redirect('posts/add');
     }
 
     // Logout & Destroy Session
@@ -211,12 +212,6 @@
       unset($_SESSION['user_dsc']);
       unset($_SESSION['user_status']);
       session_destroy();
-      setcookie('user-id', $user->id, time()-(86400), '/');
-      setcookie('user-name', $user->bizname, time()-(86400), '/');
-      setcookie('user-phone', $user->bizphone, time()-(86400), '/');
-      setcookie('user-address', $user->bizaddress, time()-(86400), '/');
-      setcookie('user-dsc', $user->biz_dsc, time()-(86400), '/');
-      setcookie('user-status', $user->status, time()-(86400), '/');
       redirect('users/login');
     }
 

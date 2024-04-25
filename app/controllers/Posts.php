@@ -1,15 +1,8 @@
 <?php
   class Posts extends Controller{
     public function __construct(){
-      if (!isset($_COOKIE['user-id']) ) {
-        redirect('users/login');
-      }else{
-        $_SESSION['user_id'] = $_COOKIE['user-id'];
-        $_SESSION['user_name'] = $_COOKIE['user-name'];
-        $_SESSION['user_phone'] = $_COOKIE['user-phone'];
-        $_SESSION['address'] = $_COOKIE['user-address'];
-        $_SESSION['user_dsc'] = $_COOKIE['user-dsc'];
-        $_SESSION['user_status'] = $_COOKIE['user-status'];
+      if (!isset($_SESSION['user_id']) ) {
+         redirect('users/login');
       }
       // Load Models
       $this->postModel = $this->model('Post');

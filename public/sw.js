@@ -1,7 +1,6 @@
 const staticCacheName = 'site-static-2';
 const dynamicCache = 'site-dynamic';
 const assets = [
-   '/',
    'index.php', 
    'offline.php',
    'app.js',
