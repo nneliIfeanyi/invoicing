@@ -16,3 +16,4 @@
     const popover = document.querySelectorAll('[data-bs-toggle="popover"]');
     const popoverList = [...popover].map((popoverTrigger) => new bootstrap.Popover(popoverTrigger));
 </script>
+<script src="<?php echo URLROOT; ?>/app.js"></script>

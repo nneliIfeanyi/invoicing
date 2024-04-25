@@ -93,6 +93,8 @@
       }
     }
 
+    
+
 
     public function updateStatus($id, $length){
       if ($length == 'monthly') {

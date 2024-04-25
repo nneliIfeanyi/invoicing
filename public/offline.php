@@ -1,0 +1,1 @@
+ <h1 style="text-align: center;">You are currently offline</h1>
