@@ -6,8 +6,11 @@
   <title>invoice Online</title>
 </head>
 <body>
-  <h1 style="text-align: center;color: #198754;">You are currently offline</h1>
-  <button onclick="history.back()" style="text-align:center; border: none;padding: 12px 10px;">Go Back</button>
+  <div style="text-align: center;">
+    <h1 style="color: #198754;">You are currently offline</h1>
+    <p>Ensure you have an internet connection, then refresh the page.</p>
+    <button onclick="history.back()" style="border: none;padding: 12px 10px;">Go Back</button>
+  </div>
 </body>
 </html>
 

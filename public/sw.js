@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-2';
+const staticCacheName = 'site-static';
 const dynamicCache = 'site-dynamic';
 const assets = [
    'index.php', 
