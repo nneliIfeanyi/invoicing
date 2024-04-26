@@ -25,9 +25,8 @@
     .flash-msg{
       position: fixed;
       bottom: 0;
-      right: 1vw;
+      right: 0;
       z-index: 5;
-      width: 200px;
       animation-name: fade;
       animation-duration: 3s;
       animation-delay: 6s;

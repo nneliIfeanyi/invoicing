@@ -14,6 +14,27 @@
       return $results;
     }
 
+    public function get_sales(){
+      $this->db->query("SELECT * FROM invoicing WHERE biz_id = :id;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $results = $this->db->resultset();
+      return $results;
+    }
+
+    public function get_dept(){
+      $this->db->query("SELECT DISTINCT(paid) FROM invoicing WHERE biz_id = :id;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $results = $this->db->resultset();
+      return $results;
+    }
+
+    public function get_per_dept($t_id){
+      $this->db->query("SELECT * FROM invoicing WHERE t_id = :t_id");
+      $this->db->bind(':t_id', $t_id);
+      $results = $this->db->resultset();
+      return $results;
+    }
+
     public function search_results($search_input){
       $this->db->query("SELECT DISTINCT(t_id) FROM invoicing WHERE customer_name LIKE '%$search_input%' AND biz_id = :id");
       $this->db->bind(':id', $_SESSION['user_id']);

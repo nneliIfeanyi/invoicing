@@ -31,8 +31,21 @@
       }else{
 
         $transactions = $this->postModel->get_transactions();
+        $transactions2 = $this->postModel->get_sales();
+        $transactions3 = $this->postModel->get_dept();
+        $amt = 0;
+        $dept1 = 0;
+        foreach($transactions2 as $sales){
+          $amt += $sales->qty * $sales->rate;
+        }
+        foreach($transactions3 as $paid){
+          $dept1 += $paid->paid;
+          $dept = $amt - $dept1;
+        }
         $data = [
-          'transactions' =>$transactions
+          'transactions' =>$transactions,
+          'total' => $amt,
+          'dept'=> $dept,
         ];
         
         $this->view('posts/index', $data);
@@ -53,7 +66,7 @@
     }
 
     // Add Post
-    public function add(){
+    public function add($entry_rows){
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         $t_id = 's'.date('s').date('i').date('s').'v'.rand(10,99999).'c' ;
@@ -64,7 +77,7 @@
         $phone = trim($_POST['customer_phone']);
         $address =trim($_POST['customer_address']);
         $paid = $_POST['paid'];
-        foreach($rate as $index=>$details ){
+        foreach($qty as $index=>$details ){
           $data = [
             'rate' => $rate[$index],
             'dsc' => $dsc[$index],
@@ -81,14 +94,29 @@
             'paid' => $paid,
             't_id' => $t_id
           ];
-         $this->postModel->addPost($data);
-          flash('msg', 'Invoice recorded and saved successfully..');
-           redirect('posts/show/'.$t_id);
-           $this->postModel->deleteEmpty();
+          $success = $this->postModel->addPost($data);
+         if ($success) {
+            $this->postModel->deleteEmpty();
+            flash('msg', 'Invoice recorded and saved successfully..');
+            $redirect = URLROOT.'/posts/show/'.$t_id;
+            echo "
+                  <div class='alert alert-success'>
+                    Registration Successfull...  <span class='spinner-border spinner-border-sm'> </span>
+                </div>
+              <meta http-equiv='refresh' content='1.5; $redirect'>
+            ";
+          }else{
+            echo "
+                  <div class='alert alert-danger'>
+                    Something went wrong... Try again later
+                </div>
+                  
+            ";
+          } 
         }//end for each
       } else {
         $data = [
-          '' => '',
+          'entry_rows' => $entry_rows,
           '' => '',
         ];
 

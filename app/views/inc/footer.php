@@ -1,10 +1,4 @@
 
-</div>
-<!-- <footer class="text-center text-light fs-6 p-3 bg-dark mt-7">
-	Copyright &copy; <?php echo date('Y');?>
-	<a class="badge"> Stanvic_Concepts
-	</a>
-</footer> -->
 <script src="<?php echo URLROOT; ?>/js/jquery.js"></script>
 <script src="<?= URLROOT ;?>/js/parsley.min.js"></script>
 <script src="<?php echo URLROOT; ?>/js/bootstrap.bundle.min.js"></script>

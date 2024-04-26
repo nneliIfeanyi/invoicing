@@ -17,7 +17,7 @@
       <ul class="navbar-nav ms-auto">
       <?php if(isset($_SESSION['user_id'])) : ?>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/posts/add"><i class="fa fa-plus" aria-hidden="true"></i> Add Transaction</a>
+          <a class="nav-link" href="<?php echo URLROOT; ?>/posts/add/1"><i class="fa fa-plus" aria-hidden="true"></i> Add Transaction</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="https://wa.me/2349168655298"><i class="fab fa-whatsapp" aria-hidden="true"></i> Whatapp</a>

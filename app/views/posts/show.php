@@ -8,7 +8,28 @@
 </div>
 <div class="card card-body">
   <div class="row mb-2">
-    <h6 class="fw-semibold h4">Billed To</h6>
+    <h6 class="fw-semibold h4 text-primary">Billed From</h6>
+    <div class="col-md-6 shadow-sm p-3">
+      <label class="fs-6">Merchant name: &nbsp; &nbsp;
+        <span class="border-bottom fw-semibold"><?php echo $_SESSION['user_name']; ?></span><br>
+        <span class="text-muted" style="font-size: 14px; font-style: italic;"><?php echo $_SESSION['user_dsc']; ?></span>
+      </label>
+    </div>
+    <div class="col-md-6 shadow-sm p-3">
+      <label class="fs-6">Merchant phone: &nbsp; &nbsp;
+        <span class="border-bottom fw-semibold"><?php echo $_SESSION['user_phone']; ?></span>
+      </label>
+    </div>
+    <div class="col-md-6 offset-md-3 text-center shadow-sm p-3">
+      <label class="fs-6">Address: &nbsp; &nbsp;
+        <span class=""><?php echo $_SESSION['address']; ?></span>
+      </label>
+    </div>
+  </div>
+</div>
+<div class="card card-body">
+  <div class="row mb-2">
+    <h6 class="fw-semibold h4 text-primary">Billed To</h6>
     <div class="col-md-6 shadow-sm p-3">
       <label class="fs-6">Customer name: &nbsp; &nbsp;
         <span class="border-bottom fw-semibold"><?= $data['customer_info']->customer_name;?></span>
@@ -33,7 +54,7 @@
 </div>
 <div class="card">
 <div class="table-responsive mb-2">
-  <h6 class="fw-semibold my-3 px-3 h4">Items</h6>
+  <h6 class="fw-semibold my-3 px-3 h4 text-primary">Items</h6>
   <table class="table table-striped border">
     <thead class="bg-primary">
       <th>Qty</th>
@@ -104,7 +125,7 @@
 <div class="d-flex justify-content-around my-4">  
   <form action="<?php echo URLROOT; ?>/pages/invoice" method="POST">
     <input type="hidden" name="t_id" value="<?php echo $data['customer_info']->t_id ; ?>">
-    <input class="btn btn-primary" name="generate-invoice" type="submit" value="Download">
+    <input class="btn btn-outline-success" name="generate-invoice" type="submit" value="Download">
   </form>
   
 

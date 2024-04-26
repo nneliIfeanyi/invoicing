@@ -20,15 +20,16 @@
 <body style="position: relative;">
 <div class="container">
   
-<h4 class="text-muted text-center p-3">Invoice Preview<br>
-<span class="lead">Powered by <a href="<?php echo URLROOT;?>/pages">Stanvic Concepts</a></span>
+<h4 class="text-muted text-center p-3">Invoice Online<br>
+<span class="lead">Powered by <a href="<?php echo URLROOT;?>/users/login">Stanvic Concepts</a></span>
 </h4>
 <div class="card card-body">
   <div class="row mb-2">
     <h6 class="fw-semibold h4 text-primary">Billed From</h6>
     <div class="col-md-6 shadow-sm p-3">
       <label class="fs-6">Merchant name: &nbsp; &nbsp;
-        <span class="border-bottom fw-semibold"><?= $data['user']->bizname;?></span>
+        <span class="border-bottom fw-semibold"><?= $data['user']->bizname;?></span><br>
+        <span class="text-muted" style="font-size: 14px; font-style: italic;"><?= $data['user']->biz_dsc;?></span>
       </label>
     </div>
     <div class="col-md-6 shadow-sm p-3">
@@ -36,9 +37,9 @@
         <span class="border-bottom fw-semibold"><?= $data['user']->bizphone;?></span>
       </label>
     </div>
-    <div class="col-md-6 shadow-sm p-3">
+    <div class="col-md-6 offset-md-3 text-center shadow-sm p-3">
       <label class="fs-6">Address: &nbsp; &nbsp;
-        <span class="border-bottom fw-semibold"><?= $data['user']->bizaddress;?></span>
+        <span class=""><?= $data['user']->bizaddress;?></span>
       </label>
     </div>
   </div>
@@ -70,7 +71,7 @@
 </div>
 <div class="card">
 <div class="table-responsive mb-2">
-  <h6 class="fw-semibold my-3 px-3 h4">Items</h6>
+  <h6 class="fw-semibold my-3 px-3 h4 text-primary">Items</h6>
   <table class="table table-striped border">
     <thead class="bg-primary">
       <th>Qty</th>

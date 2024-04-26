@@ -3,8 +3,26 @@
   <div class="col-lg-9 mx-auto">
     <div class="row mb-3">
       <div class="col-md-6">
+        <div class="card card-body">
+          <h1 class="h3 m-0 text-muted">Total Transactions</h1>
+          <p class="lead fw-bold">&#8358;<?= put_coma($data['total']); ?>.00</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card card-body">
+          <h1 class="h3 m-0 text-muted">Total Depts</h1>
+          <p class="lead fw-bold">&#8358;<?= put_coma($data['dept']); ?>.00</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+<div class="row">
+  <div class="col-lg-9 mx-auto">
+    <div class="row mb-3">
+      <div class="col-md-6">
         <?= flash('msg');?>
-        <h1 class="h2 m-0">Your Saved Transactions</h1>
+        <h1 class="h4 m-0 text-muted">All Transactions</h1>
           <p class="lead text-muted text-dark fs-6">Most recent appears at the top.</p>
       </div>
       <div class="col-md-6">
@@ -33,6 +51,16 @@
           Transaction date: <span class="text-muted fw-semibold"><?php echo $customer_info->c_date.' '.$customer_info->c_month; ?></span>
           at <?php echo $customer_info->c_time; ?>
         </div>
+
+        <?php 
+        $transactions = $this->postModel->get_per_dept($customer_info->t_id);
+        $amt=0;
+        foreach($transactions as $trns){
+          $amt += $trns->qty * $trns->rate;
+        }
+        $to_balance = $amt - $customer_info->paid;
+        ?>
+        <p>To balance: <span class="text-primary h6 fw-bold">&#8358;<?php echo put_coma($to_balance); ?>.00</span></p>
        <div class="d-grid gap-2">  
         <!-- <form action="<?php echo URLROOT; ?>/pages/invoice" method="POST">
           <input type="hidden" name="t_id" value="<?php echo $post->t_id ; ?>">
@@ -56,7 +84,7 @@
 
 <div style="position: fixed;bottom: 1vh;right: 1vw;">
   <p data-bs-toggle="tooltip" data-bs-title="Add Transaction">
-    <a href="<?php echo URLROOT;?>/posts/add" style="font-size: 22px;">
+    <a href="<?php echo URLROOT;?>/posts/add/1" style="font-size: 22px;">
       <i class="fa fa-plus-circle fa-3x text-primary"></i>
     </a>
   </p>
