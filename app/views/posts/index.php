@@ -21,11 +21,7 @@
   <div class="col-lg-9 mx-auto">
     <div class="card card-body">
       <div class="row mb-3">
-        <div class="col-md-6">
           <?= flash('msg');?>
-          <h1 class="h4 m-0 text-muted">All Transactions</h1>
-            <p class="lead text-muted text-dark fs-6">Most recent appears at the top.</p>
-        </div>
         <div class="col-md-6">
           <form action="<?= URLROOT?>/posts/index" method="post">
             <label>Filter Transactions  <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Search by customer name"></i></label>
