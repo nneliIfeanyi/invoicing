@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <div class="row">
   <div class="col-lg-9 mx-auto">
-    <div class="row mb-3">
+    <div class="row">
       <div class="col-md-6">
         <div class="card card-body">
           <h1 class="h3 m-0 text-muted">Total Transactions</h1>
@@ -19,22 +19,24 @@
   </div>
 <div class="row">
   <div class="col-lg-9 mx-auto">
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <?= flash('msg');?>
-        <h1 class="h4 m-0 text-muted">All Transactions</h1>
-          <p class="lead text-muted text-dark fs-6">Most recent appears at the top.</p>
-      </div>
-      <div class="col-md-6">
-        <form action="<?= URLROOT?>/posts/index" method="post">
-          <label>Filter Transactions  <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Search by customer name"></i></label>
-          <div class="input-group mb-2">
-            <input type="text" class="form-control" name="search" placeholder="Type customer name">
-            <button type="submit" class="input-group-text px-3 bg-success text-light">
-              <i class="fa fa-fw fa-search text-white"></i> Search
-            </button>
-          </div>
-        </form>
+    <div class="card card-body">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <?= flash('msg');?>
+          <h1 class="h4 m-0 text-muted">All Transactions</h1>
+            <p class="lead text-muted text-dark fs-6">Most recent appears at the top.</p>
+        </div>
+        <div class="col-md-6">
+          <form action="<?= URLROOT?>/posts/index" method="post">
+            <label>Filter Transactions  <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Search by customer name"></i></label>
+            <div class="input-group mb-2">
+              <input type="text" class="form-control" name="search" placeholder="Type customer name">
+              <button type="submit" class="input-group-text px-3 bg-success text-light">
+                <i class="fa fa-fw fa-search text-white"></i> Search
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
 
