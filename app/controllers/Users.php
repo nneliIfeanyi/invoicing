@@ -200,7 +200,7 @@
         $_SESSION['address'] = $user->bizaddress;
         $_SESSION['user_dsc'] = $user->biz_dsc;
         $_SESSION['user_status'] = $user->status;
-        redirect('posts/add');
+        redirect('posts');
     }
 
     // Logout & Destroy Session

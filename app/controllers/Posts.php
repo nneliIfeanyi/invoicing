@@ -35,6 +35,7 @@
         $transactions3 = $this->postModel->get_dept();
         $amt = 0;
         $dept1 = 0;
+        $dept = 0;
         foreach($transactions2 as $sales){
           $amt += $sales->qty * $sales->rate;
         }
