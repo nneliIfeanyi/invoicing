@@ -2,8 +2,10 @@
 
 <div class="row">
   <div class="col-md-6 mx-auto">
-    <div class="card card-body bg-light mb-5">
-      <h1 class="h2 m-0">Simple And Easy To Use Online Invoicing Software For Business Owners.</h1>
+    <div class="card card-body bg-light my-5">
+      <div class="shadow-lg p-4 rounded-4 border text-bg-success mb-3" style="margin-top: -50px;">
+        <h1 class="h4 m-0">Simple And Easy To Use Online Invoicing Software For Business Owners.</h1>
+      </div>
       <p class="text-primary fw-semibold">Create An Account</p>
       <p>Please fill this form to register with us</p>
       <form action="<?php echo URLROOT; ?>/users/register" method="post">
@@ -37,9 +39,12 @@
             <span class="invalid-feedback"><?php echo $data['confirm_password_err']; ?></span>
         </div>
 
-        <div class="form-row">
-          <div class="col">
+        <div class="row">
+          <div class="col-md-6">
             <input type="submit" class="btn btn-success btn-block" value="Register">
+          </div>
+          <div class="col-md-6">
+              <a href="<?php echo URLROOT;?>/users/login" class="text-dark text-muted fs-6">Have an account? Login</a>
           </div>
           <div class="col">
            <p class="text-muted pt-3" style="font-size:12px;"> <i class="fa fa-info-circle"></i> You will be redirected to the login page once your registration is completed.</p>
