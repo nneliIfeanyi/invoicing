@@ -243,9 +243,7 @@
     </div>
   </form>
   <?php else:?>
-    <p class="h2 text-muted">Please choose invoice size<br>
-      <span class="lead"><i class="fa fa-info-circle"></i>
-      You do not necessarily need to fill all the entry lines</span>
+    <p class="h2 text-muted">Please choose invoice size
     </p><hr>
     <div class="row">
       <div class="col-md-6 mb-4">
