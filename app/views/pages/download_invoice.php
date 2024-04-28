@@ -126,7 +126,7 @@ $sum = 0;
   $pdf->Ln(21);
   $pdf->SetFont('times', 'N', '12');
   $pdf->SetTextColor(01,19,20);
-  $pdf->Cell(34, 5, "Customer name:", 0, 0, "L");
+  $pdf->Cell(35, 5, "Customer name:", 0, 0, "L");
   $pdf->SetFont('helvetica', 'B', '14');
   $pdf->Cell(30, 4, "$customer_name", 0, 0, "L");
 
@@ -230,7 +230,7 @@ if (!empty($paid)) {
   $pdf->Cell(18, 4, '', 0, 0, "R");
   $pdf->Cell(95, 4, 'Balance:', 0, 0, "R");
   $pdf->Cell(30, 4, '', 0, 0, "R");
-  $pdf->Cell(55, 4, '-N'.put_coma($total), 0, 0, "L");
+  $pdf->Cell(55, 4, 'N'.put_coma($total), 0, 0, "L");
 }
 
 $pdf->Ln(10);

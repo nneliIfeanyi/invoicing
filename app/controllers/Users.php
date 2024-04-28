@@ -33,6 +33,7 @@
         $data = [
           'name' => trim($_POST['name']),
           'phone' => trim($_POST['phone']),
+          'email' => trim($_POST['email']),
           'address' => trim($_POST['address']),
           'password' => trim($_POST['password']),
           'biz_dsc' => trim($_POST['biz_dsc']),
@@ -83,7 +84,7 @@
           //Execute
           if($this->userModel->register($data)){
             // Redirect to login
-            flash('register_success', 'You are now registered and can log in');
+            flash('msg', 'You are now registered and can log in');
             redirect('users/login');
           } else {
             die('Something went wrong');
@@ -100,6 +101,7 @@
         $data = [
           'name' => '',
           'phone' => '',
+          'email' => '',
           'password' => '',
           'address' => '',
           'biz_dsc' => '',

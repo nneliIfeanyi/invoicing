@@ -8,40 +8,44 @@
       </div>
       <p class="text-primary fw-semibold">Create An Account</p>
       <p>Please fill this form to register with us</p>
-      <form action="<?php echo URLROOT; ?>/users/register" method="post">
+      <form action="<?php echo URLROOT; ?>/users/register" method="post" id="register_form">
         <div class="form-group mb-3">
-            <label>Business Name:<sup>*</label>
-            <input type="text" name="name" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">
+            <label>Business Name:</label>
+            <input type="text" name="name" required data-parsley-trigger="keyup" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">
             <span class="invalid-feedback"><?php echo $data['name_err']; ?></span>
         </div> 
         <div class="form-group mb-3">
-            <label>Business Description:<sup>*</label>
+            <label>Business Description:</label>
             <input type="text" name="biz_dsc" class="form-control form-control-lg <?php echo (!empty($data['biz_dsc_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['biz_dsc']; ?>">
             <span class="invalid-feedback"><?php echo $data['biz_dsc_err']; ?></span>
         </div> 
         <div class="form-group mb-3">
-            <label>Hotline:<sup>*</sup></label>
-            <input type="number" name="phone" class="form-control form-control-lg <?php echo (!empty($data['phone_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['phone']; ?>">
+            <label>Hotline:</label>
+            <input type="number" name="phone" required data-parsley-trigger="keyup" data-parsley-length="[0, 11]" class="form-control form-control-lg <?php echo (!empty($data['phone_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['phone']; ?>">
             <span class="invalid-feedback"><?php echo $data['phone_err']; ?></span>
         </div> 
         <div class="form-group mb-3">
-            <label>Business Address:<sup>*</sup></label>
+            <label>Business Address:</label>
             <input type="text" name="address" class="form-control form-control-lg" value="<?php echo $data['address']; ?>">
+        </div>  
+        <div class="form-group mb-3">
+            <label>Email:</label>
+            <input type="email" name="email" class="form-control form-control-lg" value="<?php echo $data['email']; ?>">
         </div>    
         <div class="form-group mb-3">
-            <label>Password:<sup>*</sup></label>
+            <label>Password:</label>
             <input type="password" name="password" class="form-control form-control-lg <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['password']; ?>">
             <span class="invalid-feedback"><?php echo $data['password_err']; ?></span>
         </div>
         <div class="form-group mb-3">
-            <label>Confirm Password:<sup>*</sup></label>
+            <label>Confirm Password:</label>
             <input type="password" name="confirm_password" class="form-control form-control-lg <?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['confirm_password']; ?>">
             <span class="invalid-feedback"><?php echo $data['confirm_password_err']; ?></span>
         </div>
 
         <div class="row">
           <div class="col-md-6">
-            <input type="submit" class="btn btn-success btn-block" value="Register">
+            <input type="submit" class="btn btn-success btn-block mb-3" value="Register">
           </div>
           <div class="col-md-6">
               <a href="<?php echo URLROOT;?>/users/login" class="text-dark text-muted fs-6">Have an account? Login</a>
@@ -55,3 +59,6 @@
   </div>
   
 <?php require APPROOT . '/views/inc/footer.php'; ?>
+<script type="text/javascript">
+    $('#register_form').parsley();
+  </script>

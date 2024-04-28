@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<?php echo flash('msg');?>
 <div class="row">
     <div class="col-md-6 mx-auto">
       <div class="card card-body bg-light my-5">

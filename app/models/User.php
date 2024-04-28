@@ -11,12 +11,13 @@
       $next_sev_days = strtotime("+7 days");
       $renew_date = date('Y-m-d h:ia', $next_sev_days);
       // Prepare Query
-      $this->db->query('INSERT INTO bizusers (bizname, biz_dsc, bizphone, bizaddress, bizpassword, status, renew) 
-      VALUES (:name, :biz_dsc, :phone, :address, :password, :status, :renew)');
+      $this->db->query('INSERT INTO bizusers (bizname, biz_dsc, bizphone, email, bizaddress, bizpassword, status, renew) 
+      VALUES (:name, :biz_dsc, :phone, :email, :address, :password, :status, :renew)');
 
       // Bind Values
       $this->db->bind(':name', $data['name']);
       $this->db->bind(':phone', $data['phone']);
+      $this->db->bind(':email', $data['email']);
       $this->db->bind(':address', $data['address']);
       $this->db->bind(':password', $data['password']);     
       $this->db->bind(':biz_dsc', $data['biz_dsc']);
@@ -136,7 +137,33 @@
       }
     }
 
+    //gets all customers by phone number
+    public function get_customers(){
+      $this->db->query("SELECT DISTINCT(customer_phone) FROM invoicing WHERE biz_id = :id ORDER BY id DESC");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $results = $this->db->resultset();
+      return $results;
+    }
 
+    public function get_customersName($phone){
+      $this->db->query("SELECT customer_name FROM invoicing WHERE customer_phone = :phone ORDER BY id DESC");
+      $this->db->bind(':phone', $phone);
+      $result = $this->db->single();
+      return $result;
+    }
+    public function get_customersAddress($phone){
+      $this->db->query("SELECT customer_address FROM invoicing WHERE customer_phone = :phone ORDER BY id DESC");
+      $this->db->bind(':phone', $phone);
+      $result = $this->db->single();
+      return $result;
+    }
+
+    public function get_history($phone){
+      $this->db->query("SELECT DISTINCT(t_id) FROM invoicing WHERE customer_phone = :phone ORDER BY id DESC");
+      $this->db->bind(':phone', $phone);
+      $results = $this->db->resultset();
+      return $results;
+    }
 
 
 

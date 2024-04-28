@@ -8,7 +8,7 @@
 </div>
 <div class="card card-body">
   <div class="row mb-2">
-    <h6 class="fw-semibold h4 text-primary">Billed From</h6>
+    <h6 class="fw-semibold h4 text-primary">Billed By</h6>
     <div class="col-md-6 shadow-sm p-3">
       <label class="fs-6">Merchant name: &nbsp; &nbsp;
         <span class="border-bottom fw-semibold"><?php echo $_SESSION['user_name']; ?></span><br>
@@ -56,7 +56,7 @@
 <div class="table-responsive mb-2">
   <h6 class="fw-semibold my-3 px-3 h4 text-primary">Items</h6>
   <table class="table table-striped border">
-    <thead class="bg-primary">
+    <thead class="text-bg-dark">
       <th>Qty</th>
       <th>Description</th>
       <th>Rate</th>
@@ -101,7 +101,7 @@
         <th></th>
         <th>Balance:</th>
         <th></th>
-        <th class="text-danger">-&#8358;<?php echo put_coma($sum);?></th>
+        <th class="text-danger">&#8358;<?php echo put_coma($sum);?></th>
       </tr>
     <?php else:?>
       <tr>
@@ -123,13 +123,18 @@
 </div>
 
 <div class="d-flex justify-content-around my-4">  
-  <form action="<?php echo URLROOT; ?>/pages/invoice" method="POST">
+  <!-- <form action="<?php echo URLROOT; ?>/pages/invoice" method="POST">
     <input type="hidden" name="t_id" value="<?php echo $data['customer_info']->t_id ; ?>">
     <input class="btn btn-outline-success" name="generate-invoice" type="submit" value="Download">
-  </form>
+  </form> -->
+  <a href="<?=URLROOT.'/'.'pages'.'/'.'download_invoice'.'/'.$data['customer_info']->t_id;?>" class="btn btn-outline-dark">
+    <i class="fa fa-download"></i> Download
+  </a>
   
-
-  <a href="https://wa.me/<?= $data['customer_info']->customer_phone ;?>?text=invoice%20link%20<?=URLROOT.'/'.'pages'.'/'.'share'.'/'.$data['customer_info']->t_id;?>" class="btn btn-success">
+  <?php 
+    $phone = ltrim($data['customer_info']->customer_phone, '\0');
+  ?>
+  <a href="https://wa.me/234<?= $phone ;?>?text=invoice%20link%20<?=URLROOT.'/'.'pages'.'/'.'share'.'/'.$data['customer_info']->t_id;?>" class="btn btn-success">
     <i class="fab fa-whatsapp"></i> Share
   </a>
 </div><hr/>
@@ -137,9 +142,9 @@
   <a href="<?= URLROOT;?>/posts/Edit/<?php echo $data['customer_info']->t_id; ?>" class="btn">
     <i class="fa fa-pencil"></i> Edit
   </a>
-  <a href="<?= URLROOT;?>/posts" class="btn">
+  <button class="btn"  onclick="history.back()">
     <i class="fa fa-backward"></i> Go Back
-  </a>
+  </button>
 </div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

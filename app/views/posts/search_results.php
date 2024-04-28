@@ -7,15 +7,7 @@
         <h1 class="h4 m-0">Search results for "<?= $data['search_input']; ?>"</h1>
       </div>
       <div class="col-md-6">
-        <form action="<?= URLROOT?>/posts/index" method="post">
-          <label>Filter Transactions  <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Search by customer name"></i></label>
-          <div class="input-group mb-2">
-            <input type="text" class="form-control" name="search" placeholder="Type customer name">
-            <button type="submit" class="input-group-text px-3 bg-success text-light">
-              <i class="fa fa-fw fa-search text-white"></i> Search
-            </button>
-          </div>
-        </form>
+        <a href="<?php echo URLROOT;?>/posts" class="btn"><i class="fa fa-backward"></i> Go Back</a>
       </div>
     </div>
 

@@ -20,6 +20,9 @@
           <a class="nav-link" href="<?php echo URLROOT; ?>/posts/add/1"><i class="fa fa-plus" aria-hidden="true"></i> Add Transaction</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="<?php echo URLROOT; ?>/pages/customers"><i class="fa fa-users" aria-hidden="true"></i> My Customers</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="https://wa.me/2349168655298"><i class="fab fa-whatsapp" aria-hidden="true"></i> Whatapp</a>
         </li>
           <li class="nav-item">
@@ -27,7 +30,7 @@
         </li>
       <?php else : ?>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">About</a>
+          <a class="nav-link" href="<?php echo URLROOT; ?>/users/login">Login</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/users/register">Register</a>

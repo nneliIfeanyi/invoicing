@@ -42,6 +42,13 @@
       return $results;
     }
 
+    public function search_results2($search_input){
+      $this->db->query("SELECT DISTINCT(t_id) FROM invoicing WHERE customer_phone LIKE '%$search_input%' AND biz_id = :id");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $results = $this->db->resultset();
+      return $results;
+    }
+
 //This gets every detais of that single transaction
     public function getPost($id){
       $this->db->query("SELECT * FROM invoicing WHERE biz_id = :id AND t_id = :t_id");
@@ -144,7 +151,7 @@
     // Delete Post
     public function deletePost($id){
       // Prepare Query
-      $this->db->query('DELETE FROM posts WHERE id = :id');
+      $this->db->query('DELETE FROM invoicing WHERE t_id = :id');
 
       // Bind Values
       $this->db->bind(':id', $id);

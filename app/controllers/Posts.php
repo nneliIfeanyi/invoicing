@@ -14,7 +14,9 @@
     // Load All Posts
     public function index(){
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $search_input = trim($_POST['search']);
+        //check if search input is text
+        if (isset($_POST['search'])) {
+          $search_input = trim($_POST['search']);
         if (empty($search_input)) {
          echo "
             <script>
@@ -28,6 +30,24 @@
           'transactions' =>$search_results
         ];
         $this->view('posts/search_results', $data);
+
+        }elseif (isset($_POST['search2'])) {
+          $search_input = $_POST['search2'];
+        if (empty($search_input)) {
+         echo "
+            <script>
+            window.location = window.location.href;
+          </script>
+         ";
+        }
+        $search_results = $this->postModel->search_results2($search_input);
+        $data = [
+          'search_input' =>$search_input,
+          'transactions' =>$search_results
+        ];
+        $this->view('posts/search_results', $data);
+        }
+
       }else{
 
         $transactions = $this->postModel->get_transactions();
@@ -37,9 +57,16 @@
         $dept1 = 0;
         $dept = 0;
         foreach($transactions2 as $sales){
-          $amt += $sales->qty * $sales->rate;
+          if (empty($sales->qty)) {
+            $sales->qty = 1;
+          }
+          $amt += (int)$sales->qty * (int)$sales->rate;
+    
         }
         foreach($transactions3 as $paid){
+          if (empty($paid->paid)) {
+            $paid->paid = 0;
+          }
           $dept1 += $paid->paid;
           $dept = $amt - $dept1;
         }
@@ -69,7 +96,6 @@
     // Add Post
     public function add($entry_rows){
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        
         $t_id = 's'.date('s').date('i').date('s').'v'.rand(10,99999).'c' ;
         $qty = $_POST['qty'];
         $rate = $_POST['rate'];
@@ -102,9 +128,9 @@
             $redirect = URLROOT.'/posts/show/'.$t_id;
             echo "
                   <div class='alert alert-success'>
-                    Registration Successfull...  <span class='spinner-border spinner-border-sm'> </span>
+                    Successfull...  <span class='spinner-border spinner-border-sm'> </span>
                 </div>
-              <meta http-equiv='refresh' content='1.5; $redirect'>
+              <meta http-equiv='refresh' content='0.1; $redirect'>
             ";
           }else{
             echo "
@@ -174,13 +200,13 @@
         //Execute
         if($this->postModel->deletePost($id)){
           // Redirect to login
-          flash('post_message', 'Post Removed');
-          redirect('posts');
+          flash('msg', 'Transaction Removed');
+          redirect('pages/customers');
           } else {
             die('Something went wrong');
           }
       } else {
-        redirect('posts');
+        redirect('pages/customers');
       }
     }
 

@@ -1,6 +1,8 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+
 <div class="row">
   <div class="col-lg-9 mx-auto">
+    <p><a class="text-dark" href="<?php echo URLROOT;?>/posts">Business Dashboard</a></p>
     <div class="row">
       <div class="col-md-6">
         <div class="card card-body">
@@ -10,7 +12,7 @@
       </div>
       <div class="col-md-6">
         <div class="card card-body">
-          <h1 class="h3 m-0 text-muted">Total Depts</h1>
+          <h1 class="h3 m-0 text-muted">Total Credits</h1>
           <p class="lead fw-bold">&#8358;<?= put_coma($data['dept']); ?>.00</p>
         </div>
       </div>
@@ -19,11 +21,11 @@
   </div>
 <div class="row">
   <div class="col-lg-9 mx-auto">
-    <div class="card card-body">
+    <div class="card card-body my-3">
       <div class="row mb-3">
           <?= flash('msg');?>
         <div class="col-md-6">
-          <form action="<?= URLROOT?>/posts/index" method="post">
+          <form action="<?= URLROOT?>/posts/index" method="post" class="mt-2">
             <label>Filter Transactions  <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Search by customer name"></i></label>
             <div class="input-group mb-2">
               <input type="text" class="form-control" name="search" placeholder="Type customer name">
@@ -33,9 +35,20 @@
             </div>
           </form>
         </div>
+        <div class="col-md-6">
+          <form action="<?= URLROOT?>/posts/index" method="post" class="mt-2">
+            <label>Search customer phone  <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Search by customer phone"></i></label>
+            <div class="input-group mb-2">
+              <input type="number" class="form-control" name="search2" placeholder="Type customer phone">
+              <button type="submit" class="input-group-text px-3 bg-success text-light">
+                <i class="fa fa-fw fa-search text-white"></i> Search
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-
+    <h1 class="h3">Recent Transactions</h1>
     <?php if(!empty($data['transactions'])):?>
       <?php foreach($data['transactions'] as $post):
         $customer_info = $this->postModel->getCustomerInfo($post->t_id);
@@ -54,7 +67,13 @@
         $transactions = $this->postModel->get_per_dept($customer_info->t_id);
         $amt=0;
         foreach($transactions as $trns){
-          $amt += $trns->qty * $trns->rate;
+          if (empty($trns->qty)) {
+            $trns->qty = 1;
+          }
+          $amt += (int)$trns->qty * (int)$trns->rate;
+        }
+        if (empty($customer_info->paid)) {
+          $customer_info->paid = 0;
         }
         $to_balance = $amt - $customer_info->paid;
         ?>
