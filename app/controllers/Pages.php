@@ -66,7 +66,6 @@
     public function download_invoice($t_id){
       $t_info = $this->userModel->getInfo($t_id);
       $user = $this->userModel->getUserById($t_info->biz_id);
-      if ($user->status == 'monthly' OR $user->status == 'yearly') {
           $data = [
 
             't_id' => $t_id,
@@ -75,9 +74,6 @@
 
           ];
         $this->view('pages/download_invoice', $data);
-      }else{
-          die('Something went wrong.. Contact seller');
-      }
      
     }
 

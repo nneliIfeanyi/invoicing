@@ -10,6 +10,9 @@
         <li class="nav-item active">
           <a class="nav-link" href="<?php echo URLROOT;?>/pages/index">Home</a>
         </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="<?php echo URLROOT;?>/pages/subscribe">Pricing</a>
+        </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about"><i class="fa fa-plus" aria-hidden="true"></i> About</a>
         </li> -->

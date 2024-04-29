@@ -127,21 +127,44 @@
     <input type="hidden" name="t_id" value="<?php echo $data['customer_info']->t_id ; ?>">
     <input class="btn btn-outline-success" name="generate-invoice" type="submit" value="Download">
   </form> -->
+  <?php 
+    if ($_SESSION['user_status'] == 'freeTrail') {
+  ?>
   <a href="<?=URLROOT.'/'.'pages'.'/'.'download_invoice'.'/'.$data['customer_info']->t_id;?>" class="btn btn-outline-dark">
     <i class="fa fa-download"></i> Download
   </a>
+<?php }else{
+  ?>
+  <a href="javascript:void();" class="btn btn-outline-dark"
+    data-bs-toggle="tooltip" data-bs-title="Your subscription has expired">
+    <i class="fa fa-download"></i> Download is Disable
+  </a>
+  <?php
+  }
+?>
   
   <?php 
     $phone = ltrim($data['customer_info']->customer_phone, '\0');
+    if ($_SESSION['user_status'] == 'freeTrail') {
   ?>
   <a href="https://wa.me/234<?= $phone ;?>?text=invoice%20link%20<?=URLROOT.'/'.'pages'.'/'.'share'.'/'.$data['customer_info']->t_id;?>" class="btn btn-success">
     <i class="fab fa-whatsapp"></i> Share
   </a>
+<?php }else{
+  ?>
+  <a href="javascript:void();" class="btn btn-success" data-bs-toggle="tooltip" data-bs-title="Your subscription has expired">
+    <i class="fab fa-whatsapp"></i> Share is disabled
+  </a>
+  <?php
+  }
+?>
 </div><hr/>
 <div class="d-flex justify-content-between my-4">
+  <?php if(!$_SESSION['user_status'] == 'freeTrial'):?>
   <a href="<?= URLROOT;?>/posts/Edit/<?php echo $data['customer_info']->t_id; ?>" class="btn">
     <i class="fa fa-pencil"></i> Edit
   </a>
+  <?php endif;?>
   <button class="btn"  onclick="history.back()">
     <i class="fa fa-backward"></i> Go Back
   </button>

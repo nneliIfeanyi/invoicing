@@ -6,7 +6,7 @@
       <?php foreach($data['transactions'] as $post):
         $customer_info = $this->postModel->getCustomerInfo($post->t_id);
       ?>
-      <div class="card card-body mb-3" data-bs-toggle="tooltip" data-bs-title="Transaction id : <?= $post->t_id ?>">
+      <div class="card card-body mb-3">
 
         <h6 class="text-primary">Customer Details</h6>
         <h4 class="card-title text-muted"><i class="fa fa-user"></i>&nbsp;<?php echo $customer_info->customer_name; ?></h4>
@@ -33,6 +33,7 @@
         ?>
         <p>To balance: <span class="text-primary h6 fw-bold">&#8358;<?php echo put_coma($to_balance); ?>.00</span></p>
        <div class="d-grid gap-2">
+        <?php if(!$_SESSION['user_status'] == 'freeTrail'):?>
         <a href="<?= URLROOT;?>/posts/show/<?php echo $post->t_id;?>" class="btn btn-sm btn-success"><i class="fa fa-eye"></i> Preview transaction</a>
 
         <a href="javascript:void();" 
@@ -40,6 +41,11 @@
           class="btn btn-sm btn-outline-danger">
           <i class="fa fa-trash"></i> Delete transaction
         </a>
+      <?php else:?>
+        <a href="javascript:void();"  
+          class="btn btn-sm btn-outline-danger">Your subscription has expired
+        </a>
+      <?php endif;?>
 
         <!--Delete post Modal -->
         <div class="modal fade" id="deleteModal<?= $post->t_id ?>">

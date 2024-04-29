@@ -80,7 +80,7 @@
 
           // Hash Password
           $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-
+          
           //Execute
           if($this->userModel->register($data)){
             // Redirect to login
@@ -202,6 +202,7 @@
         $_SESSION['address'] = $user->bizaddress;
         $_SESSION['user_dsc'] = $user->biz_dsc;
         $_SESSION['user_status'] = $user->status;
+        $_SESSION['renew'] = $user->renew;
         redirect('posts');
     }
 

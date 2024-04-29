@@ -1,9 +1,13 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
     <div class="row">
     	<div class="col-12 col-lg-9 mx-auto">
-	      <h4 class="text-primary m-0">Your free trial period has expired.</h4>
-	      <p class="text-muted">You would not be able to generate an invoice pdf file, but you can still record all your transactions.<br>To continue using this service, please kindly subscribe.</p>
-
+	      <h4 class="text-primary m-0">You are currently on <?= $_SESSION['user_status'];?> plan</h4>
+	      <!-- <p class="text-muted"><i class="fa fa-info-circle"></i> You would not be able to generate an invoice pdf file, but you can still record all your transactions.<br>To continue using this service, please kindly subscribe.</p> -->
+	      <?php if($_SESSION['user_status'] == 'freeTrail'):?>
+	      	<p class="text-muted"><i class="fa fa-info-circle"></i> You would not be able to generate an invoice, but you can still record all your transactions.<br>To continue using this service, please kindly subscribe.</p>
+	      <?php else:?>
+	      	<p class="text-muted"><i class="fa fa-info-circle"></i> Valid till <span class="fw-bold"> <?= $_SESSION['renew']; ?></span></p>
+	      <?php endif;?>
 	      <div class="row">
 	      	<div class="col-md-6">
 	      		<div class="card rounded-4 shadow-lg border-0 mb-5">
@@ -60,7 +64,7 @@
 	      </div>
 	      <div class="row">
 	      	<div class="col-md-9 text-center mb-5 mx-auto">
-	      		<a href="<?= URLROOT;?>/posts" class="btn btn-outline-success">
+	      		<a href="javascript:void();" onclick="history.back()" class="btn btn-outline-success">
 	      			<i class="fa fa-backward"></i> Go back
 	      		</a>
 	      	</div>

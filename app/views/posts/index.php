@@ -22,11 +22,12 @@
 <div class="row">
   <div class="col-lg-9 mx-auto">
     <div class="card card-body my-3">
+      <p class="lead fw-bold">Filter Transactions</p>
       <div class="row mb-3">
           <?= flash('msg');?>
         <div class="col-md-6">
           <form action="<?= URLROOT?>/posts/index" method="post" class="mt-2">
-            <label>Filter Transactions  <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Search by customer name"></i></label>
+            <label class="text-muted" style="font-size: 12px;">Search by customer name</label>
             <div class="input-group mb-2">
               <input type="text" class="form-control" name="search" placeholder="Type customer name">
               <button type="submit" class="input-group-text px-3 bg-success text-light">
@@ -37,7 +38,7 @@
         </div>
         <div class="col-md-6">
           <form action="<?= URLROOT?>/posts/index" method="post" class="mt-2">
-            <label>Search customer phone  <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-title="Search by customer phone"></i></label>
+            <label class="text-muted" style="font-size: 12px;">Search by customer phone</label>
             <div class="input-group mb-2">
               <input type="number" class="form-control" name="search2" placeholder="Type customer phone">
               <button type="submit" class="input-group-text px-3 bg-success text-light">
