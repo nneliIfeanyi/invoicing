@@ -8,7 +8,7 @@
 
     // Add User / Register
     public function register($data){
-      $next_sev_days = strtotime("+1 minute");
+      $next_sev_days = strtotime("+7 days");
       $renew_date = date('Y-m-d h:ia', $next_sev_days);
       // Prepare Query
       $this->db->query('INSERT INTO bizusers (bizname, biz_dsc, bizphone, email, bizaddress, bizpassword, status, renew) 
