@@ -1,18 +1,20 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
     <div class="row">
     	<div class="col-12 col-lg-9 mx-auto">
-	      <h4 class="text-primary m-0">You are currently on <?= $_SESSION['user_status'];?> plan</h4>
+	     
 	      <?php if($_SESSION['user_status'] == 'freeTrail'):?>
-	  
+			<h4 class="text-primary m-0">You are currently on <?= $_SESSION['user_status'];?> plan</h4>
       		<p class="text-muted">
       			<i class="fa fa-info-circle"></i> Valid till 
       			<span class="fw-bold"> <?= $_SESSION['renew']; ?></span>
       		</p>
 	      <?php elseif($_SESSION['user_status'] == 'expired'):?>
+			<h4 class="text-primary m-0">You are currently on <?= $_SESSION['user_status'];?> plan</h4>
 	      	<p class="text-muted">
 	      		<i class="fa fa-info-circle"></i> You would not be able to generate an invoice, but you can still record all your transactions.<br>To continue using this service, please kindly subscribe
 	      	</p>
 	      <?php else:?>
+			<h4 class="text-primary m-0">You are currently on <?= $_SESSION['user_status'];?> plan</h4>
 	      	<p class="text-muted">
 	      		<i class="fa fa-info-circle"></i> Valid till 
 	      		<span class="fw-bold"> <?= $_SESSION['renew']; ?></span>

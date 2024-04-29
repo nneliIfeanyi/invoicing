@@ -37,7 +37,7 @@
 
     public function invoice(){
       $user = $this->userModel->getUserById($_SESSION['user_id']);
-      if ($user->status == 'monthly' OR $user->status == 'yearly') {
+      if ($user->status == 'monthly' OR $user->status == 'yearly' OR $user->status == 'freeTrial') {
           $this->view('pages/invoice');
         }else{
           redirect('pages/subscribe'); 
@@ -49,7 +49,7 @@
         $t_infos = $this->postModel->get_transaction($t_id);
         $t_info = $this->userModel->getInfo($t_id);
         $user = $this->userModel->getUserById($t_info->biz_id);
-        if ($user->status == 'monthly' OR $user->status == 'yearly') {
+        if ($user->status == 'monthly' OR $user->status == 'yearly' OR $user->status == 'freeTrial') {
           $data = [
             'post' => $t_infos, 
             'customer_info' => $t_info,
