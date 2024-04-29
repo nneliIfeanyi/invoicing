@@ -128,7 +128,7 @@
     <input class="btn btn-outline-success" name="generate-invoice" type="submit" value="Download">
   </form> -->
   <?php 
-    if ($_SESSION['user_status'] == 'expired') {
+    if ($_SESSION['user_status'] !== 'expired') {
   ?>
   <a href="<?=URLROOT.'/'.'pages'.'/'.'download_invoice'.'/'.$data['customer_info']->t_id;?>" class="btn btn-outline-dark">
     <i class="fa fa-download"></i> Download
@@ -145,7 +145,7 @@
   
   <?php 
     $phone = ltrim($data['customer_info']->customer_phone, '\0');
-    if ($_SESSION['user_status'] == 'expired') {
+    if ($_SESSION['user_status'] !== 'expired') {
   ?>
   <a href="https://wa.me/234<?= $phone ;?>?text=invoice%20link%20<?=URLROOT.'/'.'pages'.'/'.'share'.'/'.$data['customer_info']->t_id;?>" class="btn btn-success">
     <i class="fab fa-whatsapp"></i> Share
@@ -160,7 +160,7 @@
 ?>
 </div><hr/>
 <div class="d-flex justify-content-between my-4">
-  <?php if(!$_SESSION['user_status'] == 'expired'):?>
+  <?php if($_SESSION['user_status'] !== 'expired'):?>
   <a href="<?= URLROOT;?>/posts/Edit/<?php echo $data['customer_info']->t_id; ?>" class="btn">
     <i class="fa fa-pencil"></i> Edit
   </a>

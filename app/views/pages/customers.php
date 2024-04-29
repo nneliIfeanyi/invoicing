@@ -33,7 +33,7 @@
                 <?php 
                   $phone = ltrim($user->customer_phone, '\0');
                 ?>
-                <?php if(!$_SESSION['user_status'] == 'expired'):?>
+                <?php if($_SESSION['user_status'] !== 'expired'):?>
                 <a href="https://wa.me/234<?= $phone ;?>">
                   <i class="fab fa-whatsapp"></i> <span class="text-muted text-dark"><?= $user->customer_phone;?></span>
                 </a>
