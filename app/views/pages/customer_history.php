@@ -33,7 +33,7 @@
         ?>
         <p>To balance: <span class="text-primary h6 fw-bold">&#8358;<?php echo put_coma($to_balance); ?>.00</span></p>
        <div class="d-grid gap-2">
-        <?php if(!$_SESSION['user_status'] == 'freeTrail'):?>
+        <?php if(!$_SESSION['user_status'] == 'expired'):?>
         <a href="<?= URLROOT;?>/posts/show/<?php echo $post->t_id;?>" class="btn btn-sm btn-success"><i class="fa fa-eye"></i> Preview transaction</a>
 
         <a href="javascript:void();" 

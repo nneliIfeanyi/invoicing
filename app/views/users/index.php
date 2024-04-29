@@ -2,7 +2,7 @@
 <?= flash('msg');?>
 <div class="row">
   <div class="col-md-10 mx-auto">
-    <div class="card card-body bg-light mt-5">
+    <div class="card bg-light mt-5">
       <div class="table-responsive">
         <table id="example" class="table" style="width:100%;">
           <thead class="bg-primary">
@@ -44,7 +44,7 @@
                <form action="<?php echo URLROOT; ?>/admin/status_update/<?php echo $user->id; ?>" method="post">
                  <input type="submit" class="btn btn-sm btn-outline-dark" 
                    name="free_trial" 
-                   value="Trail">
+                   value="Expire">
                </form>
 
               </div>

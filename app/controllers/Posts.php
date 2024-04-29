@@ -216,7 +216,7 @@
       $now = date('Y-m-d h:ia');
       $exp_date = $user->renew;
       if ($now > $exp_date) {
-        $this->userModel->freeTrial($id);    
+      $this->userModel->expired($id);    
       }
       
     }

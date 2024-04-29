@@ -8,7 +8,7 @@
 
     // Add User / Register
     public function register($data){
-      $next_sev_days = strtotime("+7 days");
+      $next_sev_days = strtotime("+1 minute");
       $renew_date = date('Y-m-d h:ia', $next_sev_days);
       // Prepare Query
       $this->db->query('INSERT INTO bizusers (bizname, biz_dsc, bizphone, email, bizaddress, bizpassword, status, renew) 
@@ -21,7 +21,7 @@
       $this->db->bind(':address', $data['address']);
       $this->db->bind(':password', $data['password']);     
       $this->db->bind(':biz_dsc', $data['biz_dsc']);
-      $this->db->bind(':status', 'monthly');
+      $this->db->bind(':status', 'freeTrial');
       $this->db->bind(':renew', $renew_date);
       
       //Execute
@@ -121,13 +121,14 @@
       }
     }
 
-    public function freeTrial($id){
+    public function expired($id){
       // Prepare Query
-      $this->db->query('UPDATE bizusers SET status = :status WHERE id = :id');
+      $this->db->query('UPDATE bizusers SET status = :status, renew = :renew WHERE id = :id');
 
       // Bind Values
       $this->db->bind(':id', $id);
-      $this->db->bind(':status', 'freeTrial');
+      $this->db->bind(':status', 'expired');
+      $this->db->bind(':renew', '');
   
       //Execute
       if($this->db->execute()){

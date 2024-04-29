@@ -33,9 +33,9 @@
       		redirect('users');
   		}
   		else{
-      		$length = 'freeTrail';
+      		$length = 'expired';
       		$this->userModel->updateStatus($id, $length);
-      		flash('msg', 'Status updated as FREETRIAL for user with ID '.$id);
+      		flash('msg', 'Status updated as EXPIRED for user with ID '.$id);
       		redirect('users');
   		}
     }

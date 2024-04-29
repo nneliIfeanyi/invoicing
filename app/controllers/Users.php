@@ -214,6 +214,7 @@
       unset($_SESSION['address']);
       unset($_SESSION['user_dsc']);
       unset($_SESSION['user_status']);
+      unset($_SESSION['renew']);
       session_destroy();
       redirect('users/login');
     }
