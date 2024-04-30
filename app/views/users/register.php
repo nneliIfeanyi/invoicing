@@ -11,8 +11,7 @@
       <form action="<?php echo URLROOT; ?>/users/register" method="post" id="register_form">
         <div class="form-group mb-3">
             <label>Business Name:</label>
-            <input type="text" name="name" required data-parsley-trigger="keyup" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">
-            <span class="invalid-feedback"><?php echo $data['name_err']; ?></span>
+            <input type="text" name="name" required data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['name']; ?>">
         </div> 
         <div class="form-group mb-3">
             <label>Business Description:</label>
@@ -44,7 +43,8 @@
         </div>  
         <div class="form-group mb-3">
             <label>Email:</label>
-            <input type="email" name="email" class="form-control form-control-lg" value="<?php echo $data['email']; ?>">
+            <input type="email" name="email" required data-parsley-trigger="keyup" class="form-control form-control-lg <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email']; ?>">
+            <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
         </div>    
         <div class="form-group mb-3">
             <label>Password:</label>

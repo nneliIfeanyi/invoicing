@@ -39,24 +39,17 @@
           'biz_dsc' => trim($_POST['biz_dsc']),
           'category' => $_POST['category'],
           'confirm_password' => trim($_POST['confirm_password']),
-          'name_err' => '',
           'phone_err' => '',
+          'email_err' => '',
           'password_err' => '',
           'confirm_password_err' => ''
         ];
 
-        // Validate email
-        if(empty($data['name'])){
-            $data['name_err'] = 'Please enter your business name';
-            // Validate name
-            if(empty($data['phone'])){
-              $data['phone_err'] = 'Please enter your business phone number';
-            }
-        } else{
-          // Check Email
-          if($this->userModel->findUserByPhone($data['phone'])){
-            $data['phone_err'] = 'Phone number already taken.';
-          }
+        if($this->userModel->findUserByPhone($data['phone'])){
+          $data['phone_err'] = 'Phone number already taken.';
+        }
+        elseif($this->userModel->findUserByEmail($data['email'])){
+          $data['email_err'] = 'Email already taken.';
         }
 
         // Validate password
@@ -76,7 +69,7 @@
         }
          
         // Make sure errors are empty
-        if(empty($data['name_err']) && empty($data['phone_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
+        if(empty($data['email_err']) && empty($data['phone_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
           // SUCCESS - Proceed to insert
 
           // Hash Password
