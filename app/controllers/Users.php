@@ -37,6 +37,7 @@
           'address' => trim($_POST['address']),
           'password' => trim($_POST['password']),
           'biz_dsc' => trim($_POST['biz_dsc']),
+          'category' => $_POST['category'],
           'confirm_password' => trim($_POST['confirm_password']),
           'name_err' => '',
           'phone_err' => '',
@@ -139,27 +140,29 @@
 
         // Check for email
         if(empty($data['phone'])){
-          $data['phone_err'] = 'Please enter phone number.';
+          $data['phone_err'] = 'Please enter email or phone number.';
         }
 
-        // Check for name
-        if(empty($data['name'])){
-          $data['name_err'] = 'Please enter name.';
-        }
-
+        $email_check = $this->userModel->findUserByEmail($data['phone']);
+        $phone_check = $this->userModel->findUserByPhone($data['phone']);
         // Check for user
-        if($this->userModel->findUserByPhone($data['phone'])){
+        if($email_check || $phone_check){
           // User Found
         } else {
           // No User
-          $data['phone_err'] = 'This phone number is not registered.';
+          $data['phone_err'] = 'User not found.';
         }
+
+        if(empty($data['password'])){
+          $data['password_err'] = 'Please enter your password.';
+        }
+
 
         // Make sure errors are empty
         if(empty($data['phone_err']) && empty($data['password_err'])){
 
           // Check and set logged in user
-          $loggedInUser = $this->userModel->login($data['phone'], $data['password']);
+          $loggedInUser = $this->userModel->login($data['phone'], $data['phone'], $data['password']);
 
           if($loggedInUser){
             // User Authenticated!

@@ -11,8 +11,8 @@
       $next_sev_days = strtotime("+7 days");
       $renew_date = date('Y-m-d h:ia', $next_sev_days);
       // Prepare Query
-      $this->db->query('INSERT INTO bizusers (bizname, biz_dsc, bizphone, email, bizaddress, bizpassword, status, renew) 
-      VALUES (:name, :biz_dsc, :phone, :email, :address, :password, :status, :renew)');
+      $this->db->query('INSERT INTO bizusers (bizname, biz_dsc, bizphone, email, category, bizaddress, bizpassword, status, renew) 
+      VALUES (:name, :biz_dsc, :phone, :email, :address, :category, :password, :status, :renew)');
 
       // Bind Values
       $this->db->bind(':name', $data['name']);
@@ -21,10 +21,12 @@
       $this->db->bind(':address', $data['address']);
       $this->db->bind(':password', $data['password']);     
       $this->db->bind(':biz_dsc', $data['biz_dsc']);
+      $this->db->bind(':category', $data['category']);
       $this->db->bind(':status', 'freeTrial');
       $this->db->bind(':renew', $renew_date);
       
       //Execute
+
       if($this->db->execute()){
         return true;
       } else {
@@ -32,10 +34,25 @@
       }
     }
 
-    // Find USer BY Email
+    // Find USer BY Phone
     public function findUserByPhone($phone){
       $this->db->query("SELECT * FROM bizusers WHERE bizphone = :phone");
       $this->db->bind(':phone', $phone);
+
+      $row = $this->db->single();
+
+      //Check Rows
+      if($this->db->rowCount() > 0){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    // Find USer BY Email
+    public function findUserByEmail($email){
+      $this->db->query("SELECT * FROM bizusers WHERE email = :email");
+      $this->db->bind(':email', $email);
 
       $row = $this->db->single();
 
@@ -56,10 +73,10 @@
     }
 
     // Login / Authenticate User
-    public function login($phone, $password){
-      $this->db->query("SELECT * FROM bizusers WHERE bizphone = :phone");
+    public function login($phone, $email, $password){
+      $this->db->query("SELECT * FROM bizusers WHERE bizphone = :phone OR email = :email");
       $this->db->bind(':phone', $phone);
-
+      $this->db->bind(':email', $email);
       $row = $this->db->single();
       
       $hashed_password = $row->bizpassword;

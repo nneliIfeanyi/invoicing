@@ -27,6 +27,20 @@
         <div class="form-group mb-3">
             <label>Business Address:</label>
             <input type="text" name="address" class="form-control form-control-lg" value="<?php echo $data['address']; ?>">
+        </div>
+        <div class="form-group mb-3">
+            <label>Business category:</label>
+            <select class="form-control" name="category" required data-parsley-trigger="keyup">
+                <option value="">
+                    ---
+                </option>
+                <option value="B&S">
+                    Buying and selling
+                </option>
+                <option value="services">
+                    Service rendering
+                </option>
+            </select>
         </div>  
         <div class="form-group mb-3">
             <label>Email:</label>

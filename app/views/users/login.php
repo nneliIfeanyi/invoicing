@@ -10,12 +10,12 @@
         <p>Please fill in your credentials to login.</p>
         <form action="<?php echo URLROOT; ?>/users/login" method="post">
           <div class="form-group mb-3">
-              <label>Phone:<sup>*</sup></label>
+              <label>Email or Phone:</label>
               <input type="text" name="phone" class="form-control form-control-lg <?php echo (!empty($data['phone_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['phone']; ?>">
               <span class="invalid-feedback"><?php echo $data['phone_err']; ?></span>
           </div>    
           <div class="form-group mb-3">
-              <label>Password:<sup>*</sup></label>
+              <label>Password:</label>
               <input type="password" name="password" class="form-control form-control-lg <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['password']; ?>">
               <span class="invalid-feedback"><?php echo $data['password_err']; ?></span>
           </div>

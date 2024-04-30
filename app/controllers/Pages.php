@@ -26,6 +26,7 @@
     }
 
     public function subscribe(){
+      //$_SESSION['user_status'] = '';
       //Set Data
       $data = [
         'version' => '1.0.0'
