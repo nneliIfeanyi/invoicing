@@ -39,6 +39,7 @@
           'biz_dsc' => trim($_POST['biz_dsc']),
           'category' => $_POST['category'],
           'confirm_password' => trim($_POST['confirm_password']),
+          'user_type' => 'regular',
           'phone_err' => '',
           'email_err' => '',
           'password_err' => '',
@@ -199,6 +200,7 @@
         $_SESSION['user_dsc'] = $user->biz_dsc;
         $_SESSION['user_status'] = $user->status;
         $_SESSION['renew'] = $user->renew;
+        $_SESSION['category'] = $user->category;
         redirect('posts');
     }
 

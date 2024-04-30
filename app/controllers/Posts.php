@@ -97,6 +97,9 @@
     public function add($entry_rows){
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $t_id = 's'.date('s').date('i').date('s').'v'.rand(10,99999).'c' ;
+        if (empty($_POST['qty'])) {
+          $_POST['qty'] = 1;
+        }
         $qty = $_POST['qty'];
         $rate = $_POST['rate'];
         $dsc = $_POST['dsc'];
@@ -121,8 +124,10 @@
             'paid' => $paid,
             't_id' => $t_id
           ];
-          $success = $this->postModel->addPost($data);
-         if ($success) {
+          $success = $this->postModel->addPost($data); 
+        }//end for each
+
+        if ($success) {
             $this->postModel->deleteEmpty();
             flash('msg', 'Invoice recorded and saved successfully..');
             $redirect = URLROOT.'/posts/show/'.$t_id;
@@ -130,7 +135,7 @@
                   <div class='alert alert-success'>
                     Successfull...  <span class='spinner-border spinner-border-sm'> </span>
                 </div>
-              <meta http-equiv='refresh' content='0.1; $redirect'>
+              <meta http-equiv='refresh' content='4.1; $redirect'>
             ";
           }else{
             echo "
@@ -139,9 +144,9 @@
                 </div>
                   
             ";
-          } 
-        }//end for each
-      } else {
+          }
+      }//end server request method 
+      else {
         $data = [
           'entry_rows' => $entry_rows,
           '' => '',

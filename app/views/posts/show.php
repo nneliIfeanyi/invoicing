@@ -53,6 +53,8 @@
   </div>
 </div>
 <div class="card">
+  <!-- check for business category -->
+<?php if($_SESSION['category'] == 'B&S'):?>
 <div class="table-responsive mb-2">
   <h6 class="fw-semibold my-3 px-3 h4 text-primary">Items</h6>
   <table class="table table-striped border">
@@ -120,6 +122,52 @@
     </tbody>
   </table>
 </div>
+
+<!-- Business category == services -->
+<?php else:?>
+  <div class="table-responsive mb-2">
+  <h6 class="fw-semibold my-3 px-3 h4 text-primary">Service Rendered</h6>
+  <table class="table table-striped border">
+    <thead class="text-bg-dark">
+      <th>Description</th>
+      <th>Price</th>
+    </thead>
+    <tbody>
+      <?php $sum = 0; foreach($data['post'] as $post):
+      ;?>
+      <tr>
+        <td> <?= $post->dsc;?></td>
+        <td><?= $post->rate;?></td>
+      </tr>
+      <?php $total=$post->rate ;?>
+    <?php $sum += $total; endforeach;?>
+    <tr>
+      <th>Total:</th>
+      <th>&#8358;<?php echo put_coma($sum);?></th>
+    </tr>
+    <?php if(empty($post->paid)):?>
+      <tr>
+        <th>Paid:</th>
+        <th>&#8358;0.00</th>
+      </tr>
+      <tr>
+        <th>Balance:</th>
+        <th class="text-danger">&#8358;<?php echo put_coma($sum);?></th>
+      </tr>
+    <?php else:?>
+      <tr>
+        <th>Paid</th>
+        <th>&#8358;<?php echo put_coma($post->paid);?></th>
+      </tr>
+      <tr>
+        <th>Balance</th>
+        <th>&#8358;<?php echo put_coma($sum - $post->paid);?></th>
+      </tr>
+    <?php endif;?>
+    </tbody>
+  </table>
+</div>
+<?php endif;?>
 </div>
 
 <div class="d-flex justify-content-around my-4">  

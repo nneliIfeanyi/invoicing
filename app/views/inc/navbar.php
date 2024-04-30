@@ -20,16 +20,16 @@
       <ul class="navbar-nav ms-auto">
       <?php if(isset($_SESSION['user_id'])) : ?>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/posts/add/1"><i class="fa fa-plus" aria-hidden="true"></i> Add Transaction</a>
+          <a class="nav-link" href="<?php echo URLROOT; ?>/posts/add/1">Add Transaction</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/pages/customers"><i class="fa fa-users" aria-hidden="true"></i> My Customers</a>
+          <a class="nav-link" href="<?php echo URLROOT; ?>/pages/customers">My Customers</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="https://wa.me/2349168655298"><i class="fab fa-whatsapp" aria-hidden="true"></i> Whatapp</a>
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+          <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
         </li>
       <?php else : ?>
         <li class="nav-item">

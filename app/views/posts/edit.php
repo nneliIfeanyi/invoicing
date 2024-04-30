@@ -22,33 +22,64 @@
       <input disabled class="form-input" value="<?= date('D').' '. date('jS').' '.date('M').' '.date('Y');?>">
     </div>
   </div>
-<div class="table-responsive">
-<table class="table table-striped border w-100">
-  <thead>
-    <tr class="border text-center text-muted">
-      <th>Qty</th>
-      <th>Description of Goods</th>
-      <th>Rate</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach($data['post'] as $post):?>
-    <tr>
-      <td>
-        <input type="text" min="0" name="qty[]" class="form-control" value="<?= $post->qty;?>" style="width: 60px;">
-      </td>
-      <td>
-        <input name="dsc[]" class="form-control" type="text" value="<?= $post->dsc;?>" style="width: 55vw;">
-      </td>
-      <td>
-        <input type="text" name="rate[]"  class="form-control" value="<?= $post->rate;?>" style="width: 22vw;">
-      </td>
-    </tr>
-    <input type="hidden" name="post_id[]" value="<?= $post->id;?>">
-  <?php endforeach;?>
-</tbody>
-</table>
-</div>
+  <?php if($_SESSION['category'] == 'B&S'):?>
+    <div class="table-responsive">
+    <table class="table table-striped border w-100">
+      <thead>
+        <tr class="border text-center text-muted">
+          <th>Qty</th>
+          <th>Description of Goods</th>
+          <th>Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach($data['post'] as $post):?>
+        <tr>
+          <td>
+            <input type="text" min="0" name="qty[]" class="form-control" value="<?= $post->qty;?>" style="width: 60px;">
+          </td>
+          <td>
+            <input name="dsc[]" class="form-control" type="text" value="<?= $post->dsc;?>" style="width: 55vw;">
+          </td>
+          <td>
+            <input type="text" name="rate[]"  class="form-control" value="<?= $post->rate;?>" style="width: 22vw;">
+          </td>
+        </tr>
+        <input type="hidden" name="post_id[]" value="<?= $post->id;?>">
+      <?php endforeach;?>
+    </tbody>
+    </table>
+    </div>
+  <?php else:?>
+    <div class="table-responsive">
+    <table class="table table-striped border w-100">
+      <thead>
+        <tr class="border text-center text-muted">
+          <!-- <th>Qty</th> -->
+          <th>Service Description</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach($data['post'] as $post):?>
+        <tr>
+          <!-- <td>
+            <input type="text" min="0" name="qty[]" class="form-control" value="<?= $post->qty;?>" style="width: 60px;">
+          </td> -->
+           <input type="hidden" name="qty[]" value="">
+          <td>
+            <input name="dsc[]" class="form-control" type="text" value="<?= $post->dsc;?>" style="width: 55vw;">
+          </td>
+          <td>
+            <input type="text" name="rate[]"  class="form-control" value="<?= $post->rate;?>" style="width: 22vw;">
+          </td>
+        </tr>
+        <input type="hidden" name="post_id[]" value="<?= $post->id;?>">
+      <?php endforeach;?>
+    </tbody>
+    </table>
+    </div>
+  <?php endif;?>
 <div class="">
   <label>Cash paid: <span style="font-size: 12px;">(leave this box empty if no amount was paid)</span></label>
   <input type="number" name="paid" class="form-control" value="<?= $data['info']->paid;?>">

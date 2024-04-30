@@ -11,8 +11,8 @@
       $next_sev_days = strtotime("+7 days");
       $renew_date = date('Y-m-d h:ia', $next_sev_days);
       // Prepare Query
-      $this->db->query('INSERT INTO bizusers (bizname, biz_dsc, bizphone, email, category, bizaddress, bizpassword, status, renew) 
-      VALUES (:name, :biz_dsc, :phone, :email, :category, :address, :password, :status, :renew)');
+      $this->db->query('INSERT INTO bizusers (bizname, biz_dsc, bizphone, email, category, bizaddress, bizpassword, status, renew, user_type) 
+      VALUES (:name, :biz_dsc, :phone, :email, :category, :address, :password, :status, :renew, :user_type)');
 
       // Bind Values
       $this->db->bind(':name', $data['name']);
@@ -24,6 +24,7 @@
       $this->db->bind(':biz_dsc', $data['biz_dsc']);
       $this->db->bind(':status', 'freeTrial');
       $this->db->bind(':renew', $renew_date);
+      $this->db->bind(':user_type', $data['user_type']);
       
       //Execute
 

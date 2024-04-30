@@ -7,6 +7,7 @@ require_once APPROOT . '/views/TCPDF-main/tcpdf.php';
   define('BIZHOTLINE', $data['user']->bizphone);
   define('BIZID', $data['user']->id);
   define('BIZDSC', $data['user']->biz_dsc);
+  define('CATEGORY', $data['user']->category);
 // Extend the TCPDF class to create custom Header and Footer
 class MYPDF extends TCPDF {
       public $conn;
@@ -20,6 +21,7 @@ class MYPDF extends TCPDF {
         $user_phone = BIZHOTLINE;
         $user_address = BIZADDRESS;
         $user_dsc = BIZDSC;
+
         if(!$conn = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME))
         {
           die("failed to connect");
@@ -50,7 +52,7 @@ class MYPDF extends TCPDF {
         // Set font
         $this->SetFont('helvetica', 'I', 14);
         // Page number
-        $this->Cell(0, 10, 'Thanksfor your patronage, pls call again!', 0, false, 'C', 0, '', 0, false, 'T', 'M');
+        $this->Cell(0, 10, 'Thanks for your patronage, pls call again!', 0, false, 'C', 0, '', 0, false, 'T', 'M');
         //$this->SetY(-20);
         // Set font
         //$this->SetFont('helvetica', 'B', 8);
@@ -109,6 +111,7 @@ if(!$conn = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME))
 }
 $t_id = ID;
 $biz_id = BIZID;
+$category = CATEGORY;
 $sql = "SELECT * FROM invoicing WHERE biz_id = '$biz_id' AND t_id = '$t_id' ";
 $query = mysqli_query($conn, $sql);
 
@@ -150,88 +153,155 @@ $sum = 0;
   $pdf->SetTextColor(01,19,20);
   $pdf->SetFont('times', 'B', '15');
   $pdf->Cell(20, 4, "$date", 0, 0, "L");
-  
-  
-$pdf->Ln(18);
-$pdf->SetFillColor(0, 0, 0);
-$pdf->SetTextColor(255,255,255);
-$pdf->SetFont('times', 'N', '15');
-$pdf->Cell(18, 7, 'Qty', 1, 0, 'C', 1);
-$pdf->Cell(95, 7, 'Description', 1, 0, 'L', 1);
-$pdf->Cell(30, 7, 'Rate', 1, 0, 'L', 1);
-$pdf->Cell(55, 7, 'Amount', 1, 0, 'L', 1);
-$pdf->Ln(3);
-while ($result = mysqli_fetch_array($query)) {
-  $qty = $result['qty'];
-  $dsc = $result['dsc'];
-  $rate = $result['rate'];
-  if (!empty($qty) && !empty($rate)) {
-    $amt = $qty * $rate;
-    $total = $sum += $amt;
-  }else{
-    $amt = '';
-  }
+  //check for business category
+  if ($category == 'B&S') {
+   $pdf->Ln(18);
+   $pdf->SetFillColor(0, 0, 0);
+   $pdf->SetTextColor(255,255,255);
+   $pdf->SetFont('times', 'N', '15');
+   $pdf->Cell(18, 7, 'Qty', 1, 0, 'C', 1);
+   $pdf->Cell(95, 7, 'Description', 1, 0, 'L', 1);
+   $pdf->Cell(30, 7, 'Rate', 1, 0, 'L', 1);
+   $pdf->Cell(55, 7, 'Amount', 1, 0, 'L', 1);
+   $pdf->Ln(3);
+   while ($result = mysqli_fetch_array($query)) {
+     $qty = $result['qty'];
+     $dsc = $result['dsc'];
+     $rate = $result['rate'];
+     if (!empty($qty) && !empty($rate)) {
+       $amt = $qty * $rate;
+       $total = $sum += $amt;
+     }else{
+       $amt = '';
+     }
 
-  if (strlen($qty) == 1) {
-    $qty = '0'.$qty;
-  }
-  
+     if (strlen($qty) == 1) {
+       $qty = '0'.$qty;
+     }
+     
 
- // $balance = $total - $paid;
+    // $balance = $total - $paid;
 
-  $pdf->Ln(9); //this will reduce the line height of each subject
-  $pdf->SetTextColor(10, 13,11);
-  $pdf->SetFont('helvetica', 'N', '12');
-  $pdf->Cell(18, 10, $qty, 0, 0, "C");
-  $pdf->Cell(95, 10, $dsc, 0, 0, "L");
-  $pdf->Cell(30, 10, $rate, 0, 0, "L");
-  $pdf->Cell(55, 10, $amt, 0, 0, "L");
-}
+     $pdf->Ln(9); //this will reduce the line height of each subject
+     $pdf->SetTextColor(10, 13,11);
+     $pdf->SetFont('helvetica', 'N', '12');
+     $pdf->Cell(18, 10, $qty, 0, 0, "C");
+     $pdf->Cell(95, 10, $dsc, 0, 0, "L");
+     $pdf->Cell(30, 10, $rate, 0, 0, "L");
+     $pdf->Cell(55, 10, $amt, 0, 0, "L");
+   }//while loo ends for business category B&S
 
-$pdf->Ln(14);
-$pdf->SetTextColor(10, 93, 11);
-$pdf->SetFont('helvetica', 'B', '15');
-$pdf->Cell(18, 4, '', 0, 0, "R");
-$pdf->Cell(95, 4, 'Total:', 0, 0, "R");
-$pdf->Cell(30, 4, '', 0, 0, "R");
-$pdf->Cell(55, 4, 'N'.put_coma($total), 0, 0, "L");
-
-
-if (!empty($paid)) {
-  $pdf->Ln(8);
-  $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('helvetica', 'B', '15');
-  $pdf->Cell(18, 4, '', 0, 0, "R");
-  $pdf->Cell(95, 4, 'Paid:', 0, 0, "R");
-  $pdf->Cell(30, 4, '', 0, 0, "R");
-  $pdf->Cell(55, 4, 'N'.put_coma($paid), 0, 0, "L");
+   $pdf->Ln(14);
+   $pdf->SetTextColor(10, 93, 11);
+   $pdf->SetFont('helvetica', 'B', '15');
+   $pdf->Cell(18, 4, '', 0, 0, "R");
+   $pdf->Cell(95, 4, 'Total:', 0, 0, "R");
+   $pdf->Cell(30, 4, '', 0, 0, "R");
+   $pdf->Cell(55, 4, 'N'.put_coma($total), 0, 0, "L");
 
 
-  $pdf->Ln(8);
-  $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('helvetica', 'B', '15');
-  $pdf->Cell(18, 4, '', 0, 0, "R");
-  $pdf->Cell(95, 4, 'Balance:', 0, 0, "R");
-  $pdf->Cell(30, 4, '', 0, 0, "R");
-  $pdf->Cell(55, 4, 'N'.put_coma($total - $paid), 0, 0, "L");
-}else{
-  $pdf->Ln(8);
-  $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('helvetica', 'B', '15');
-  $pdf->Cell(18, 4, '', 0, 0, "R");
-  $pdf->Cell(95, 4, 'Paid:', 0, 0, "R");
-  $pdf->Cell(30, 4, '', 0, 0, "R");
-  $pdf->Cell(55, 4, 'N0.00', 0, 0, "L");
+   if (!empty($paid)) {
+     $pdf->Ln(8);
+     $pdf->SetTextColor(10, 93, 11);
+     $pdf->SetFont('helvetica', 'B', '15');
+     $pdf->Cell(18, 4, '', 0, 0, "R");
+     $pdf->Cell(95, 4, 'Paid:', 0, 0, "R");
+     $pdf->Cell(30, 4, '', 0, 0, "R");
+     $pdf->Cell(55, 4, 'N'.put_coma($paid), 0, 0, "L");
 
 
-  $pdf->Ln(8);
-  $pdf->SetTextColor(255, 10, 17);
-  $pdf->SetFont('helvetica', 'B', '15');
-  $pdf->Cell(18, 4, '', 0, 0, "R");
-  $pdf->Cell(95, 4, 'Balance:', 0, 0, "R");
-  $pdf->Cell(30, 4, '', 0, 0, "R");
-  $pdf->Cell(55, 4, 'N'.put_coma($total), 0, 0, "L");
-}
+     $pdf->Ln(8);
+     $pdf->SetTextColor(10, 93, 11);
+     $pdf->SetFont('helvetica', 'B', '15');
+     $pdf->Cell(18, 4, '', 0, 0, "R");
+     $pdf->Cell(95, 4, 'Balance:', 0, 0, "R");
+     $pdf->Cell(30, 4, '', 0, 0, "R");
+     $pdf->Cell(55, 4, 'N'.put_coma($total - $paid), 0, 0, "L");
+   }else{
+     $pdf->Ln(8);
+     $pdf->SetTextColor(10, 93, 11);
+     $pdf->SetFont('helvetica', 'B', '15');
+     $pdf->Cell(18, 4, '', 0, 0, "R");
+     $pdf->Cell(95, 4, 'Paid:', 0, 0, "R");
+     $pdf->Cell(30, 4, '', 0, 0, "R");
+     $pdf->Cell(55, 4, 'N0.00', 0, 0, "L");
+
+
+     $pdf->Ln(8);
+     $pdf->SetTextColor(255, 10, 17);
+     $pdf->SetFont('helvetica', 'B', '15');
+     $pdf->Cell(18, 4, '', 0, 0, "R");
+     $pdf->Cell(95, 4, 'Balance:', 0, 0, "R");
+     $pdf->Cell(30, 4, '', 0, 0, "R");
+     $pdf->Cell(55, 4, 'N'.put_coma($total), 0, 0, "L");
+   } 
+  }//Business category B&S ends...
+  else{
+  //Business category == services
+    $pdf->Ln(18);
+    $pdf->SetFillColor(0, 0, 0);
+    $pdf->SetTextColor(255,255,255);
+    $pdf->SetFont('times', 'N', '15');
+    $pdf->Cell(108, 9, 'Service Description', 1, 0, 'L', 1);
+    $pdf->Cell(10, 9, '', 1, 0, '', 1);
+    $pdf->Cell(75, 9, 'Price', 1, 0, 'L', 1);
+    $pdf->Ln(3);
+    while ($result = mysqli_fetch_array($query)) {
+      //$qty = $result['qty'];
+      $dsc = $result['dsc'];
+      $rate = $result['rate'];
+      $total = $sum += $rate;
+      
+     // $balance = $total - $paid;
+
+      $pdf->Ln(9); //this will reduce the line height of each subject
+      $pdf->SetTextColor(10, 13,11);
+      $pdf->SetFont('helvetica', 'N', '12');
+      $pdf->Cell(108, 10, $dsc, 0, 0, "L");
+      $pdf->Cell(10, 10, '', 0, 0, "");
+      $pdf->Cell(75, 10, $rate, 0, 0, "L");
+    }//while loop ends for sevice business category
+
+    $pdf->Ln(14);
+    $pdf->SetTextColor(10, 93, 11);
+    $pdf->SetFont('helvetica', 'B', '15');
+    $pdf->Cell(108, 4, 'Total:', 0, 0, "R");
+    $pdf->Cell(10, 4, '', 0, 0, "");
+    $pdf->Cell(75, 4, 'N'.put_coma($total), 0, 0, "L");
+
+
+    if (!empty($paid)) {
+      $pdf->Ln(8);
+      $pdf->SetTextColor(10, 93, 11);
+      $pdf->SetFont('helvetica', 'B', '15');
+      $pdf->Cell(108, 4, 'Paid:', 0, 0, "R");
+      $pdf->Cell(10, 4, '', 0, 0, "");
+      $pdf->Cell(75, 4, 'N'.put_coma($paid), 0, 0, "L");
+
+
+      $pdf->Ln(8);
+      $pdf->SetTextColor(10, 93, 11);
+      $pdf->SetFont('helvetica', 'B', '15');
+      $pdf->Cell(108, 4, 'Balance:', 0, 0, "R");
+      $pdf->Cell(10, 4, '', 0, 0, "");
+      $pdf->Cell(75, 4, 'N'.put_coma($total - $paid), 0, 0, "L");
+    }else{
+      $pdf->Ln(8);
+      $pdf->SetTextColor(10, 93, 11);
+      $pdf->SetFont('helvetica', 'B', '15');
+      $pdf->Cell(108, 4, 'Paid:', 0, 0, "R");
+      $pdf->Cell(10, 4, '', 0, 0, "");
+      $pdf->Cell(75, 4, 'N0.00', 0, 0, "L");
+
+
+      $pdf->Ln(8);
+      $pdf->SetTextColor(255, 10, 17);
+      $pdf->SetFont('helvetica', 'B', '15');
+      $pdf->Cell(108, 4, 'Balance:', 0, 0, "R");
+      $pdf->Cell(10, 4, '', 0, 0, "");
+      $pdf->Cell(75, 4, 'N'.put_coma($total), 0, 0, "L");
+    }
+  }//Business category == service ends
 
 $pdf->Ln(10);
 $pdf->SetTextColor(28, 81, 5);
