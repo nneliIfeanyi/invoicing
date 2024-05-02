@@ -22,8 +22,8 @@
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/posts/add/1">Add Transaction</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/pages/customers">My Customers</a>
+         <li class="nav-item">
+          <a class="nav-link" href="<?php echo URLROOT; ?>/users/profile">Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="https://wa.me/2349168655298"><i class="fab fa-whatsapp" aria-hidden="true"></i> Whatapp</a>

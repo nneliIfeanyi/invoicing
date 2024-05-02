@@ -20,6 +20,79 @@
       }
     }
 
+     public function profile(){
+      $customers = $this->userModel->get_customers();
+      $user = $this->userModel->getUserById($_SESSION['user_id']);
+        $data = [
+          'user' => $user,
+          'customers' => $customers,
+        ];
+
+        // Load index view
+        $this->view('users/profile', $data);
+      }
+
+      //update business logo function
+      public function logo(){
+        if(isset($_POST['new_logo'])) {
+          $uploadPath = "logo/";
+          $fileName = basename($_FILES["new_logo"]["name"]); 
+          $db_image_file =  $uploadPath . $fileName; 
+          $imageUploadPath = $uploadPath . $fileName; 
+          $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION); 
+             
+          // Allow certain file formats 
+          $allowTypes = array('jpg','png','jpeg'); 
+
+          if(!in_array($fileType, $allowTypes)){ 
+            //echo $fileName;
+             flash('msg', 'Invalid image format..', 'flash-msg alert alert-danger');
+             redirect('users/profile');
+          }
+          $imageTemp = $_FILES["new_logo"]["tmp_name"];
+          $data = [
+            'id' => $_SESSION['user_id'],
+            'image' => $db_image_file,
+            move_uploaded_file($imageTemp, $imageUploadPath)
+          ];
+          $upload = $this->userModel->edit_pic($data);
+          if ($upload) {
+            
+            flash('msg', 'Upload Successfull..');
+            redirect('users/profile');
+          }else{
+            die('Something went wrong..');
+          }
+        }
+      }
+
+     public function password(){
+      $user = $this->userModel->getUserById($_SESSION['user_id']); 
+      if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        // Sanitize POST
+        $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $data = [
+        'old' => $_POST['old'],
+        'new' => $_POST['new']
+        ];
+
+        if(password_verify($data['old'], $user->bizpassword)){
+         //update new password
+          $new = password_hash($data['new'], PASSWORD_DEFAULT);
+          $this->userModel->updatePassword($new);
+          flash('msg', 'Password updated Successfully');
+          redirect('users/profile');
+        } else {
+          flash('msg', 'Password incorrect', 'flash-msg alert alert-danger');
+          redirect('users/profile');
+        }
+      }
+
+      // Load index view
+      redirect('users/profile');
+    }
+
+
     public function register(){
       // Check if logged in
       if($this->isLoggedIn()){
@@ -201,6 +274,8 @@
         $_SESSION['user_status'] = $user->status;
         $_SESSION['renew'] = $user->renew;
         $_SESSION['category'] = $user->category;
+        $_SESSION['user_type'] = $user->user_type;
+        $_SESSION['logo'] = $user->logo;
         redirect('posts');
     }
 
@@ -213,6 +288,9 @@
       unset($_SESSION['user_dsc']);
       unset($_SESSION['user_status']);
       unset($_SESSION['renew']);
+      unset($_SESSION['user_type']);
+      unset($_SESSION['category']);
+      unset($_SESSION['logo']);
       session_destroy();
       redirect('users/login');
     }

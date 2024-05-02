@@ -8,7 +8,7 @@
     // $math = explode('.', $amt);
     // $amount = $math[0].$math[1];
     
-    $amount = ceil($amt);
+    $amount = $amt;
 
     if (strlen($amount) == 12 ) {
 

@@ -8,6 +8,7 @@ require_once APPROOT . '/views/TCPDF-main/tcpdf.php';
   define('BIZID', $data['user']->id);
   define('BIZDSC', $data['user']->biz_dsc);
   define('CATEGORY', $data['user']->category);
+  define('USERTYPE', $data['user']->user_type);
 // Extend the TCPDF class to create custom Header and Footer
 class MYPDF extends TCPDF {
       public $conn;
@@ -26,23 +27,44 @@ class MYPDF extends TCPDF {
         {
           die("failed to connect");
         }
-        $this->SetTextColor(10, 113, 11);
-        $this->SetFont('helvetica', 'B', 20);
-        $this->cell(190, 2, "$user_name", 0, 1, "L");
-
-        $this->Ln(1);
-        $this->SetTextColor(10, 10, 11);
-        $this->SetFont('helvetica', 'N', 12);
-        $this->cell(190, 2, "$user_dsc", 0, 1, "L");
-        $this->Ln(1);
-        $this->SetFont('helvetica', 'N', 12);
-        $this->cell(190, 3, "Address: $user_address", 0, 1, "L");
-
-
-        $this->SetFont('helvetica', 'B', 15);
-        $this->cell(190, 2, "Hotline: $user_phone", 0, 1, "R");
-        $this->SetTextColor(28, 81, 5);
-        $this->cell(86, 0, '-------------------------------------------------------------------------------------------------------------', 0, '', '', '');
+        
+        if (USERTYPE == 'customized') {
+          $image_file = URLROOT.'/logo/logo.png';
+          $this->Image($image_file, 10, 10, 25, '30', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+          $image_file = URLROOT.'/logo/001.png';
+          $this->Image($image_file, 35, 10, 155, '40', 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
+          
+          $this->SetTextColor(28, 81, 5);
+          $this->cell(86, 0, '---------------------------------------------------------------------------------------------------------------------------', 0, '', '', '');
+          
+          $this->Ln(28);
+          $this->SetFont('times', 'I', 12);
+          $this->Cell(0, 10, 'Address: '.$user_address, 0, false, 'L', 0, '', 0, false, 'T', 'M');
+          //$this->Ln(1);
+          $this->SetFont('times', 'B', 12);
+          $this->Cell(0, 10, 'Hotline: '.$user_phone, 0, false, 'R', 0, '', 0, false, 'T', 'M');
+          //$this->Cell(0, 10, 'Phone: '.$user_phone, 0, false, 'R', 0, '', 0, false, 'T', 'M');
+          //$this->Cell(0, 10, 'Phone: '.$user_phone, 0, false, 'R', 0, '', 0, false, 'T', 'M');
+          $this->Ln(8);
+          $this->cell(86, 0, '-------------------------------------------------------------------------------------------------------------------------------------------', 0, '', '', '');
+        }else{
+          $this->SetTextColor(10, 113, 11);
+          $this->SetFont('helvetica', 'B', 20);
+          $this->cell(0, 4, "$user_name", 0, 1, "L");
+          $this->SetTextColor(10, 10, 11);
+          $this->SetFont('helvetica', 'N', 12);
+          $this->cell(0, 2, "$user_dsc", 0, 1, "L");
+          $this->SetFont('times', 'I', 12);
+          $this->cell(0, 3, "Address: $user_address", 0, 0, "L");
+          $this->SetFont('helvetica', 'B', 15);
+          $this->cell(0, 2, "Hotline: $user_phone", 0, 1, "R");
+         
+         
+          $this->SetTextColor(28, 81, 5);
+          $this->cell(86, 0, '-------------------------------------------------------------------------------------------------------------', 0, '', '', '');
+        }
+       
+        
     }
 
     // Page footer
@@ -50,7 +72,7 @@ class MYPDF extends TCPDF {
         // Position at 15 mm from bottom
         $this->SetY(-15);
         // Set font
-        $this->SetFont('helvetica', 'I', 14);
+        $this->SetFont('helvetica', 'I', 10);
         // Page number
         $this->Cell(0, 10, 'Thanks for your patronage, pls call again!', 0, false, 'C', 0, '', 0, false, 'T', 'M');
         //$this->SetY(-20);
@@ -105,6 +127,7 @@ $pdf->SetFont('times', 'B', 12);
 
 // add a page
 $pdf->AddPage();
+
 if(!$conn = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME))
 {
   die("failed to connect");
@@ -125,8 +148,15 @@ $paid = $result['paid'];
 $date = $result['c_date'].' '.$result['c_month'].' '.$result['c_year'];
 $time = $result['c_time'];
 $sum = 0;
-
-  $pdf->Ln(21);
+   // //add background image
+   // $url_bg = URLROOT.'/logo/logo1.png';
+   // $pdf->Image("$url_bg", 60, 70, 90);
+  
+  if (USERTYPE == 'customized') {
+   $pdf->Ln(30);
+  }else{
+    $pdf->Ln(12);
+  }
   $pdf->SetFont('times', 'N', '12');
   $pdf->SetTextColor(01,19,20);
   $pdf->Cell(35, 5, "Customer name:", 0, 0, "L");
@@ -237,7 +267,7 @@ $sum = 0;
    } 
   }//Business category B&S ends...
   else{
-  //Business category == services
+  //Business category == services begins
     $pdf->Ln(18);
     $pdf->SetFillColor(0, 0, 0);
     $pdf->SetTextColor(255,255,255);
@@ -250,8 +280,14 @@ $sum = 0;
       //$qty = $result['qty'];
       $dsc = $result['dsc'];
       $rate = $result['rate'];
-      $total = $sum += $rate;
-      
+      if (!empty($rate)) {
+       
+        $rate = (int)$result['rate'];
+        $sum += $rate;
+        
+      }
+
+     $total = $sum; 
      // $balance = $total - $paid;
 
       $pdf->Ln(9); //this will reduce the line height of each subject
@@ -282,9 +318,11 @@ $sum = 0;
       $pdf->Ln(8);
       $pdf->SetTextColor(10, 93, 11);
       $pdf->SetFont('helvetica', 'B', '15');
-      $pdf->Cell(108, 4, 'Balance:', 0, 0, "R");
-      $pdf->Cell(10, 4, '', 0, 0, "");
-      $pdf->Cell(75, 4, 'N'.put_coma($total - $paid), 0, 0, "L");
+      if ($total > $paid) {
+        $pdf->Cell(108, 4, 'Balance:', 0, 0, "R");
+        $pdf->Cell(10, 4, '', 0, 0, "");
+        $pdf->Cell(75, 4, 'N'.put_coma($total - $paid), 0, 0, "L");
+      }
     }else{
       $pdf->Ln(8);
       $pdf->SetTextColor(10, 93, 11);
@@ -305,24 +343,24 @@ $sum = 0;
 
 $pdf->Ln(10);
 $pdf->SetTextColor(28, 81, 5);
-$pdf->cell(86, 0, '_________________________________________________________________________________________', 0, '', '', '');
+$pdf->cell(86, 0, '_____________________________________________________________________________________', 0, '', '', '');
 // set some text to print
 $today_date = date('F d, Y');
-$time = date('h:ia');
+$time1 = date('h:ia');
 $txt = <<<EOD
 
-This invoice was generated on $today_date at exactlty $time
+This invoice was generated on $today_date at exactlty $time1
 EOD;
 
 // print a block of text using Write()
-//$pdf->Ln(16);
+$pdf->Ln(16);
 $pdf->SetTextColor(28, 11, 5);
 $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
 
 // ---------------------------------------------------------
 
 //Close and output PDF document
-$pdf->Output('invoiceOnline.pdf', 'I');
+$pdf->Output($customer_name.' '.$today_date.'.pdf', 'I');
 
 //============================================================+
 // END OF FILE

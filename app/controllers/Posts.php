@@ -128,18 +128,18 @@
         }//end for each
 
         if ($success) {
-            $this->postModel->deleteEmpty();
+            //$this->postModel->deleteEmpty();
             flash('msg', 'Invoice recorded and saved successfully..');
             $redirect = URLROOT.'/posts/show/'.$t_id;
             echo "
-                  <div class='alert alert-success'>
-                    Successfull...  <span class='spinner-border spinner-border-sm'> </span>
+                  <div class='flash-msg alert alert-success'>
+                    Transaction Recorded Successfully...  <span class='spinner-border spinner-border-sm'> </span>
                 </div>
-              <meta http-equiv='refresh' content='4.1; $redirect'>
+              <meta http-equiv='refresh' content='1.1; $redirect'>
             ";
           }else{
             echo "
-                  <div class='alert alert-danger'>
+                  <div class='flash-msg alert alert-danger'>
                     Something went wrong... Try again later
                 </div>
                   
@@ -180,10 +180,10 @@
             'id' => $id[$index]
           ];
           $this->postModel->updatePost($data);
-          flash('msg', 'Invoice updated and saved successfully..');
-          redirect('posts/show/'.$t_id);
-          $this->postModel->deleteEmpty();
         }//end for each
+         flash('msg', 'Invoice updated and saved successfully..');
+          redirect('posts/show/'.$t_id);
+          //$this->postModel->deleteEmpty();
       }//end server request
       
       else{

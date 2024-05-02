@@ -77,18 +77,7 @@
         $this->view('pages/download_invoice', $data);
      
     }
-
-    public function customers(){
-      $customers = $this->userModel->get_customers();
-      //Set Data
-      $data = [
-        'customers' => $customers
-      ];
-
-      // Load about view
-      $this->view('pages/customers', $data);
-    }
-
+    
     public function customer_history($phone){
       $history = $this->userModel->get_history($phone);
       $name = $this->userModel->get_customersName($phone);

@@ -34,7 +34,10 @@
                     ---
                 </option>
                 <option value="B&S">
-                    Buying and selling
+                    Production
+                </option>
+                <option value="B&S">
+                    Trading
                 </option>
                 <option value="services">
                     Service rendering

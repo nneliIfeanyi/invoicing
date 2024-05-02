@@ -139,7 +139,7 @@
         <td> <?= $post->dsc;?></td>
         <td><?= $post->rate;?></td>
       </tr>
-      <?php $total=$post->rate ;?>
+      <?php $total=(int)$post->rate ;?>
     <?php $sum += $total; endforeach;?>
     <tr>
       <th>Total:</th>

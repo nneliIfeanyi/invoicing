@@ -88,6 +88,22 @@
       }
     }
 
+
+    public function updatePassword($new){
+      $this->db->query('UPDATE bizusers SET bizpassword = :password  WHERE id = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->bind(':password', $new);
+  
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     // Find User By ID
     public function getUserById($id){
       $this->db->query("SELECT * FROM bizusers WHERE id = :id");
@@ -112,7 +128,22 @@
       }
     }
 
-    
+    //update business logo
+     public function edit_pic($data){
+      // Prepare Query
+      $this->db->query('UPDATE bizusers SET logo = :img WHERE id = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $data['id']);
+      $this->db->bind(':img', $data['image']);
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
 
 
     public function updateStatus($id, $length){
