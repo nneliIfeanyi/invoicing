@@ -13,11 +13,13 @@
 </script>
 <script src="<?php echo URLROOT; ?>/app.js"></script>
 <script>
-  $(window).on("load", function(){
-    $('#loader').fadeIn();
-     $(document).ready(function(){
-        $('#loader').fadeOut();
-    });
+  $(document).ready(function(){
+
+    $(window).on("hashchange", function(){
+      $('#loader').fadeIn();
+          
+      });
+    $('#loader').fadeOut();
   });
 </script>
 

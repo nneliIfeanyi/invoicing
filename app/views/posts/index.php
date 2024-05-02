@@ -107,4 +107,32 @@
     </a>
   </p>
 </div>
+<!-- <script>
+
+    setTimeout(displayMessage, 2100);
+
+    function displayMessage() {
+    const body = document.body;
+
+    const panel = document.createElement('div');
+    panel.setAttribute('class','flash-msg1 card card-body');
+    body.appendChild(panel);
+
+    const msg = document.createElement('p');
+    msg.textContent = 'System busy, please try again later';
+    panel.appendChild(msg);
+    msg.setAttribute('class','lead');
+
+
+
+    const closeBtn = document.createElement('button');
+    closeBtn.textContent = 'Continue';
+    closeBtn.setAttribute('class','btn btn-success btn-sm');
+    panel.appendChild(closeBtn);
+
+    closeBtn.addEventListener('click', () => panel.parentNode.removeChild(panel));
+
+
+} 
+</script> -->
 <?php require APPROOT . '/views/inc/footer.php'; ?>
