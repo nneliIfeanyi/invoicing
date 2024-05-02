@@ -318,7 +318,7 @@ $sum = 0;
       $pdf->Ln(8);
       $pdf->SetTextColor(10, 93, 11);
       $pdf->SetFont('helvetica', 'B', '15');
-      if ($total > $paid) {
+      if ($total >= $paid) {
         $pdf->Cell(108, 4, 'Balance:', 0, 0, "R");
         $pdf->Cell(10, 4, '', 0, 0, "");
         $pdf->Cell(75, 4, 'N'.put_coma($total - $paid), 0, 0, "L");
