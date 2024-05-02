@@ -364,7 +364,7 @@
     $('#add_form').parsley();
     $('#add_form').on('submit', function(event){
         event.preventDefault();
-        $('#loader').fadeIn();
+        
         if($('#add_form').parsley().isValid()){
             let formData = $(this).serialize();
             $.ajax({
