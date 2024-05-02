@@ -107,8 +107,6 @@
   <div id="loader" class="overflow-hidden align-items-middle position-fixed top-0 left-0 w-100 h-100 bg-light">
     <div class="loader-container position-relative d-flex align-items-center justify-content-center flex-column vw-100 vh-100 text-center">
       <span class="spinner-border"> </span>
-
-      <!-- <h3 class="loader-site">Loading...</h3> -->
     </div>
   </div>
   <div class="container">

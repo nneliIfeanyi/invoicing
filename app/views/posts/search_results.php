@@ -5,10 +5,10 @@
       <div class="col-md-6">
         <?= flash('msg');?>
         <h1 class="h4 m-0">Search results for "<?= $data['search_input']; ?>"</h1>
-      </div>
+      </div><!-- 
       <div class="col-md-6">
         <a href="<?php echo URLROOT;?>/posts" class="btn"><i class="fa fa-backward"></i> Go Back</a>
-      </div>
+      </div> -->
     </div>
 
     <?php if(!empty($data['transactions'])):?>

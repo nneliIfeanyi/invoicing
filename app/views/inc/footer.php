@@ -13,7 +13,11 @@
 </script>
 <script src="<?php echo URLROOT; ?>/app.js"></script>
 <script>
-  $(document).ready(function(){
-    $('#loader').fadeOut();
-  })
+  $(window).on("load", function(){
+    $('#loader').fadeIn();
+     $(document).ready(function(){
+        $('#loader').fadeOut();
+    });
+  });
 </script>
+
