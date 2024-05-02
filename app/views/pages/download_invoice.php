@@ -39,7 +39,7 @@ class MYPDF extends TCPDF {
           
           $this->Ln(28);
           $this->SetFont('times', 'I', 12);
-          $this->Cell(0, 10, 'Address: '.$user_address, 0, false, 'L', 0, '', 0, false, 'T', 'M');
+          $this->Cell(0, 10, $user_address, 0, false, 'L', 0, '', 0, false, 'T', 'M');
           //$this->Ln(1);
           $this->SetFont('times', 'B', 12);
           $this->Cell(0, 10, 'Hotline: '.$user_phone, 0, false, 'R', 0, '', 0, false, 'T', 'M');
