@@ -1,5 +1,6 @@
 
 <script src="<?php echo URLROOT; ?>/js/jquery.js"></script>
+
 <script src="<?= URLROOT ;?>/js/parsley.min.js"></script>
 <script src="<?php echo URLROOT; ?>/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -11,3 +12,8 @@
     const popoverList = [...popover].map((popoverTrigger) => new bootstrap.Popover(popoverTrigger));
 </script>
 <script src="<?php echo URLROOT; ?>/app.js"></script>
+<script>
+  $(document).ready(function(){
+    $('#loader').fadeOut();
+  })
+</script>

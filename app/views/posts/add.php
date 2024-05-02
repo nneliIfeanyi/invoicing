@@ -55,10 +55,11 @@
                       <input min="0" name="qty[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[0-9.]+$" value="" style="width: 60px;">
                     </td>
                     <td>
-                      <input name="dsc[]" class="form-input" data-parsley-trigger="keyup" type="text" value="" style="width: 55vw;">
+                      <input name="dsc[]" class="form-input"  data-parsley-length="[0, 30]" data-parsley-trigger="keyup" type="text" value="" style="width: 55vw;">
                     </td>
                     <td>
-                      <input name="rate[]" min="0" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
+                      <input name="rate[]" min="0" id="input" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
+                      <small id="rate-value" class="">
                     </td>
                     <td data-bs-toggle="tooltip" data-bs-title="automatically calculated">
                     </td>

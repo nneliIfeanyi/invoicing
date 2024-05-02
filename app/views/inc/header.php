@@ -22,6 +22,18 @@
   <meta name="theme-color" content="#198754">
   <title><?php echo (!empty($_SESSION['user_name'])) ? $_SESSION['user_name'].' '.'Sales Invoice': 'Invoice Online'; ?></title>
   <style type="text/css">
+    #loader {
+      min-height: 100%;
+      z-index: 99999;
+    }
+
+    .flash-msg1{
+      position: fixed;
+      top: 9vh;
+      right: 0;
+      width: auto;
+      z-index: 500;
+    }
     .flash-msg{
       position: fixed;
       top: 9vh;
@@ -87,9 +99,17 @@
         color: #D43F3A;
         opacity: 1;
     }
-  </style>
+    </style>
 </head>
 <body style="position: relative;">
   <?php require APPROOT . '/views/inc/navbar.php'; ?>
+  <!-- PAGE LOADER -->
+  <div id="loader" class="overflow-hidden align-items-middle position-fixed top-0 left-0 w-100 h-100 bg-light">
+    <div class="loader-container position-relative d-flex align-items-center justify-content-center flex-column vw-100 vh-100 text-center">
+      <span class="spinner-border"> </span>
+
+      <!-- <h3 class="loader-site">Loading...</h3> -->
+    </div>
+  </div>
   <div class="container">
-  
+    

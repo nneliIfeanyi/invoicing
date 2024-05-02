@@ -11,11 +11,11 @@
       <form action="<?php echo URLROOT; ?>/users/register" method="post" id="register_form">
         <div class="form-group mb-3">
             <label>Business Name:</label>
-            <input type="text" name="name" required data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['name']; ?>">
+            <input type="text" name="name" id="business-name" data-parsley-length="[0, 25]" required data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['name']; ?>">
         </div> 
         <div class="form-group mb-3">
             <label>Business Description:</label>
-            <input type="text" name="biz_dsc" class="form-control form-control-lg <?php echo (!empty($data['biz_dsc_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['biz_dsc']; ?>">
+            <input type="text" name="biz_dsc" data-parsley-length="[0, 30]" required data-parsley-trigger="keyup" class="form-control form-control-lg <?php echo (!empty($data['biz_dsc_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['biz_dsc']; ?>">
             <span class="invalid-feedback"><?php echo $data['biz_dsc_err']; ?></span>
         </div> 
         <div class="form-group mb-3">
@@ -25,7 +25,7 @@
         </div> 
         <div class="form-group mb-3">
             <label>Business Address:</label>
-            <input type="text" name="address" class="form-control form-control-lg" value="<?php echo $data['address']; ?>">
+            <input type="text" name="address" class="form-control form-control-lg" data-parsley-length="[0, 30]" required data-parsley-trigger="keyup" value="<?php echo $data['address']; ?>">
         </div>
         <div class="form-group mb-3">
             <label>Business category:</label>
