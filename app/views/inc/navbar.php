@@ -1,17 +1,17 @@
 
 <nav class="navbar navbar-expand-lg p-2 navbar-dark bg-dark mb-3 sticky-top border-bottom border-primary">
   <div class="container">
-    <a class="navbar-brand" href="<?= URLROOT;?>/pages/index">Invoice<span class="text-primary">Online</span></a>
+    <a class="navbar-brand" id="link1" href="<?= URLROOT;?>/pages/index">Invoice<span class="text-primary">Online</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="<?php echo URLROOT;?>/pages/index">Home</a>
+          <a class="nav-link" id="link2" href="<?php echo URLROOT;?>/pages/index">Home</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="<?php echo URLROOT;?>/pages/subscribe">Pricing</a>
+          <a class="nav-link" id="link3" href="<?php echo URLROOT;?>/pages/subscribe">Pricing</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about"><i class="fa fa-plus" aria-hidden="true"></i> About</a>
@@ -20,23 +20,23 @@
       <ul class="navbar-nav ms-auto">
       <?php if(isset($_SESSION['user_id'])) : ?>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/posts/add/1">Add Transaction</a>
+          <a class="nav-link" id="link4" href="<?php echo URLROOT; ?>/posts/add/1">Add Transaction</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/users/profile">Profile</a>
+          <a class="nav-link" id="link5" href="<?php echo URLROOT; ?>/users/profile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://wa.me/2349168655298"><i class="fab fa-whatsapp" aria-hidden="true"></i> Whatapp</a>
+          <a class="nav-link" id="link6" href="https://wa.me/2349168655298"><i class="fab fa-whatsapp" aria-hidden="true"></i> Whatapp</a>
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+          <a class="nav-link" id="link7" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
         </li>
       <?php else : ?>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/users/login">Login</a>
+          <a class="nav-link" id="link8" href="<?php echo URLROOT; ?>/users/login">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/users/register">Register</a>
+          <a class="nav-link" id="link9" href="<?php echo URLROOT; ?>/users/register">Register</a>
         </li>
       <?php endif; ?>
       </ul>

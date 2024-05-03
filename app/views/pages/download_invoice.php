@@ -349,7 +349,7 @@ $today_date = date('F d, Y');
 $time1 = date('h:ia');
 $txt = <<<EOD
 
-This invoice was generated on $today_date at exactlty $time1
+This invoice was generated on $today_date at exactly $time1
 EOD;
 
 // print a block of text using Write()

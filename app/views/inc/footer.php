@@ -14,12 +14,51 @@
 <script src="<?php echo URLROOT; ?>/app.js"></script>
 <script>
   $(document).ready(function(){
-
-    $(window).on("hashchange", function(){
-      $('#loader').fadeIn();
-          
-      });
     $('#loader').fadeOut();
   });
 </script>
 
+
+
+<script>
+  $(document).ready(function(){
+    $('#link1').click(function(){
+      $('#loader').fadeIn();
+    });
+  });
+</script>
+<script>
+  $(document).ready(function(){
+    $('#link6').click(function(){
+      $('#loader').fadeIn();
+    });
+  });
+</script>
+<script>
+  $(document).ready(function(){
+    $('#link2').click(function(){
+      $('#loader').fadeIn();
+    });
+  });
+</script>
+<script>
+  $(document).ready(function(){
+    $('#link3').click(function(){
+      $('#loader').fadeIn();
+    });
+  });
+</script>
+<script>
+  $(document).ready(function(){
+    $('#link4').click(function(){
+      $('#loader').fadeIn();
+    });
+  });
+</script>
+<script>
+  $(document).ready(function(){
+    $('#link5').click(function(){
+      $('#loader').fadeIn();
+    });
+  });
+</script>
