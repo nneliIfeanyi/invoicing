@@ -104,8 +104,8 @@
 <body style="position: relative;">
   <?php require APPROOT . '/views/inc/navbar.php'; ?>
   <!-- PAGE LOADER -->
-  <div id="loader" class="overflow-hidden align-items-middle position-fixed top-0 left-0 w-100 h-100 bg-light">
-    <div class="loader-container position-relative d-flex align-items-center justify-content-center flex-column vw-100 vh-100 text-center">
+  <div id="loader" class="overflow-hidden align-items-middle position-fixed top-0 left-0 w-100 h-100">
+    <div class="loader-container position-relative d-flex align-items-center justify-content-center flex-column vw-100 vh-100 text-center" style="background: rgba(25, 135, 84, 0.7);">
       <span class="spinner-border"> </span>
     </div>
   </div>
