@@ -35,7 +35,11 @@
         $edit_profile = $this->userModel->updateProfile($data);
         if ($edit_profile) {
           flash('msg', 'Profile updated Successfully');
-          redirect('users/profile');
+          echo "
+                <script>
+                 window.location = window.location.href;
+              </script>
+            ";
         }else{
           die('Something went wrong');
         }
