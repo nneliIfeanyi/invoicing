@@ -20,21 +20,52 @@
       }
     }
 
-     public function profile(){
-      $customers = $this->userModel->get_customers();
-      $user = $this->userModel->getUserById($_SESSION['user_id']);
+    public function profile(){
+      if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         $data = [
-          'user' => $user,
-          'customers' => $customers,
+          'dsc' => trim($_POST['dsc']),
+          'phone' => trim($_POST['phone']),
+          'email' => trim($_POST['email']),
+          'address' => trim($_POST['address']),
+          'phone_err' => '',
+          'email_err' => '',
         ];
 
-        // Load index view
+        $edit_profile = $this->userModel->updateProfile($data);
+        if ($edit_profile) {
+          flash('msg', 'Profile updated Successfully');
+          redirect('users/profile');
+        }else{
+          die('Something went wrong');
+        }
+      }//Edit profile Server request ends
+      else{
+        $customers = $this->userModel->get_customers();
+        $user = $this->userModel->getUserById($_SESSION['user_id']);
+          $data = [
+            'user' => $user,
+            'customers' => $customers,
+          ];
+
+          // Load index view
         $this->view('users/profile', $data);
-      }
+      }   
+    }
 
       //update business logo function
       public function logo(){
         if(isset($_POST['new_logo'])) {
+
+          if(empty($_POST['new_logo'])) {
+            flash('msg', 'Please select an image file', 'flash-msg alert alert-danger');
+            echo "
+                <script>
+                 window.location = window.location.href;
+              </script>
+            ";
+          }
+
           $uploadPath = "logo/";
           $fileName = basename($_FILES["new_logo"]["name"]); 
           $db_image_file =  $uploadPath . $fileName; 

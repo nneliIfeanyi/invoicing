@@ -20,12 +20,12 @@
         </div> 
         <div class="form-group mb-3">
             <label>Hotline:</label>
-            <input type="number" name="phone" required data-parsley-trigger="keyup" data-parsley-length="[0, 11]" class="form-control form-control-lg <?php echo (!empty($data['phone_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['phone']; ?>">
+            <input type="number" name="phone" required data-parsley-trigger="keyup" data-parsley-length="[10, 11]" class="form-control form-control-lg <?php echo (!empty($data['phone_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['phone']; ?>">
             <span class="invalid-feedback"><?php echo $data['phone_err']; ?></span>
         </div> 
         <div class="form-group mb-3">
             <label>Business Address:</label>
-            <input type="text" name="address" class="form-control form-control-lg" data-parsley-length="[0, 30]" required data-parsley-trigger="keyup" value="<?php echo $data['address']; ?>">
+            <input type="text" name="address" class="form-control form-control-lg" data-parsley-length="[0, 30]" data-parsley-trigger="keyup" value="<?php echo $data['address']; ?>">
         </div>
         <div class="form-group mb-3">
             <label>Business category:</label>
@@ -78,4 +78,4 @@
 <?php require APPROOT . '/views/inc/footer.php'; ?>
 <script type="text/javascript">
     $('#register_form').parsley();
-  </script>
+</script>

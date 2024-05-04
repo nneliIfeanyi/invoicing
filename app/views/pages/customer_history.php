@@ -18,7 +18,7 @@
         </div>
 
         <?php 
-        $transactions = $this->postModel->get_per_dept($customer_info->t_id);
+        $transactions = $this->postModel->get_per_dept($post->t_id);
         $amt=0;
         foreach($transactions as $trns){
           if (empty($trns->qty)) {
@@ -36,11 +36,11 @@
         <?php if($_SESSION['user_status'] !== 'expired'):?>
         <a href="<?= URLROOT;?>/posts/show/<?php echo $post->t_id;?>" class="btn btn-sm btn-success"><i class="fa fa-eye"></i> Preview transaction</a>
 
-        <a href="javascript:void();" 
+        <button 
           data-bs-toggle="modal" data-bs-target="#deleteModal<?= $post->t_id ?>" 
           class="btn btn-sm btn-outline-danger">
           <i class="fa fa-trash"></i> Delete transaction
-        </a>
+        </button>
       <?php else:?>
         <a href="javascript:void();"  
           class="btn btn-sm btn-outline-danger">Your subscription has expired
@@ -87,3 +87,10 @@
   </p>
 </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
+<script>
+  $(document).ready(function(){
+    $('#link1').click(function(){
+      $('#loader').fadeOut();
+    });
+  });
+</script>

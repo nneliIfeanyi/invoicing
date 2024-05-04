@@ -27,3 +27,12 @@
     });
   });
 </script>
+
+
+<!-- <script>
+  $(document).ready(function(){
+    $('#link1').click(function(){
+      $('#loader').fadeIn();
+    });
+  });
+</script> -->

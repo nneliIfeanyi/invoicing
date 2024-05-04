@@ -35,6 +35,26 @@
       }
     }
 
+     public function updateProfile($data){
+     
+      // Prepare Query
+      $this->db->query('UPDATE bizusers SET biz_dsc = :dsc, bizphone = :phone, email = :email, bizaddress = :address WHERE id = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->bind(':dsc', $data['dsc']);
+      $this->db->bind(':phone', $data['phone']);
+      $this->db->bind(':email', $data['email']);
+      $this->db->bind(':address', $data['address']);
+    
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     // Find USer BY Phone
     public function findUserByPhone($phone){
       $this->db->query("SELECT * FROM bizusers WHERE bizphone = :phone");

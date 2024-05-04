@@ -18,10 +18,10 @@ class MYPDF extends TCPDF {
       public $user_address;
     //Page header
     public function Header() {
-        $user_name = BIZNAME;
+        $user_name = htmlspecialchars_decode(BIZNAME);
         $user_phone = BIZHOTLINE;
-        $user_address = BIZADDRESS;
-        $user_dsc = BIZDSC;
+        $user_address = htmlspecialchars_decode(BIZADDRESS);
+        $user_dsc = htmlspecialchars_decode(BIZDSC);
 
         if(!$conn = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME))
         {

@@ -93,39 +93,38 @@
           <h4 class="text-uppercase h5 text-muted">Edit Profile</h4>
           <hr class="w-25 mx-auto" />
         </div>
-
+        <form action="<?php echo URLROOT; ?>/users/profile" method="post" id="update_profile">
         <div class="d-flex flex-column gap-2 align-items-center mb-5">
           <div class="form-group mb-3">
             <label>Business Description:</label>
-            <input name="dsc" required data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?= $data['user']->biz_dsc;?>">
+            <input name="dsc" data-parsley-length="[0, 25]" required data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?= $data['user']->biz_dsc;?>">
           </div>
           <div class="form-group mb-3">
             <label>Business Address:</label>
-            <input name="address" required data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?= $data['user']->bizaddress;?>">
+            <input name="address" data-parsley-length="[0, 30]" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?= $data['user']->bizaddress;?>">
           </div>
           <div class="form-group mb-3">
             <label>Business Phone 1:</label>
-            <input type="number" name="phone" required data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?= $data['user']->bizphone;?>">
+            <input type="number" name="phone" data-parsley-length="[10, 11]" required data-parsley-trigger="keyup" class="form-control form-control-lg <?php echo (!empty($data['phone_err'])) ? 'is-invalid' : ''; ?>" value="<?= $data['user']->bizphone;?>">
+            <span class="invalid-feedback"><?php echo $data['phone_err']; ?></span>
           </div>
-          <div class="form-group mb-3">
+         <!--<div class="form-group mb-3">
             <label>Business Phone 2: <span class="text-muted fs-6">optional</span></label>
             <input type="number" name="phone" required data-parsley-trigger="keyup" class="form-control form-control-lg" value="">
-          </div>
-          <div class="form-group mb-3">
-            <label>Business Phone 3: <span class="text-muted fs-6">optional</span></label>
-            <input type="number" name="phone" required data-parsley-trigger="keyup" class="form-control form-control-lg" value="">
-          </div>
+          </div> -->
           <div class="form-group mb-3">
             <label>Email:</label>
-            <input type="email" name="email" required data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?= $data['user']->email;?>">
+            <input type="email" name="email" required data-parsley-trigger="keyup" class="form-control form-control-lg <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?= $data['user']->email;?>">
+            <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
           </div>
-    <!-- 
+    
           <div class="row">
             <div class="col-md-6">
               <input type="submit" class="btn btn-success btn-block mb-3" value="Update Profile">
             </div>
-          </div> -->
+          </div>
         </div>
+      </form>
     </section>
   </div>
 </div>
@@ -140,7 +139,7 @@
       <div class="col-lg-6 mx-auto">
           
         <div class="d-flex flex-column gap-2 align-items-start">
-            <form action="<?php echo URLROOT; ?>/users/password" method="post" id="register_form">
+            <form action="<?php echo URLROOT; ?>/users/password" method="post">
             <div class="form-group mb-3">
                 <label>Current Password:</label>
                 <input type="password" name="old" class="form-control form-control-lg" value="">
@@ -180,3 +179,6 @@
 </section>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
+<script type="text/javascript">
+    $('#update_profile').parsley();
+</script>
