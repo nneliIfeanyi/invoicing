@@ -21,35 +21,7 @@
     }
 
     public function profile(){
-      if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        $data = [
-          'dsc' => trim($_POST['dsc']),
-          'phone' => trim($_POST['phone']),
-          'email' => trim($_POST['email']),
-          'address' => trim($_POST['address']),
-          'phone_err' => '',
-          'email_err' => '',
-        ];
-
-        $edit_profile = $this->userModel->updateProfile($data);
-        if ($edit_profile) {
-          flash('msg', 'Profile updated Successfully');
-          echo "
-                <script>
-                 window.location = window.location.href;
-              </script>
-            ";
-        }else{
-           flash('msg', 'Something went wrong');
-          echo "
-                <script>
-                 window.location = window.location.href;
-              </script>
-            ";
-        }
-      }//Edit profile Server request ends
-      else{
+      
         $customers = $this->userModel->get_customers();
         $user = $this->userModel->getUserById($_SESSION['user_id']);
           $data = [
@@ -59,7 +31,7 @@
 
           // Load index view
         $this->view('users/profile', $data);
-      }   
+    
     }
 
       //update business logo function
@@ -302,6 +274,32 @@
       }
     }
 
+      public function update_profile(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+          $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+          $data = [
+            'dsc' => trim($_POST['dsc']),
+            'phone' => trim($_POST['phone']),
+            'email' => trim($_POST['email']),
+            'address' => trim($_POST['address']),
+            'phone_err' => '',
+            'email_err' => '',
+          ];
+
+          $edit_profile = $this->userModel->updateProfile($data);
+          if ($edit_profile) {
+            $_SESSION['user_dsc'] = $data['dsc'];
+            $_SESSION['user_phone'] = $data['phone'];
+            $_SESSION['address'] = $data['address'];
+            $_SESSION['email'] = $data['email'];
+            flash('msg', 'Profile updated Successfully');
+           redirect('users/profile');
+          }else{
+             die('Something went wrong');
+          }
+        }//Edit profile Server request ends
+      }
+
     // Create Session With User Info
     public function createUserSession($user){
       
@@ -312,6 +310,7 @@
         $_SESSION['user_dsc'] = $user->biz_dsc;
         $_SESSION['user_status'] = $user->status;
         $_SESSION['renew'] = $user->renew;
+        $_SESSION['email'] = $user->email;
         $_SESSION['category'] = $user->category;
         $_SESSION['user_type'] = $user->user_type;
         $_SESSION['logo'] = $user->logo;

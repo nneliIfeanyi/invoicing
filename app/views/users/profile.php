@@ -33,7 +33,7 @@
       <span class="lead">Click customer's phone number to send whatsApp message.</span>
     </h1>
     <div class="card bg-light mt-3">
-      <div class="table-responsive">
+      <div class="table-responsive mb-5">
         <table id="example" class="table" style="width:100%;">
           <thead class="bg-primary">
             <tr class="border">
@@ -93,7 +93,7 @@
           <h4 class="text-uppercase h5 text-muted">Edit Profile</h4>
           <hr class="w-25 mx-auto" />
         </div>
-        <form action="<?php echo URLROOT; ?>/users/profile" method="post" id="update_profile">
+        <form action="<?php echo URLROOT; ?>/users/update_profile" method="post" id="update_profile">
         <div class="d-flex flex-column gap-2 align-items-center mb-5">
           <div class="form-group mb-3">
             <label>Business Description:</label>
@@ -131,13 +131,10 @@
 
 <!-- Password reset section -->
 <section id="about" class="bg-light card card-body mb-5">
-    <!-- <div class="text-center">
-      <h4 class="text-uppercase h5 text-muted">Change Password</h4>
-      <hr class="w-25 mx-auto" />
-    </div> -->
     <div class="row">
       <div class="col-lg-6 mx-auto">
-          
+          <h4 class="text-uppercase h5 text-muted">Change Password</h4>
+          <hr class="w-25 mx-auto" />
         <div class="d-flex flex-column gap-2 align-items-start">
             <form action="<?php echo URLROOT; ?>/users/password" method="post">
             <div class="form-group mb-3">
@@ -155,7 +152,7 @@
         </div>
       </div>
       <!-- change business logo -->
-      <div class="col-lg-4">
+      <!-- <div class="col-lg-4">
           
         <div class="d-flex flex-column gap-2 align-items-center border-top">
             <form action="<?php echo URLROOT; ?>/users/logo" method="post" enctype="multipart/form-data">
@@ -174,7 +171,7 @@
               </div>
           </form>
         </div>
-      </div>
+      </div> -->
     </div>
 </section>
 

@@ -17,41 +17,23 @@
         //check if search input is text
         if (isset($_POST['search'])) {
           $search_input = trim($_POST['search']);
-        if (empty($search_input)) {
-         echo "
-            <script>
-            window.location = window.location.href;
-          </script>
-         ";
-        }
-        else{
           $search_results = $this->postModel->search_results($search_input);
           $data = [
             'search_input' =>$search_input,
             'transactions' =>$search_results
           ];
           $this->view('posts/search_results', $data);
-        }
-
+          //check if search input is number
         }elseif (isset($_POST['search2'])) {
           $search_input = $_POST['search2'];
-        if (empty($search_input)) {
-         echo "
-            <script>
-            window.location = window.location.href;
-          </script>
-         ";
-        }
-          else{
-            $search_results = $this->postModel->search_results2($search_input);
+           $search_results = $this->postModel->search_results2($search_input);
             $data = [
               'search_input' =>$search_input,
               'transactions' =>$search_results
             ];
             $this->view('posts/search_results', $data);
-          }
         }
-
+        //end search function
       }else{
 
         $transactions = $this->postModel->get_transactions();
