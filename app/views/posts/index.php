@@ -26,7 +26,7 @@
       <div class="row mb-3">
           <?= flash('msg');?>
         <div class="col-md-6">
-          <form action="<?= URLROOT?>/posts/index" method="post" class="mt-2">
+          <form action="<?= URLROOT?>/posts/search_results" method="post" class="mt-2">
             <label class="text-muted" style="font-size: 12px;">Search by customer name</label>
             <div class="input-group mb-2">
               <input type="text" class="form-control" name="search" placeholder="Type customer name">
@@ -37,7 +37,7 @@
           </form>
         </div>
         <div class="col-md-6">
-          <form action="<?= URLROOT?>/posts/index" method="post" class="mt-2">
+          <form action="<?= URLROOT?>/posts/search_results" method="post" class="mt-2">
             <label class="text-muted" style="font-size: 12px;">Search by customer phone</label>
             <div class="input-group mb-2">
               <input type="number" class="form-control" name="search2" placeholder="Type customer phone">

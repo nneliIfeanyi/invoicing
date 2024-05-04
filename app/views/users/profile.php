@@ -32,8 +32,8 @@
     <h1 class="h3 text-muted">My Customers<br>
       <span class="lead">Click customer's phone number to send whatsApp message.</span>
     </h1>
-    <div class="card bg-light mt-3">
-      <div class="table-responsive mb-5">
+    <div class="card bg-light my-3">
+      <div class="table-responsive">
         <table id="example" class="table" style="width:100%;">
           <thead class="bg-primary">
             <tr class="border">

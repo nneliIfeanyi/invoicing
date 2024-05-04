@@ -11,30 +11,43 @@
       $this->isPaid($_SESSION['user_id']);
     }//ends construct function
 
-    // Load All Posts
-    public function index(){
-      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+     // Show Single Post
+    public function search_results(){
+     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //check if search input is text
         if (isset($_POST['search'])) {
           $search_input = trim($_POST['search']);
-          $search_results = $this->postModel->search_results($search_input);
-          $data = [
-            'search_input' =>$search_input,
-            'transactions' =>$search_results
-          ];
-          $this->view('posts/search_results', $data);
-          //check if search input is number
-        }elseif (isset($_POST['search2'])) {
-          $search_input = $_POST['search2'];
-           $search_results = $this->postModel->search_results2($search_input);
+          if (empty($search_input)) {
+            redirect('posts/index');
+          }else{
+            $search_results = $this->postModel->search_results($search_input);
             $data = [
               'search_input' =>$search_input,
               'transactions' =>$search_results
             ];
             $this->view('posts/search_results', $data);
+          }
+          //check if search input is number
+        }elseif (isset($_POST['search2'])) {
+          $search_input = $_POST['search2'];
+           if (empty($search_input)) {
+             redirect('posts/index');
+           }else{
+            $search_results = $this->postModel->search_results2($search_input);
+            $data = [
+              'search_input' =>$search_input,
+              'transactions' =>$search_results
+            ];
+            $this->view('posts/search_results', $data);
+           }
         }
         //end search function
-      }else{
+      }
+    }
+
+    // Load All Posts
+    public function index(){
+   
 
         $transactions = $this->postModel->get_transactions();
         $transactions2 = $this->postModel->get_sales();
@@ -63,7 +76,7 @@
         ];
         
         $this->view('posts/index', $data);
-      }
+  
     }
 
     // Show Single Post
