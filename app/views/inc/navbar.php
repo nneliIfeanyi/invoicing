@@ -9,10 +9,10 @@
       <ul class="navbar-nav">
         <li class="nav-item active">
           <a class="nav-link" href="<?php echo URLROOT;?>/pages/index">Home</a>
-        </li>
+        </li><!-- 
         <li class="nav-item active">
           <a class="nav-link" href="<?php echo URLROOT;?>/pages/subscribe">Pricing</a>
-        </li>
+        </li> -->
         <!-- <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about"><i class="fa fa-plus" aria-hidden="true"></i> About</a>
         </li> -->
@@ -24,10 +24,10 @@
         </li>
          <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/users/profile">Profile</a>
-        </li>
+        </li><!-- 
         <li class="nav-item">
           <a class="nav-link" href="https://wa.me/2349168655298"><i class="fab fa-whatsapp" aria-hidden="true"></i> Whatapp</a>
-        </li>
+        </li> -->
           <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
         </li>

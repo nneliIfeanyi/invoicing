@@ -41,7 +41,12 @@
               </script>
             ";
         }else{
-          die('Something went wrong');
+           flash('msg', 'Something went wrong');
+          echo "
+                <script>
+                 window.location = window.location.href;
+              </script>
+            ";
         }
       }//Edit profile Server request ends
       else{
@@ -59,19 +64,15 @@
 
       //update business logo function
       public function logo(){
-        if(isset($_POST['new_logo'])) {
-
-          if(empty($_POST['new_logo'])) {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+           $fileName = basename($_FILES["new_logo"]["name"]); 
+          if(empty($fileName)) {
             flash('msg', 'Please select an image file', 'flash-msg alert alert-danger');
-            echo "
-                <script>
-                 window.location = window.location.href;
-              </script>
-            ";
-          }
+            redirect('users/profile');
+          }else{ 
 
           $uploadPath = "logo/";
-          $fileName = basename($_FILES["new_logo"]["name"]); 
+         
           $db_image_file =  $uploadPath . $fileName; 
           $imageUploadPath = $uploadPath . $fileName; 
           $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION); 
@@ -83,21 +84,24 @@
             //echo $fileName;
              flash('msg', 'Invalid image format..', 'flash-msg alert alert-danger');
              redirect('users/profile');
+          }else{ 
+            $imageTemp = $_FILES["new_logo"]["tmp_name"];
+            $data = [
+              'id' => $_SESSION['user_id'],
+              'image' => $db_image_file,
+              move_uploaded_file($imageTemp, $imageUploadPath)
+            ];
+            $upload = $this->userModel->edit_pic($data);
+            if ($upload) {
+              
+              flash('msg', 'Upload Successfull..');
+              redirect('users/profile');
+            }else{
+              die('Something went wrong..');
+            }
+
           }
-          $imageTemp = $_FILES["new_logo"]["tmp_name"];
-          $data = [
-            'id' => $_SESSION['user_id'],
-            'image' => $db_image_file,
-            move_uploaded_file($imageTemp, $imageUploadPath)
-          ];
-          $upload = $this->userModel->edit_pic($data);
-          if ($upload) {
-            
-            flash('msg', 'Upload Successfull..');
-            redirect('users/profile');
-          }else{
-            die('Something went wrong..');
-          }
+         }
         }
       }
 

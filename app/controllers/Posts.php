@@ -24,12 +24,14 @@
           </script>
          ";
         }
-        $search_results = $this->postModel->search_results($search_input);
-        $data = [
-          'search_input' =>$search_input,
-          'transactions' =>$search_results
-        ];
-        $this->view('posts/search_results', $data);
+        else{
+          $search_results = $this->postModel->search_results($search_input);
+          $data = [
+            'search_input' =>$search_input,
+            'transactions' =>$search_results
+          ];
+          $this->view('posts/search_results', $data);
+        }
 
         }elseif (isset($_POST['search2'])) {
           $search_input = $_POST['search2'];
@@ -40,12 +42,14 @@
           </script>
          ";
         }
-        $search_results = $this->postModel->search_results2($search_input);
-        $data = [
-          'search_input' =>$search_input,
-          'transactions' =>$search_results
-        ];
-        $this->view('posts/search_results', $data);
+          else{
+            $search_results = $this->postModel->search_results2($search_input);
+            $data = [
+              'search_input' =>$search_input,
+              'transactions' =>$search_results
+            ];
+            $this->view('posts/search_results', $data);
+          }
         }
 
       }else{
@@ -204,9 +208,9 @@
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         //Execute
         if($this->postModel->deletePost($id)){
-          // Redirect to login
-          flash('msg', 'Transaction Removed');
-          redirect('pages/customers');
+          
+          flash('msg', 'Transaction Removed', 'flash-msg alert alert-danger');
+          redirect('users/profile');
           } else {
             die('Something went wrong');
           }

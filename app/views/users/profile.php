@@ -142,11 +142,11 @@
             <form action="<?php echo URLROOT; ?>/users/password" method="post">
             <div class="form-group mb-3">
                 <label>Current Password:</label>
-                <input type="password" name="old" class="form-control form-control-lg" value="">
+                <input type="password" name="old" class="form-control form-control-lg" value="" placeholder="*********">
             </div>
             <div class="form-group mb-3">
                 <label>New Password:</label>
-                <input type="password" name="new" class="form-control form-control-lg" value="">
+                <input type="password" name="new" class="form-control form-control-lg" value="" placeholder="*********">
             </div>
             <div class="form-group mb-3">
               <input type="submit" class="btn btn-success" value="Update Password">
