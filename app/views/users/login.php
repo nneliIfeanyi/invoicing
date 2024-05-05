@@ -26,9 +26,9 @@
             <div class="col-md-6">
               <a href="<?php echo URLROOT;?>/users/register" class="text-dark text-muted fs-6">No account? Register</a>
             </div>
-            <!-- <div class="col-md-6">
-              <a href="<?php echo URLROOT;?>/users/register" class="mt-3">Forgot Password?</a>
-            </div> -->
+            <div class="col-md-6">
+              <a href="<?php echo URLROOT;?>/users/password_reset" class="mt-3">Forgot Password?</a>
+            </div>
           </div>
         </form>
       </div>

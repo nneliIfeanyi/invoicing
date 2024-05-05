@@ -69,6 +69,20 @@
         return false;
       }
     }
+    //compare user email with userphone
+     public function compareUserPhoneAndEmail($phone,$email){
+      $this->db->query("SELECT * FROM bizusers WHERE bizphone = :phone");
+      $this->db->bind(':phone', $phone);
+
+      $row = $this->db->single();
+
+      //Check Rows
+      if($row->email == $email){
+        return true;
+      } else {
+        return false;
+      }
+    }
 
     // Find USer BY Email
     public function findUserByEmail($email){
@@ -114,6 +128,21 @@
 
       // Bind Values
       $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->bind(':password', $new);
+  
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    public function updatePassword2($new){
+      $this->db->query('UPDATE bizusers SET bizpassword = :password  WHERE bizphone = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $_SESSION['phone']);
       $this->db->bind(':password', $new);
   
       //Execute

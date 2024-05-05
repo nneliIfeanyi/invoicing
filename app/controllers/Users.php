@@ -103,6 +103,64 @@
       redirect('users/profile');
     }
 
+    public function password_reset(){
+      if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        // Sanitize POST
+        $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $data = [
+        'email' => trim($_POST['email']),
+        'phone' => $_POST['phone'],
+        'email_err' => '',
+        'phone_err' => ''
+        ];
+
+        // if(password_verify($data['old'], $user->bizpassword)){
+        //  //update new password
+        //   $new = password_hash($data['new'], PASSWORD_DEFAULT);
+        //   $this->userModel->updatePassword($new);
+        //   flash('msg', 'Password updated Successfully');
+        //   redirect('users/profile');
+        // } else {
+        //   flash('msg', 'Password incorrect', 'flash-msg alert alert-danger');
+        //   redirect('users/profile');
+        // }
+        if($this->userModel->findUserByEmail($data['email']) || $this->userModel->findUserByPhone($data['phone'])){
+          if ($this->userModel->compareUserPhoneAndEmail($data['phone'],$data['email'])) {
+            $_SESSION['phone'] = $data['phone'];
+            redirect('users/password_reset_link');
+          }else{
+            $data['phone_err'] = 'Credentials does not match';
+            $data['email_err'] = 'Credentials does not match';
+            $this->view('users/password_reset', $data);
+          }
+        }else{
+          $data['phone_err'] = 'Phone number not registered';
+          $data['email_err'] = 'Email is not registered';
+          $this->view('users/password_reset', $data);
+        }
+      }//end server request method
+      else{
+
+        $data = [
+        'email' => '',
+        'email_err' => '',
+        'phone' => '',
+        'phone_err' => ''
+
+        ];
+        // Load index view
+        $this->view('users/password_reset', $data);
+      }
+    }
+
+    public function password_reset_link(){
+      if ($_SESSION['phone']) {
+        $this->view('users/password_reset_link');
+      }else{
+        die('Something went wrong');
+      }
+      
+    }
 
     public function register(){
       // Check if logged in

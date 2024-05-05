@@ -25,6 +25,37 @@
       $this->view('pages/about', $data);
     }
 
+     public function reset_password(){
+      if ($_SESSION['phone']) {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+          $data = [
+            'password' => trim($_POST['password']),
+            'password_err' => ''
+          ];
+
+          if(empty($data['password'])){
+            $data['password_err'] = 'Enter at least 6 characters.';
+             $this->view('pages/reset_password', $data);
+          }
+          elseif(strlen($data['password']) < 6){
+            $data['password_err'] = 'Password must have at least 6 characters.';
+             $this->view('pages/reset_password', $data);
+          }else{
+
+          $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+          $this->userModel->updatePassword2($data['password']);
+          flash('msg', 'Password updated Successfully');
+          unset($_SESSION['phone']);
+          redirect('users/login');
+          }
+        }//Server request method ends
+        $this->view('pages/reset_password');
+      }//If not isset session variable
+      else{
+        die('Something went wrong...Link is expired');
+      }
+    }//Password reset link method ends
+
     public function subscribe(){
       //$_SESSION['user_status'] = '';
       //Set Data
