@@ -10,12 +10,12 @@
           <p class="lead fw-bold">&#8358;<?= put_coma($data['total']); ?>.00</p>
         </div>
       </div>
-      <div class="col-md-6">
+      <!-- <div class="col-md-6">
         <div class="card card-body">
           <h1 class="h3 m-0 text-muted">Total Credits</h1>
           <p class="lead fw-bold">&#8358;<?= put_coma($data['dept']); ?>.00</p>
         </div>
-      </div>
+      </div> -->
       </div>
     </div>
   </div>
