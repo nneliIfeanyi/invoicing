@@ -42,6 +42,9 @@
                 <option value="services">
                     Service rendering
                 </option>
+                <option value="services">
+                    Freelancing
+                </option>
             </select>
         </div>  
         <div class="form-group mb-3">
