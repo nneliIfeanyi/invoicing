@@ -7,11 +7,12 @@
       // Load Models
       $this->postModel = $this->model('Post');
       $this->userModel = $this->model('User');
+      $this->pointModel = $this->model('Point');
 
       $this->isPaid($_SESSION['user_id']);
     }//ends construct function
 
-     // Show Single Post
+    
     public function search_results(){
      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //check if search input is text
@@ -48,7 +49,7 @@
     // Load All Posts
     public function index(){
    
-
+        $count = $this->postModel->get_count();
         $transactions = $this->postModel->get_transactions();
         $transactions2 = $this->postModel->get_sales();
         $transactions3 = $this->postModel->get_dept();
@@ -73,6 +74,7 @@
           'transactions' =>$transactions,
           'total' => $amt,
           'dept'=> $dept,
+          'count' => $count
         ];
         
         $this->view('posts/index', $data);
@@ -167,7 +169,8 @@
         $phone = trim($_POST['customer_phone']);
         $address =trim($_POST['customer_address']);
         $paid = $_POST['paid'];
-        foreach($qty as $index=>$details ){
+        if ($_SESSION['user_points'] > 2) {
+          foreach($qty as $index=>$details ){
           $data = [
             'qty' => $qty[$index],
             'rate' => $rate[$index],
@@ -179,9 +182,16 @@
             'id' => $id[$index]
           ];
           $this->postModel->updatePost($data);
-        }//end for each
-         flash('msg', 'Invoice updated and saved successfully..');
+          }//end for each// code...
+          $_SESSION['user_points'] = $_SESSION['user_points'] - 3;
+          $this->pointModel->use3($_SESSION['user_points']);
+          flash('msg', 'Invoice updated and saved successfully..');
           redirect('posts/show/'.$t_id);
+        }else{
+          flash('msg', 'Not enough Points', 'flash-msg alert alert-danger');
+          redirect('posts/show/'.$t_id);
+        }
+          
           //$this->postModel->deleteEmpty();
       }//end server request
       

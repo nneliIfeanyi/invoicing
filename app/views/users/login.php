@@ -8,7 +8,7 @@
       </div>
         <p class="text-primary fw-semibold">Login to continue</p>
         <p>Please fill in your credentials to login.</p>
-        <form action="<?php echo URLROOT; ?>/users/login" method="post">
+        <form action="<?php echo URLROOT; ?>/users/login" method="post" id="register_form">
           <div class="form-group mb-3">
               <label>Email or Phone:</label>
               <input type="text" name="phone" class="form-control form-control-lg <?php echo (!empty($data['phone_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['phone']; ?>">
@@ -35,3 +35,11 @@
     </div>
   </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
+
+
+
+
+<script type="text/javascript">
+    $('#register_form').parsley();
+    $('#loader').fadeIn();
+</script>

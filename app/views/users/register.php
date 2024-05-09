@@ -81,4 +81,14 @@
 <?php require APPROOT . '/views/inc/footer.php'; ?>
 <script type="text/javascript">
     $('#register_form').parsley();
+    $('#loader').fadeIn();
 </script>
+
+
+<!-- <script>
+  $(document).ready(function(){
+    $('#link1').click(function(){
+      $('#loader').fadeIn();
+    });
+  });
+</script> -->

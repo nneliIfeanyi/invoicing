@@ -6,19 +6,16 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
+      <?php if(isset($_SESSION['user_id'])) : ?>
       <ul class="navbar-nav">
         <li class="nav-item active">
           <a class="nav-link" href="<?php echo URLROOT;?>/pages/index">Home</a>
-        </li><!-- 
+        </li>
         <li class="nav-item active">
-          <a class="nav-link" href="<?php echo URLROOT;?>/pages/subscribe">Pricing</a>
-        </li> -->
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about"><i class="fa fa-plus" aria-hidden="true"></i> About</a>
-        </li> -->
+          <span class="nav-link"><span class="text-primary">P</span><?= $_SESSION['user_points']; ?></span>
+        </li>
       </ul>
       <ul class="navbar-nav ms-auto">
-      <?php if(isset($_SESSION['user_id'])) : ?>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/posts/add/1">Add Transaction</a>
         </li>
@@ -31,15 +28,23 @@
           <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
         </li>
-      <?php else : ?>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/users/login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/users/register">Register</a>
-        </li>
-      <?php endif; ?>
       </ul>
+      <?php else : ?>
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="<?php echo URLROOT;?>/pages/index">Home</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo URLROOT; ?>/users/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo URLROOT; ?>/users/register">Register</a>
+          </li>
+       </ul>
+      <?php endif; ?>
+     
     </div>
   </div>
 </nav>

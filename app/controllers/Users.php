@@ -2,6 +2,7 @@
   class Users extends Controller{
     public function __construct(){
       $this->userModel = $this->model('User');
+      $this->pointModel = $this->model('Point');
     }
 
     public function index(){
@@ -21,7 +22,9 @@
     }
 
     public function profile(){
-      
+        if (!isset($_SESSION['user_id']) ) {
+         redirect('users/login');
+        }
         $customers = $this->userModel->get_customers();
         $user = $this->userModel->getUserById($_SESSION['user_id']);
           $data = [
@@ -37,7 +40,7 @@
       //update business logo function
       public function logo(){
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-           $fileName = basename($_FILES["new_logo"]["name"]); 
+          $fileName = basename($_FILES["new_logo"]["name"]); 
           if(empty($fileName)) {
             flash('msg', 'Please select an image file', 'flash-msg alert alert-danger');
             redirect('users/profile');
@@ -50,26 +53,35 @@
           $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION); 
              
           // Allow certain file formats 
-          $allowTypes = array('jpg','png','jpeg'); 
+          $allowTypes = array('jpg','png','jpeg','PNG'); 
 
           if(!in_array($fileType, $allowTypes)){ 
             //echo $fileName;
              flash('msg', 'Invalid image format..', 'flash-msg alert alert-danger');
              redirect('users/profile');
-          }else{ 
-            $imageTemp = $_FILES["new_logo"]["tmp_name"];
-            $data = [
-              'id' => $_SESSION['user_id'],
-              'image' => $db_image_file,
-              move_uploaded_file($imageTemp, $imageUploadPath)
-            ];
-            $upload = $this->userModel->edit_pic($data);
-            if ($upload) {
-              
-              flash('msg', 'Upload Successfull..');
-              redirect('users/profile');
+          }else{
+            //check points balance
+            //if points more than 300
+            if($_SESSION['user_points'] > 300) {
+              $imageTemp = $_FILES["new_logo"]["tmp_name"];
+              $data = [
+                'id' => $_SESSION['user_id'],
+                'image' => $db_image_file,
+                move_uploaded_file($imageTemp, $imageUploadPath)
+              ];
+              $upload = $this->userModel->edit_pic($data);
+              if ($upload) {
+                $_SESSION['user_points'] = $_SESSION['user_points'] - 300;
+                $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+                flash('msg', 'Upload Successfull..');
+                redirect('users/profile');
+              }else{
+                die('Something went wrong..');
+              }
+            //Points is less than 300 
             }else{
-              die('Something went wrong..');
+              flash('msg', 'Not enough Points', 'flash-msg alert alert-danger');
+              redirect('users/profile');
             }
 
           }
@@ -372,6 +384,7 @@
         $_SESSION['category'] = $user->category;
         $_SESSION['user_type'] = $user->user_type;
         $_SESSION['logo'] = $user->logo;
+        $_SESSION['user_points'] = $user->points;
         redirect('posts');
     }
 
@@ -387,6 +400,7 @@
       unset($_SESSION['user_type']);
       unset($_SESSION['category']);
       unset($_SESSION['logo']);
+      unset($_SESSION['user_points']);
       session_destroy();
       redirect('users/login');
     }

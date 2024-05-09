@@ -14,6 +14,17 @@
       return $results;
     }
 
+    public function get_count(){
+      $this->db->query("SELECT DISTINCT(t_id) FROM invoicing WHERE biz_id = :id ORDER BY id DESC");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->resultset();
+      if($this->db->rowCount() > 0){
+        return $this->db->rowCount();
+      } else {
+        return false;
+      }
+    }
+
     public function get_sales(){
       $this->db->query("SELECT * FROM invoicing WHERE biz_id = :id;");
       $this->db->bind(':id', $_SESSION['user_id']);

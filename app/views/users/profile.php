@@ -22,6 +22,11 @@
           </div>
         </div>
       </div>
+      <div class="col-lg-2">
+        <div class="">
+          <p class="fw-semibold border p-2">Wallet Balance: <span class="text-primary">P</span><?= $_SESSION['user_points']; ?></p>
+        </div>
+      </div>
     </div><hr>
 </section>
 
@@ -132,9 +137,8 @@
 <!-- Password reset section -->
 <section id="about" class="bg-light card card-body mb-5">
     <div class="row">
-      <div class="col-lg-6 mx-auto">
+      <div class="col-lg-6">
           <h4 class="text-uppercase h5 text-muted">Change Password</h4>
-          <hr class="w-25 mx-auto" />
         <div class="d-flex flex-column gap-2 align-items-start">
             <form action="<?php echo URLROOT; ?>/users/password" method="post">
             <div class="form-group mb-3">
@@ -149,29 +153,30 @@
               <input type="submit" class="btn btn-success" value="Update Password">
             </div>
           </form>
-        </div>
+        </div><hr>
       </div>
       <!-- change business logo -->
-      <!-- <div class="col-lg-4">
-          
+      <div class="col-lg-4">
+        <h4 class="text-uppercase h6 text-muted m-0">Upload Business Logo</h4>
+          <p>This will cost the sum of <span class="fw-bold">300</span> points</p>
         <div class="d-flex flex-column gap-2 align-items-center border-top">
             <form action="<?php echo URLROOT; ?>/users/logo" method="post" enctype="multipart/form-data">
-              <div class="w-25 mb-3 p-2">
+              <div class="w-25 mb-5 p-2">
                 <img
                   src="<?php echo URLROOT.'/'.$data['user']->logo?>"
                   alt=""
                   class="about-img img-fluid rounded-circle"
                 />
               </div>
-              <div class="form-group mb-3">
+              <div class="form-group mb-4">
                 <input type="file" name="new_logo" class="form-control form-control-lg" value="">
               </div>
               <div class="form-group  mb-3">
                 <input type="submit" name="new_logo" class="btn btn-success" value="Update Logo">
               </div>
           </form>
-        </div>
-      </div> -->
+        </div><hr>
+      </div>
     </div>
 </section>
 

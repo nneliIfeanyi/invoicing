@@ -19,14 +19,16 @@
       </div>
     </div>
   </div>
+
 <div class="row">
   <div class="col-lg-9 mx-auto">
+    <?php if($data['count'] > 10):?>
     <div class="card card-body my-3">
       <p class="lead fw-bold">Filter Transactions</p>
       <div class="row mb-3">
           <?= flash('msg');?>
         <div class="col-md-6">
-          <form action="<?= URLROOT?>/posts/search_results" method="post" class="mt-2">
+          <form action="<?= URLROOT?>/posts/search_results" method="post" class="mt-2" id="search_form">
             <label class="text-muted" style="font-size: 12px;">Search by customer name</label>
             <div class="input-group mb-2">
               <input type="text" class="form-control" name="search" placeholder="Type customer name">
@@ -37,7 +39,7 @@
           </form>
         </div>
         <div class="col-md-6">
-          <form action="<?= URLROOT?>/posts/search_results" method="post" class="mt-2">
+          <form action="<?= URLROOT?>/posts/search_results" method="post" class="mt-2" id="search_form">
             <label class="text-muted" style="font-size: 12px;">Search by customer phone</label>
             <div class="input-group mb-2">
               <input type="number" class="form-control" name="search2" placeholder="Type customer phone">
@@ -49,6 +51,7 @@
         </div>
       </div>
     </div>
+  <?php endif;?>
     <h1 class="h3">Recent Transactions</h1>
     <?php if(!empty($data['transactions'])):?>
       <?php foreach($data['transactions'] as $post):
@@ -136,3 +139,7 @@
 } 
 </script> -->
 <?php require APPROOT . '/views/inc/footer.php'; ?>
+<script type="text/javascript">
+    //$('#search_form').parsley();
+    $('#loader').fadeIn();
+</script>
