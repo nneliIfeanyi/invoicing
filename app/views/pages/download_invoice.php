@@ -9,6 +9,7 @@ require_once APPROOT . '/views/TCPDF-main/tcpdf.php';
   define('BIZDSC', $data['user']->biz_dsc);
   define('CATEGORY', $data['user']->category);
   define('USERTYPE', $data['user']->user_type);
+  define('USERLOGO', $data['user']->logo);
 // Extend the TCPDF class to create custom Header and Footer
 class MYPDF extends TCPDF {
       public $conn;
@@ -22,31 +23,36 @@ class MYPDF extends TCPDF {
         $user_phone = BIZHOTLINE;
         $user_address = htmlspecialchars_decode(BIZADDRESS);
         $user_dsc = htmlspecialchars_decode(BIZDSC);
+        $user_logo = USERLOGO;
 
         if(!$conn = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME))
         {
           die("failed to connect");
         }
         
-        if (USERTYPE == 'customized') {
-          $image_file = URLROOT.'/logo/logo.png';
-          $this->Image($image_file, 10, 10, 25, '30', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-          $image_file = URLROOT.'/logo/001.png';
-          $this->Image($image_file, 35, 10, 155, '40', 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
-          
-          $this->SetTextColor(28, 81, 5);
-          $this->cell(86, 0, '---------------------------------------------------------------------------------------------------------------------------', 0, '', '', '');
-          
-          $this->Ln(28);
-          $this->SetFont('times', 'I', 12);
-          $this->Cell(0, 10, $user_address, 0, false, 'L', 0, '', 0, false, 'T', 'M');
+        if (!empty($user_logo)) {
+          // Logo
+          $image_file = URLROOT.'/'.$user_logo;
+          // Logo
+          $this->Image("$image_file", 50, 8, 24, 24);
+          //$this->Image($image_file, 30, 2, 24, 24, 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+          $this->Ln(2);
+          // Set font
+          $this->SetTextColor(10, 113, 11);
+          $this->setFont('helvetica', 'B', 20);
+          $this->cell(209, 2, "$user_name", 0, 1, "C");
+          $this->SetTextColor(10, 13, 11);
+          $this->SetFont('helvetica', 'N', 12);
+          $this->cell(209, 2, "$user_dsc", 0, 1, "C");
           //$this->Ln(1);
-          $this->SetFont('times', 'B', 12);
-          $this->Cell(0, 10, 'Hotline: '.$user_phone, 0, false, 'R', 0, '', 0, false, 'T', 'M');
-          //$this->Cell(0, 10, 'Phone: '.$user_phone, 0, false, 'R', 0, '', 0, false, 'T', 'M');
-          //$this->Cell(0, 10, 'Phone: '.$user_phone, 0, false, 'R', 0, '', 0, false, 'T', 'M');
-          $this->Ln(8);
-          $this->cell(86, 0, '-------------------------------------------------------------------------------------------------------------------------------------------', 0, '', '', '');
+          $this->SetFont('times', 'I', 12);
+          $this->cell(209, 2, "Address: $user_address", 0, 1, "C");
+          // $this->Ln(1);
+          $this->SetFont('helvetica', 'B', 10);
+          $this->cell(209, 2, "Hotline: $user_phone", 0, 0, "C");
+          $this->Ln(3);
+          $this->SetTextColor(10, 113, 11);
+          $this->cell(86, 0, '_____________________________________________________________________________________________________', 0, '', '', '');
         }else{
           $this->SetTextColor(10, 113, 11);
           $this->SetFont('helvetica', 'B', 20);
@@ -144,48 +150,55 @@ $result = mysqli_fetch_assoc($query2);
 $customer_name = $result['customer_name'];
 $customer_phone = $result['customer_phone'];
 $customer_address = $result['customer_address'];
+$t_id = $result['t_id'];
 $paid = $result['paid'];
 $date = $result['c_date'].' '.$result['c_month'].' '.$result['c_year'];
 $time = $result['c_time'];
 $sum = 0;
-   // //add background image
-   // $url_bg = URLROOT.'/logo/logo1.png';
-   // $pdf->Image("$url_bg", 60, 70, 90);
-  
-  if (USERTYPE == 'customized') {
-   $pdf->Ln(30);
-  }else{
-    $pdf->Ln(12);
-  }
+   //add background image
+   //$url_bg = URLROOT.'/'.USERLOGO;
+   //$pdf->Image("$url_bg", 60, 70, 90);
+   //$pdf->Image($url_bg, 60, 70, 90, 30, 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+
+  $pdf->Ln(18);
   $pdf->SetFont('times', 'N', '12');
   $pdf->SetTextColor(01,19,20);
   $pdf->Cell(35, 5, "Customer name:", 0, 0, "L");
-  $pdf->SetFont('helvetica', 'B', '14');
+  $pdf->SetFont('helvetica', 'B', '12');
   $pdf->Cell(30, 4, "$customer_name", 0, 0, "L");
+
+  $pdf->SetFont('times', 'N', '12');
+  $pdf->Cell(88, 4, "Transaction date:", 0, 0, "R");
+  $pdf->SetTextColor(01,19,20);
+  $pdf->SetFont('times', 'B', '12');
+  $pdf->Cell(40, 4, "$date", 0, 0, "R");
 
   $pdf->Ln(6);
   $pdf->SetFont('times', 'N', '12');
   $pdf->Cell(35, 5, "Customer phone:", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('helvetica', 'B', '14');
+  $pdf->SetFont('helvetica', 'B', '12');
   $pdf->Cell(30, 4, "$customer_phone", 0, 0, "L");
+
+  $pdf->SetFont('times', 'N', '12');
+  $pdf->Cell(86, 4, "Transaction ID:", 0, 0, "R");
+  $pdf->SetTextColor(01,19,20);
+  $pdf->SetFont('times', 'B', '12');
+  $pdf->Cell(37, 4, "$t_id", 0, 0, "R");
 
   $pdf->Ln(6);
   $pdf->SetFont('times', 'N', '12');
   $pdf->Cell(35, 5, "Customer address:", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('helvetica', 'B', '14');
+  $pdf->SetFont('times', 'B', '12');
   $pdf->Cell(30, 4, "$customer_address", 0, 0, "L");
 
-  $pdf->Ln(6);
-  $pdf->SetFont('times', 'N', '12');
-  $pdf->Cell(34, 4, "Transaction date:", 0, 0, "L");
-  $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'B', '15');
-  $pdf->Cell(20, 4, "$date", 0, 0, "L");
+  
+
+
   //check for business category
   if ($category == 'B&S') {
-   $pdf->Ln(18);
+   $pdf->Ln(12);
    $pdf->SetFillColor(0, 0, 0);
    $pdf->SetTextColor(255,255,255);
    $pdf->SetFont('times', 'N', '15');

@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<?= flash('msg');?>
 <div class="row">
   <div class="col-md-6">
-    <?= flash('msg');?>
     <h4 class="text-muted">Invoice Preview
     </h4>
   </div>
@@ -20,9 +20,14 @@
         <span class="border-bottom fw-semibold"><?php echo $_SESSION['user_phone']; ?></span>
       </label>
     </div>
-    <div class="col-md-6 offset-md-3 text-center shadow-sm p-3">
+    <div class="col-md-6 shadow-sm p-3">
       <label class="fs-6">Address: &nbsp; &nbsp;
         <span class=""><?php echo $_SESSION['address']; ?></span>
+      </label>
+    </div>
+    <div class="col-md-6 shadow-sm p-3">
+      <label class="fs-6">Transaction ID: &nbsp; &nbsp;
+        <span class=""><?php echo $data['t_id']; ?></span>
       </label>
     </div>
   </div>
@@ -177,12 +182,12 @@
   </form> -->
 
   <form action="<?php echo URLROOT; ?>/pages/download_invoice/<?= $data['customer_info']->t_id ; ?>" method="POST">
-    <button type="submit" class="btn btn-outline-success"><i class="fa fa-download"></i> Download</button>
+    <button id="link1" type="submit" class="btn btn-outline-success"><i class="fa fa-download"></i> Download Reciept</button>
   </form>
 
   
   <form action="<?php echo URLROOT; ?>/pages/share/<?= $data['customer_info']->t_id ; ?>" method="POST">
-    <button type="submit" class="btn btn-outline-success"><i class="fab fa-whatsapp"></i> Share</button>
+    <button id="link1" type="submit" class="btn btn-outline-success"><i class="fab fa-whatsapp"></i> Share</button>
   </form>
   
 </div><hr/>
@@ -196,4 +201,46 @@
   </button>
 </div>
 
+<div class="border border-5 rounded-2 border-danger text-center py-3">
+  <h6 class=" m-0 fw-semibold">
+    Danger Zone
+  </h6>
+  <p class="lead">This action can not be reversed.</p>
+  <button 
+    data-bs-toggle="modal" data-bs-target="#deleteModal<?= $data['t_id'];?>" 
+    class="btn btn-sm btn-outline-danger">
+    <i class="fa fa-trash"></i> Delete transaction
+  </button>
+</div>
+ <!--Delete post Modal -->
+  <div class="modal fade" id="deleteModal<?= $data['t_id'];?>">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          This Action cannot be reveresed..
+          <p class="lead">Do you wish to Continue?</p>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+          <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
+          <form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['t_id'];?>" method="post">
+            <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Yes, Continue</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<div style="position: fixed;bottom: 1vh;right: 1vw;">
+  <p data-bs-toggle="tooltip" data-bs-title="Add Transaction">
+    <a href="<?php echo URLROOT;?>/posts/add/1" style="font-size: 22px;">
+      <i class="fa fa-plus-circle fa-3x text-primary"></i>
+    </a>
+  </p>
+</div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
+<script type="text/javascript">
+   $(document).ready(function(){
+    $('#link1').click(function(){
+      $('#loader').fadeIn();
+    });
+  });
+</script>

@@ -266,8 +266,51 @@
     }
 
 
+     public function page_visit_count($page){
+     $date = date('Y-m-d h:ia');
+      // Prepare Query
+      $this->db->query('INSERT INTO visits (user_id, page_name, count, vdate) 
+      VALUES (:id, :page, :count, :vdate)');
 
+      // Bind Values
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->bind(':page', $page);
+      $this->db->bind(':count', '');
+      $this->db->bind(':vdate', $date);
+      
+      //Execute
 
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    public function get_page_visits($page){
+      $this->db->query("SELECT * FROM visits WHERE user_id = :id AND page_name = :page");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->bind(':page', $page);
+      $result = $this->db->single();
+      return $result;
+    }
+
+    public function updateVisit($page,$count){
+      // Prepare Query
+      $this->db->query('UPDATE visits SET count = :count WHERE user_id = :id AND page_name = :page');
+
+      // Bind Values
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->bind(':page', $page);
+      $this->db->bind(':count', $count);
+  
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
 
 
 

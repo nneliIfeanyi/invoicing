@@ -41,19 +41,21 @@
       public function logo(){
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
           $fileName = basename($_FILES["new_logo"]["name"]); 
-          if(empty($fileName)) {
-            flash('msg', 'Please select an image file', 'flash-msg alert alert-danger');
-            redirect('users/profile');
-          }else{ 
-
-          $uploadPath = "logo/";
-         
-          $db_image_file =  $uploadPath . $fileName; 
-          $imageUploadPath = $uploadPath . $fileName; 
-          $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION); 
+          if (!empty($fileName)) {
+            $uploadPath = "logo/";
+            $db_image_file =  $uploadPath . $fileName; 
+            $imageUploadPath = $uploadPath . $fileName; 
+            $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION); 
+          }else{
+            $uploadPath = "";
+            $db_image_file =  $uploadPath . $fileName; 
+            $imageUploadPath = $uploadPath . $fileName; 
+            $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);   
+          }
+          
              
           // Allow certain file formats 
-          $allowTypes = array('jpg','png','jpeg','PNG'); 
+          $allowTypes = array('jpg','png','jpeg','PNG', ''); 
 
           if(!in_array($fileType, $allowTypes)){ 
             //echo $fileName;
@@ -62,7 +64,7 @@
           }else{
             //check points balance
             //if points more than 300
-            if($_SESSION['user_points'] > 300) {
+            if($_SESSION['user_points'] > 299) {
               $imageTemp = $_FILES["new_logo"]["tmp_name"];
               $data = [
                 'id' => $_SESSION['user_id'],
@@ -80,12 +82,12 @@
               }
             //Points is less than 300 
             }else{
-              flash('msg', 'Not enough Points', 'flash-msg alert alert-danger');
+              flash('msg', 'Not enough Points.. Kindly fund your wallet and try again.', 'flash-msg alert alert-danger');
               redirect('users/profile');
             }
 
           }
-         }
+  
         }
       }
 

@@ -1,145 +1,178 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/header2.php';
+      require APPROOT . '/views/inc/sidebar.php'; 
+$page = 'posts/index';
+ $count = 0;
+ $visits = $this->userModel->get_page_visits($page);
+ if (empty($visits)) {
+   $this->userModel->page_visit_count($page);
+ }else{
+  $count = $visits->count + 1;
+  $this->userModel->updateVisit($page,$count);
+//  echo 'page visited '.$count.' times';
+ }
 
-<div class="row">
-  <div class="col-lg-9 mx-auto">
-    <p><a class="text-dark" href="<?php echo URLROOT;?>/posts">Business Dashboard</a></p>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card card-body">
-          <h1 class="h3 m-0 text-muted">Total Transactions</h1>
-          <p class="lead fw-bold">&#8358;<?= put_coma($data['total']); ?>.00</p>
+flash('msg');?>
+<!-- BREADCRUMB-->
+<section class="au-breadcrumb m-t-75">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="au-breadcrumb-content">
+                        <div class="au-breadcrumb-left">
+                            <span class="au-breadcrumb-span">You are here:</span>
+                            <ul class="list-unstyled list-inline au-breadcrumb__list">
+                                <li class="list-inline-item active">
+                                    <a href="<?php echo URLROOT?>/posts">Home</a>
+                                </li>
+                                <li class="list-inline-item seprate">
+                                    <span>/</span>
+                                </li>
+                                <li class="list-inline-item">Dashboard</li>
+                            </ul>
+                        </div>
+                        <a href="<?php echo URLROOT;?>/posts/add/1" class="au-btn au-btn-icon au-btn--green">
+                            <i class="zmdi zmdi-plus"></i>add transaction</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <!-- <div class="col-md-6">
-        <div class="card card-body">
-          <h1 class="h3 m-0 text-muted">Total Credits</h1>
-          <p class="lead fw-bold">&#8358;<?= put_coma($data['dept']); ?>.00</p>
+    </div>
+</section>
+<!-- END BREADCRUMB-->
+<section class="statistic">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="statistic__item">
+                        <h2 class="number text-warning">&#8358;<?php echo $data['t_total'];?></h2>
+                        <span class="desc">Total transactions</span>
+                        <div class="icon">
+                            <i class="zmdi zmdi-money"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="statistic__item">
+                            <h2 class="number text-warning">&#8358;<?php echo $data['t_total'] - $data['d_total'];?></h2>
+                        <span class="desc">Total credits</span>
+                        <div class="icon">
+                            <i class="zmdi zmdi-shopping-cart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div> -->
-      </div>
+    </div>
+</section>
+<!-- END STATISTIC-->
+<section class="statistic">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+          <h1 class="h3">Recent Transactions</h1>
+          <?php if(!empty($data['transactions'])):?>
+            <?php foreach($data['transactions'] as $post):
+              $customer_info = $this->postModel->getInfo($post->t_id);
+            ?>
+            <div class="card card-body mb-3">
+              <h6 class="text-warning pb-3">
+                Customer Details
+              </h6>
+              <h4 class="card-title text-muted">
+                <i class="fa fa-user"></i>&nbsp;<?php echo $customer_info->name; ?>
+              </h4>
+              <p>
+                <i class="fa fa-map-marker"></i>&nbsp;<?= $customer_info->address ?>
+              </p>
+              <div class="bg-light p-2 mb-3">
+                Transaction date: <span class="text-muted font-weight-bold"><?php echo $customer_info->t_date.' '.$customer_info->t_month; ?></span>
+                at <?php echo $customer_info->t_time; ?>
+              </div>
+              <?php 
+                $to_balance = $customer_info->t_total - $customer_info->paid;
+              ?>
+              <p>To balance: <span class="text-warning h6 fw-bold">&#8358;<?php echo $to_balance; ?>.00</span></p>
+        
+            <div class="row mt-3"> 
+              <div class="col-6"> 
+                 <form action="<?php echo URLROOT; ?>/pages/download_reciept/<?= $post->t_id ; ?>" method="POST">
+                  <input class="btn btn-sm btn-dark" name="generate-invoice" type="submit" value="Generate receipt">
+                 </form>
+               </div>
+               <div class="col-6">
+                 <a href="<?= URLROOT;?>/posts/preview/<?php echo $post->t_id;?>" class="btn btn-sm btn-success">Preview transaction</a>
+              </div>
+            </div>
+          </div>
+          <?php endforeach;?>
+
+            <div class="fs-6 fs-italics text-center mb-2">
+              <i class="fa fa-spinner fa-spin"> </i> No more transactions...
+            </div>
+          <?php else:?>
+            <div class="lead">
+              <p>Your transactions will appear here.</p>
+            </div>
+          <?php endif;?>
+    
     </div>
   </div>
-
-<div class="row">
-  <div class="col-lg-9 mx-auto">
-    <?php if($data['count'] > 10):?>
-    <div class="card card-body my-3">
-      <p class="lead fw-bold">Filter Transactions</p>
-      <div class="row mb-3">
-          <?= flash('msg');?>
-        <div class="col-md-6">
-          <form action="<?= URLROOT?>/posts/search_results" method="post" class="mt-2" id="search_form">
-            <label class="text-muted" style="font-size: 12px;">Search by customer name</label>
-            <div class="input-group mb-2">
-              <input type="text" class="form-control" name="search" placeholder="Type customer name">
-              <button type="submit" class="input-group-text px-3 bg-success text-light">
-                <i class="fa fa-fw fa-search text-white"></i> Search
-              </button>
-            </div>
-          </form>
-        </div>
-        <div class="col-md-6">
-          <form action="<?= URLROOT?>/posts/search_results" method="post" class="mt-2" id="search_form">
-            <label class="text-muted" style="font-size: 12px;">Search by customer phone</label>
-            <div class="input-group mb-2">
-              <input type="number" class="form-control" name="search2" placeholder="Type customer phone">
-              <button type="submit" class="input-group-text px-3 bg-success text-light">
-                <i class="fa fa-fw fa-search text-white"></i> Search
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  <?php endif;?>
-    <h1 class="h3">Recent Transactions</h1>
-    <?php if(!empty($data['transactions'])):?>
-      <?php foreach($data['transactions'] as $post):
-        $customer_info = $this->postModel->getCustomerInfo($post->t_id);
-      ?>
-      <div class="card card-body mb-3">
-        <h6 class="text-primary">Customer Details</h6>
-        <h4 class="card-title text-muted"><i class="fa fa-user"></i>&nbsp;<?php echo $customer_info->customer_name; ?></h4>
-        <p><i class="fa fa-map-marker"></i>&nbsp;<?= $customer_info->customer_address ?></p>
-        <div class="bg-light p-2 mb-3">
-          <i class="fa fa-calender-days"></i>
-          Transaction date: <span class="text-muted fw-semibold"><?php echo $customer_info->c_date.' '.$customer_info->c_month; ?></span>
-          at <?php echo $customer_info->c_time; ?>
-        </div>
-
-        <?php 
-        $transactions = $this->postModel->get_per_dept($customer_info->t_id);
-        $amt=0;
-        foreach($transactions as $trns){
-          if (empty($trns->qty)) {
-            $trns->qty = 1;
-          }
-          $amt += (int)$trns->qty * (int)$trns->rate;
-        }
-        if (empty($customer_info->paid)) {
-          $customer_info->paid = 0;
-        }
-        $to_balance = $amt - $customer_info->paid;
-        ?>
-        <p>To balance: <span class="text-primary h6 fw-bold">&#8358;<?php echo put_coma($to_balance); ?>.00</span></p>
-       <div class="d-grid gap-2">  
-        <!-- <form action="<?php echo URLROOT; ?>/pages/invoice" method="POST">
-          <input type="hidden" name="t_id" value="<?php echo $post->t_id ; ?>">
-          <input class="btn btn-sm btn-dark" name="generate-invoice" type="submit" value="Generate invoice">
-        </form> -->
-        <a href="<?= URLROOT;?>/posts/show/<?php echo $post->t_id;?>" class="btn btn-sm btn-success">Preview transaction</a>
-      </div>
-      </div>
-      <?php endforeach;?> 
-      <div class="fs-6 fs-italics text-center mb-2">
-        <span class="spinner-border-sm spinner-border"> </span> No more transactions...
-      </div>
-    <?php else:?>
-      <div class="lead">
-        <p>Your transactions will appear here.</p>
-      </div>
-    <?php endif;?>
-
-</div>
-</div>
-
-<div style="position: fixed;bottom: 1vh;right: 1vw;">
+</section>
+        
+    
+<!-- <div style="position: fixed;bottom: 1vh;right: 1vw;">
   <p data-bs-toggle="tooltip" data-bs-title="Add Transaction">
     <a href="<?php echo URLROOT;?>/posts/add/1" style="font-size: 22px;">
-      <i class="fa fa-plus-circle fa-3x text-primary"></i>
+      <i class="fa fa-plus-circle fa-3x" style="color: #fe6b2a;"></i>
     </a>
   </p>
-</div>
-<!-- <script>
+</div> -->
+
+<?php if($visits->count <= 3):?>
+<script>
 
     setTimeout(displayMessage, 2100);
 
     function displayMessage() {
     const body = document.body;
-
+    const url = "<?php echo URLROOT;?>/pages/about#points";
     const panel = document.createElement('div');
-    panel.setAttribute('class','flash-msg1 card card-body');
+    panel.setAttribute('class','flash-msg1 card card-body shadow');
     body.appendChild(panel);
 
-    const msg = document.createElement('p');
-    msg.textContent = 'System busy, please try again later';
+    const msg = document.createElement('h3');
+    msg.textContent = 'We Have Updated Our Terms Of Use';
     panel.appendChild(msg);
-    msg.setAttribute('class','lead');
+    msg.setAttribute('class','font-weight-bold text-warning');
 
+    const msg1 = document.createElement('p');
+    msg1.textContent = 'And now we have implemented the use of POINTS...';
+    panel.appendChild(msg1);
+    msg1.setAttribute('class','lead border-bottom');
 
+    const div = document.createElement('div');
+    div.setAttribute('class','d-flex justify-content-between');
+    panel.appendChild(div);
 
     const closeBtn = document.createElement('button');
-    closeBtn.textContent = 'Continue';
-    closeBtn.setAttribute('class','btn btn-success btn-sm');
-    panel.appendChild(closeBtn);
+    closeBtn.textContent = 'Ignore';
+    closeBtn.setAttribute('class',' mt-3 btn btn-outline-primary btn-sm');
+    div.appendChild(closeBtn);
+
+    const btn = document.createElement('button');
+    btn.textContent = 'Learn more';
+    btn.setAttribute('class',' mt-3 btn btn-success btn-sm');
+    div.appendChild(btn);
 
     closeBtn.addEventListener('click', () => panel.parentNode.removeChild(panel));
-
+    btn.addEventListener('click', () => window.location.href = url);
 
 } 
-</script> -->
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+</script>
+<?php endif;?>
+<?php require APPROOT . '/views/inc/footer2.php'; ?>
 <script type="text/javascript">
-    //$('#search_form').parsley();
+    $('#search_form').parsley();
     $('#loader').fadeIn();
 </script>

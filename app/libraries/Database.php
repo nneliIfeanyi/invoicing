@@ -74,6 +74,12 @@ class Database {
 		$this->execute();
 		return $this->stmt->fetch(PDO::FETCH_OBJ);
 	}
+
+	public function sumColumn(){
+		$this->execute();
+		$val = $this->stmt->fetch(PDO::FETCH_NUM);
+		return $val[0];
+	}
 	
 	// Get record row count
 	public function rowCount(){

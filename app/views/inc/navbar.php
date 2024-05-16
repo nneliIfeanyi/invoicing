@@ -9,24 +9,24 @@
       <?php if(isset($_SESSION['user_id'])) : ?>
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="<?php echo URLROOT;?>/pages/index">Home</a>
+          <a class="nav-link" href="<?php echo URLROOT;?>/posts/index">Home</a>
         </li>
-        <li class="nav-item active">
-          <span class="nav-link"><span class="text-primary">P</span><?= $_SESSION['user_points']; ?></span>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo URLROOT;?>/pages/about#fund"><span class="text-primary">P</span><?= $_SESSION['user_points']; ?></a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
+       <!--  <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/posts/add/1">Add Transaction</a>
         </li>
          <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/users/profile">Profile</a>
-        </li><!-- 
+        </li> --><!-- 
         <li class="nav-item">
           <a class="nav-link" href="https://wa.me/2349168655298"><i class="fab fa-whatsapp" aria-hidden="true"></i> Whatapp</a>
         </li> -->
-          <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout"><i class="fa fa-sign-out"></i> Logout</a>
         </li>
       </ul>
       <?php else : ?>
