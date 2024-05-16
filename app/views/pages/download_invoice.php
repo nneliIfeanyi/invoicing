@@ -358,7 +358,7 @@ $pdf->Ln(10);
 $pdf->SetTextColor(28, 81, 5);
 $pdf->cell(86, 0, '_____________________________________________________________________________________', 0, '', '', '');
 // set some text to print
-$today_date = date('F d, Y');
+$today_date = date('F d, Y').rand(10,1000);
 $time1 = date('h:ia');
 $txt = <<<EOD
 

@@ -59,7 +59,13 @@
 
 
 
+    public function get_transactionz2($t_id){
+      $this->db->query("SELECT * FROM transactions WHERE t_id = :t_id");
+      $this->db->bind(':t_id', $t_id);
 
+      $results = $this->db->resultset();
+      return $results;
+    }
 
 
 
@@ -280,6 +286,8 @@
       $results = $this->db->resultset();
       return $results;
     }
+
+     
     
     public function deleteEmpty(){
       // Prepare Query

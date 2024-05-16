@@ -3,6 +3,8 @@
     public function __construct(){
       $this->userModel = $this->model('User');
       $this->pointModel = $this->model('Point');
+      $user = $this->userModel->getUserById($_SESSION['user_id']);
+      define('REGDATE', $user->bizcreated_at);
     }
 
     public function index(){

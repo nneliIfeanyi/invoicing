@@ -34,6 +34,16 @@
                             <a href="<?php echo URLROOT?>/users/profile">
                                 <i class="fas fa-user"></i>Profile</a>
                         </li>
+                        <li>
+                            <a href="<?php echo URLROOT?>/pages/about#fund">
+                                <i class="fas fa-dollar"></i>Fund Wallet</a>
+                        </li>
+                        <?php if('2024-05-16' < REGDATE):?>
+                        <li>
+                            <a href="<?php echo URLROOT?>/posts/archive">
+                                <i class="fas fa-check"></i>Previous Transactions</a>
+                        </li>
+                        <?php endif;?>
                          <li>
                             <a href="<?php echo URLROOT?>/users/logout">
                                 <i class="fas fa-backward"></i>Sign out</a>
@@ -142,11 +152,11 @@
                 </div>
                 <div class="menu-sidebar2__content js-scrollbar2">
                     <div class="account2">
-                        <?php if(empty($_SESSION['logo'])):?>
+                        <!-- <?php if(empty($_SESSION['logo'])):?>
                         <div class="image img-cir img-120">
                             <img src="<?php echo URLROOT;?>/logo/branding.png" alt="invoiceOnline" />
                         </div>
-                         <?php endif;?>
+                         <?php endif;?> -->
                         <h4 class="name"><?php echo $_SESSION['user_name'];?></h4>
                         <a href="<?php echo URLROOT?>/users/logout">Sign out</a>
                     </div>
@@ -166,6 +176,16 @@
                                 <a href="<?php echo URLROOT?>/users/profile">
                                     <i class="fas fa-user"></i>Profile</a>
                             </li>
+                            <li>
+                                <a href="<?php echo URLROOT?>/pages/about#fund">
+                                    <i class="fas fa-dollar"></i>Fund Wallet</a>
+                            </li>
+                            <?php if('2024-05-15' < REGDATE):?>
+                            <li>
+                                <a href="<?php echo URLROOT?>/posts/archive">
+                                    <i class="fas fa-check"></i>Previous Transactions</a>
+                            </li>
+                            <?php endif;?>
                             <!-- <li class="has-sub">
                                 <a class="js-arrow" href="#">
                                     <i class="fas fa-trophy"></i>Features

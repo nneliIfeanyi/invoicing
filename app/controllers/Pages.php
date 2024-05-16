@@ -4,6 +4,8 @@
      $this->postModel = $this->model('Post');
      $this->userModel = $this->model('User');
      $this->pointModel = $this->model('Point');
+     $user = $this->userModel->getUserById($_SESSION['user_id']);
+     define('REGDATE', $user->bizcreated_at);
     }
 
     // Load Homepage
@@ -145,6 +147,41 @@
         $this->view('pages/download_invoice', $data);
       }
      
+    }
+
+
+    public function share_reciept($t_id){
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //$t_infos = $this->postModel->get_transaction($t_id);
+        $t_info = $this->postModel->getInfo($t_id);
+        $user = $this->userModel->getUserById($t_info->biz_id);
+        if($user->points > 2) {
+        $points = $user->points - 5;
+          $data = [
+            'post' => $t_infos, 
+            'customer_info' => $t_info,
+            'user' => $user
+          ];
+        $new_point_value = $this->pointModel->use3($points);
+        $_SESSION['user_points'] = $points;
+        $phone = ltrim($data['customer_info']->phone, '\0');
+        header("location: https://wa.me/234".$phone."?text=invoice%20link%20".URLROOT."/pages/share/".$data['customer_info']->t_id);
+        }else{
+          flash('msg', 'Not enough Points.. Kindly fund your wallet and try again.', 'flash-msg alert alert-danger');
+          redirect('posts/preview/'.$t_id);
+        }
+
+      }else{
+        $t_infos = $this->postModel->get_transactionz2($t_id);
+        $t_info = $this->postModel->getInfo($t_id);
+        $user = $this->userModel->getUserById($t_info->biz_id);
+          $data = [
+            'post' => $t_infos, 
+            'customer_info' => $t_info,
+            'user' => $user
+          ];
+         $this->view('pages/share_reciept', $data);
+      }
     }
 
     public function download_reciept($t_id){

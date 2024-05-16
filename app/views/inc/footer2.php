@@ -2,17 +2,7 @@
         
         <!-- END PAGE CONTAINER-->
     </div>
-    <!-- <section>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="copyright">
-                            <p>Copyright © <?php echo date('Y')?> Stanvic Concepts. All rights reserved.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
+    <div class="mt-4"></div>
     <p style="text-align: center;padding-top: 10px;">
         Copyright © <?php echo date('Y')?> Stanvic Concepts. All rights reserved.
     </p>

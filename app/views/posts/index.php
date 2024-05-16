@@ -58,7 +58,7 @@ flash('msg');?>
                             <h2 class="number text-warning">&#8358;<?php echo $data['t_total'] - $data['d_total'];?></h2>
                         <span class="desc">Total credits</span>
                         <div class="icon">
-                            <i class="zmdi zmdi-shopping-cart"></i>
+                            <i class="zmdi zmdi-money"></i>
                         </div>
                     </div>
                 </div>

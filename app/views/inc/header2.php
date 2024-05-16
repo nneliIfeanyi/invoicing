@@ -13,6 +13,7 @@
     <title><?php echo (!empty($_SESSION['user_name'])) ? $_SESSION['user_name'].' '.'Sales Invoice': 'Invoice Online'; ?></title>
 
     <!-- Fontfaces CSS-->
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/font-awesome.css" />
     <link href="<?php echo URLROOT; ?>/css/font-face.css" rel="stylesheet" media="all">
     <link href="<?php echo URLROOT; ?>/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="<?php echo URLROOT; ?>/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">

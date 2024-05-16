@@ -208,7 +208,7 @@
   </form>
 
   
-  <form action="<?php echo URLROOT; ?>/pages/share/<?= $data['customer_info']->t_id ; ?>" method="POST">
+  <form action="<?php echo URLROOT; ?>/pages/share_reciept/<?= $data['customer_info']->t_id ; ?>" method="POST">
     <button id="link1" type="submit" class="btn btn-success"><i class="fab fa-whatsapp"></i> Share</button>
   </form>
   
