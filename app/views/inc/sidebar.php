@@ -38,7 +38,7 @@
                             <a href="<?php echo URLROOT?>/pages/about#fund">
                                 <i class="fas fa-dollar"></i>Fund Wallet</a>
                         </li>
-                        <?php if('2024-05-16' > REGDATE):?>
+                        <?php if('2024-05-16' > $_SESSION['reg_date']):?>
                         <li>
                             <a href="<?php echo URLROOT?>/posts/archive">
                                 <i class="fas fa-check"></i>Previous Transactions</a>
@@ -180,7 +180,7 @@
                                 <a href="<?php echo URLROOT?>/pages/about#fund">
                                     <i class="fas fa-dollar"></i>Fund Wallet</a>
                             </li>
-                            <?php if('2024-05-15' > REGDATE):?>
+                            <?php if('2024-05-15' > $_SESSION['reg_date']):?>
                             <li>
                                 <a href="<?php echo URLROOT?>/posts/archive">
                                     <i class="fas fa-check"></i>Previous Transactions</a>

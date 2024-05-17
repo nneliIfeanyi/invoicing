@@ -3,8 +3,6 @@
     public function __construct(){
       $this->userModel = $this->model('User');
       $this->pointModel = $this->model('Point');
-      $user = $this->userModel->getUserById($_SESSION['user_id']);
-      define('REGDATE', $user->bizcreated_at);
     }
 
     public function index(){
@@ -389,6 +387,7 @@
         $_SESSION['user_type'] = $user->user_type;
         $_SESSION['logo'] = $user->logo;
         $_SESSION['user_points'] = $user->points;
+        $_SESSION['reg_date'] = $user->bizcreated_at;
         redirect('posts');
     }
 
@@ -405,6 +404,7 @@
       unset($_SESSION['category']);
       unset($_SESSION['logo']);
       unset($_SESSION['user_points']);
+      unset($_SESSION['reg_date']);
       session_destroy();
       redirect('users/login');
     }

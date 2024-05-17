@@ -178,6 +178,20 @@
       }
     }
 
+    //This gets uniqe information from the transaction
+    public function getInfoz($t_id){
+      $this->db->query("SELECT * FROM customers WHERE t_id = :t_id");
+      $this->db->bind(':t_id', $t_id);
+
+      $row = $this->db->single();
+      //Check Rows
+      if($this->db->rowCount() > 0){
+        return $row;
+      } else {
+        return false;
+      }
+    }
+
     //update business logo
      public function edit_pic($data){
       // Prepare Query

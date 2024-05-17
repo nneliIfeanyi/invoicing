@@ -72,8 +72,11 @@
 <div class="card">
 <div class="table-responsive mb-2">
   <h6 class="fw-semibold my-3 px-3 h4 text-primary">Items</h6>
+<?php if($data['user']->category == 'B&S'):?>
+<div class="table-responsive mb-2">
+  <h6 class="my-3 px-3 text-warning">Items</h6>
   <table class="table table-striped border">
-    <thead class="bg-primary">
+    <thead class="text-bg-dark">
       <th>Qty</th>
       <th>Description</th>
       <th>Rate</th>
@@ -85,29 +88,23 @@
       <tr>
         <td><?= $post->qty;?></td>
         <td>
-          <?php if(empty($post->qty) AND !empty($post->rate)):?>
            <?= $post->dsc;?>
-          <?php else:?>
-            <?= $post->dsc;?>
-          <?php endif;?>
         </td>
         <td><?= $post->rate;?></td>
         <td>
-          <?php if(!empty($post->qty) AND !empty($post->rate)):?>
-            <?= $total=$post->qty * $post->rate ;?>
-          <?php else: $total = '0'.$post->rate;?>
-            <?= $post->rate;?>
-          <?php endif;?>
+          <?php if($post->amount != 0):?>
+          <?= $post->amount;?>
+        <?php endif;?>
         </td>
       </tr>
-    <?php $sum += $total; endforeach;?>
+    <?php $sum += $post->amount; endforeach;?>
     <tr>
       <th></th>
       <th>Total:</th>
       <th></th>
       <th>&#8358;<?php echo put_coma($sum);?></th>
     </tr>
-    <?php if(empty($post->paid)):?>
+    <?php if(empty($data['customer_info']->paid)):?>
       <tr>
         <th></th>
         <th>Paid:</th>
@@ -118,24 +115,71 @@
         <th></th>
         <th>Balance:</th>
         <th></th>
-        <th class="text-danger">-&#8358;<?php echo put_coma($sum);?></th>
+        <th class="text-danger">&#8358;<?php echo put_coma($sum);?></th>
       </tr>
     <?php else:?>
       <tr>
         <th></th>
         <th>Paid</th>
         <th></th>
-        <th>&#8358;<?php echo put_coma($post->paid);?></th>
+        <th>&#8358;<?php echo put_coma($data['customer_info']->paid);?></th>
       </tr>
       <tr>
         <th></th>
         <th>Balance</th>
         <th></th>
-        <th>&#8358;<?php echo put_coma($sum - $post->paid);?></th>
+        <th>&#8358;<?php echo put_coma($sum - $data['customer_info']->paid);?></th>
       </tr>
     <?php endif;?>
     </tbody>
   </table>
+</div>
+
+<!-- Business category == services -->
+<?php else:?>
+<div class="table-responsive mb-2">
+  <h6 class="my-3 px-3 text-warning">Service Rendered</h6>
+  <table class="table table-striped border">
+    <thead class="text-bg-dark">
+      <th>Description</th>
+      <th>Price</th>
+    </thead>
+    <tbody>
+      <?php $sum = 0; foreach($data['post'] as $post):
+      ;?>
+      <tr>
+        <td> <?= $post->dsc;?></td>
+        <td><?= $post->rate;?></td>
+      </tr>
+      <?php $total=(int)$post->rate ;?>
+    <?php $sum += $total; endforeach;?>
+    <tr>
+      <th>Total:</th>
+      <th>&#8358;<?php echo put_coma($sum);?></th>
+    </tr>
+    <?php if(empty($data['customer_info']->paid)):?>
+      <tr>
+        <th>Paid:</th>
+        <th>&#8358;0.00</th>
+      </tr>
+      <tr>
+        <th>Balance:</th>
+        <th class="text-danger">&#8358;<?php echo put_coma($sum);?></th>
+      </tr>
+    <?php else:?>
+      <tr>
+        <th>Paid</th>
+        <th>&#8358;<?php echo put_coma($data['customer_info']->paid);?></th>
+      </tr>
+      <tr>
+        <th>Balance</th>
+        <th>&#8358;<?php echo put_coma($sum - $data['customer_info']->paid);?></th>
+      </tr>
+    <?php endif;?>
+    </tbody>
+  </table>
+</div>
+<?php endif;?>
 </div>
 </div>
 

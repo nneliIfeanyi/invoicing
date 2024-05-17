@@ -4,8 +4,6 @@
      $this->postModel = $this->model('Post');
      $this->userModel = $this->model('User');
      $this->pointModel = $this->model('Point');
-     $user = $this->userModel->getUserById($_SESSION['user_id']);
-     define('REGDATE', $user->bizcreated_at);
     }
 
     // Load Homepage
@@ -165,7 +163,7 @@
         $new_point_value = $this->pointModel->use3($points);
         $_SESSION['user_points'] = $points;
         $phone = ltrim($data['customer_info']->phone, '\0');
-        header("location: https://wa.me/234".$phone."?text=invoice%20link%20".URLROOT."/pages/share/".$data['customer_info']->t_id);
+        header("location: https://wa.me/234".$phone."?text=invoice%20link%20".URLROOT."/pages/share_reciept/".$data['customer_info']->t_id);
         }else{
           flash('msg', 'Not enough Points.. Kindly fund your wallet and try again.', 'flash-msg alert alert-danger');
           redirect('posts/preview/'.$t_id);
@@ -173,7 +171,7 @@
 
       }else{
         $t_infos = $this->postModel->get_transactionz2($t_id);
-        $t_info = $this->postModel->getInfo($t_id);
+        $t_info = $this->userModel->getInfoz($t_id);
         $user = $this->userModel->getUserById($t_info->biz_id);
           $data = [
             'post' => $t_infos, 
