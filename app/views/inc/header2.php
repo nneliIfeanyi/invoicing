@@ -8,6 +8,9 @@
     <meta name="description" content="invoicing software">
     <meta name="author" content="Nneli Victor">
     <meta name="keywords" content="invoicing, business, customers, clients, stock keeping, inventory">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Title Page-->
     <title><?php echo (!empty($_SESSION['user_name'])) ? $_SESSION['user_name'].' '.'Sales Invoice': 'Invoice Online'; ?></title>
