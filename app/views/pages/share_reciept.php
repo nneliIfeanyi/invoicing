@@ -37,10 +37,16 @@
         <span class="border-bottom fw-semibold"><?= $data['user']->bizphone;?></span>
       </label>
     </div>
-    <div class="col-md-6 offset-md-3 text-center shadow-sm p-3">
+    <div class="col-md-6 shadow-sm p-3">
       <label class="fs-6">Address: &nbsp; &nbsp;
         <span class=""><?= $data['user']->bizaddress;?></span>
       </label>
+    </div>
+
+    <div class="col-md-6 shadow-sm p-3">
+        <label class="fs-6">Transaction ID: &nbsp; &nbsp;
+          <span class=""><?php echo $data['t_id']; ?></span>
+        </label>
     </div>
   </div>
 </div>

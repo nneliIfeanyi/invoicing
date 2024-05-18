@@ -5,39 +5,43 @@
      	redirect('users/login');
      }
      $this->userModel = $this->model('User');
+      $this->pointModel = $this->model('Point');
     }
 
     // Load Homepage
     public function index(){
-      //Set Data
-      $data = [
-        'title' => 'InvoiceOnline',
-        'description' => 'Invoicing Admin Management Portal'
-      ];
-
+      $users = $this->userModel->loadUsers();
+         //Set Data
+        $data = [
+          'users' => $users,
+          'description' => 'Invoicing Admin Management Portal'
+        ];
       // Load index view
       $this->view('admin/index', $data);
     }
 
-    public function status_update($id){
-      if (isset($_POST['monthly'])) {
-      		$length = 'monthly';
-      		$this->userModel->updateStatus($id, $length);
-      		flash('msg', 'Status updated as MONTHLY for user with ID '.$id);
-      		redirect('users');
 
-      	}elseif(isset($_POST['yearly'])){
-      		$length = 'yearly';
-      		$this->userModel->updateStatus($id, $length);
-      		flash('msg', 'Status updated as YEARLY for user with ID '.$id);
-      		redirect('users');
-  		}
-  		else{
-      		$length = 'expired';
-      		$this->userModel->updateStatus($id, $length);
-      		flash('msg', 'Status updated as EXPIRED for user with ID '.$id);
-      		redirect('users');
-  		}
+
+    public function points_update(){
+
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $data = [
+
+            'id' => $_POST['id'],
+            'value' => $_POST['points'],
+            'name' => $_POST['name']
+
+        ];
+        $success = $this->pointModel->addPoints($data['id'], $data['value']);
+        if ($success) {
+          flash('msg', $data['name'].' points updated to '.$data['value']);
+          redirect('admin');
+        }else{
+          die('Something went wrong');
+        }
+
+      }
+      
     }
 
     

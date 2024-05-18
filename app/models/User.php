@@ -210,47 +210,6 @@
     }
 
 
-    public function updateStatus($id, $length){
-      if ($length == 'monthly') {
-        $next_month = strtotime("+1 month");
-        $renew_date = date('Y-m-d h:ia', $next_month);
-      }elseif ($length == 'yearly') {
-        $next_year = strtotime("+1 year");
-        $renew_date = date('Y-m-d h:ia', $next_year);
-      }
-      // Prepare Query
-      $this->db->query('UPDATE bizusers SET status = :status, renew = :renew WHERE id = :id');
-
-      // Bind Values
-      $this->db->bind(':id', $id);
-      $this->db->bind(':status', $length);
-      $this->db->bind(':renew', $renew_date);
-  
-      //Execute
-      if($this->db->execute()){
-        return true;
-      } else {
-        return false;
-      }
-    }
-
-    public function expired($id){
-      // Prepare Query
-      $this->db->query('UPDATE bizusers SET status = :status, renew = :renew WHERE id = :id');
-
-      // Bind Values
-      $this->db->bind(':id', $id);
-      $this->db->bind(':status', 'expired');
-      $this->db->bind(':renew', '');
-  
-      //Execute
-      if($this->db->execute()){
-        return true;
-      } else {
-        return false;
-      }
-    }
-
     //gets all customers by phone number
     public function get_customers(){
       $this->db->query("SELECT DISTINCT(customer_phone) FROM invoicing WHERE biz_id = :id ORDER BY id DESC");

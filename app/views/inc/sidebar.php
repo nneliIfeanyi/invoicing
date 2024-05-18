@@ -44,6 +44,12 @@
                                 <i class="fas fa-check"></i>Previous Transactions</a>
                         </li>
                         <?php endif;?>
+                         <?php if($_SESSION['user_phone'] == "08122321931"):?>
+                            <li>
+                                <a href="<?php echo URLROOT?>/admin">
+                                    <i class="fas fa-check"></i>Admin</a>
+                            </li>
+                            <?php endif;?>
                          <li>
                             <a href="<?php echo URLROOT?>/users/logout">
                                 <i class="fas fa-backward"></i>Sign out</a>
@@ -184,6 +190,13 @@
                             <li>
                                 <a href="<?php echo URLROOT?>/posts/archive">
                                     <i class="fas fa-check"></i>Previous Transactions</a>
+                            </li>
+                            <?php endif;?>
+
+                            <?php if($_SESSION['user_phone'] == "08122321931"):?>
+                            <li>
+                                <a href="<?php echo URLROOT?>/admin">
+                                    <i class="fas fa-check"></i>Admin</a>
                             </li>
                             <?php endif;?>
                             <!-- <li class="has-sub">

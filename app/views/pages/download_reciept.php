@@ -34,22 +34,20 @@ class MYPDF extends TCPDF {
           // Logo
           $image_file = URLROOT.'/'.$user_logo;
           // Logo
-          $this->Image("$image_file", 50, 8, 24, 24);
+          $this->Image("$image_file", 174, 8, 24, 24);
           //$this->Image($image_file, 30, 2, 24, 24, 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
           $this->Ln(2);
           // Set font
           $this->SetTextColor(10, 113, 11);
-          $this->setFont('helvetica', 'B', 20);
-          $this->cell(209, 2, "$user_name", 0, 1, "C");
-          $this->SetTextColor(10, 13, 11);
+          $this->SetFont('helvetica', 'B', 20);
+          $this->cell(0, 4, "$user_name", 0, 1, "L");
+          $this->SetTextColor(10, 10, 11);
           $this->SetFont('helvetica', 'N', 12);
-          $this->cell(209, 2, "$user_dsc", 0, 1, "C");
-          //$this->Ln(1);
+          $this->cell(0, 2, "$user_dsc", 0, 1, "L");
           $this->SetFont('times', 'I', 12);
-          $this->cell(209, 2, "Address: $user_address", 0, 1, "C");
-          // $this->Ln(1);
-          $this->SetFont('helvetica', 'B', 10);
-          $this->cell(209, 2, "Hotline: $user_phone", 0, 0, "C");
+          $this->cell(0, 3, "Address: $user_address", 0, 1, "L");
+          $this->SetFont('helvetica', 'B', 12);
+          $this->cell(0, 2, "Hotline: $user_phone", 0, 0, "L");
           $this->Ln(3);
           $this->SetTextColor(10, 113, 11);
           $this->cell(86, 0, '_____________________________________________________________________________________________________', 0, '', '', '');
@@ -358,8 +356,9 @@ $pdf->Ln(10);
 $pdf->SetTextColor(28, 81, 5);
 $pdf->cell(86, 0, '_____________________________________________________________________________________', 0, '', '', '');
 // set some text to print
-$today_date = date('F d, Y') . rand(10,1000);
+$today_date = date('F d, Y');
 $time1 = date('h:ia');
+$ran = rand(1000, 99000);
 $txt = <<<EOD
 
 This invoice was generated on $today_date at exactly $time1
@@ -373,7 +372,7 @@ $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
 // ---------------------------------------------------------
 
 //Close and output PDF document
-$pdf->Output($customer_name.' '.$today_date.'.pdf', 'I');
+$pdf->Output('Invoice'.$time1.$ran.'.pdf', 'I');
 
 //============================================================+
 // END OF FILE

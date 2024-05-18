@@ -40,6 +40,22 @@
       }
     }
 
+
+    public function addPoints($id, $value){
+      $this->db->query('UPDATE bizusers SET points = :points  WHERE id = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $id);
+      $this->db->bind(':points', $value);
+  
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     
 
 
