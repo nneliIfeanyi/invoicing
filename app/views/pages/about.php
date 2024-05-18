@@ -70,12 +70,12 @@
     </nav>
     <section>
       <div class="container">
-        <h1 id="points" class="pt-4">Usage Tips</h1>
+        <h1 class="pt-4">Usage Tips</h1>
         <p class="lead">
           Welcome to <?= SITENAME;?>, a simple easy to use online invoicing software owned and operated by Stanvic Concepts. Find below a few sample of guidlines for using the platform.
         </p>
-        <!-- <div class="row">
-          <!-- <div class="col-md-6">
+        <div class="row">
+         <div class="col-md-6">
             <h2 class="fw-bold">Definitions</h2>
             <hr class="hr-heading" />
             
@@ -106,8 +106,7 @@
               </li>
             </ul>
           </div>
- -->
-         <!--  <div class="col-md-6">
+          <div class="col-md-6">
             <h2 class="fw-bold">User Account</h2>
             <hr class="hr-heading" />
             
@@ -126,9 +125,9 @@
               </li>
             </ul>
           </div>
-        </div><hr> -->
+        </div><hr>
 
-        <h1 class="pt-4">Introducing Points</h1>
+        <h1 id="points" class="pt-4">Introducing Points</h1>
         <p class="lead">
           <strong>Points:</strong> is refered to as our platform specific currency which is used/required in performing certain task such as generating/downloading documment, editing a transaction and business logo upload. Without POINTS in your "VIRTUAL WALLET" you may not be able to do the following...
         </p>
@@ -166,7 +165,7 @@
       </div>
 
       <div class="col-md-9 mx-auto">
-        <h2 class="fw-bold pt-6" id="fund">Wallet Funding</h2>
+        <h2 class="fw-bold pt-4" id="fund">Wallet Funding</h2>
         <hr class="hr-heading" />
         <p class="lead">
           Due to our commitment in keeping our services affordable and user friendly we have decided to keep our pricing to the minimum. Find below the breakdown of our pricing list.

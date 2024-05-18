@@ -21,7 +21,7 @@
 <div class="container">
   
 <h4 class="text-muted text-center p-3">Invoice Online<br>
-<span class="lead">Powered by <a href="<?php echo URLROOT;?>/users/login">Stanvic Concepts</a></span>
+<span class="lead">Powered by <a href="<?php echo URLROOT;?>/pages">Stanvic Concepts</a></span>
 </h4>
 <div class="card card-body">
   <div class="row mb-2">
