@@ -184,7 +184,7 @@
 </div>
 
 <div class="d-flex justify-content-around my-4">  
-  <a href="<?=URLROOT.'/'.'pages'.'/'.'download_reciept'.'/'.$data['customer_info']->t_id;?>" class="btn btn-success">
+  <a href="<?=URLROOT.'/'.'pages'.'/'.'download_reciept'.'/'.$data['t_id'];?>" class="btn btn-success">
     <i class="fa fa-download"></i> Download
   </a>
 </div>

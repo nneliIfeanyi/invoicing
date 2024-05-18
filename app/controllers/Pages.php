@@ -156,6 +156,7 @@
         if($user->points > 2) {
         $points = $user->points - 5;
           $data = [
+            't_id' => $t_id,
             'post' => $t_infos, 
             'customer_info' => $t_info,
             'user' => $user
@@ -163,7 +164,7 @@
         $new_point_value = $this->pointModel->use3($points);
         $_SESSION['user_points'] = $points;
         $phone = ltrim($data['customer_info']->phone, '\0');
-        header("location: https://wa.me/234".$phone."?text=invoice%20link%20".URLROOT."/pages/share_reciept/".$data['customer_info']->t_id);
+        header("location: https://wa.me/234".$phone."?text=invoice%20link%20".URLROOT."/pages/share_reciept/".$t_id);
         }else{
           flash('msg', 'Not enough Points.. Kindly fund your wallet and try again.', 'flash-msg alert alert-danger');
           redirect('posts/preview/'.$t_id);
@@ -174,6 +175,7 @@
         $t_info = $this->userModel->getInfoz($t_id);
         $user = $this->userModel->getUserById($t_info->biz_id);
           $data = [
+            't_id' => $t_id,
             'post' => $t_infos, 
             'customer_info' => $t_info,
             'user' => $user
