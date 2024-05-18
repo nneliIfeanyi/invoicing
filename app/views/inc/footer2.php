@@ -1,12 +1,4 @@
 
-        
-        <!-- END PAGE CONTAINER-->
-    </div>
-    <div class="mt-4"></div>
-    <p style="text-align: center;padding-top: 10px;">
-        Copyright © <?php echo date('Y')?> Stanvic Concepts. All rights reserved.
-    </p>
-</div>
 
     <!-- Jquery JS-->
     <script src="<?= URLROOT;?>/vendor/jquery-3.2.1.min.js"></script>

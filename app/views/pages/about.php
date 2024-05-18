@@ -70,12 +70,12 @@
     </nav>
     <section>
       <div class="container">
-        <h1 class="pt-4">Usage Tips</h1>
+        <h1 id="points" class="pt-4">Usage Tips</h1>
         <p class="lead">
           Welcome to <?= SITENAME;?>, a simple easy to use online invoicing software owned and operated by Stanvic Concepts. Find below a few sample of guidlines for using the platform.
         </p>
-        <div class="row">
-          <div class="col-md-6">
+        <!-- <div class="row">
+          <!-- <div class="col-md-6">
             <h2 class="fw-bold">Definitions</h2>
             <hr class="hr-heading" />
             
@@ -106,8 +106,8 @@
               </li>
             </ul>
           </div>
-
-          <div class="col-md-6">
+ -->
+         <!--  <div class="col-md-6">
             <h2 class="fw-bold">User Account</h2>
             <hr class="hr-heading" />
             
@@ -126,11 +126,11 @@
               </li>
             </ul>
           </div>
-        </div><hr>
+        </div><hr> -->
 
-        <h1 id="points" class="pt-6">Introducing Points</h1>
+        <h1 class="pt-4">Introducing Points</h1>
         <p class="lead">
-          <strong>Points:</strong> is refered to as the only currency language understood by invoiceOnline software. Just like your physical "Coins or Notes" as a purchasing power, so is "Points" our platform specific currency. Therefore without coins in your "virtual wallet" you may not be able to do the following...
+          <strong>Points:</strong> is refered to as our platform specific currency. Without coins in your "virtual wallet" you may not be able to do the following...
         </p>
         <div class="row">
         <div class="col-md-9 mx-auto">
@@ -203,7 +203,9 @@
               <tr>
                 <td>N5000</td>
                 <td>P1050</td>
-                <td><a class="btn btn-outline-primary btn-sm" href="https://wa.me/2349168655298?text=I%20need%201050points"><i class="fab fa-whatsapp" aria-hidden="true"></i> Buy Now</a></td>
+                <td><a class="btn btn-outline-primary btn-sm" href="https://wa.me/2349168655298?text=I%20need%201050points"><i class="fab fa-whatsapp" aria-hidden="true"></i> Buy Now</a>
+                </td>
+                
               </tr>
             </tbody>
           </table>
@@ -274,5 +276,7 @@
 
     <script src="<?php echo URLROOT;?>/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo URLROOT;?>/js/script.js"></script>
+
+    
   </body>
 </html>

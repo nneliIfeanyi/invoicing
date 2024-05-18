@@ -44,10 +44,11 @@
 
       .flash-msg1{
         position: fixed;
-        top: 9vh;
+        top: 77px;
         right: 0;
         width: auto;
         z-index: 500;
+        background: rgba(250, 250, 250, 0.9);
       }
       .flash-msg{
         position: fixed;

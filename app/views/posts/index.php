@@ -129,7 +129,7 @@ flash('msg');?>
   </p>
 </div> -->
 
-<?php if($visits->count <= 3):?>
+<?php if($visits->count <= 500):?>
 <script>
 
     setTimeout(displayMessage, 2100);
@@ -138,18 +138,18 @@ flash('msg');?>
     const body = document.body;
     const url = "<?php echo URLROOT;?>/pages/about#points";
     const panel = document.createElement('div');
-    panel.setAttribute('class','flash-msg1 card card-body shadow');
+    panel.setAttribute('class','flash-msg1 card card-body');
     body.appendChild(panel);
 
     const msg = document.createElement('h3');
-    msg.textContent = 'We Have Updated Our Terms Of Use';
+    msg.textContent = 'Introducing The Use Of Points';
     panel.appendChild(msg);
-    msg.setAttribute('class','font-weight-bold text-warning');
+    msg.setAttribute('class','font-weight-bold  border-bottom border-warning');
 
     const msg1 = document.createElement('p');
-    msg1.textContent = 'And now we have implemented the use of POINTS...';
+    msg1.textContent = 'See how it works..';
     panel.appendChild(msg1);
-    msg1.setAttribute('class','lead border-bottom');
+    msg1.setAttribute('class','lead py-4');
 
     const div = document.createElement('div');
     div.setAttribute('class','d-flex justify-content-between');
@@ -157,7 +157,7 @@ flash('msg');?>
 
     const closeBtn = document.createElement('button');
     closeBtn.textContent = 'Ignore';
-    closeBtn.setAttribute('class',' mt-3 btn btn-outline-primary btn-sm');
+    closeBtn.setAttribute('class','  mt-3 btn btn-outline-primary btn-sm');
     div.appendChild(closeBtn);
 
     const btn = document.createElement('button');
