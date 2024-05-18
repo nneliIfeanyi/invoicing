@@ -130,7 +130,7 @@
 
         <h1 class="pt-4">Introducing Points</h1>
         <p class="lead">
-          <strong>Points:</strong> is refered to as our platform specific currency. Without coins in your "virtual wallet" you may not be able to do the following...
+          <strong>Points:</strong> is refered to as our platform specific currency which is used/required in performing certain task such as generating/downloading documment, editing a transaction and business logo upload. Without POINTS in your "VIRTUAL WALLET" you may not be able to do the following...
         </p>
         <div class="row">
         <div class="col-md-9 mx-auto">
