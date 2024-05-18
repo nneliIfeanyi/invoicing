@@ -81,7 +81,8 @@ class MYPDF extends TCPDF {
         $this->Cell(0, 10, 'Thanks for your patronage, pls call again!', 0, false, 'L', 0, '', 0, false, 'T', 'M');
         $this->SetY(-15);
         //Set font
-        $this->SetFont('helvetica', 'B', 8);
+        $this->SetTextColor(10, 113, 11);
+        $this->SetFont('helvetica', 'B', 10);
         $this->cell(0, 10, "https://stanvic.com.ng/verify/".ID, 0, 1, "R");
 
     }
