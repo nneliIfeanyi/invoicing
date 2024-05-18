@@ -204,7 +204,7 @@
           redirect('posts/preview/'.$t_id);
         }
       }else{
-        $t_info = $this->userModel->getInfo($t_id);
+        $t_info = $this->userModel->getInfoz($t_id);
         $user = $this->userModel->getUserById($t_info->biz_id);
       
         $data = [
