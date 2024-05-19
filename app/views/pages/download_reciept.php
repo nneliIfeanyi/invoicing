@@ -160,36 +160,36 @@ $sum = 0;
    //$pdf->Image($url_bg, 60, 70, 90, 30, 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
   $pdf->Ln(18);
-  $pdf->SetFont('times', 'N', '12');
+  $pdf->SetFont('helvetica', 'N', '12');
   $pdf->SetTextColor(01,19,20);
   $pdf->Cell(35, 5, "Customer name:", 0, 0, "L");
   $pdf->SetFont('helvetica', 'B', '12');
   $pdf->Cell(30, 4, "$customer_name", 0, 0, "L");
 
-  $pdf->SetFont('times', 'N', '12');
+  $pdf->SetFont('helvetica', 'N', '12');
   $pdf->Cell(88, 4, "Transaction date:", 0, 0, "R");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'B', '12');
+  $pdf->SetFont('helvetica', 'B', '12');
   $pdf->Cell(40, 4, "$date", 0, 0, "R");
 
   $pdf->Ln(6);
-  $pdf->SetFont('times', 'N', '12');
+  $pdf->SetFont('helvetica', 'N', '12');
   $pdf->Cell(35, 5, "Customer phone:", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
   $pdf->SetFont('helvetica', 'B', '12');
   $pdf->Cell(30, 4, "$customer_phone", 0, 0, "L");
 
-  $pdf->SetFont('times', 'N', '12');
-  $pdf->Cell(86, 4, "Transaction ID:", 0, 0, "R");
+  $pdf->SetFont('helvetica', 'N', '12');
+  $pdf->Cell(84, 4, "Transaction ID:", 0, 0, "R");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'B', '12');
+  $pdf->SetFont('helvetica', 'B', '12');
   $pdf->Cell(37, 4, "$t_id", 0, 0, "R");
 
   $pdf->Ln(6);
-  $pdf->SetFont('times', 'N', '12');
-  $pdf->Cell(35, 5, "Customer address:", 0, 0, "L");
+  $pdf->SetFont('helvetica', 'N', '12');
+  $pdf->Cell(37, 5, "Customer address:", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'B', '12');
+  $pdf->SetFont('helvetica', 'B', '12');
   $pdf->Cell(30, 4, "$customer_address", 0, 0, "L");
 
   
@@ -235,7 +235,7 @@ $sum = 0;
 
    $pdf->Ln(14);
    $pdf->SetTextColor(10, 93, 11);
-   $pdf->SetFont('helvetica', 'B', '15');
+   $pdf->SetFont('helvetica', 'B', '13');
    $pdf->Cell(18, 4, '', 0, 0, "R");
    $pdf->Cell(95, 4, 'Total:', 0, 0, "R");
    $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -245,7 +245,7 @@ $sum = 0;
    if (!empty($paid)) {
      $pdf->Ln(8);
      $pdf->SetTextColor(10, 93, 11);
-     $pdf->SetFont('helvetica', 'B', '15');
+     $pdf->SetFont('helvetica', 'B', '13');
      $pdf->Cell(18, 4, '', 0, 0, "R");
      $pdf->Cell(95, 4, 'Paid:', 0, 0, "R");
      $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -254,7 +254,7 @@ $sum = 0;
 
      $pdf->Ln(8);
      $pdf->SetTextColor(10, 93, 11);
-     $pdf->SetFont('helvetica', 'B', '15');
+     $pdf->SetFont('helvetica', 'B', '13');
      $pdf->Cell(18, 4, '', 0, 0, "R");
      $pdf->Cell(95, 4, 'Balance:', 0, 0, "R");
      $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -262,7 +262,7 @@ $sum = 0;
    }else{
      $pdf->Ln(8);
      $pdf->SetTextColor(10, 93, 11);
-     $pdf->SetFont('helvetica', 'B', '15');
+     $pdf->SetFont('helvetica', 'B', '13');
      $pdf->Cell(18, 4, '', 0, 0, "R");
      $pdf->Cell(95, 4, 'Paid:', 0, 0, "R");
      $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -271,7 +271,7 @@ $sum = 0;
 
      $pdf->Ln(8);
      $pdf->SetTextColor(255, 10, 17);
-     $pdf->SetFont('helvetica', 'B', '15');
+     $pdf->SetFont('helvetica', 'B', '13');
      $pdf->Cell(18, 4, '', 0, 0, "R");
      $pdf->Cell(95, 4, 'Balance:', 0, 0, "R");
      $pdf->Cell(30, 4, '', 0, 0, "R");
@@ -312,7 +312,7 @@ $sum = 0;
 
     $pdf->Ln(14);
     $pdf->SetTextColor(10, 93, 11);
-    $pdf->SetFont('helvetica', 'B', '15');
+    $pdf->SetFont('helvetica', 'B', '13');
     $pdf->Cell(108, 4, 'Total:', 0, 0, "R");
     $pdf->Cell(10, 4, '', 0, 0, "");
     $pdf->Cell(75, 4, 'N'.put_coma($total), 0, 0, "L");
@@ -321,7 +321,7 @@ $sum = 0;
     if (!empty($paid)) {
       $pdf->Ln(8);
       $pdf->SetTextColor(10, 93, 11);
-      $pdf->SetFont('helvetica', 'B', '15');
+      $pdf->SetFont('helvetica', 'B', '13');
       $pdf->Cell(108, 4, 'Paid:', 0, 0, "R");
       $pdf->Cell(10, 4, '', 0, 0, "");
       $pdf->Cell(75, 4, 'N'.put_coma($paid), 0, 0, "L");
@@ -329,7 +329,7 @@ $sum = 0;
 
       $pdf->Ln(8);
       $pdf->SetTextColor(10, 93, 11);
-      $pdf->SetFont('helvetica', 'B', '15');
+      $pdf->SetFont('helvetica', 'B', '13');
       if ($total >= $paid) {
         $pdf->Cell(108, 4, 'Balance:', 0, 0, "R");
         $pdf->Cell(10, 4, '', 0, 0, "");
@@ -338,7 +338,7 @@ $sum = 0;
     }else{
       $pdf->Ln(8);
       $pdf->SetTextColor(10, 93, 11);
-      $pdf->SetFont('helvetica', 'B', '15');
+      $pdf->SetFont('helvetica', 'B', '13');
       $pdf->Cell(108, 4, 'Paid:', 0, 0, "R");
       $pdf->Cell(10, 4, '', 0, 0, "");
       $pdf->Cell(75, 4, 'N0.00', 0, 0, "L");
@@ -346,7 +346,7 @@ $sum = 0;
 
       $pdf->Ln(8);
       $pdf->SetTextColor(255, 10, 17);
-      $pdf->SetFont('helvetica', 'B', '15');
+      $pdf->SetFont('helvetica', 'B', '13');
       $pdf->Cell(108, 4, 'Balance:', 0, 0, "R");
       $pdf->Cell(10, 4, '', 0, 0, "");
       $pdf->Cell(75, 4, 'N'.put_coma($total), 0, 0, "L");

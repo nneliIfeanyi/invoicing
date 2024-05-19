@@ -76,11 +76,11 @@
         <div class="mx-3 mb-5">
           <div class="form-group mb-3">
             <label>Business Description:</label>
-            <input name="dsc" data-parsley-length="[0, 25]" required data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?= $data['user']->biz_dsc;?>">
+            <input name="dsc" data-parsley-length="[0, 40]" required data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?= $data['user']->biz_dsc;?>">
           </div>
           <div class="form-group mb-3">
             <label>Business Address:</label>
-            <input name="address" data-parsley-length="[0, 30]" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?= $data['user']->bizaddress;?>">
+            <input name="address" data-parsley-length="[0, 40]" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?= $data['user']->bizaddress;?>">
           </div>
           <div class="form-group mb-3">
             <label>Hotline:</label>
