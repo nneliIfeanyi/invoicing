@@ -29,6 +29,13 @@
       $this->view('pages/about', $data);
     }
 
+    public function refresh(){
+     $user = $this->userModel->getUserById($_SESSION['user_id']);
+     $_SESSION['user_points'] = $user->points; 
+     
+     redirect('posts');
+    }
+
      public function reset_password(){
       if ($_SESSION['phone']) {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {

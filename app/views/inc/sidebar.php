@@ -50,6 +50,10 @@
                                     <i class="fas fa-check"></i>Admin</a>
                             </li>
                             <?php endif;?>
+                            <li>
+                                <a href="<?php echo URLROOT?>/pages/refresh">
+                                    <i class="fas fa-refresh"></i>Refresh</a>
+                            </li>
                          <li>
                             <a href="<?php echo URLROOT?>/users/logout">
                                 <i class="fas fa-backward"></i>Sign out</a>
@@ -199,6 +203,10 @@
                                     <i class="fas fa-check"></i>Admin</a>
                             </li>
                             <?php endif;?>
+                            <li>
+                                <a href="<?php echo URLROOT?>/pages/refresh">
+                                    <i class="fas fa-refresh"></i>Refresh</a>
+                            </li>
                             <!-- <li class="has-sub">
                                 <a class="js-arrow" href="#">
                                     <i class="fas fa-trophy"></i>Features
