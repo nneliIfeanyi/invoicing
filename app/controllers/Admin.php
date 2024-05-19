@@ -14,10 +14,19 @@
          //Set Data
         $data = [
           'users' => $users,
-          'description' => 'Invoicing Admin Management Portal'
         ];
       // Load index view
       $this->view('admin/index', $data);
+    }
+
+     public function usertype(){
+      $users = $this->userModel->loadUsers();
+         //Set Data
+        $data = [
+          'users' => $users,
+        ];
+      // Load index view
+      $this->view('admin/usertype', $data);
     }
 
 
@@ -44,6 +53,45 @@
       
     }
 
-    
+
+    public function agenting(){
+
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $val = rand(1000,10000);
+        $data = [
+
+            'id' => $_POST['id'],
+            'name' => $_POST['name'],
+            'value' => $val
+
+        ];
+        $user = $this->userModel->getUserById($data['id']);
+        if (empty($user->ref_id)) {
+            $success = $this->pointModel->makeAgent($data['id']);
+            if ($success) {
+              $this->pointModel->ref_code_gen($data['id'], $data['value']);
+              flash('msg', $data['name'].' user_type updated to marketer');
+              redirect('admin/usertype');
+            }else{
+              die('Something went wrong');
+            }
+        }else{
+          flash('msg', $data['name'].' already a marketer', 'flash-msg alert alert-danger');
+          redirect('admin/usertype');
+        }
+       
+
+      }
+      
+    }
+
+        // if (!empty($user->ref_id)) {
+        //   $my_refs = $this->userModel->get_my_refs($user->ref_id);
+        //   $refs_numeric = $this->userModel->get_my_refs_count($user->ref_id);
+        //   if ($refs_numeric == 5) {
+        //      $_SESSION['user_points'] = $_SESSION['user_points'] + 300;
+        //      $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+        //   }
+        // }
 
 }

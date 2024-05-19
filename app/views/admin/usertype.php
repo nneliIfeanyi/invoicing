@@ -2,6 +2,7 @@
       require APPROOT . '/views/inc/sidebar.php'; 
 
 flash('msg');?>
+
 <!-- BREADCRUMB-->
 <section class="au-breadcrumb m-t-75">
     <div class="section__content section__content--p30">
@@ -19,12 +20,12 @@ flash('msg');?>
                                     <span>/</span>
                                 </li>
                                 <li class="list-inline-item">
-                                    Points
+                                    Usertype
                                 </li>
                             </ul>
                         </div>
-                        <a href="<?php echo URLROOT;?>/admin/usertype" class="au-btn au-btn-icon au-btn--green">
-                            go to Usertype</a>
+                        <a href="<?php echo URLROOT;?>/admin" class="au-btn au-btn-icon au-btn--green">
+                            go to points</a>
                     </div>
                 </div>
             </div>
@@ -39,8 +40,8 @@ flash('msg');?>
       <div class="row">
           <div class="col-md-12">
               <!-- DATA TABLE -->
-              <h3 class="title-5 m-b-35">Update points</h3>
-              <!-- <div class="table-data__tool">
+              <h3 class="title-5 m-b-35">Update usertype</h3>
+             <!--  <div class="table-data__tool">
                   <div class="table-data__tool-left">
                       <div class="rs-select2--light rs-select2--md">
                           <select class="js-select2" name="property">
@@ -59,8 +60,9 @@ flash('msg');?>
                             <th>#</th>
                               <th>Name</th>
                               <th>Email</th>
-                              <th>Points</th>
-                              <th>value</th>
+                              <th>usertype</th>
+                              <th>refid</th>
+                              <th>url</th>
                               <th></th>
                           </tr>
                       </thead>
@@ -72,18 +74,24 @@ flash('msg');?>
                               <td>
                                   <span class="block-email"><?= $user->email;?></span>
                               </td>
-                              <td class="desc">P<?= $user->points;?></td>
-                            <form action="<?php echo URLROOT; ?>/admin/points_update" method="post">
+                            
                               <td>
-                                <input type="hidden" name="id" value="<?= $user->id;?>">
-                                <input type="hidden" name="name" value="<?= $user->bizname;?>">
-                                <input type="number" name="points" style="width: 60px;">
+                                  <span class="status--process"><?= $user->user_type;?></span>
+                              </td>
+                              <td><?= $user->ref_id;?></td>
+                              <td>
+                                <?php if(!empty($user->ref_id)):?>
+                                  <?php echo URLROOT?>/reg/<?= $user->ref_id;?>
+                                <?php endif;?>
                               </td>
                               <td>
                                   <div class="table-data-feature">
-                                      <button class="item" data-toggle="modal" data-placement="top" title="Send Points">
-                                          <i class="zmdi zmdi-mail-send"></i>
-                                      </button>
+                                      <form action="<?php echo URLROOT; ?>/admin/agenting" method="post">
+                                          <input type="hidden" name="id" value="<?= $user->id;?>">
+                                         <input type="hidden" name="name" value="<?= $user->bizname;?>">
+                                        <button type="submit" class="item" data-toggle="tooltip" data-placement="top" title="Make Agent">
+                                            <i class="zmdi zmdi-mail-send"></i>
+                                        </button>
                                       </form>
                                   </div>
                               </td>

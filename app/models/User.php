@@ -8,11 +8,11 @@
 
     // Add User / Register
     public function register($data){
-      $next_sev_days = strtotime("+7 days");
-      $renew_date = date('Y-m-d h:ia', $next_sev_days);
+      // $next_sev_days = strtotime("+7 days");
+      // $renew_date = date('Y-m-d h:ia', $next_sev_days);
       // Prepare Query
-      $this->db->query('INSERT INTO bizusers (bizname, biz_dsc, bizphone, email, category, bizaddress, bizpassword, status, renew, user_type, points) 
-      VALUES (:name, :biz_dsc, :phone, :email, :category, :address, :password, :status, :renew, :user_type, :points)');
+      $this->db->query('INSERT INTO bizusers (bizname, biz_dsc, bizphone, email, category, bizaddress, bizpassword, user_type, points, refered_by) 
+      VALUES (:name, :biz_dsc, :phone, :email, :category, :address, :password, :user_type, :points, :refered_by)');
 
       // Bind Values
       $this->db->bind(':name', $data['name']);
@@ -22,10 +22,9 @@
       $this->db->bind(':address', $data['address']);
       $this->db->bind(':password', $data['password']);     
       $this->db->bind(':biz_dsc', $data['biz_dsc']);
-      $this->db->bind(':status', 'freeTrial');
-      $this->db->bind(':renew', $renew_date);
       $this->db->bind(':user_type', $data['user_type']);
-       $this->db->bind(':points', '25');
+      $this->db->bind(':points', '25');
+      $this->db->bind(':refered_by', $data['refered_by']);
       
       //Execute
 
@@ -268,6 +267,8 @@
       return $result;
     }
 
+
+
     public function updateVisit($page,$count){
       // Prepare Query
       $this->db->query('UPDATE visits SET count = :count WHERE user_id = :id AND page_name = :page');
@@ -280,6 +281,25 @@
       //Execute
       if($this->db->execute()){
         return true;
+      } else {
+        return false;
+      }
+    }
+
+
+    public function get_my_refs($ref_id){
+      $this->db->query("SELECT * FROM bizusers WHERE refered_by = :ref_id ");
+      $this->db->bind(':ref_id', $ref_id);
+      $results = $this->db->resultset();
+      return $results;
+    }
+
+    public function get_my_refs_count($ref_id){
+      $this->db->query("SELECT * FROM bizusers WHERE refered_by = :ref_id ");
+      $this->db->bind(':ref_id', $ref_id);
+      $this->db->resultset();
+      if($this->db->rowCount() > 0){
+        return $this->db->rowCount();
       } else {
         return false;
       }

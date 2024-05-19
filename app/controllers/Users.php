@@ -27,6 +27,8 @@
         }
         $customers = $this->userModel->get_customers();
         $user = $this->userModel->getUserById($_SESSION['user_id']);
+        
+        
           $data = [
             'user' => $user,
             'customers' => $customers,
@@ -196,6 +198,7 @@
           'category' => $_POST['category'],
           'confirm_password' => trim($_POST['confirm_password']),
           'user_type' => 'regular',
+          'refered_by' => 'default',
           'phone_err' => '',
           'email_err' => '',
           'password_err' => '',

@@ -129,7 +129,7 @@ flash('msg');?>
   </p>
 </div> -->
 
-<?php if($visits->count <= 500):?>
+<?php if($visits->count <= 10):?>
 <script>
 
     setTimeout(displayMessage, 2100);
