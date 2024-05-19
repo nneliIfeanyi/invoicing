@@ -162,34 +162,33 @@ $sum = 0;
   $pdf->Ln(18);
   $pdf->SetFont('helvetica', 'N', '12');
   $pdf->SetTextColor(01,19,20);
-  $pdf->Cell(35, 5, "Customer name:", 0, 0, "L");
-  $pdf->SetFont('helvetica', 'B', '12');
+  $pdf->Cell(33, 5, "Customer name:", 0, 0, "L");
+  $pdf->SetFont('helvetica', 'B', '11');
   $pdf->Cell(30, 4, "$customer_name", 0, 0, "L");
 
   $pdf->SetFont('helvetica', 'N', '12');
-  $pdf->Cell(88, 4, "Transaction date:", 0, 0, "R");
+  $pdf->Cell(86, 4, "Transaction date:", 0, 0, "R");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('helvetica', 'B', '12');
-  $pdf->Cell(40, 4, "$date", 0, 0, "R");
+  $pdf->SetFont('helvetica', 'B', '11');
+  $pdf->Cell(35, 4, "$date", 0, 0, "R");
 
   $pdf->Ln(6);
   $pdf->SetFont('helvetica', 'N', '12');
-  $pdf->Cell(35, 5, "Customer phone:", 0, 0, "L");
+  $pdf->Cell(33, 5, "Customer phone:", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('helvetica', 'B', '12');
+  $pdf->SetFont('helvetica', 'B', '11');
   $pdf->Cell(30, 4, "$customer_phone", 0, 0, "L");
 
   $pdf->SetFont('helvetica', 'N', '12');
-  $pdf->Cell(84, 4, "Transaction ID:", 0, 0, "R");
+  $pdf->Cell(82, 4, "Transaction ID:", 0, 0, "R");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('helvetica', 'B', '12');
-  $pdf->Cell(37, 4, "$t_id", 0, 0, "R");
+  $pdf->SetFont('helvetica', 'B', '11');
+  $pdf->Cell(31, 4, "$t_id", 0, 0, "R");
 
   $pdf->Ln(6);
-  $pdf->SetFont('helvetica', 'N', '12');
-  $pdf->Cell(37, 5, "Customer address:", 0, 0, "L");
+  $pdf->SetFont('helvetica', 'I', '11');
+  $pdf->Cell(16, 5, "Address:", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('helvetica', 'B', '12');
   $pdf->Cell(30, 4, "$customer_address", 0, 0, "L");
 
   
