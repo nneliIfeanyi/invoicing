@@ -27,39 +27,6 @@
       z-index: 99999;
     }
 
-    .flash-msg1{
-      position: fixed;
-      top: 9vh;
-      right: 0;
-      width: auto;
-      z-index: 500;
-    }
-    .flash-msg{
-      position: fixed;
-      top: 9vh;
-      right: 0;
-      width: auto;
-      z-index: 500;
-      animation-name: fade;
-      animation-duration: 3s;
-      animation-delay: 6s;
-      animation-iteration-count: 1;
-      animation-fill-mode: forwards;
-    }
-
-    @keyframes fade{
-      from{opacity: 1;}
-      to{opacity: 0;}
-    }
-
-    .form-input{
-      border: none;
-      background: inherit;
-      border-bottom: 1px solid grey;
-      margin-bottom: 5px;
-      width: 96%;
-    }
-
     input.parsley-error,
     select.parsley-error,
     textarea.parsley-error {    
@@ -116,7 +83,7 @@
           <a class="nav-link" href="<?php echo URLROOT;?>/reg/home/<?php echo $data['ref'];?>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT;?>/reg/about/<?php echo $data['ref'];?>"><span class="text-primary">About</a>
+          <a class="nav-link" href="<?php echo URLROOT;?>/reg/about/<?php echo $data['ref'];?>">About</a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
@@ -150,7 +117,7 @@
       <span class="spinner-border text-primary"> </span>
     </div>
   </div>
-  <div class="container">
+<div class="container">
  
 <div class="row">
   <div class="col-md-6 mx-auto">

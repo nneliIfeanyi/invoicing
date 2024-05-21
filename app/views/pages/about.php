@@ -20,12 +20,11 @@
   <link rel="apple-touch-icon" sizes="180x180" href="<?= URLROOT;?>/apple-touch-icon.png">
   <meta name="apple-mobile-web-app-status-bar" content="#198754">
   <meta name="theme-color" content="#198754">
-  <title><?php echo (!empty($_SESSION['user_name'])) ? $_SESSION['user_name'].' '.'Sales Invoice': 'Invoice Online'; ?></title>
+  <title><?php echo SITENAME; ?></title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
       <div class="container">
-          <!-- <img src="<?php echo URLROOT;?>/logo/branding.png" alt="" height="30" width="100" /> -->
           <a class="navbar-brand" href="<?= URLROOT;?>/pages/index">Invoice<span class="text-primary">Online</span></a>
         <button
           class="navbar-toggler"

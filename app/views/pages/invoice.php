@@ -64,7 +64,7 @@ class MYPDF extends TCPDF {
 }
 
 // create new PDF document
-$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(100, 200), true, 'UTF-8', false);
+$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(120, 210), true, 'UTF-8', false);
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
@@ -128,7 +128,7 @@ $t_id = $result['t_id'];
 $paid = $result['paid'];
 $date = $result['t_date'].' '.$result['t_month'].' '.$result['t_year'];
 $time = $result['t_time'];
-$sum = 0;
+$total = $result['t_total'];
 
   $pdf->Ln(21);
   $pdf->SetFont('times', 'N', '12');
@@ -162,93 +162,76 @@ $sum = 0;
 $pdf->Ln(18);
 $pdf->SetFillColor(0, 0, 0);
 $pdf->SetTextColor(255,255,255);
-$pdf->SetFont('times', 'N', '11');
+$pdf->SetFont('times', 'N', '12');
 $pdf->Cell(9, 7, 'Qty', 1, 0, 'C', 1);
-$pdf->Cell(40, 7, 'Description', 1, 0, 'L', 1);
-$pdf->Cell(15, 7, 'Rate', 1, 0, 'L', 1);
-$pdf->Cell(20, 7, 'Amount', 1, 0, 'L', 1);
-$pdf->Ln(3);
+$pdf->Cell(56, 7, 'Description', 1, 0, 'L', 1);
+$pdf->Cell(24, 7, 'Rate', 1, 0, 'L', 1);
+$pdf->Cell(30, 7, 'Amount', 1, 0, 'L', 1);
+
 while ($result = mysqli_fetch_array($query)) {
   $qty = $result['qty'];
   $dsc = $result['dsc'];
   $rate = $result['rate'];
-  if (!empty($qty) && !empty($rate)) {
-    $amt = $qty * $rate;
-    $total = $sum += $amt;
-  }else{
-    $amt = '';
-  }
-
+  $amt = $result['amount'];
   if (strlen($qty) == 1) {
-    $qty = '0'.$qty;
+      $qty = '0'.$qty;
   }
   
 
- // $balance = $total - $paid;
-
-  $pdf->Ln(9); //this will reduce the line height of each subject
+  $pdf->Ln(9);
   $pdf->SetTextColor(10, 13,11);
   $pdf->SetFont('helvetica', 'N', '12');
   $pdf->Cell(9, 10, $qty, 0, 0, "C");
-  $pdf->Cell(40, 10, $dsc, 0, 0, "L");
-  $pdf->Cell(15, 10, $rate, 0, 0, "L");
-  $pdf->Cell(20, 10, $amt, 0, 0, "L");
-}
+  $pdf->Cell(56, 10, $dsc, 0, 0, "L");
+  $pdf->Cell(24, 10, $rate, 0, 0, "L");
+  if ($amt != 0) {
+    $pdf->Cell(30, 10, $amt, 0, 0, "L");
+  }
 
-// $pdf->Ln(14);
-// $pdf->SetTextColor(10, 93, 11);
-// $pdf->SetFont('helvetica', 'B', '22');
-// $pdf->Cell(18, 4, '', 0, 0, "R");
-// $pdf->Cell(95, 4, 'Total:', 0, 0, "R");
-// $pdf->Cell(30, 4, '', 0, 0, "R");
-// $pdf->Cell(55, 4, 'N'.put_coma(), 0, 0, "L");
+}// WHile loop ends for transaction items
+  
 
-  $pdf->Ln(14);
-  $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('times', 'N', '12');
-  $pdf->Cell(32, 7, "Total:", 0, 0, "L");
+  $pdf->Ln(8);
+  $pdf->SetFillColor(0, 0, 0);
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'B', '12');
-  $pdf->Cell(20, 4, "$total", 0, 0, "L");
-
+  $pdf->SetFont('helvetica', 'B', '10');
+  $pdf->Cell(25, 7, " ", 0, 0, "L");
+  $pdf->Cell(17, 7, "Total:", 1, 0, "L");
+  $pdf->Cell(40, 7, 'N'.put_coma($total), 1, 0, "C");
 
 
 if (!empty($paid)) {
-  $pdf->Ln(5);
-  $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('times', 'N', '12');
-  $pdf->Cell(32, 7, "Paid:", 0, 0, "L");
+  $pdf->Ln(10);
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'B', '12');
-  $pdf->Cell(20, 4, "$paid", 0, 0, "L");
+  $pdf->SetFont('helvetica', 'N', '9');
+  $pdf->Cell(9, 5, "Paid:", 0, 0, "L");
+  $pdf->SetFont('helvetica', 'B', '10');
+  $pdf->Cell(44, 4, 'N'.put_coma($paid), 0, 0, "L");
 
-  $pdf->Ln(5);
-  $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('times', 'N', '12');
-  $pdf->Cell(32, 7, "Balance:", 0, 0, "L");
-  $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'B', '12');
-  $pdf->Cell(20, 4, $total - $paid, 0, 0, "L");
+
+  $pdf->SetFont('helvetica', 'N', '9');
+  $pdf->Cell(18, 5, "To Balance:", 0, 0, "L");
+  $pdf->SetTextColor(101,19,20);
+  $pdf->SetFont('helvetica', 'B', '10');
+  $pdf->Cell(20, 4, 'N'.put_coma($total - $paid), 0, 0, "L");
 
 }else{
-  $pdf->Ln(5);
-  $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('times', 'N', '12');
-  $pdf->Cell(32, 7, "Paid:", 0, 0, "L");
+  $pdf->Ln(10);
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'B', '12');
-  $pdf->Cell(20, 4, "N0.00", 0, 0, "L");
+  $pdf->SetFont('helvetica', 'N', '9');
+  $pdf->Cell(9, 5, "Paid:", 0, 0, "L");
+  $pdf->SetFont('helvetica', 'B', '10');
+  $pdf->Cell(44, 4, 'N0.00', 0, 0, "L");
 
-  $pdf->Ln(5);
-  $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('times', 'N', '12');
-  $pdf->Cell(32, 7, "Balance:", 0, 0, "L");
-  $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'B', '12');
-  $pdf->Cell(20, 4, $total, 0, 0, "L");
+
+  $pdf->SetFont('helvetica', 'N', '9');
+  $pdf->Cell(13, 5, "To Balance:", 0, 0, "L");
+  $pdf->SetTextColor(101,19,20);
+  $pdf->SetFont('helvetica', 'B', '10');
+  $pdf->Cell(20, 4, 'N'.put_coma($total), 0, 0, "L");
 }
 
-$pdf->Ln(3);
+$pdf->Ln(7);
 $pdf->SetTextColor(28, 81, 5);
 $pdf->cell(86, 0, '_________________________________________________________________________________________', 0, '', '', '');
 // set some text to print
