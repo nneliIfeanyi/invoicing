@@ -64,7 +64,7 @@ class MYPDF extends TCPDF {
 }
 
 // create new PDF document
-$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(120, 210), true, 'UTF-8', false);
+$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(100, 210), true, 'UTF-8', false);
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
@@ -162,11 +162,11 @@ $total = $result['t_total'];
 $pdf->Ln(18);
 $pdf->SetFillColor(0, 0, 0);
 $pdf->SetTextColor(255,255,255);
-$pdf->SetFont('times', 'N', '12');
-$pdf->Cell(9, 7, 'Qty', 1, 0, 'C', 1);
-$pdf->Cell(56, 7, 'Description', 1, 0, 'L', 1);
-$pdf->Cell(24, 7, 'Rate', 1, 0, 'L', 1);
-$pdf->Cell(30, 7, 'Amount', 1, 0, 'L', 1);
+$pdf->SetFont('times', 'N', '9');
+$pdf->Cell(7, 7, 'Qty', 1, 0, 'C', 1);
+$pdf->Cell(44, 7, 'Description', 1, 0, 'L', 1);
+$pdf->Cell(15, 7, 'Rate', 1, 0, 'L', 1);
+$pdf->Cell(24, 7, 'Amount', 1, 0, 'L', 1);
 
 while ($result = mysqli_fetch_array($query)) {
   $qty = $result['qty'];
@@ -180,12 +180,12 @@ while ($result = mysqli_fetch_array($query)) {
 
   $pdf->Ln(9);
   $pdf->SetTextColor(10, 13,11);
-  $pdf->SetFont('helvetica', 'N', '12');
-  $pdf->Cell(9, 10, $qty, 0, 0, "C");
-  $pdf->Cell(56, 10, $dsc, 0, 0, "L");
-  $pdf->Cell(24, 10, $rate, 0, 0, "L");
+  $pdf->SetFont('helvetica', 'N', '9');
+  $pdf->Cell(7, 10, $qty, 0, 0, "C");
+  $pdf->Cell(44, 10, $dsc, 0, 0, "L");
+  $pdf->Cell(15, 10, $rate, 0, 0, "L");
   if ($amt != 0) {
-    $pdf->Cell(30, 10, $amt, 0, 0, "L");
+    $pdf->Cell(24, 10, $amt, 0, 0, "L");
   }
 
 }// WHile loop ends for transaction items
@@ -225,7 +225,7 @@ if (!empty($paid)) {
 
 
   $pdf->SetFont('helvetica', 'N', '9');
-  $pdf->Cell(13, 5, "To Balance:", 0, 0, "L");
+  $pdf->Cell(18, 5, "To Balance:", 0, 0, "L");
   $pdf->SetTextColor(101,19,20);
   $pdf->SetFont('helvetica', 'B', '10');
   $pdf->Cell(20, 4, 'N'.put_coma($total), 0, 0, "L");
