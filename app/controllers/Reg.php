@@ -30,6 +30,29 @@
     
     }
 
+     public function home($ref){
+
+        $data = [
+          'ref' => $ref,
+        ];
+
+        // Load View
+        $this->view('reg/home', $data);
+    
+    }
+
+    public function about($ref){
+
+        $data = [
+          'ref' => $ref,
+        ];
+
+        // Load View
+        $this->view('reg/about', $data);
+    
+    }
+
+
 
     public function register($ref){
       // Check if POST
