@@ -1,14 +1,15 @@
 <?php
 
-require_once APPROOT . '/views/TCPDF-main/tcpdf.php';
-
-if(isset($_POST['generate-invoice'])){ 
-  define('ID', $_POST['t_id']);
-  define('BIZNAME', $_SESSION['user_name']);
-  define('BIZADDRESS', $_SESSION['address']);
-  define('BIZHOTLINE', $_SESSION['user_phone']);
-  define('BIZID', $_SESSION['user_id']);
-  define('BIZDSC', $_SESSION['user_dsc']);
+require_once APPROOT . '/views/TCPDF-main/tcpdf.php'; 
+  define('ID', $data['t_id']);
+  define('BIZNAME', $data['user']->bizname);
+  define('BIZADDRESS', $data['user']->bizaddress);
+  define('BIZHOTLINE', $data['user']->bizphone);
+  define('BIZID', $data['user']->id);
+  define('BIZDSC', $data['user']->biz_dsc);
+  define('CATEGORY', $data['user']->category);
+  define('USERTYPE', $data['user']->user_type);
+  define('USERLOGO', $data['user']->logo);
 // Extend the TCPDF class to create custom Header and Footer
 class MYPDF extends TCPDF {
       public $conn;
@@ -18,31 +19,32 @@ class MYPDF extends TCPDF {
       public $user_address;
     //Page header
     public function Header() {
-        $user_name = BIZNAME;
+        $user_name = htmlspecialchars_decode(BIZNAME);
         $user_phone = BIZHOTLINE;
-        $user_address = BIZADDRESS;
-        $user_dsc = BIZDSC;
+        $user_address = htmlspecialchars_decode(BIZADDRESS);
+        $user_dsc = htmlspecialchars_decode(BIZDSC);
+        $user_logo = USERLOGO;
         if(!$conn = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME))
         {
           die("failed to connect");
         }
         $this->SetTextColor(10, 113, 11);
-        $this->SetFont('helvetica', 'B', 30);
-        $this->cell(190, 2, "$user_name", 0, 1, "C");
+        $this->SetFont('helvetica', 'B', 20);
+        $this->cell(190, 2, "$user_name", 0, 1, "L");
 
         $this->Ln(1);
         $this->SetTextColor(10, 10, 11);
-        $this->SetFont('helvetica', 'N', 19);
-        $this->cell(190, 2, "$user_dsc", 0, 1, "C");
+        $this->SetFont('helvetica', 'N', 13);
+        $this->cell(190, 2, "$user_dsc", 0, 1, "L");
         $this->Ln(1);
-        $this->SetFont('helvetica', 'N', 19);
-        $this->cell(190, 3, "Address: $user_address", 0, 1, "C");
+        $this->SetFont('helvetica', 'N', 11);
+        $this->cell(190, 3, "Address: $user_address", 0, 1, "L");
 
 
-        $this->SetFont('helvetica', 'N', 24);
-        $this->cell(190, 2, "Hotline: $user_phone", 0, 1, "C");
+        $this->SetFont('helvetica', 'N', 12);
+        $this->cell(190, 2, "Hotline: $user_phone", 0, 1, "L");
         $this->SetTextColor(28, 81, 5);
-        $this->cell(86, 0, '----------------------------------------------------------------------------', 0, '', '', '');
+        $this->cell(86, 0, '-------------------------------------------------------------', 0, '', '', '');
     }
 
     // Page footer
@@ -50,7 +52,7 @@ class MYPDF extends TCPDF {
         // Position at 15 mm from bottom
         $this->SetY(-13);
         // Set font
-        $this->SetFont('helvetica', 'I', 19);
+        $this->SetFont('helvetica', 'I', 10);
         // Page number
         $this->Cell(0, 10, 'Thanksfor your patronage, pls call again!', 0, false, 'C', 0, '', 0, false, 'T', 'M');
         //$this->SetY(-20);
@@ -62,7 +64,7 @@ class MYPDF extends TCPDF {
 }
 
 // create new PDF document
-$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(100, 200), true, 'UTF-8', false);
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
@@ -109,59 +111,62 @@ if(!$conn = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME))
 {
   die("failed to connect");
 }
+
 $t_id = ID;
 $biz_id = BIZID;
-$sql = "SELECT * FROM invoicing WHERE biz_id = '$biz_id' AND t_id = '$t_id' ";
+$category = CATEGORY;
+$sql = "SELECT * FROM transactions WHERE biz_id = '$biz_id' AND t_id = '$t_id' ";
 $query = mysqli_query($conn, $sql);
 
-$sql2 = "SELECT * FROM invoicing WHERE biz_id = '$biz_id' AND t_id = '$t_id' ";
+$sql2 = "SELECT * FROM customers WHERE biz_id = '$biz_id' AND t_id = '$t_id' ";
 $query2 = mysqli_query($conn, $sql2);
 $result = mysqli_fetch_assoc($query2);
-$customer_name = $result['customer_name'];
-$customer_phone = $result['customer_phone'];
-$customer_address = $result['customer_address'];
+$customer_name = $result['name'];
+$customer_phone = $result['phone'];
+$customer_address = $result['address'];
+$t_id = $result['t_id'];
 $paid = $result['paid'];
-$date = $result['c_date'].' '.$result['c_month'].' '.$result['c_year'];
-$time = $result['c_time'];
+$date = $result['t_date'].' '.$result['t_month'].' '.$result['t_year'];
+$time = $result['t_time'];
 $sum = 0;
 
-  $pdf->Ln(31);
-  $pdf->SetFont('times', 'N', '18');
+  $pdf->Ln(21);
+  $pdf->SetFont('times', 'N', '12');
   $pdf->SetTextColor(01,19,20);
-  $pdf->Cell(49, 10, "Customer name: ______________________________________", 0, 0, "L");
-  $pdf->SetFont('helvetica', 'B', '21');
+  $pdf->Cell(30, 7, "Customer name: __________________________", 0, 0, "L");
+  $pdf->SetFont('helvetica', 'B', '12');
   $pdf->Cell(50, 4, "$customer_name", 0, 0, "L");
 
   $pdf->Ln(10);
-  $pdf->SetFont('times', 'N', '18');
-  $pdf->Cell(49, 10, "Customer phone: ______________________________________", 0, 0, "L");
+  $pdf->SetFont('times', 'N', '12');
+  $pdf->Cell(30, 7, "Customer phone: __________________________", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('helvetica', 'B', '21');
+  $pdf->SetFont('helvetica', 'B', '12');
   $pdf->Cell(50, 4, "$customer_phone", 0, 0, "L");
 
   $pdf->Ln(10);
-  $pdf->SetFont('times', 'N', '18');
-  $pdf->Cell(51, 10, "Customer address: _______________________________________", 0, 0, "L");
+  $pdf->SetFont('times', 'N', '12');
+  $pdf->Cell(32, 7, "Customer address: _________________________", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('helvetica', 'B', '21');
+  $pdf->SetFont('helvetica', 'B', '12');
   $pdf->Cell(50, 4, "$customer_address", 0, 0, "L");
 
   $pdf->Ln(10);
-  $pdf->SetFont('times', 'N', '18');
-  $pdf->Cell(49, 4, "Transaction date:", 0, 0, "L");
+  $pdf->SetFont('times', 'N', '12');
+  $pdf->Cell(32, 7, "Transaction date:", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('times', 'B', '21');
+  $pdf->SetFont('times', 'B', '12');
   $pdf->Cell(20, 4, "$date", 0, 0, "L");
   
   
 $pdf->Ln(18);
 $pdf->SetFillColor(0, 0, 0);
 $pdf->SetTextColor(255,255,255);
-$pdf->SetFont('times', 'N', '20');
-$pdf->Cell(18, 7, 'Qty', 1, 0, 'C', 1);
-$pdf->Cell(95, 7, 'Description', 1, 0, 'L', 1);
-$pdf->Cell(30, 7, 'Rate', 1, 0, 'L', 1);
-$pdf->Cell(55, 7, 'Amount', 1, 0, 'L', 1);
+$pdf->SetFont('times', 'N', '11');
+$pdf->Cell(9, 7, 'Qty', 1, 0, 'C', 1);
+$pdf->Cell(40, 7, 'Description', 1, 0, 'L', 1);
+$pdf->Cell(15, 7, 'Rate', 1, 0, 'L', 1);
+$pdf->Cell(20, 7, 'Amount', 1, 0, 'L', 1);
 $pdf->Ln(3);
 while ($result = mysqli_fetch_array($query)) {
   $qty = $result['qty'];
@@ -183,59 +188,67 @@ while ($result = mysqli_fetch_array($query)) {
 
   $pdf->Ln(9); //this will reduce the line height of each subject
   $pdf->SetTextColor(10, 13,11);
-  $pdf->SetFont('helvetica', 'N', '24');
-  $pdf->Cell(18, 10, $qty, 0, 0, "C");
-  $pdf->Cell(95, 10, $dsc, 0, 0, "L");
-  $pdf->Cell(30, 10, $rate, 0, 0, "L");
-  $pdf->Cell(55, 10, $amt, 0, 0, "L");
+  $pdf->SetFont('helvetica', 'N', '12');
+  $pdf->Cell(9, 10, $qty, 0, 0, "C");
+  $pdf->Cell(40, 10, $dsc, 0, 0, "L");
+  $pdf->Cell(15, 10, $rate, 0, 0, "L");
+  $pdf->Cell(20, 10, $amt, 0, 0, "L");
 }
 
-$pdf->Ln(14);
-$pdf->SetTextColor(10, 93, 11);
-$pdf->SetFont('helvetica', 'B', '22');
-$pdf->Cell(18, 4, '', 0, 0, "R");
-$pdf->Cell(95, 4, 'Total:', 0, 0, "R");
-$pdf->Cell(30, 4, '', 0, 0, "R");
-$pdf->Cell(55, 4, 'N'.put_coma($total), 0, 0, "L");
+// $pdf->Ln(14);
+// $pdf->SetTextColor(10, 93, 11);
+// $pdf->SetFont('helvetica', 'B', '22');
+// $pdf->Cell(18, 4, '', 0, 0, "R");
+// $pdf->Cell(95, 4, 'Total:', 0, 0, "R");
+// $pdf->Cell(30, 4, '', 0, 0, "R");
+// $pdf->Cell(55, 4, 'N'.put_coma(), 0, 0, "L");
+
+  $pdf->Ln(14);
+  $pdf->SetTextColor(10, 93, 11);
+  $pdf->SetFont('times', 'N', '12');
+  $pdf->Cell(32, 7, "Total:", 0, 0, "L");
+  $pdf->SetTextColor(01,19,20);
+  $pdf->SetFont('times', 'B', '12');
+  $pdf->Cell(20, 4, "$total", 0, 0, "L");
+
 
 
 if (!empty($paid)) {
-  $pdf->Ln(8);
+  $pdf->Ln(5);
   $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('helvetica', 'B', '22');
-  $pdf->Cell(18, 4, '', 0, 0, "R");
-  $pdf->Cell(95, 4, 'Paid:', 0, 0, "R");
-  $pdf->Cell(30, 4, '', 0, 0, "R");
-  $pdf->Cell(55, 4, 'N'.put_coma($paid), 0, 0, "L");
+  $pdf->SetFont('times', 'N', '12');
+  $pdf->Cell(32, 7, "Paid:", 0, 0, "L");
+  $pdf->SetTextColor(01,19,20);
+  $pdf->SetFont('times', 'B', '12');
+  $pdf->Cell(20, 4, "$paid", 0, 0, "L");
 
-
-  $pdf->Ln(8);
+  $pdf->Ln(5);
   $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('helvetica', 'B', '22');
-  $pdf->Cell(18, 4, '', 0, 0, "R");
-  $pdf->Cell(95, 4, 'Balance:', 0, 0, "R");
-  $pdf->Cell(30, 4, '', 0, 0, "R");
-  $pdf->Cell(55, 4, 'N'.put_coma($total - $paid), 0, 0, "L");
+  $pdf->SetFont('times', 'N', '12');
+  $pdf->Cell(32, 7, "Balance:", 0, 0, "L");
+  $pdf->SetTextColor(01,19,20);
+  $pdf->SetFont('times', 'B', '12');
+  $pdf->Cell(20, 4, $total - $paid, 0, 0, "L");
+
 }else{
-  $pdf->Ln(8);
+  $pdf->Ln(5);
   $pdf->SetTextColor(10, 93, 11);
-  $pdf->SetFont('helvetica', 'B', '22');
-  $pdf->Cell(18, 4, '', 0, 0, "R");
-  $pdf->Cell(95, 4, 'Paid:', 0, 0, "R");
-  $pdf->Cell(30, 4, '', 0, 0, "R");
-  $pdf->Cell(55, 4, 'N0.00', 0, 0, "L");
+  $pdf->SetFont('times', 'N', '12');
+  $pdf->Cell(32, 7, "Paid:", 0, 0, "L");
+  $pdf->SetTextColor(01,19,20);
+  $pdf->SetFont('times', 'B', '12');
+  $pdf->Cell(20, 4, "N0.00", 0, 0, "L");
 
-
-  $pdf->Ln(8);
-  $pdf->SetTextColor(255, 10, 17);
-  $pdf->SetFont('helvetica', 'B', '22');
-  $pdf->Cell(18, 4, '', 0, 0, "R");
-  $pdf->Cell(95, 4, 'Balance:', 0, 0, "R");
-  $pdf->Cell(30, 4, '', 0, 0, "R");
-  $pdf->Cell(55, 4, '-N'.put_coma($total), 0, 0, "L");
+  $pdf->Ln(5);
+  $pdf->SetTextColor(10, 93, 11);
+  $pdf->SetFont('times', 'N', '12');
+  $pdf->Cell(32, 7, "Balance:", 0, 0, "L");
+  $pdf->SetTextColor(01,19,20);
+  $pdf->SetFont('times', 'B', '12');
+  $pdf->Cell(20, 4, $total, 0, 0, "L");
 }
 
-$pdf->Ln(10);
+$pdf->Ln(3);
 $pdf->SetTextColor(28, 81, 5);
 $pdf->cell(86, 0, '_________________________________________________________________________________________', 0, '', '', '');
 // set some text to print
@@ -261,6 +274,5 @@ $pdf->Output($customer_name.'_'.$d.'.pdf', 'I');
 // END OF FILE
 //============================================================+
 
-}
 
 

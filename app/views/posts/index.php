@@ -95,11 +95,19 @@ flash('msg');?>
               <p>To balance: <span class="text-warning h6 fw-bold">&#8358;<?php echo $to_balance; ?>.00</span></p>
         
             <div class="row mt-3"> 
+            <?php if($_SESSION['user_phone'] == "08122321931"):?>
               <div class="col-6"> 
+                 <form action="<?php echo URLROOT; ?>/pages/invoice/<?= $post->t_id ; ?>" method="POST">
+                  <input class="btn btn-sm btn-dark" name="generate-invoice" type="submit" value="Print receipt">
+                 </form>
+               </div>
+           <?php else:?>
+            <div class="col-6"> 
                  <form action="<?php echo URLROOT; ?>/pages/download_reciept/<?= $post->t_id ; ?>" method="POST">
                   <input class="btn btn-sm btn-dark" name="generate-invoice" type="submit" value="Generate receipt">
                  </form>
-               </div>
+            </div>
+           <?php endif;?>
                <div class="col-6">
                  <a href="<?= URLROOT;?>/posts/preview/<?php echo $post->t_id;?>" class="btn btn-sm btn-success">Preview transaction</a>
               </div>

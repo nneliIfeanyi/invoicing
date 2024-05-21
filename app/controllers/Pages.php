@@ -77,15 +77,30 @@
       $this->view('pages/subscribe', $data);
     }
 
-    public function invoice(){
-      $user = $this->userModel->getUserById($_SESSION['user_id']);
-      if ($user->status == 'monthly' OR $user->status == 'yearly' OR $user->status == 'freeTrial') {
-          $this->view('pages/invoice');
+
+
+    public function invoice($t_id){
+      $t_info = $this->postModel->getInfo($t_id);
+        $user = $this->userModel->getUserById($t_info->biz_id);
+        if($user->points > 2) {
+          $points = $user->points - 5;
+          $data = [
+            't_id' => $t_id,
+            't_info' => $t_info,
+            'user' => $user
+          ];
+
+          $new_point_value = $this->pointModel->use3($points);
+          $_SESSION['user_points'] = $points;
+          $this->view('pages/invoice', $data);
         }else{
-          redirect('pages/subscribe'); 
-      }
+          flash('msg', 'Not enough Points.. Kindly fund your wallet and try again.', 'flash-msg alert alert-danger');
+          redirect('posts/preview/'.$t_id);
+        }
      
     }
+
+
 
     public function share($t_id){
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
