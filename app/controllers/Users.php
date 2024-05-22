@@ -6,7 +6,7 @@
     }
 
     public function index(){
-      if ($_SESSION['user_phone'] != "08122321931") {
+      if ($_SESSION['user_type'] != "admin") {
         redirect('posts');
       }else{
         $users = $this->userModel->loadUsers();
@@ -20,6 +20,24 @@
         $this->view('users/index', $data);
       }
     }
+
+
+    public function referal($ref_id){
+      if ($_SESSION['user_type'] != "marketer") {
+        redirect('posts');
+      }else{
+        $referals = $this->userModel->load_referals($ref_id);
+         //Set Data
+        $data = [
+          'referals' => $referals,
+          'description' => 'Invoicing Admin Management Portal'
+        ];
+
+        // Load index view
+        $this->view('users/referal', $data);
+      }
+    }
+
 
     public function profile(){
         if (!isset($_SESSION['user_id']) ) {
@@ -391,8 +409,9 @@
         $_SESSION['logo'] = $user->logo;
         $_SESSION['user_points'] = $user->points;
         $_SESSION['reg_date'] = $user->bizcreated_at;
+        $_SESSION['ref_id'] = $user->ref_id;
         redirect('posts');
-    }
+      }
 
     // Logout & Destroy Session
     public function logout(){
@@ -408,6 +427,7 @@
       unset($_SESSION['logo']);
       unset($_SESSION['user_points']);
       unset($_SESSION['reg_date']);
+      unset($_SESSION['ref_id']);
       session_destroy();
       redirect('users/login');
     }

@@ -107,6 +107,14 @@
       return $results;
     }
 
+     // Find USer BY Email
+    public function load_referals($ref_id){
+      $this->db->query("SELECT * FROM bizusers WHERE refered_by = :id ORDER BY id DESC;");
+      $this->db->bind(':id', $ref_id);
+      $results = $this->db->resultset();
+      return $results;
+    }
+
     // Login / Authenticate User
     public function login($phone, $email, $password){
       $this->db->query("SELECT * FROM bizusers WHERE bizphone = :phone OR email = :email");

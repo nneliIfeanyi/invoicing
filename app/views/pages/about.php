@@ -174,35 +174,31 @@
             <thead>
               <th>Price</th>
               <th>Value</th>
-              <th>Action</th>
             </thead>
             <tbody>
               <tr>
                 <td>N200</td>
                 <td>P25</td>
-                <td><a class="btn btn-outline-primary btn-sm" href="https://wa.me/2349168655298?text=I%20need%2025points"><i class="fab fa-whatsapp" aria-hidden="true"></i> Buy Now</a></td>
+                
               </tr>
               <tr>
                 <td>N500</td>
                 <td>P100</td>
-                <td><a class="btn btn-outline-primary btn-sm" href="https://wa.me/2349168655298?text=I%20need%20100points"><i class="fab fa-whatsapp" aria-hidden="true"></i> Buy Now</a></td>
+                
               </tr>
               <tr>
                 <td>N1000</td>
                 <td>P210</td>
-                <td><a class="btn btn-outline-primary btn-sm" href="https://wa.me/2349168655298?text=I%20need%20210points"><i class="fab fa-whatsapp" aria-hidden="true"></i> Buy Now</a></td>
+               
               </tr>
               <tr>
                 <td>N2500</td>
                 <td>P525</td>
-                <td><a class="btn btn-outline-primary btn-sm" href="https://wa.me/2349168655298?text=I%20need%20525points"><i class="fab fa-whatsapp" aria-hidden="true"></i> Buy Now</a></td>
               </tr>
               
               <tr>
                 <td>N5000</td>
                 <td>P1050</td>
-                <td><a class="btn btn-outline-primary btn-sm" href="https://wa.me/2349168655298?text=I%20need%201050points"><i class="fab fa-whatsapp" aria-hidden="true"></i> Buy Now</a>
-                </td>
                 
               </tr>
             </tbody>
@@ -211,38 +207,42 @@
       </div>
     </div>
  
-     <!--  <h2 class="fw-bold pt-6" id="fund">Trusted Agents</h2>
+      <h2 class="fw-bold pt-6" id="fund">Trusted Agents</h2>
       <p class="lead">
-        These are verified agents who form part of the invoiceOnline team. They have been committed with the responsibility of distributing POINTS in exchange for money.
+        These are verified agents who form part of the invoiceOnline team.
       </p>
      <div class="row">
           <div class="col-md-4 mb-4">
             <div class="card bg-secondary">
-                <img src="images/project-1.jpg" alt="" class="card-img-top">
+              <div class="m-5"><img src="<?php echo URLROOT?>/logo/agent1.jpg" height="300" alt="invoiceOnline Agent" class="card-img-top rounded-circle">
+              </div>
+                <hr>
                 <div class="card-body">
                   <p>
-                    <strong class="text-muted">Name:</strong> <span class="text-primary"> NNELI IFEANYI VICTOR</span><br>
-                    <strong class="text-muted">Position:</strong> <span class="text-muted"> VENDOR</span><br>
-                    <strong class="text-muted">Office:</strong> <span class="fw-semibold"> N200</span><br>
+                    <strong class="text-muted">Name:</strong> <span class="text-primary">ATUSE MARTINS</span><br>
+                    <strong class="text-muted">Position:</strong> <span class="text-muted"> Vendor</span><br>
+                    <strong class="text-muted">Response Rate:</strong> <span class="fw-semibold"> 87%</span> <span style="font-size:11px;">less than 7minutes</span> <br>
                   </p>
-                  <a class="btn btn-success" href="https://wa.me/2349168655298?text=I%20need%20150points"><i class="fab fa-whatsapp" aria-hidden="true"></i> Buy P150 for N200</a>
+                  <a class="btn btn-success" href="https://wa.me/2347055441207?text=I%20need%20points_on_my_invoiceOnline_wallet"><i class="fab fa-whatsapp" aria-hidden="true"></i> Buy now</a>
                 </div>
             </div>
           </div>
           <div class="col-md-4 mb-4">
             <div class="card bg-secondary">
-                <img src="images/project-1.jpg" alt="" class="card-img-top">
+              <div class="m-5"><img src="<?php echo URLROOT?>/logo/agent2.jpg" height="300" alt="invoiceOnline Agent" class="card-img-top rounded-circle">
+              </div>
+                <hr>
                 <div class="card-body">
                   <p>
-                    <strong class="text-muted">Name:</strong> <span class="text-primary"> NNELI IFEANYI VICTOR</span><br>
-                    <strong class="text-muted">Position:</strong> <span class="text-muted"> VENDOR</span><br>
-                    <strong class="text-muted">Office:</strong> <span class="fw-semibold"> N500</span><br>
+                    <strong class="text-muted">Name:</strong> <span class="text-primary"> NNELI VICTOR</span><br>
+                    <strong class="text-muted">Position:</strong> <span class="text-muted"> Vendor</span><br>
+                    <strong class="text-muted">Response Rate:</strong> <span class="fw-semibold"> 90% <span style="font-size:11px;">less than 5minutes</span> </span><br>
                   </p>
-                  <a class="btn btn-success" href="https://wa.me/2349168655298?text=I%20need%20375points"><i class="fab fa-whatsapp" aria-hidden="true"></i> Buy P375 for N500</a>
+                  <a class="btn btn-success" href="https://wa.me/2349168655298?text=I%20need%20points_on_my_invoiceOnline_wallet"><i class="fab fa-whatsapp" aria-hidden="true"></i> Buy now</a>
                 </div>
             </div>
           </div>
-          <div class="col-md-4 mb-4">
+          <!-- <div class="col-md-4 mb-4">
             <div class="card bg-secondary">
                 <img src="images/project-1.jpg" alt="" class="card-img-top">
                 <div class="card-body">
@@ -251,11 +251,11 @@
                     <strong class="text-muted">Position:</strong> <span class="text-muted"> VENDOR</span><br>
                     <strong class="text-muted">Office:</strong> <span class="fw-semibold"> N1000</span><br>
                   </p>
-                  <a class="btn btn-success" href="https://wa.me/2349168655298?text=I%20need%20900points"><i class="fab fa-whatsapp" aria-hidden="true"></i> Buy P900 for N1000</a>
+                  <a class="btn btn-success" href="https://wa.me/2349168655298?text=I%20need%20points_on_my_invoiceOnline_wallet"><i class="fab fa-whatsapp" aria-hidden="true"></i> Buy P900 for N1000</a>
                 </div>
             </div>
-          </div>
-        </div> -->
+          </div> -->
+        </div>
       <div class="my-5"></div>
     </div>
   </div>

@@ -18,6 +18,46 @@
       $this->view('pages/index', $data);
     }
 
+    public function sell(){
+      if ($_SESSION['user_type'] != "marketer") {
+        redirect('posts');
+      }
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // code...
+        $data = [
+
+          'email' => trim($_POST['email']),
+          'amount' => $_POST['amount']
+        ];
+
+        if ($data['amount'] > $_SESSION['user_points']) {
+          flash('msg', 'Not enough POINTS', 'flash-msg alert alert-danger');
+          redirect('pages/sell');
+        }else{
+          $_SESSION['user_points'] = $_SESSION['user_points'] - $data['amount'];
+          $share_points_now = $this->pointModel->use3($_SESSION['user_points']);
+          if ($share_points_now) {
+            //sell points to buyer function call
+            $this->pointModel->sell3($data['amount'], $data['email']);
+            flash('msg', 'You have Successfully shared '.$data['amount'].' points to '.$data['email']);
+            redirect('pages/sell');
+          }else{
+            die('Something went wrong');
+          }
+        }
+        
+
+      }else{
+        //Set Data
+        $data = [
+          
+        ];
+
+        // Load about view
+        $this->view('pages/sell', $data);
+      }
+    }
+
     public function about(){
       //Set Data
       $data = [

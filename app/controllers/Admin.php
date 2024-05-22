@@ -1,7 +1,7 @@
 <?php
   class Admin extends Controller{
     public function __construct(){
-     if ($_SESSION['user_phone'] != "08122321931") {
+     if ($_SESSION['user_type'] != "admin") {
      	redirect('users/login');
      }
      $this->userModel = $this->model('User');

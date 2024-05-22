@@ -38,18 +38,32 @@
                             <a href="<?php echo URLROOT?>/pages/about#fund">
                                 <i class="fas fa-dollar"></i>Fund Wallet</a>
                         </li>
+                        <!-- Load Previous version -->
                         <?php if('2024-05-16' > $_SESSION['reg_date']):?>
                         <li>
                             <a href="<?php echo URLROOT?>/posts/archive">
                                 <i class="fas fa-check"></i>Previous Transactions</a>
                         </li>
                         <?php endif;?>
-                         <?php if($_SESSION['user_phone'] == "08122321931"):?>
+
+                        <!-- Check for usertype -->
+                         <?php if($_SESSION['user_type'] == "admin"):?>
                             <li>
                                 <a href="<?php echo URLROOT?>/admin">
                                     <i class="fas fa-check"></i>Admin</a>
                             </li>
-                            <?php endif;?>
+                        <?php endif;?>
+                        <?php if($_SESSION['user_type'] == "marketer"):?>
+                            <li>
+                                <a href="<?php echo URLROOT?>/users/referal/<?= $_SESSION['ref_id']?>">
+                                    <i class="fas fa-user-plus"></i>Referal</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo URLROOT?>/pages/sell">
+                                    <i class="fas fa-arrow-right"></i>Sell Points</a>
+                            </li>
+                        <?php endif;?>
+                        <!-- End Check for usertype -->
                             <li>
                                 <a href="<?php echo URLROOT?>/pages/refresh">
                                     <i class="fas fa-refresh"></i>Refresh</a>
@@ -190,19 +204,32 @@
                                 <a href="<?php echo URLROOT?>/pages/about#fund">
                                     <i class="fas fa-dollar"></i>Fund Wallet</a>
                             </li>
-                            <?php if('2024-05-15' > $_SESSION['reg_date']):?>
+                            <!-- Load Previous version -->
+                            <?php if('2024-05-16' > $_SESSION['reg_date']):?>
                             <li>
                                 <a href="<?php echo URLROOT?>/posts/archive">
                                     <i class="fas fa-check"></i>Previous Transactions</a>
                             </li>
                             <?php endif;?>
 
-                            <?php if($_SESSION['user_phone'] == "08122321931"):?>
-                            <li>
-                                <a href="<?php echo URLROOT?>/admin">
-                                    <i class="fas fa-check"></i>Admin</a>
-                            </li>
+                            <!-- Check for usertype -->
+                             <?php if($_SESSION['user_type'] == "admin"):?>
+                                <li>
+                                    <a href="<?php echo URLROOT?>/admin">
+                                        <i class="fas fa-check"></i>Admin</a>
+                                </li>
                             <?php endif;?>
+                            <?php if($_SESSION['user_type'] == "marketer"):?>
+                                <li>
+                                    <a href="<?php echo URLROOT?>/users/referal/<?= $_SESSION['ref_id']?>">
+                                        <i class="fas fa-user-plus"></i>Referal</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo URLROOT?>/pages/sell">
+                                        <i class="fas fa-arrow-right"></i>Sell Points</a>
+                                </li>
+                            <?php endif;?>
+                            <!-- End Check for usertype -->
                             <li>
                                 <a href="<?php echo URLROOT?>/pages/refresh">
                                     <i class="fas fa-refresh"></i>Refresh</a>
