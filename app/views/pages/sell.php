@@ -36,7 +36,7 @@ flash('msg');?>
 <!-- MAIN CONTENT-->
   <div class="container-fluid">
         <div class="card">
-           <form action="<?php echo URLROOT?>/pages/sell" method="post" class="">
+           <form action="<?php echo URLROOT?>/pages/sellp" method="post" class="">
             <div class="card-header">
                 Your Points Balance: <span class="text-warning">P</span><?= $_SESSION['user_points']?>
             </div>

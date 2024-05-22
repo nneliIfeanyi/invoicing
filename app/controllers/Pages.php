@@ -18,10 +18,9 @@
       $this->view('pages/index', $data);
     }
 
-    public function sell(){
-      if ($_SESSION['user_type'] != "marketer") {
-        redirect('posts');
-      }
+
+     public function sellp(){
+      
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // code...
         $data = [
@@ -56,6 +55,19 @@
         // Load about view
         $this->view('pages/sell', $data);
       }
+    }
+
+    public function sell(){
+      if ($_SESSION['user_type'] != "marketer") {
+        redirect('posts');
+      }
+
+      //Set Data
+        $data = [
+          
+        ];
+
+      $this->view('pages/sell', $data);
     }
 
     public function about(){
