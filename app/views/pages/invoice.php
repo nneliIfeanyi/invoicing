@@ -34,15 +34,16 @@ class MYPDF extends TCPDF {
 
         $this->Ln(1);
         $this->SetTextColor(10, 10, 11);
-        $this->SetFont('helvetica', 'N', 13);
+        $this->SetFont('helvetica', 'I', 12);
         $this->cell(190, 2, "$user_dsc", 0, 1, "L");
         $this->Ln(1);
-        $this->SetFont('helvetica', 'N', 11);
-        $this->cell(190, 3, "Address: $user_address", 0, 1, "L");
+        //$this->SetFont('helvetica', 'N', 11);
+        //$this->cell(190, 3, "Address: $user_address", 0, 1, "L");
 
 
-        $this->SetFont('helvetica', 'N', 12);
+        $this->SetFont('helvetica', 'B', 12);
         $this->cell(190, 2, "Hotline: $user_phone", 0, 1, "L");
+
         $this->SetTextColor(28, 81, 5);
         $this->cell(86, 0, '______________________________________________________________________', 0, '', '', '');
     }
@@ -64,7 +65,7 @@ class MYPDF extends TCPDF {
 }
 
 // create new PDF document
-$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(100, 210), true, 'UTF-8', false);
+$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(98, 200), true, 'UTF-8', false);
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
@@ -130,28 +131,34 @@ $date = $result['t_date'].' '.$result['t_month'].' '.$result['t_year'];
 $time = $result['t_time'];
 $total = $result['t_total'];
 
-  $pdf->Ln(14);
-  $pdf->SetFont('times', 'N', '12');
-  $pdf->SetTextColor(01,19,20);
-  $pdf->Cell(30, 7, "Customer name: __________________________", 0, 0, "L");
-  $pdf->SetFont('helvetica', 'B', '12');
-  $pdf->Cell(50, 4, "$customer_name", 0, 0, "L");
+  // $pdf->Ln(14);
+  // $pdf->SetFont('times', 'N', '12');
+  // $pdf->SetTextColor(01,19,20);
+  // $pdf->Cell(30, 7, "Customer name: __________________________", 0, 0, "L");
+  // $pdf->SetFont('helvetica', 'B', '12');
+  // $pdf->Cell(50, 4, "$customer_name", 0, 0, "L");
 
-  $pdf->Ln(8);
-  $pdf->SetFont('times', 'N', '12');
-  $pdf->Cell(30, 7, "Customer phone: __________________________", 0, 0, "L");
-  $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('helvetica', 'B', '12');
-  $pdf->Cell(50, 4, "$customer_phone", 0, 0, "L");
+  // $pdf->Ln(8);
+  // $pdf->SetFont('times', 'N', '12');
+  // $pdf->Cell(30, 7, "Customer phone: __________________________", 0, 0, "L");
+  // $pdf->SetTextColor(01,19,20);
+  // $pdf->SetFont('helvetica', 'B', '12');
+  // $pdf->Cell(50, 4, "$customer_phone", 0, 0, "L");
 
-  $pdf->Ln(8);
+  // $pdf->Ln(8);
+  // $pdf->SetFont('times', 'N', '12');
+  // $pdf->Cell(32, 7, "Customer address: _________________________", 0, 0, "L");
+  // $pdf->SetTextColor(01,19,20);
+  // $pdf->SetFont('helvetica', 'B', '12');
+  // $pdf->Cell(50, 4, "$customer_address", 0, 0, "L");
+  $pdf->Ln(12);
   $pdf->SetFont('times', 'N', '12');
-  $pdf->Cell(32, 7, "Customer address: _________________________", 0, 0, "L");
+  $pdf->Cell(32, 7, "Transaction ID:", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
-  $pdf->SetFont('helvetica', 'B', '12');
-  $pdf->Cell(50, 4, "$customer_address", 0, 0, "L");
+  $pdf->SetFont('times', 'B', '12');
+  $pdf->Cell(20, 4, "$t_id", 0, 0, "L");
 
-  $pdf->Ln(8);
+  $pdf->Ln(6);
   $pdf->SetFont('times', 'N', '12');
   $pdf->Cell(32, 7, "Transaction date:", 0, 0, "L");
   $pdf->SetTextColor(01,19,20);
@@ -160,13 +167,12 @@ $total = $result['t_total'];
   
   
 $pdf->Ln(9);
-$pdf->SetFillColor(0, 0, 0);
-$pdf->SetTextColor(255,255,255);
-$pdf->SetFont('times', 'N', '9');
-$pdf->Cell(7, 7, 'Qty', 1, 0, 'C', 1);
-$pdf->Cell(44, 7, 'Description', 1, 0, 'L', 1);
-$pdf->Cell(15, 7, 'Rate', 1, 0, 'L', 1);
-$pdf->Cell(24, 7, 'Amount', 1, 0, 'L', 1);
+$pdf->SetTextColor(8, 1, 5);
+$pdf->SetFont('times', 'B', '10');
+$pdf->Cell(7, 7, 'Qty', 1, 0, 'C');
+$pdf->Cell(44, 7, 'Description', 1, 0, 'L');
+$pdf->Cell(15, 7, 'Rate', 1, 0, 'L');
+$pdf->Cell(24, 7, 'Amount', 1, 0, 'L');
 
 while ($result = mysqli_fetch_array($query)) {
   $qty = $result['qty'];
@@ -178,9 +184,9 @@ while ($result = mysqli_fetch_array($query)) {
   }
   
 
-  $pdf->Ln(3);
+  $pdf->Ln(6);
   $pdf->SetTextColor(10, 13,11);
-  $pdf->SetFont('helvetica', 'N', '9');
+  $pdf->SetFont('times', 'N', '9');
   $pdf->Cell(7, 10, $qty, 0, 0, "C");
   $pdf->Cell(44, 10, $dsc, 0, 0, "L");
   $pdf->Cell(15, 10, $rate, 0, 0, "L");
@@ -191,13 +197,12 @@ while ($result = mysqli_fetch_array($query)) {
 }// WHile loop ends for transaction items
   
 
-  $pdf->Ln(8);
-  $pdf->SetFillColor(0, 0, 0);
+  $pdf->Ln(10);
   $pdf->SetTextColor(01,19,20);
   $pdf->SetFont('helvetica', 'B', '10');
   $pdf->Cell(25, 7, " ", 0, 0, "L");
   $pdf->Cell(17, 7, "Total:", 1, 0, "L");
-  $pdf->Cell(40, 7, 'N'.put_coma($total), 1, 0, "C");
+  $pdf->Cell(40, 7, 'N'.put_coma($total).'.00', 1, 0, "C");
 
 
 if (!empty($paid)) {
@@ -206,14 +211,14 @@ if (!empty($paid)) {
   $pdf->SetFont('helvetica', 'N', '9');
   $pdf->Cell(9, 5, "Paid:", 0, 0, "L");
   $pdf->SetFont('helvetica', 'B', '10');
-  $pdf->Cell(32, 4, 'N'.put_coma($paid), 0, 0, "L");
+  $pdf->Cell(32, 4, 'N'.put_coma($paid).'.00', 0, 0, "L");
 
 
   $pdf->SetFont('helvetica', 'N', '9');
   $pdf->Cell(18, 5, "To Balance:", 0, 0, "L");
   $pdf->SetTextColor(101,19,20);
   $pdf->SetFont('helvetica', 'B', '10');
-  $pdf->Cell(20, 4, 'N'.put_coma($total - $paid), 0, 0, "L");
+  $pdf->Cell(20, 4, 'N'.put_coma($total - $paid).'.00', 0, 0, "L");
 
 }else{
   $pdf->Ln(10);
@@ -228,30 +233,31 @@ if (!empty($paid)) {
   $pdf->Cell(18, 5, "To Balance:", 0, 0, "L");
   $pdf->SetTextColor(101,19,20);
   $pdf->SetFont('helvetica', 'B', '10');
-  $pdf->Cell(20, 4, 'N'.put_coma($total), 0, 0, "L");
+  $pdf->Cell(20, 4, 'N'.put_coma($total).'.00', 0, 0, "L");
 }
 
 $pdf->Ln(7);
 $pdf->SetTextColor(28, 81, 5);
 $pdf->cell(86, 0, '_________________________________________________________________________________________', 0, '', '', '');
 // set some text to print
-$today_date = date('F d, Y');
-$time = date('h:ia');
-$txt = <<<EOD
+// $today_date = date('F d, Y');
+// $time = date('h:ia');
+// $txt = <<<EOD
 
-This invoice was generated on $today_date at exactlty $time
-EOD;
+// This invoice was generated on $today_date at exactlty $time
+// EOD;
 
-// print a block of text using Write()
-//$pdf->Ln(16);
-$pdf->SetTextColor(28, 11, 5);
-$pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
+// // print a block of text using Write()
+// //$pdf->Ln(16);
+// $pdf->SetTextColor(28, 11, 5);
+// $pdf->Write(0, $txt, '', 0, 'L', true, 0, false, false, 0);
 
 // ---------------------------------------------------------
 
 //Close and output PDF document
+$c = rand(100,1000);
 $d = date("d s");
-$pdf->Output($customer_name.'_'.$d.'.pdf', 'I');
+$pdf->Output('reciept'.$c.$d.'.pdf', 'I');
 
 //============================================================+
 // END OF FILE
