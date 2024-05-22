@@ -35,7 +35,7 @@
                                 <i class="fas fa-user"></i>Profile</a>
                         </li>
                         <li>
-                            <a href="<?php echo URLROOT?>/pages/about#fund">
+                            <a href="<?php echo URLROOT?>/pages/subscribe">
                                 <i class="fas fa-dollar"></i>Fund Wallet</a>
                         </li>
                         <!-- Load Previous version -->
@@ -201,7 +201,7 @@
                                     <i class="fas fa-user"></i>Profile</a>
                             </li>
                             <li>
-                                <a href="<?php echo URLROOT?>/pages/about#fund">
+                                <a href="<?php echo URLROOT?>/pages/subscribe">
                                     <i class="fas fa-dollar"></i>Fund Wallet</a>
                             </li>
                             <!-- Load Previous version -->
