@@ -52,14 +52,16 @@ flash('msg');?>
 	    	        <td>N200</td>
 	    	        <td>P25</td>
 	    	        <td>
-	    	        	
+	    	        	<a href="https://paystack.com/pay/9yf8tx0me-" class="btn btn-success">
+	    	        		Pay Now
+	    	        	</a>
 	    	        </td>
 	    	      </tr>
 	    	      <tr>
 	    	        <td>N500</td>
 	    	        <td>P100</td>
 	    	        <td>
-	    	        	<a href="https://paystack.com/pay/5p9cv06l70" class="btn btn-success">
+	    	        	<a href="https://paystack.com/pay/q--8r0fuv-" class="btn btn-success">
 	    	        		Pay Now
 	    	        	</a>
 	    	        </td>
@@ -73,13 +75,21 @@ flash('msg');?>
 	    	      <tr>
 	    	        <td>N2500</td>
 	    	        <td>P525</td>
-	    	        <td></td>
+	    	        <td>
+	    	        	<a href="https://paystack.com/pay/j7z5elp7ew" class="btn btn-success">
+	    	        		Pay Now
+	    	        	</a>
+	    	        </td>
 	    	      </tr>
 	    	      
 	    	      <tr>
 	    	        <td>N5000</td>
 	    	        <td>P1050</td>
-	    	        <td></td>
+	    	        <td>
+	    	        	<a href="https://paystack.com/pay/q--8r0fuv-" class="btn btn-success">
+	    	        		Pay Now
+	    	        	</a>
+	    	        </td>
 	    	      </tr>
 	    	    </tbody>
 	    	  </table>
