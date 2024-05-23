@@ -100,6 +100,26 @@
          $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
          flash('msg', 'Points Purchase Successfull..');
          redirect('users/profile');
+       }elseif ($amount == 500) {
+         $_SESSION['user_points'] = $_SESSION['user_points'] + 100;
+         $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+         flash('msg', 'Points Purchase Successfull..');
+         redirect('users/profile');
+       }elseif ($amount == 200) {
+         $_SESSION['user_points'] = $_SESSION['user_points'] + 25;
+         $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+         flash('msg', 'Points Purchase Successfull..');
+         redirect('users/profile');
+       }elseif ($amount == 5000) {
+         $_SESSION['user_points'] = $_SESSION['user_points'] + 1050;
+         $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+         flash('msg', 'Points Purchase Successfull..');
+         redirect('users/profile');
+       }elseif ($amount == 2500) {
+         $_SESSION['user_points'] = $_SESSION['user_points'] + 525;
+         $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+         flash('msg', 'Points Purchase Successfull..');
+         redirect('users/profile');
        }
     }
 
