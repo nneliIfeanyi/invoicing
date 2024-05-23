@@ -142,7 +142,7 @@
                                             </div>
                                             <div class="content">
                                                 <p>Your wallet balance is</p>
-                                                <span style="color: #fe6b2a;">P</span><span style="color:#212529;"><?php echo $_SESSION['user_points'];?></span>
+                                                <span class="text-warning">P</span><span style="color:#212529;"><?php echo $_SESSION['user_points'];?></span>
                                             </div>
                                         </div>
                                         <!-- <div class="notifi__item">
@@ -155,9 +155,10 @@
                                             </div>
                                         </div> -->
                                         
-                                       <!--  <div class="notifi__footer">
-                                            <a href="#">All notifications</a>
-                                        </div> -->
+                                        <div class="notifi__footer">
+                                            <a href="<?php echo URLROOT;?>/users/wallet_history" class="text-warning text-muted">
+                                            View wallet history</a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="header-button-item mr-0 js-sidebar-btn d-lg-none">
