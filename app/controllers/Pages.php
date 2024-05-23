@@ -119,7 +119,12 @@
       }
     }//Password reset link method ends
 
+
+
     public function subscribe(){
+      if (!isset($_SESSION['user_id']) ) {
+         redirect('users/login');
+      }
       
       $data = [
         'version' => '1.0.0'

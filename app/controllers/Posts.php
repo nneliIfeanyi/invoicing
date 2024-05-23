@@ -90,6 +90,20 @@
       $this->view('posts/index', $data);
     }
 
+
+
+    //Payment Gateway integrate
+
+    public function pay_now($amount){
+       if ($amount == 1000) {
+         $_SESSION['user_points'] = $_SESSION['user_points'] + 210;
+         $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+         flash('msg', 'Points Purchase Successfull..');
+         redirect('users/profile');
+       }
+    }
+
+
     // Show Single Post
     public function show($t_id){
       $post = $this->postModel->getPost($t_id);
