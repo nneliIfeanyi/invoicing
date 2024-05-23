@@ -98,26 +98,31 @@
        if ($amount == 1000) {
          $_SESSION['user_points'] = $_SESSION['user_points'] + 210;
          $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+         $this->pointModel->history_add($_SESSION['user_id'],'credit','210','Wallet funding');
          flash('msg', 'Points Purchase Successfull..');
          redirect('users/profile');
        }elseif ($amount == 500) {
          $_SESSION['user_points'] = $_SESSION['user_points'] + 100;
          $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+         $this->pointModel->history_add($_SESSION['user_id'],'credit','100','Wallet funding');
          flash('msg', 'Points Purchase Successfull..');
          redirect('users/profile');
        }elseif ($amount == 200) {
          $_SESSION['user_points'] = $_SESSION['user_points'] + 25;
          $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+         $this->pointModel->history_add($_SESSION['user_id'],'credit','25','Wallet funding');
          flash('msg', 'Points Purchase Successfull..');
          redirect('users/profile');
        }elseif ($amount == 5000) {
          $_SESSION['user_points'] = $_SESSION['user_points'] + 1050;
          $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+         $this->pointModel->history_add($_SESSION['user_id'],'credit','1050','Wallet funding');
          flash('msg', 'Points Purchase Successfull..');
          redirect('users/profile');
        }elseif ($amount == 2500) {
          $_SESSION['user_points'] = $_SESSION['user_points'] + 525;
          $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+         $this->pointModel->history_add($_SESSION['user_id'],'credit','525','Wallet funding');
          flash('msg', 'Points Purchase Successfull..');
          redirect('users/profile');
        }
@@ -240,11 +245,12 @@
             'customer_address' => $address,
             'paid' => $paid,
             'id' => $id[$index]
-          ];
-          $this->postModel->updatePost($data);
+            ];
+            $this->postModel->updatePost($data);
           }//end for each// code...
           $_SESSION['user_points'] = $_SESSION['user_points'] - 3;
           $this->pointModel->use3($_SESSION['user_points']);
+          $this->pointModel->history_add($_SESSION['user_id'],'debit','3','Transaction edit');
           flash('msg', 'Invoice updated and saved successfully..');
           redirect('posts/show/'.$t_id);
         }else{
@@ -302,6 +308,7 @@
             $this->postModel->updatePost3($data);
             $_SESSION['user_points'] = $_SESSION['user_points'] - 3;
             $this->pointModel->use3($_SESSION['user_points']);
+            $this->pointModel->history_add($_SESSION['user_id'],'debit','3','Transaction edit');
             flash('msg', 'Invoice updated and saved successfully..');
             redirect('posts/preview/'.$t_id);
           }else{

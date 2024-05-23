@@ -95,6 +95,7 @@
               if ($upload) {
                 $_SESSION['user_points'] = $_SESSION['user_points'] - 300;
                 $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+                $this->pointModel->history_add($_SESSION['user_id'],'debit','300','Logo upload');
                 flash('msg', 'Upload Successfull..');
                 redirect('users/profile');
               }else{
@@ -195,6 +196,23 @@
       }
       
     }
+
+
+    public function wallet_history(){
+      $history = $this->pointModel->get_history();
+
+      $data = [
+
+        'history' => $history
+
+      ];
+      
+      $this->view('users/wallet_history', $data);
+    }
+
+
+
+
 
     public function register(){
       // Check if logged in

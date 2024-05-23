@@ -6,9 +6,34 @@
       $this->db = new Database;
     }
 
+    // Add history
+    public function history_add($id,$type,$points,$dsc){
+      // Prepare Query
+      $this->db->query('INSERT INTO history (user_id, type, points, dsc) 
+      VALUES (:user_id, :type, :points, :dsc)');
 
+      // Bind Values
+      $this->db->bind(':user_id', $id);
+      $this->db->bind(':type', $type);
+      $this->db->bind(':points', $points);
+      $this->db->bind(':dsc', $dsc);
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
      
+    //Get History
 
+    public function get_history(){
+      $this->db->query("SELECT * FROM history WHERE user_id = :id ORDER BY id DESC ");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $set = $this->db->resultset();
+      return $set;
+    }
 
     public function use3($value){
       $this->db->query('UPDATE bizusers SET points = :points  WHERE id = :id');

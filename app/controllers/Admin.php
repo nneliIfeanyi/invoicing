@@ -43,6 +43,7 @@
         ];
         $success = $this->pointModel->addPoints($data['id'], $data['value']);
         if ($success) {
+          $this->pointModel->history_add($data['id'],'credit',$data['value'],'Wallet funding');
           flash('msg', $data['name'].' points updated to '.$data['value']);
           redirect('admin');
         }else{
