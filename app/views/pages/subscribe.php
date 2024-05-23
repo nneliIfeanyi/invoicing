@@ -35,8 +35,12 @@ flash('msg');?>
     <div class="container-fluid">
 	  <div class="row">
 	    <div class="col-md-6">
-	    	<h2 class="fw-bold pt-4" id="fund">Wallet Funding</h2>
-	    	<hr class="hr-heading" />
+	    	<h2 class="fw-bold py-4" id="fund">Wallet Funding</h2>
+	    	<!-- <hr class="hr-heading" /> -->
+	    	<div class="card">
+	    	  <div class=""><img src="<?php echo URLROOT?>/logo/paystack0.png" alt="invoiceOnline-paystack" class="card-img-top">
+	    	  </div>
+	    	</div>
 	    	<p class="lead">
 	    	  Due to our commitment in keeping our services affordable and user friendly we have decided to keep our pricing to the minimum. Find below the breakdown of our pricing list.
 	    	</p>
@@ -95,12 +99,12 @@ flash('msg');?>
 	    	  </table>
 	    	</div>
 	    </div>
-	  </div>
+	  </div><hr/>
     <div class="container-fluid">
-    	 <div class="my-3 py-3">
+    	 <div class="mt-5 py-3">
     	 	<h2 class="fw-bold" id="fund">Trusted Agents</h2>
 		  <p class="lead">
-		    You can buy <span class="text-warning">POINTS</span> fom our verified agents who form part of the invoice<span class="text-warning">Online </span>team.
+		    Alternatively, you can buy <span class="text-warning">POINTS</span> fom our verified agents who form part of the invoice<span class="text-warning">Online </span>team.
 		  </p>
     	 </div>
     </div>	
