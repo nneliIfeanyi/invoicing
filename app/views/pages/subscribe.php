@@ -63,8 +63,8 @@ flash('msg');?>
 	    	      <tr>
 	    	        <td>N1000</td>
 	    	        <td>P210</td>
-	    	       <td><a href="https://paystack.com/pay/2l11chh-wa" class="btn btn-success">
-	    	        		Pay Now</a></td>
+	    	       <td><!-- <a href="https://paystack.com/pay/2l11chh-wa" class="btn btn-success">
+	    	        		Pay Now</a> --></td>
 	    	      </tr>
 	    	      <tr>
 	    	        <td>N2500</td>
