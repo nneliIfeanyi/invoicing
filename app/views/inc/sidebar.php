@@ -34,10 +34,10 @@
                             <a href="<?php echo URLROOT?>/users/profile">
                                 <i class="fas fa-user"></i>Profile</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="<?php echo URLROOT?>/inventory">
                                 <i class="fas fa-chart-line"></i>Inventory</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="<?php echo URLROOT?>/pages/subscribe">
                                 <i class="fas fa-dollar"></i>Fund Wallet</a>
@@ -173,10 +173,10 @@
                                 <a href="<?php echo URLROOT?>/posts/add/1">
                                     <i class="fas fa-plus"></i>Add Transaction</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="<?php echo URLROOT?>/inventory">
                                 <i class="fas fa-chart-line"></i>Inventory</a>
-                            </li>
+                            </li> -->
                              <li>
                                 <a href="<?php echo URLROOT?>/users/profile">
                                     <i class="fas fa-user"></i>Profile</a>
