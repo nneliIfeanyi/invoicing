@@ -34,7 +34,7 @@ flash('msg');?>
 <!-- END BREADCRUMB-->
 
 <!-- MAIN CONTENT-->
-  <div class="container-fluid">
+  <!-- <div class="container-fluid">
         <div class="card">
            <form action="<?php echo URLROOT?>/pages/sellp" method="post" class="">
             <div class="card-header">
@@ -63,6 +63,18 @@ flash('msg');?>
             </div>
             </form>
           </div>
+  </div> -->
+
+  <div class="container-fluid">
+     <h3 class="py-3">Exchange Points For Money</h3>
+     <div class="row">
+        <div class="col-md-9">
+             <img src="<?php echo URLROOT;?>/logo/soon.jpg" class="card-img-top" style="width: 100%;height: 300px;">
+              <div class="alert alert-warning" role="alert">
+                Coming soon.. keep your heads up..
+            </div>
+        </div>
+    </div>
   </div>
 <?php require APPROOT . '/views/inc/footer2.php'; ?>
 

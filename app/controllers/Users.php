@@ -27,15 +27,42 @@
         redirect('posts');
       }else{
         $referals = $this->userModel->load_referals($ref_id);
+        $ref_count = $this->userModel->referals_count($ref_id);
          //Set Data
         $data = [
           'referals' => $referals,
-          'description' => 'Invoicing Admin Management Portal'
+          'ref_count' => $ref_count
         ];
 
         // Load index view
         $this->view('users/referal', $data);
       }
+    }
+
+
+    public function points_claim(){
+
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $data = [
+
+            'id' => $_SESSION['user_id'],
+            'id2' => $_POST['id'],
+            'value' => '100'
+
+        ];
+        $success = $this->pointModel->addPoints($data['id'], $data['value']);
+        if ($success) {
+          $_SESSION['user_points'] = $_SESSION['user_points'] + $data['value'];
+          $this->userModel->true_claim($data['id2']);
+          $this->pointModel->history_add($data['id'],'credit',$data['value'],'referal bonus');
+          flash('msg', 'Points updated to P'.$data['value']);
+          redirect('users/referal/'.$_SESSION['ref_id']);
+        }else{
+          die('Something went wrong');
+        }
+
+      }
+      
     }
 
 
@@ -209,7 +236,6 @@
       
       $this->view('users/wallet_history', $data);
     }
-
 
 
 
@@ -428,6 +454,7 @@
         $_SESSION['user_points'] = $user->points;
         $_SESSION['reg_date'] = $user->bizcreated_at;
         $_SESSION['ref_id'] = $user->ref_id;
+         $_SESSION['inventory'] = $user->inventory;
         redirect('posts');
       }
 
@@ -446,6 +473,7 @@
       unset($_SESSION['user_points']);
       unset($_SESSION['reg_date']);
       unset($_SESSION['ref_id']);
+      unset($_SESSION['inventory']);
       session_destroy();
       redirect('users/login');
     }

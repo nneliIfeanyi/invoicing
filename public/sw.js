@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static';
-const dynamicCache = 'site-dynamic';
+const staticCacheName = 'site-static v2';
+const dynamicCache = 'site-dynamic v2';
 const assets = [
    'site.webmanifest',
    'index.php', 
@@ -42,6 +42,8 @@ self.addEventListener("install", event => {
    );
 
 });
+
+
 self.addEventListener("activate", event => {
 
    event.waitUntil(
@@ -59,8 +61,8 @@ self.addEventListener("fetch", event => {
       caches.match(event.request).then(cacheRes => {
          return cacheRes || fetch(event.request).then(fetchRes => {
             return caches.open(dynamicCache).then(cache => {
-               cache.put(event.request.url, fetchRes.clone());
-               limitCache(dynamicCache, 1);
+               //cache.put(event.request.url, fetchRes.clone());
+               limitCache(dynamicCache, 0);
                return fetchRes;
             })
          });

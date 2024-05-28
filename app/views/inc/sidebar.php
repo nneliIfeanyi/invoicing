@@ -35,6 +35,10 @@
                                 <i class="fas fa-user"></i>Profile</a>
                         </li>
                         <li>
+                            <a href="<?php echo URLROOT?>/inventory">
+                                <i class="fas fa-chart-line"></i>Inventory</a>
+                        </li>
+                        <li>
                             <a href="<?php echo URLROOT?>/pages/subscribe">
                                 <i class="fas fa-dollar"></i>Fund Wallet</a>
                         </li>
@@ -53,16 +57,16 @@
                                     <i class="fas fa-check"></i>Admin</a>
                             </li>
                         <?php endif;?>
-                        <?php if($_SESSION['user_type'] == "marketer"):?>
-                            <li>
-                                <a href="<?php echo URLROOT?>/users/referal/<?= $_SESSION['ref_id']?>">
-                                    <i class="fas fa-user-plus"></i>Referal</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo URLROOT?>/pages/sell">
-                                    <i class="fas fa-arrow-right"></i>Sell Points</a>
-                            </li>
-                        <?php endif;?>
+                    
+                        <li>
+                            <a href="<?php echo URLROOT?>/pages/referal">
+                                <i class="fas fa-user-plus"></i>Referal</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URLROOT?>/pages/sell">
+                                <i class="fas fa-arrow-right"></i>Sell Points</a>
+                        </li>
+                       
                         <!-- End Check for usertype -->
                             <li>
                                 <a href="<?php echo URLROOT?>/pages/refresh">
@@ -72,33 +76,6 @@
                             <a href="<?php echo URLROOT?>/users/logout">
                                 <i class="fas fa-backward"></i>Sign out</a>
                         </li>
-                        <!-- <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-trophy"></i>Features
-                                <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                            </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="table.html">
-                                        <i class="fas fa-table"></i>Tables</a>
-                                </li>
-                                <li>
-                                    <a href="form.html">
-                                        <i class="far fa-check-square"></i>Forms</a>
-                                </li>
-                                <li>
-                                    <a href="calendar.html">
-                                        <i class="fas fa-calendar-alt"></i>Calendar</a>
-                                </li>
-                                <li>
-                                    <a href="map.html">
-                                        <i class="fas fa-map-marker-alt"></i>Maps</a>
-                                </li>
-                            </ul>
-                        </li>
-                         -->
                 </nav>
             </div>
         </aside>
@@ -196,7 +173,10 @@
                                 <a href="<?php echo URLROOT?>/posts/add/1">
                                     <i class="fas fa-plus"></i>Add Transaction</a>
                             </li>
-
+                            <li>
+                                <a href="<?php echo URLROOT?>/inventory">
+                                <i class="fas fa-chart-line"></i>Inventory</a>
+                            </li>
                              <li>
                                 <a href="<?php echo URLROOT?>/users/profile">
                                     <i class="fas fa-user"></i>Profile</a>
@@ -220,47 +200,19 @@
                                         <i class="fas fa-check"></i>Admin</a>
                                 </li>
                             <?php endif;?>
-                            <?php if($_SESSION['user_type'] == "marketer"):?>
                                 <li>
-                                    <a href="<?php echo URLROOT?>/users/referal/<?= $_SESSION['ref_id']?>">
+                                    <a href="<?php echo URLROOT?>/pages/referal">
                                         <i class="fas fa-user-plus"></i>Referal</a>
                                 </li>
                                 <li>
                                     <a href="<?php echo URLROOT?>/pages/sell">
                                         <i class="fas fa-arrow-right"></i>Sell Points</a>
                                 </li>
-                            <?php endif;?>
                             <!-- End Check for usertype -->
                             <li>
                                 <a href="<?php echo URLROOT?>/pages/refresh">
                                     <i class="fas fa-refresh"></i>Refresh</a>
                             </li>
-                            <!-- <li class="has-sub">
-                                <a class="js-arrow" href="#">
-                                    <i class="fas fa-trophy"></i>Features
-                                    <span class="arrow">
-                                        <i class="fas fa-angle-down"></i>
-                                    </span>
-                                </a>
-                                <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                    <li>
-                                        <a href="table.html">
-                                            <i class="fas fa-table"></i>Tables</a>
-                                    </li>
-                                    <li>
-                                        <a href="form.html">
-                                            <i class="far fa-check-square"></i>Forms</a>
-                                    </li>
-                                    <li>
-                                        <a href="calendar.html">
-                                            <i class="fas fa-calendar-alt"></i>Calendar</a>
-                                    </li>
-                                    <li>
-                                        <a href="map.html">
-                                            <i class="fas fa-map-marker-alt"></i>Maps</a>
-                                    </li>
-                                </ul>
-                            </li> -->
                            
                         </ul>
                     </nav>

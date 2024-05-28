@@ -115,6 +115,35 @@
       return $results;
     }
 
+    public function referals_count($ref_id){
+      $this->db->query("SELECT * FROM bizusers WHERE refered_by = :id ORDER BY id DESC;");
+      $this->db->bind(':id', $ref_id);
+      $this->db->resultset();
+      if($this->db->rowCount() > 0){
+          return $this->db->rowCount();
+        } else {
+          return false;
+      }
+    }
+
+
+
+    public function true_claim($id){
+      $this->db->query('UPDATE bizusers SET claimed = :trues  WHERE id = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $id);
+      $this->db->bind(':trues', 'true');
+  
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
     // Login / Authenticate User
     public function login($phone, $email, $password){
       $this->db->query("SELECT * FROM bizusers WHERE bizphone = :phone OR email = :email");
@@ -315,4 +344,176 @@
 
 
 
+
+
+
+
+public function deleteEmpty(){
+  // Prepare Query
+  $this->db->query("DELETE FROM inventory WHERE qty = '' AND rate = '' AND dsc = '' ");
+  
+  //Execute
+  if($this->db->execute()){
+    return true;
+  } else {
+    return false;
   }
+}
+
+public function deleteEmpty2(){
+  // Prepare Query
+  $this->db->query("DELETE FROM inventory2 WHERE qty = '' AND rate = '' AND dsc = '' ");
+  
+  //Execute
+  if($this->db->execute()){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+
+ public function addGoods($data){
+    // Prepare Query
+    $this->db->query('INSERT INTO inventory (user_id, name, rate, qty, amount) 
+    VALUES (:user_id, :name, :rate, :qty, :amount)');
+
+    // Bind Values
+    $this->db->bind(':user_id', $data['user_id']);
+    $this->db->bind(':name', $data['name']);
+    $this->db->bind(':rate', $data['rate']);
+    $this->db->bind(':qty', $data['qty']);
+    $this->db->bind(':amount', $data['amount']);
+    
+    //Execute
+
+    if($this->db->execute()){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+
+
+
+  public function addGoods2($data){
+    // Prepare Query
+    $this->db->query('INSERT INTO inventory2 (user_id, name, rate, qty, amount) 
+    VALUES (:user_id, :name, :rate, :qty, :amount)');
+
+    // Bind Values
+    $this->db->bind(':user_id', $data['user_id']);
+    $this->db->bind(':name', $data['name']);
+    $this->db->bind(':rate', $data['rate']);
+    $this->db->bind(':qty', $data['qty']);
+    $this->db->bind(':amount', $data['amount']);
+    
+    //Execute
+
+    if($this->db->execute()){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+
+
+
+
+
+  public function loadGoods(){
+    $this->db->query("SELECT * FROM inventory WHERE user_id = :id ORDER BY id DESC;");
+    $this->db->bind(':id', $_SESSION['user_id']);
+    $results = $this->db->resultset();
+    return $results;
+  }
+
+
+
+
+  public function getCapital(){
+    $this->db->query("SELECT SUM(amount) FROM inventory WHERE user_id = :id;");
+    $this->db->bind(':id', $_SESSION['user_id']);
+    //Execute
+    $row = $this->db->sumColumn();
+    return $row;
+  }
+
+
+
+  public function getStock(){
+    $this->db->query("SELECT SUM(qty) FROM inventory WHERE user_id = :id;");
+    $this->db->bind(':id', $_SESSION['user_id']);
+    //Execute
+    $row = $this->db->sumColumn();
+    return $row;
+  }
+
+
+ // Find User By ID
+    public function getProductById($id){
+      $this->db->query("SELECT * FROM inventory2 WHERE id = :id");
+      $this->db->bind(':id', $id);
+
+      $row = $this->db->single();
+
+      return $row;
+    }
+
+
+ // Update Post
+    public function editProduct($data){
+      // Prepare Query
+      $this->db->query('UPDATE inventory2 SET qty = :qty, name = :dsc, rate = :rate, amount = :amount WHERE id = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $data['id']);
+      $this->db->bind(':amount', $data['amount']);
+      $this->db->bind(':qty', $data['qty']);
+      $this->db->bind(':dsc', $data['dsc']);
+      $this->db->bind(':rate', $data['rate']);
+    
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
+
+    public function activate($id){
+      $this->db->query('UPDATE bizusers SET inventory = :trues  WHERE id = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $id);
+      $this->db->bind(':trues', 'true');
+  
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

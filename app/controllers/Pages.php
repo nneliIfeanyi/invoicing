@@ -309,20 +309,20 @@
      
     }
     
-    public function customer_history($phone){
+    public function referal(){
       if (!isset($_SESSION['user_id']) ) {
          redirect('users/login');
       }
-      $history = $this->userModel->get_history($phone);
-      $name = $this->userModel->get_customersName($phone);
+      // $history = $this->userModel->get_history($phone);
+      // $name = $this->userModel->get_customersName($phone);
       //Set Data
       $data = [
-        'transactions' => $history,
-        'name' => $name
+        // 'transactions' => $history,
+        // 'name' => $name
       ];
 
       // Load about view
-      $this->view('pages/customer_history', $data);
+      $this->view('pages/referal', $data);
     }
 
 
