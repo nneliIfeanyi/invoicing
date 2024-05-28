@@ -58,9 +58,9 @@
     }
 
     public function sell(){
-      if ($_SESSION['user_type'] != "marketer") {
-        redirect('posts');
-      }
+      // if ($_SESSION['user_type'] != "marketer") {
+      //   redirect('posts');
+      // }
 
       //Set Data
         $data = [
