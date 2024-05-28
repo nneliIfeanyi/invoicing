@@ -100,11 +100,10 @@
          $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
          $this->pointModel->history_add($_SESSION['user_id'],'credit','210','Wallet funding');
          $invitee = $this->userModel->getUserByRefId($_SESSION['refered_by']);
-         if ($invitee->claimed == 'true') {
            $value = $invitee->points + '50';
            $this->pointModel->addPoints($invitee->id, $value);
            $this->pointModel->history_add($invitee->id,'credit','50','referal top_up');
-         }
+  
          flash('msg', 'Points Purchase Successfull..');
          redirect('users/profile');
        }elseif ($amount == 500) {
@@ -114,11 +113,9 @@
 
 
          $invitee = $this->userModel->getUserByRefId($_SESSION['refered_by']);
-         if ($invitee->claimed == 'true') {
            $value = $invitee->points + '50';
            $this->pointModel->addPoints($invitee->id, $value);
            $this->pointModel->history_add($invitee->id,'credit','50','referal top_up');
-         }
 
 
          flash('msg', 'Points Purchase Successfull..');
@@ -129,11 +126,9 @@
          $this->pointModel->history_add($_SESSION['user_id'],'credit','25','Wallet funding');
 
          $invitee = $this->userModel->getUserByRefId($_SESSION['refered_by']);
-         if ($invitee->claimed == 'true') {
            $value = $invitee->points + '5';
            $this->pointModel->addPoints($invitee->id, $value);
            $this->pointModel->history_add($invitee->id,'credit','5','referal top_up');
-         }
 
 
          flash('msg', 'Points Purchase Successfull..');
@@ -145,11 +140,9 @@
 
 
          $invitee = $this->userModel->getUserByRefId($_SESSION['refered_by']);
-         if ($invitee->claimed == 'true') {
-           $value = $invitee->points + '50';
+           $value = $invitee->points + '150';
            $this->pointModel->addPoints($invitee->id, $value);
            $this->pointModel->history_add($invitee->id,'credit','50','referal top_up');
-         }
 
 
          flash('msg', 'Points Purchase Successfull..');
@@ -161,11 +154,9 @@
 
 
          $invitee = $this->userModel->getUserByRefId($_SESSION['refered_by']);
-         if ($invitee->claimed == 'true') {
-           $value = $invitee->points + '50';
+           $value = $invitee->points + '100';
            $this->pointModel->addPoints($invitee->id, $value);
            $this->pointModel->history_add($invitee->id,'credit','50','referal top_up');
-         }
 
          flash('msg', 'Points Purchase Successfull..');
          redirect('users/profile');
