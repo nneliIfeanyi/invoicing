@@ -200,6 +200,16 @@
       return $row;
     }
 
+
+     public function getUserByRefId($id){
+      $this->db->query("SELECT * FROM bizusers WHERE ref_id = :id");
+      $this->db->bind(':id', $id);
+
+      $row = $this->db->single();
+
+      return $row;
+    }
+
     //This gets uniqe information from the transaction
     public function getInfo($t_id){
       $this->db->query("SELECT * FROM invoicing WHERE t_id = :t_id");

@@ -445,8 +445,7 @@
         $_SESSION['user_phone'] = $user->bizphone;
         $_SESSION['address'] = $user->bizaddress;
         $_SESSION['user_dsc'] = $user->biz_dsc;
-        $_SESSION['user_status'] = $user->status;
-        $_SESSION['renew'] = $user->renew;
+        $_SESSION['refered_by'] = $user->refered_by;
         $_SESSION['email'] = $user->email;
         $_SESSION['category'] = $user->category;
         $_SESSION['user_type'] = $user->user_type;
@@ -454,7 +453,7 @@
         $_SESSION['user_points'] = $user->points;
         $_SESSION['reg_date'] = $user->bizcreated_at;
         $_SESSION['ref_id'] = $user->ref_id;
-         $_SESSION['inventory'] = $user->inventory;
+        $_SESSION['inventory'] = $user->inventory;
         redirect('posts');
       }
 
@@ -465,11 +464,10 @@
       unset($_SESSION['user_name']);
       unset($_SESSION['address']);
       unset($_SESSION['user_dsc']);
-      unset($_SESSION['user_status']);
-      unset($_SESSION['renew']);
       unset($_SESSION['user_type']);
       unset($_SESSION['category']);
       unset($_SESSION['logo']);
+      unset($_SESSION['refered_by']);
       unset($_SESSION['user_points']);
       unset($_SESSION['reg_date']);
       unset($_SESSION['ref_id']);
