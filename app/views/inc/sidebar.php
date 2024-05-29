@@ -76,10 +76,6 @@
                             <a href="<?php echo URLROOT?>/users/logout">
                                 <i class="fas fa-backward"></i>Sign out</a>
                         </li>
-                         <li>
-                                <a id="install">
-                                    <i class="fas fa-download"></i>Install App</a>
-                            </li>
                 </nav>
             </div>
         </aside>
@@ -126,13 +122,13 @@
                                                 <span class="text-warning">P</span><span style="color:#212529;"><?php echo $_SESSION['user_points'];?></span>
                                             </div>
                                         </div>
-                                        <!-- <div class="notifi__item">
+                                        <div class="notifi__item">
                                             <div class="bg-c2 img-cir img-40">
-                                                <i class="zmdi zmdi-account-box"></i>
+                                                <i class="zmdi zmdi-cloud-download"></i>
                                             </div>
                                             <div class="content">
-                                                <p>Your account has been blocked</p>
-                                                <span class="date">April 12, 2018 06:50</span>
+                                                <button id="install">Install app</button><br>
+                                                <span class="text-warning">On this device</span>
                                             </div>
                                         </div> -->
                                         

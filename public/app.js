@@ -15,18 +15,18 @@ installButton.addEventListener("click", async () => {
   const result = await installPrompt.prompt();
   console.log(`Install prompt was: ${result.outcome}`);
   installPrompt = null;
-  installButton.setAttribute("hidden", "");
+  //installButton.setAttribute("hidden", "");
   //installButton.style.display = 'none';
 });
 
-// window.addEventListener('appinstalled', () => {
-//   // Hide the app-provided install promotion
-//   hideInstallPromotion();
-//   // Clear the deferredPrompt so it can be garbage collected
-//   deferredPrompt = null;
-//   // Optionally, send analytics event to indicate successful install
-//   console.log('PWA was installed');
-// });
+window.addEventListener('appinstalled', () => {
+  // Hide the app-provided install promotion
+  hideInstallPromotion();
+  // Clear the deferredPrompt so it can be garbage collected
+  deferredPrompt = null;
+  // Optionally, send analytics event to indicate successful install
+  console.log('PWA was installed');
+});
 
 
 
