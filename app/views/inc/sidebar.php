@@ -78,7 +78,7 @@
                         </li>
                          <li>
                                 <a id="install">
-                                    <i class="fas fa-download"></i>install</a>
+                                    <i class="fas fa-download"></i>Install App</a>
                             </li>
                 </nav>
             </div>
@@ -220,7 +220,7 @@
 
                             <li>
                                 <a id="install">
-                                    <i class="fas fa-download"></i>install</a>
+                                    <i class="fas fa-download"></i>Install App</a>
                             </li>
                            
                         </ul>
