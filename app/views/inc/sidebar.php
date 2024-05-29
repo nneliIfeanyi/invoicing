@@ -76,6 +76,10 @@
                             <a href="<?php echo URLROOT?>/users/logout">
                                 <i class="fas fa-backward"></i>Sign out</a>
                         </li>
+                         <li>
+                                <a id="install">
+                                    <i class="fas fa-download"></i>install</a>
+                            </li>
                 </nav>
             </div>
         </aside>
@@ -213,11 +217,22 @@
                                 <a href="<?php echo URLROOT?>/pages/refresh">
                                     <i class="fas fa-refresh"></i>Refresh</a>
                             </li>
+
+                            <li>
+                                <a id="install">
+                                    <i class="fas fa-download"></i>install</a>
+                            </li>
                            
                         </ul>
                     </nav>
                 </div>
             </aside>
             <!-- END HEADER DESKTOP-->
+
+
+
+<script src="<?php echo URLROOT;?>/app.js">
+    
+</script>
 
             
