@@ -4,7 +4,7 @@ const installButton = document.querySelector("#install");
 window.addEventListener("beforeinstallprompt", (event) => {
   event.preventDefault();
   installPrompt = event;
-  //installButton.removeAttribute("hidden");
+  installButton.removeAttribute("hidden");
 });
 
 
@@ -15,8 +15,8 @@ installButton.addEventListener("click", async () => {
   const result = await installPrompt.prompt();
   console.log(`Install prompt was: ${result.outcome}`);
   installPrompt = null;
-  //installButton.setAttribute("hidden", "");
-  installButton.style.display = 'none';
+  installButton.setAttribute("hidden", "");
+  //installButton.style.display = 'none';
 });
 
 // window.addEventListener('appinstalled', () => {
