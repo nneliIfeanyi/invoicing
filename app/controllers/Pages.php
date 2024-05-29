@@ -95,16 +95,30 @@
 
 ////////////REFRESH PAGE ENDS
 
-public function inventory(){
-  //Set Data
-  $data = [
-    //'id' => $id,
-    'version' => '1.0.0'
-  ];
+    public function inventory(){
+     if ($_SESSION['inventory'] == 'true') {
+      $goods = $this->userModel->loadGoods();
+      $capital = $this->userModel->getCapital();
+      $stock = $this->userModel->getStock();
+         //Set Data
+        $data = [
+          'goods' => $goods,
+          'capital' => $capital,
+          'stock' => $stock
+        ];
 
-  // Load about view
-  $this->view('pages/inventory', $data);
-}
+        $this->view('inventory/goods', $data);
+     }
+     else{
+       //Set Data
+      $data = [
+       
+      ];
+
+      // Load about view
+      $this->view('pages/inventory', $data);
+     }
+    }
 
 
 

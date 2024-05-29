@@ -12,13 +12,17 @@
 
     // Load Homepage
     public function index(){
-      $users = $this->userModel->loadUsers();
+     $goods = $this->userModel->loadGoods();
+      $capital = $this->userModel->getCapital();
+      $stock = $this->userModel->getStock();
          //Set Data
         $data = [
-          'users' => $users,
+          'goods' => $goods,
+          'capital' => $capital,
+          'stock' => $stock
         ];
       // Load index view
-      $this->view('inventory/index', $data);
+      $this->view('inventory/goods', $data);
     }
 
 
