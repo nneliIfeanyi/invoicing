@@ -59,10 +59,15 @@
         width: auto;
         z-index: 500;
         background: rgba(250, 250, 250, 0.9);
+        animation-name: fade;
+        animation-duration: 3s;
+        animation-delay: 6s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
       }
       .flash-msg{
-        position: fixed;
-        top: 11vh;
+        position: absolute;
+        top: 80px;
         right: 0;
         width: auto;
         z-index: 500;
@@ -74,8 +79,8 @@
       }
 
       @keyframes fade{
-        from{opacity: 1;}
-        to{opacity: 0;}
+        from{z-index: 100;}
+        to{z-index: -1;}
       }
 
       .form-input{

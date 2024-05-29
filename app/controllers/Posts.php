@@ -91,6 +91,21 @@
     }
 
 
+    public function sales(){
+      $month = date('M');
+      $monthly_total = $this->postModel->get_monthly_total($month);
+      $all_sold = $this->postModel->get_monthly_qty($month);
+      $get_tID = $this->postModel->get_salez($month);
+    
+        $data = [
+          'sales' =>$get_tID,
+          'total' => $monthly_total,
+          'all_qty' => $all_sold
+        ];
+        
+      $this->view('posts/sales', $data);
+    }
+
 
     //Payment Gateway integrate
 

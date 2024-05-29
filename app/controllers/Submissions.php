@@ -14,11 +14,16 @@
     // Load Homepage
     public function activate(){
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $done = $this->userModel->activate($_SESSION['user_id']);
-        if ($done) {
-          $_SESSION['inventory'] = 'true';
-          flash('msg', 'inventory activated');
-          redirect('inventory');
+        if ($_SESSION['user_points'] < 1000) {
+          flash('msg', 'Not enough Points.. you need at least 1000 Points to activate this feature', 'flash-msg alert alert-danger');
+          redirect('pages/inventory');
+        }else{
+          $done = $this->userModel->activate($_SESSION['user_id']);
+          if ($done) {
+            $_SESSION['inventory'] = 'true';
+            flash('msg', 'inventory activated');
+            redirect('inventory');
+          }
         }
         
       }
@@ -71,12 +76,12 @@
             'qty' => $qty[$index],
             'amount' => (int)$qty[$index] * (int)$rate[$index],
           ];
-          $success = $this->userModel->addGoods($data);
-          $success2 = $this->userModel->addGoods2($data); 
+          //$success = $this->userModel->addGoods($data);
+          $success = $this->userModel->addGoods2($data); 
         }//end for each
 
         if ($success) {
-            $this->userModel->deleteEmpty();
+            //$this->userModel->deleteEmpty();
             $this->userModel->deleteEmpty2();
             flash('msg', 'Goods added successfully..');
             redirect('inventory/goods');

@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header2.php';
-      require APPROOT . '/views/inc/sidebar.php'; 
+      require APPROOT . '/views/inc/sidebar2.php'; 
 
 flash('msg');?>
 

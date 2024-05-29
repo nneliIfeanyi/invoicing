@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header2.php';
-      require APPROOT . '/views/inc/sidebar.php'; 
+      require APPROOT . '/views/inc/sidebar2.php'; 
 
 flash('msg');?>
 
@@ -20,12 +20,12 @@ flash('msg');?>
                                     <span>/</span>
                                 </li>
                                 <li class="list-inline-item">
-                                    Added Goods
+                                    Initial Stock
                                 </li>
                             </ul>
                         </div>
-                        <a href="<?php echo URLROOT;?>/inventory/add_goods" class="au-btn au-btn-icon au-btn--green">
-                            <i class="zmdi zmdi-plus"></i>Add goods</a>
+                        <a href="<?php echo URLROOT;?>/inventory/current" class="au-btn au-btn-icon au-btn--green">
+                            current stock</a>
                     </div>
                 </div>
             </div>

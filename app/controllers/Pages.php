@@ -95,6 +95,20 @@
 
 ////////////REFRESH PAGE ENDS
 
+public function inventory(){
+  //Set Data
+  $data = [
+    //'id' => $id,
+    'version' => '1.0.0'
+  ];
+
+  // Load about view
+  $this->view('pages/inventory', $data);
+}
+
+
+
+
 
      public function reset_password(){
       if ($_SESSION['phone']) {

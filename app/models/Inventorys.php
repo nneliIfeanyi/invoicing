@@ -12,8 +12,9 @@
 
   public function get_today(){
   $today = date('D').' '.date('jS');
-    $this->db->query("SELECT * FROM transactions WHERE biz_id = :id AND t_date = :today ORDER BY id DESC");
+    $this->db->query("SELECT * FROM transactions WHERE biz_id = :id AND dsc != :empty AND t_date = :today ORDER BY id DESC");
     $this->db->bind(':id', $_SESSION['user_id']);
+    $this->db->bind(':empty', '');
     $this->db->bind(':today', $today);
     $results = $this->db->resultset();
     return $results;

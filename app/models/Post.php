@@ -10,11 +10,54 @@
     // NOW NEW
 
     public function get_transactionz(){
-      $this->db->query("SELECT DISTINCT(t_id) FROM transactions WHERE biz_id = :id ORDER BY id DESC");
+      $this->db->query("SELECT DISTINCT(t_id) FROM transactions WHERE biz_id = :id ORDER BY id DESC LIMIT 8;");
       $this->db->bind(':id', $_SESSION['user_id']);
       $results = $this->db->resultset();
       return $results;
     }
+
+
+
+
+
+// THE MONTHLY VIEW STUFF //
+
+    public function get_salez($month){
+      $this->db->query("SELECT * FROM transactions WHERE biz_id = :id AND dsc != :empty AND t_month = :month ORDER BY id DESC");
+      $this->db->bind(':id', $_SESSION['user_id']);
+       $this->db->bind(':empty', '');
+       $this->db->bind(':month', $month);
+      $results = $this->db->resultset();
+      return $results;
+    }
+
+    public function get_monthly_total($month){
+      $this->db->query("SELECT SUM(amount) FROM transactions WHERE biz_id = :id AND t_month = :month;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+       $this->db->bind(':month', $month);
+      //Execute
+      $row = $this->db->sumColumn();
+      return $row;
+    }
+
+
+
+
+     public function get_monthly_qty($month){
+      $this->db->query("SELECT SUM(qty) FROM transactions WHERE biz_id = :id AND t_month = :month;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+       $this->db->bind(':month', $month);
+      //Execute
+      $row = $this->db->sumColumn();
+      return $row;
+    }
+
+
+
+
+
+// THE MONTHLY STUFF ENDS //
+
 
     //This gets uniqe information from the transaction
     public function getInfo($id){
@@ -167,8 +210,8 @@
     // Add Post
     public function addPost($data){
       // Prepare Query
-      $this->db->query('INSERT INTO transactions (biz_id, t_id, qty, dsc, rate, amount) 
-      VALUES (:biz_id, :t_id, :qty, :dsc, :rate, :amt)');
+      $this->db->query('INSERT INTO transactions (biz_id, t_id, qty, dsc, rate, amount, t_date, t_month, t_year, t_time) 
+      VALUES (:biz_id, :t_id, :qty, :dsc, :rate, :amt, :c_date, :c_month, :c_year, :c_time)');
 
       // Bind Values
       $this->db->bind(':biz_id', $data['biz_id']);
@@ -177,6 +220,10 @@
       $this->db->bind(':dsc', $data['dsc']);
       $this->db->bind(':rate', $data['rate']);
       $this->db->bind(':amt', $data['amt']);
+      $this->db->bind(':c_date', $data['c_date']);
+      $this->db->bind(':c_month', $data['c_month']);
+      $this->db->bind(':c_year', $data['c_year']);
+      $this->db->bind(':c_time', $data['c_time']);
       
       //Execute
       if($this->db->execute()){

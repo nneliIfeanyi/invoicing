@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header2.php';
-      require APPROOT . '/views/inc/sidebar.php'; 
+      require APPROOT . '/views/inc/sidebar2.php'; 
 // $page = 'posts/index';
 //  $count = 0;
 //  $visits = $this->userModel->get_page_visits($page);

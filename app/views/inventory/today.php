@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header2.php';
-      require APPROOT . '/views/inc/sidebar.php'; 
+      require APPROOT . '/views/inc/sidebar2.php'; 
 
 flash('msg');?>
 
@@ -35,8 +35,12 @@ flash('msg');?>
 <!-- END BREADCRUMB-->
   
     <div class="container-fluid">
+        <h3 class="py-3">Today's Sales
+                (<span class="text-warning"><?= date('D-jS-M');?></span>)
+        </h3>
       <div class="row">
-        <div class="col-6"><h3 class="py-5 text-center">Goods Sold<br>
+        <div class="col-6">
+        <h3 class="py-5 text-center">Goods Sold<br>
           <span class="font-weight-bold text-warning">
             <?php if(empty($data['stock'])):?>
                 0
@@ -69,7 +73,7 @@ flash('msg');?>
                             <th>Description of goods</th>
                             <th>Rate</th>
                             <th>Amount</th>
-                            <!-- <th></th> -->
+                            <th>TimeStamp</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -86,13 +90,9 @@ flash('msg');?>
                                   <span class="status--process"><?= $goods->amount;?></span>
                               </td>
           
-                             <!--  <td>
-                                  <div class="table-data-feature">
-                                    <a href="<?php echo URLROOT;?>/inventory/edit/<?= $goods->id;?>" class="btn btn-sm btn-success" >
-                                        <i class="zmdi zmdi-edit"></i>Edit
-                                    </a>
-                                  </div>
-                              </td> -->
+                              <td>
+                                <?= $goods->t_time;?> 
+                              </td>
                             
                           </tr>
                           <tr class="spacer"></tr>

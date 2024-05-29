@@ -1,9 +1,10 @@
 <?php
   class Inventory extends Controller{
     public function __construct(){
-     if (!isset($_SESSION['user_id']) ) {
-         redirect('users/login');
+     if ($_SESSION['inventory'] == 'false') {
+        redirect('pages/inventory');
       }
+      $this->postModel = $this->model('Post');
      $this->userModel = $this->model('User');
      $this->pointModel = $this->model('Point');
      $this->stockModel = $this->model('Inventorys');
@@ -24,10 +25,6 @@
 
 
     public function goods(){
-      if ($_SESSION['inventory'] == 'false') {
-      flash('msg', 'Click to enable inventory for your profile', 'flash-msg alert alert-danger');
-         redirect('inventory');
-      }
       $goods = $this->userModel->loadGoods();
       $capital = $this->userModel->getCapital();
       $stock = $this->userModel->getStock();
@@ -143,6 +140,36 @@
       // Load index view
       $this->view('inventory/summary', $data);
     }
+
+
+
+
+
+
+     public function monthly(){
+      $month = date('M');
+      $monthly_total = $this->postModel->get_monthly_total($month);
+      $all_sold = $this->postModel->get_monthly_qty($month);
+      $get_tID = $this->postModel->get_salez($month);
+    
+        $data = [
+          'sales' =>$get_tID,
+          'total' => $monthly_total,
+          'all_qty' => $all_sold
+        ];
+        
+      $this->view('inventory/monthly', $data);
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 }

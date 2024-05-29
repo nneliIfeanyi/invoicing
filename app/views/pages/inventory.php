@@ -47,7 +47,7 @@ flash('msg');?>
 </section>
 <!-- END BREADCRUMB-->
 <div class="container-fluid">
-<div class="row py-5">
+<div class="row py-2">
 <div class="col-lg-10">
     <div class="card">
         <img src="<?php echo URLROOT;?>/logo/bg.png" class="card-img-top" style="width: 100%;height: 300px;">
@@ -57,20 +57,6 @@ flash('msg');?>
                 <h3 class="title-2">Take control of your business's inventory managment</h3>
             </div>
             <hr>
-            <div class="row">
-                <a class="btn btn-outline-success col-6 col-lg-4  mb-3" href="<?php echo URLROOT;?>/inventory/add_goods" role="button">
-                    <i class="fa fa-plus"></i>  Add Goods
-                </a>
-                <a class="btn btn-outline-warning col-6 col-lg-4  mb-3" href="<?php echo URLROOT;?>/inventory/goods">
-                   <i class="fa fa-eye"></i> View Added Goods
-                </a>
-                <a class="btn btn-outline-primary col-6 col-lg-4 mb-3" href="<?php echo URLROOT;?>/inventory/current">
-                   <i class="fas fa-upload"></i> Update Stock
-                </a>
-                <a class="btn btn-outline-secondary col-6 col-lg-4 mb-3" href="<?php echo URLROOT;?>/inventory/summary">
-                   <i class="fa fa-book"></i> Business Summary
-                </a>
-            </div>
         </div>
     </div>
 </div>
