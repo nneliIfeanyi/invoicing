@@ -25,7 +25,7 @@ flash('msg');?>
                             </ul>
                         </div>
                         <a href="<?php echo URLROOT;?>/inventory/add/1" class="au-btn au-btn-icon au-btn--green">
-                            <i class="zmdi zmdi-plus"></i>Add transaction</a>
+                            <i class="zmdi zmdi-plus"></i>record new sales</a>
                     </div>
                 </div>
             </div>
@@ -35,9 +35,9 @@ flash('msg');?>
 <!-- END BREADCRUMB-->
   
     <div class="container-fluid">
-        <h3 class="py-3">Today's Sales
+        <h5 class="py-3">Today's Sales
                 (<span class="text-warning"><?= date('D-jS-M');?></span>)
-        </h3>
+        </h5>
       <div class="row">
         <div class="col-6">
         <h3 class="py-5 text-center">Goods Sold<br>

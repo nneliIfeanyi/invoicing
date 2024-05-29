@@ -42,7 +42,6 @@ flash('msg');?>
 		            <table class="table  border w-100">
 		              <thead>
 		                <tr class="border text-center text-muted">
-		                  <th style="text-align: left;">SN</th>
 		                  <th style="text-align: left;">Instock</th>
 		                  <th style="text-align: left;">Description of goods</th>
 		                  <th style="text-align: left;">Unit cost price</th>
@@ -52,7 +51,6 @@ flash('msg');?>
 		                <?php for ($i=1; $i < 16; $i++) { 
 		                  ?>
 		                  <tr>
-		                  	<td><?= $i;?></td>
 		                    <td>
 		                       <input min="0" name="qty[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[0-9.]+$" style="width: 60px;">
 		                    </td>

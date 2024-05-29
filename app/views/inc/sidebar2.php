@@ -25,9 +25,14 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <!-- <span class="inbox-num">3</span> -->
                         </li>
+                        
                         <li>
                             <a href="<?php echo URLROOT?>/inventory/add/1">
                                 <i class="fas fa-plus"></i>Record sales</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URLROOT?>/inventory/add_goods">
+                                <i class="fas fa-plus"></i>Add goods</a>
                         </li>
                         <li>
                             <a href="<?php echo URLROOT?>/inventory/goods">
@@ -144,6 +149,10 @@
                             <li>
                                 <a href="<?php echo URLROOT?>/inventory/add/1">
                                     <i class="fas fa-plus"></i>Record sales</a>
+                            </li>
+                            <li>
+                            <a href="<?php echo URLROOT?>/inventory/add_goods">
+                                <i class="fas fa-plus"></i>Add goods</a>
                             </li>
                             <li>
                                 <a href="<?php echo URLROOT?>/inventory/goods">
