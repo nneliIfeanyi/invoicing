@@ -28,7 +28,7 @@
                         
                         <li>
                             <a href="<?php echo URLROOT?>/inventory/add/1">
-                                <i class="fas fa-plus"></i>Record sales</a>
+                                <i class="fas fa-edit"></i>Record sales</a>
                         </li>
                         <li>
                             <a href="<?php echo URLROOT?>/inventory/add_goods">
@@ -148,7 +148,7 @@
                             </li>
                             <li>
                                 <a href="<?php echo URLROOT?>/inventory/add/1">
-                                    <i class="fas fa-plus"></i>Record sales</a>
+                                    <i class="fas fa-edit"></i>Record sales</a>
                             </li>
                             <li>
                             <a href="<?php echo URLROOT?>/inventory/add_goods">

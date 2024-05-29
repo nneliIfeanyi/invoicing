@@ -383,6 +383,20 @@ public function deleteEmpty2(){
 }
 
 
+public function real_id_update(){
+  // Prepare Query
+  $this->db->query("UPDATE inventory SET real_id = :old WHERE real_id = :previous;");
+  $this->db->bind(':old', 'old');
+  $this->db->bind(':previous', 'previous');
+  //Execute
+  if($this->db->execute()){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
 
  public function addGoods($data){
     // Prepare Query
@@ -395,6 +409,30 @@ public function deleteEmpty2(){
     $this->db->bind(':rate', $data['rate']);
     $this->db->bind(':qty', $data['qty']);
     $this->db->bind(':amount', $data['amount']);
+    
+    //Execute
+
+    if($this->db->execute()){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function addGoods3($data){
+    // Prepare Query
+    $this->db->query('INSERT INTO inventory (user_id, name, rate, qty, amount, i_month, i_year, real_id) 
+    VALUES (:user_id, :name, :rate, :qty, :amount, :i_month, :i_year, :real_id)');
+
+    // Bind Values
+    $this->db->bind(':user_id', $data['user_id']);
+    $this->db->bind(':name', $data['name']);
+    $this->db->bind(':rate', $data['rate']);
+    $this->db->bind(':qty', $data['qty']);
+    $this->db->bind(':amount', $data['amount']);
+     $this->db->bind(':i_month', $data['i_month']);
+      $this->db->bind(':i_year', $data['i_year']);
+       $this->db->bind(':real_id', $data['real_id']);
     
     //Execute
 
@@ -437,8 +475,9 @@ public function deleteEmpty2(){
 
 
   public function loadGoods(){
-    $this->db->query("SELECT * FROM inventory WHERE user_id = :id ORDER BY id DESC;");
+    $this->db->query("SELECT * FROM inventory WHERE user_id = :id AND real_id = :previous ORDER BY id DESC;");
     $this->db->bind(':id', $_SESSION['user_id']);
+     $this->db->bind(':previous', 'previous');
     $results = $this->db->resultset();
     return $results;
   }
@@ -447,8 +486,9 @@ public function deleteEmpty2(){
 
 
   public function getCapital(){
-    $this->db->query("SELECT SUM(amount) FROM inventory WHERE user_id = :id;");
+    $this->db->query("SELECT SUM(amount) FROM inventory WHERE user_id = :id AND real_id = :previous;");
     $this->db->bind(':id', $_SESSION['user_id']);
+    $this->db->bind(':previous', 'previous');
     //Execute
     $row = $this->db->sumColumn();
     return $row;
@@ -457,8 +497,9 @@ public function deleteEmpty2(){
 
 
   public function getStock(){
-    $this->db->query("SELECT SUM(qty) FROM inventory WHERE user_id = :id;");
+    $this->db->query("SELECT SUM(qty) FROM inventory WHERE user_id = :id AND real_id = :previous;");
     $this->db->bind(':id', $_SESSION['user_id']);
+    $this->db->bind(':previous', 'previous');
     //Execute
     $row = $this->db->sumColumn();
     return $row;

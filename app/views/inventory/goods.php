@@ -35,8 +35,9 @@ flash('msg');?>
 <!-- END BREADCRUMB-->
   
     <div class="container-fluid">
+        <div class="text-center text-warning py-2 font-weight-bold"><span style="font-size: 17px">Previous Stock</span></div>
       <div class="row">
-        <div class="col-6"><h3 class="py-3 text-center">Inventory Goods<br>
+        <div class="col-6 shadow"><h3 class="py-3 text-center">Inventory Goods<br>
           <span class="font-weight-bold text-warning">
             <?php if(!empty($data['stock'])):?>
                 <?= $data['stock'];?>
@@ -46,7 +47,7 @@ flash('msg');?>
           </span>
           </h3>
         </div>
-        <div class="col-6"><h3 class="py-3 text-center">Stock Capital<br>
+        <div class="col-6 shadow"><h3 class="py-3 text-center">Stock Capital<br>
           <span class="font-weight-bold text-warning">
             <?php if(!empty($data['capital'])):?>
                 N<?= put_coma($data['capital']);?>

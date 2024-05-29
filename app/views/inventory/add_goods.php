@@ -36,7 +36,7 @@ flash('msg');?>
 <div class="container-fluid">
 <div class="row py-5">
 <div class="col-lg-10 mx-auto">
-    <h3 class="text-center title-2">Add Goods To Your Inventory</h3>
+    <h3 class="text-center title-2 text-warning">Add Goods To Your Inventory</h3>
             <form action="<?php echo URLROOT;?>/submissions/add_goods" method="post" novalidate="novalidate">
                 <div class="table-responsive">
 		            <table class="table  border w-100">
@@ -44,7 +44,7 @@ flash('msg');?>
 		                <tr class="border text-center text-muted">
 		                  <th style="text-align: left;">Instock</th>
 		                  <th style="text-align: left;">Description of goods</th>
-		                  <th style="text-align: left;">Unit cost price</th>
+		                  <th style="text-align: left;">Unit cost</th>
 		                </tr>
 		              </thead>
 		              <tbody>
@@ -52,13 +52,13 @@ flash('msg');?>
 		                  ?>
 		                  <tr>
 		                    <td>
-		                       <input min="0" name="qty[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[0-9.]+$" style="width: 60px;">
+		                       <input min="0" name="qty[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[0-9.]+$" style="width: 14vw;">
 		                    </td>
 		                    <td>
-		                      <input name="name[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[a-zA-Z0-9. ']+$" type="text" style="width: 50vh;">
+		                      <input name="name[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[a-zA-Z0-9. ']+$" type="text" style="width: 48vw;">
 		                    </td>
 		                    <td>
-		                      <input name="rate[]" min="0" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" style="width: 10vw;">
+		                      <input name="rate[]" min="0" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" style="width: 28vw;">
 		                    </td>
 		                  </tr>
 		                  <?php
@@ -66,7 +66,7 @@ flash('msg');?>
 		              </tbody>
 		            </table>
             	</div>
-                <button id="add-button" type="submit" class="btn btn-lg btn-info btn-block">
+                <button id="add-button" type="submit" class="btn btn-lg btn-success btn-block">
                     <i class="fa fa-plus fa-lg"></i>&nbsp;
                     <span id="add-button-dsc">Add Goods</span>
                     <span id="add-button-sending" style="display:none;">Sending…</span>

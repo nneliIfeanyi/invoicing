@@ -94,6 +94,40 @@
 
 
 
+    public function close_stock(){
+     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $this->userModel->real_id_update();
+        $qty = $_POST['qty'];
+        $rate = $_POST['rate'];
+        $name = $_POST['name'];
+        foreach($qty as $index=>$details ){
+          $data = [
+            'user_id' => $_SESSION['user_id'],
+            'rate' => $rate[$index],
+            'name' => $name[$index],
+            'qty' => $qty[$index],
+            'amount' => (int)$qty[$index] * (int)$rate[$index],
+            'real_id' => 'previous',
+            'i_month' => date('M'),
+            'i_year' => date('Y')
+          ];
+          $success = $this->userModel->addGoods3($data); 
+        }//end for each
+
+        if ($success) {
+            
+            flash('msg', 'Stock closed successfully..');
+            redirect('inventory/goods');
+
+          }else{
+
+            die('Something went wrong');
+          }
+      }//end server request method 
+    }
+
+
+
 
 
 

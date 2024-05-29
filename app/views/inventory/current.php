@@ -35,7 +35,7 @@ flash('msg');?>
 <!-- END BREADCRUMB-->
   
     <div class="container-fluid">
-        <div class="lead py-2">Date: <span style="font-size: 15px"><?= date('D-jS-M-Y') ;?></span>
+        <div class="text-center text-warning py-2 font-weight-bold"><span style="font-size: 17px"><?= date('M-Y') ;?></span></div>
       <div class="row">
         <div class="col-6 shadow"><h3 class="py-3 text-center">Inventory Goods<br>
           <span class="font-weight-bold text-warning">
@@ -61,6 +61,7 @@ flash('msg');?>
       <div class="row">
           <div class="col-md-12">
               <!-- DATA TABLE -->
+            <form action="<?php echo URLROOT;?>/submissions/close_stock" method="POST">
               <div class="table-responsive table-responsive-data2">
                   <table class="table table-data2">
                       <thead>
@@ -79,14 +80,23 @@ flash('msg');?>
                               <td><?= $count;?></td>
                               
                               <td>
+                                    <input type="hidden" name="qty[]" value="<?= $goods->qty;?>">
                                   <span class="block-email"><?= $goods->qty;?></span>
                               </td>
-                              <td><?= $goods->name;?></td>
-                              <td><?= $goods->rate;?></td>
                               <td>
+                                <?= $goods->name;?>
+                                  <input type="hidden" name="name[]" value="<?= $goods->name;?>">  
+                                </td>
+                              <td>
+                                <?= $goods->rate;?>
+                                <input type="hidden" name="rate[]" value="<?= $goods->rate;?>">
+                                </td>
+                              <td>
+                                    <input type="hidden" name="amount[]" value="<?= $goods->amount;?>">
                                   <span class="status--process"><?= $goods->amount;?></span>
                               </td>
-          
+                                <input type="hidden" name="i_month[]" value="<?= date('M');?>">
+                                <input type="hidden" name="i_year[]" value="<?= date('Y');?>">
                               <td>
                                   <div class="table-data-feature">
                                     <a href="<?php echo URLROOT;?>/inventory/edit/<?= $goods->id;?>" class="btn btn-sm btn-success" >
@@ -100,7 +110,9 @@ flash('msg');?>
                         <?php $count++; endforeach; ?>  
                       </tbody>
                   </table>
+                  <div class="my-3 text-center"><input type="submit" name="submit" class="btn btn-outline-secondary btn-lg px-4" value="Close this stock"></div>
               </div>
+            </form>
               <!-- END DATA TABLE -->
           </div>
       </div>
