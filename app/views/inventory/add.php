@@ -20,8 +20,8 @@
                                 <li class="list-inline-item">Add Transaction</li>
                             </ul>
                         </div>
-                        <a href="<?php echo URLROOT;?>/inventory" class="au-btn au-btn-icon au-btn--green">
-                            <i class="fas fa-tachometer-alt"></i>Go to dashboard</a>
+                        <a href="<?php echo URLROOT;?>/inventory/today" class="au-btn au-btn-icon au-btn--green">
+                            <i class="fas fa-tachometer-alt"></i>Go to today</a>
                     </div>
                 </div>
             </div>
@@ -102,7 +102,7 @@
                       <input min="0" name="qty[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[0-9.]+$" value="" style="width: 60px;">
                     </td>
                     <td>
-                      <select name="name[]" class="form-control" select2 style="width: 55vw;">
+                      <select name="name[]" class="form-control" select2 style="width: 45vw;">
                       	<option value="">Please Select</option>
                       	<?php foreach($data['goods'] as $goods):?>
                       		<option value="<?= $goods->name;?>"><?= $goods->name;?></option>
@@ -110,8 +110,7 @@
                       </select>
                     </td>
                     <td>
-                      <input name="rate[]" min="0" id="input" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
-                    </td>
+                      <input name="rate[]" min="0" id="input" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" value="" style="width: 20vw;">
                     </td>
                   </tr>
                   <?php
@@ -142,7 +141,7 @@
                       <div class="input-group-addon">
                           <i class="fa fa-user"></i>
                       </div>
-                      <input type="text" name="customer_name" class="form-control" required data-parsley-trigger="keyup"  placeholder="Customer name">
+                      <input type="text" name="customer_name" class="form-control" data-parsley-trigger="keyup"  placeholder="Customer name">
                   </div>
               </div>
 
@@ -151,7 +150,7 @@
                       <div class="input-group-addon">
                           <i class="fa fa-phone"></i>
                       </div>
-                      <input type="number" name="customer_phone" class="form-control" required data-parsley-length="[0, 11]" data-parsley-trigger="keyup" placeholder="Customer phone">
+                      <input type="number" name="customer_phone" class="form-control" data-parsley-length="[0, 11]" data-parsley-trigger="keyup" placeholder="Customer phone">
                   </div>
               </div>
 
@@ -174,7 +173,6 @@
                   <th>Qty</th>
                   <th>Description</th>
                   <th>Rate</th>
-                  <th>Amount</th>
                 </tr>
               </thead>
               <tbody>
@@ -185,12 +183,15 @@
                       <input min="0" name="qty[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[0-9.]+$" value="" style="width: 60px;">
                     </td>
                     <td>
-                      <input name="dsc[]" class="form-input" data-parsley-trigger="keyup" type="text" value="" style="width: 55vw;">
+                      <select name="name[]" class="form-control" select2 style="width: 45vw;">
+                        <option value="">Please Select</option>
+                        <?php foreach($data['goods'] as $goods):?>
+                          <option value="<?= $goods->name;?>"><?= $goods->name;?></option>
+                        <?php endforeach;?>
+                      </select>
                     </td>
                     <td>
-                      <input type="number" name="rate[]" min="0" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
-                    </td>
-                    <td data-toggle="tooltip" data-title="automatically calculated">
+                      <input name="rate[]" min="0" id="input" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" value="" style="width: 20vw;">
                     </td>
                   </tr>
                   <?php
@@ -222,7 +223,7 @@
                       <div class="input-group-addon">
                           <i class="fa fa-user"></i>
                       </div>
-                      <input type="text" name="customer_name" class="form-control" required data-parsley-trigger="keyup"  placeholder="Customer name">
+                      <input type="text" name="customer_name" class="form-control" data-parsley-trigger="keyup"  placeholder="Customer name">
                   </div>
               </div>
 
@@ -231,7 +232,7 @@
                       <div class="input-group-addon">
                           <i class="fa fa-phone"></i>
                       </div>
-                      <input type="number" name="customer_phone" class="form-control" required data-parsley-length="[0, 11]" data-parsley-trigger="keyup" placeholder="Customer phone">
+                      <input type="number" name="customer_phone" class="form-control" data-parsley-length="[0, 11]" data-parsley-trigger="keyup" placeholder="Customer phone">
                   </div>
               </div>
 
@@ -254,7 +255,6 @@
                   <th>Qty</th>
                   <th>Description</th>
                   <th>Rate</th>
-                  <th>Amount</th>
                 </tr>
               </thead>
               <tbody>
@@ -265,12 +265,15 @@
                       <input min="0" name="qty[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[0-9.]+$" value="" style="width: 60px;">
                     </td>
                     <td>
-                      <input name="dsc[]" class="form-input" data-parsley-trigger="keyup" type="text" value="" style="width: 55vw;">
+                      <select name="name[]" class="form-control" select2 style="width: 45vw;">
+                        <option value="">Please Select</option>
+                        <?php foreach($data['goods'] as $goods):?>
+                          <option value="<?= $goods->name;?>"><?= $goods->name;?></option>
+                        <?php endforeach;?>
+                      </select>
                     </td>
                     <td>
-                      <input type="number" name="rate[]" min="0" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
-                    </td>
-                    <td data-toggle="tooltip" data-title="automatically calculated">
+                      <input name="rate[]" min="0" id="input" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" value="" style="width: 20vw;">
                     </td>
                   </tr>
                   <?php
