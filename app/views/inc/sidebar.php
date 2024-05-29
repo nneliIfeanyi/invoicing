@@ -130,7 +130,7 @@
                                                 <button id="install">Install app</button><br>
                                                 <span class="text-warning">On this device</span>
                                             </div>
-                                        </div> -->
+                                        </div>
                                         
                                         <div class="notifi__footer">
                                             <a href="<?php echo URLROOT;?>/users/wallet_history" class="text-warning text-muted">
