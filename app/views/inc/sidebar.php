@@ -218,10 +218,10 @@
                                     <i class="fas fa-refresh"></i>Refresh</a>
                             </li>
 
-                            <li>
+                            <!-- <li>
                                 <a>
                                     <button id="install"><i class="fas fa-download"></i>Install App</button></a>
-                            </li>
+                            </li> -->
                            
                         </ul>
                     </nav>
