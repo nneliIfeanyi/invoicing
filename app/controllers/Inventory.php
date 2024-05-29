@@ -32,11 +32,13 @@
       $goods = $this->userModel->loadGoods();
       $capital = $this->userModel->getCapital();
       $stock = $this->userModel->getStock();
+      $i_month = $this->stockModel->get_initial_month();
          //Set Data
         $data = [
           'goods' => $goods,
           'capital' => $capital,
-          'stock' => $stock
+          'stock' => $stock,
+          'i_month' => $i_month->i_month
         ];
       // Load index view
       $this->view('inventory/goods', $data);

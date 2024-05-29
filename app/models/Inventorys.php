@@ -216,4 +216,15 @@
   }
 
 
+
+  public function get_initial_month(){
+      $this->db->query("SELECT i_month FROM inventory WHERE real_id = :real_id;");
+      $this->db->bind(':real_id', 'previous');
+
+      $row = $this->db->single();
+
+      return $row;
+    }
+
+
 }

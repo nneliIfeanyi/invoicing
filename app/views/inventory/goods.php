@@ -35,7 +35,9 @@ flash('msg');?>
 <!-- END BREADCRUMB-->
   
     <div class="container-fluid">
-        <div class="text-center text-warning py-2 font-weight-bold"><span style="font-size: 17px">Previous Stock</span></div>
+        <div class="text-center text-warning py-2">
+            <span class="font-weight-bold text-secondary" style="font-size: 17px">Previous Stock</span> <?= $data['i_month'];?>
+        </div>
       <div class="row">
         <div class="col-6 shadow"><h3 class="py-3 text-center">Inventory Goods<br>
           <span class="font-weight-bold text-warning">
