@@ -122,7 +122,7 @@
                                                 <span class="text-warning">P</span><span style="color:#212529;"><?php echo $_SESSION['user_points'];?></span>
                                             </div>
                                         </div>
-                                        <div class="notifi__item">
+                                        <!-- <div class="notifi__item">
                                             <div class="bg-c2 img-cir img-40">
                                                 <i class="zmdi zmdi-cloud-download"></i>
                                             </div>
@@ -130,7 +130,7 @@
                                                 <button id="install">Install app</button><br>
                                                 <span class="text-warning">On this device</span>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         
                                         <div class="notifi__footer">
                                             <a href="<?php echo URLROOT;?>/users/wallet_history" class="text-warning text-muted">
@@ -214,10 +214,9 @@
                                     <i class="fas fa-refresh"></i>Refresh</a>
                             </li>
 
-                            <!-- <li>
-                                <a>
-                                    <button id="install"><i class="fas fa-download"></i>Install App</button></a>
-                            </li> -->
+                            <li>
+                                <button id="install">Install app</button>
+                            </li>
                            
                         </ul>
                     </nav>
