@@ -25,7 +25,7 @@ flash('msg');?>
                             </ul>
                         </div>
                         <a href="<?php echo URLROOT;?>/inventory/current" class="au-btn au-btn-icon au-btn--green">
-                            current stock</a>
+                          go to  current stock</a>
                     </div>
                 </div>
             </div>

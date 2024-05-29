@@ -36,13 +36,7 @@ flash('msg');?>
 <div class="container-fluid">
 <div class="row py-5">
 <div class="col-lg-10 mx-auto">
-    <div class="card">
-        <div class="card-header"><?php echo $_SESSION['user_name']?></div>
-        <div class="card-body">
-            <div class="card-title">
-                <h3 class="text-center title-2">Add Goods To Your Inventory</h3>
-            </div>
-            <hr>
+    <h3 class="text-center title-2">Add Goods To Your Inventory</h3>
             <form action="<?php echo URLROOT;?>/submissions/add_goods" method="post" novalidate="novalidate">
                 <div class="table-responsive">
 		            <table class="table  border w-100">
@@ -79,9 +73,9 @@ flash('msg');?>
                     <span id="add-button-dsc">Add Goods</span>
                     <span id="add-button-sending" style="display:none;">Sending…</span>
                 </button>
-                </div>
             </form>
         </div>
+        
     </div>
 </div>
 
