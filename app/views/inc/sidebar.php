@@ -220,7 +220,7 @@
 
                             <li>
                                 <a>
-                                    <button id="install" hidden><i class="fas fa-download"></i>Install App</button></a>
+                                    <button id="install"><i class="fas fa-download"></i>Install App</button></a>
                             </li>
                            
                         </ul>
