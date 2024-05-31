@@ -55,7 +55,7 @@
       <div class="row py-3">
         <div class="col-6 col-md-3">
           <select class="form-input" name="day">
-            <option value="">Edit transaction day</option>
+            <option value="">Change day</option>
             <?php foreach($data['date'] as $date):?>
             <option value="<?php echo $date->days;?>"><?php echo $date->days;?></option>
             <?php endforeach;?>
@@ -64,7 +64,7 @@
 
         <div class="col-6 col-md-3">
           <select class="form-input" name="date">
-            <option value="">Edit transaction date</option>
+            <option value="">Change date</option>
             <?php foreach($data['date'] as $date):?>
             <option value="<?php echo $date->dates;?>"><?php echo $date->dates;?></option>
             <?php endforeach;?>
