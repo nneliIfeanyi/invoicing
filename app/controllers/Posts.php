@@ -334,7 +334,16 @@
          $customer_info = $this->postModel->getInfo($t_id);
         if (empty($_POST['day']) && empty($_POST['date'])) {
           $date = $customer_info->t_date;
-        }else{
+        }elseif (empty($_POST['day'])) {
+          $exp = explode(' ',  $customer_info->t_date);
+          $d_date = $exp[0];
+          $date = $d_date.' '.$_POST['date'];
+        }elseif (empty($_POST['date'])) {
+          $exp = explode(' ',  $customer_info->t_date);
+          $d_date = $exp[1];
+          $date = $_POST['day'].' '.$d_date;
+        }
+        else{
           $date = $_POST['day'].' '.$_POST['date'];
         }
         $id = $_POST['post_id'];
