@@ -73,7 +73,7 @@
 
         <div class="col-6 col-md-3">
           <select class="form-input" name="month">
-            <option value="<?php echo $data['info']->t_month ; ?>">Edit transaction month</option>
+            <option value="<?php echo $data['info']->t_month ; ?>">Change month</option>
             <?php foreach($data['date'] as $date):?>
             <option value="<?php echo $date->months;?>"><?php echo $date->months;?></option>
             <?php endforeach;?>
