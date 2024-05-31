@@ -234,7 +234,7 @@
             'c_month' => date('M'),
             'c_date' => date('D').' '.date('jS'),
             'c_week' => date('W'),
-            'c_time' => date('H:ia'),
+            'c_time' => date('h:ia'),
             't_id' => $t_id,
             'customer_name' => $name,
             'customer_phone' => $phone,
@@ -329,8 +329,14 @@
 
   //Edit2 Transaction 
     public function edit2($t_id){ 
-      
+      $date = $this->postModel->load_date();
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+         $customer_info = $this->postModel->getInfo($t_id);
+        if (empty($_POST['day']) && empty($_POST['date'])) {
+          $date = $customer_info->t_date;
+        }else{
+          $date = $_POST['day'].' '.$_POST['date'];
+        }
         $id = $_POST['post_id'];
         $qty = $_POST['qty'];
         $rate = $_POST['rate'];
@@ -353,7 +359,9 @@
             'paid' => $paid,
             'id' => $id[$index],
             'id2' => $t_id,
-            'total' => $total+=((int)$qty[$index] * (int)$rate[$index])
+            'total' => $total+=((int)$qty[$index] * (int)$rate[$index]),
+            'c_date' => $date,
+            'c_month' => $_POST['month']
           ];
           $update = $this->postModel->updatePost2($data);
           }//end for each// code...
@@ -382,7 +390,8 @@
      
         $data = [
           'post' => $post,
-          'info' => $customer_info
+          'info' => $customer_info,
+          'date' => $date
         ];
          $this->view('posts/edit2', $data);
     }

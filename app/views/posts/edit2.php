@@ -32,9 +32,8 @@
 <div class="container-fluid">
 <div class="row">
   <div class="col-md-6">
-    <h6 class="text-warning">Click on any field to change the details of this transaction
+    <h6 class="text-warning py-2">Click on any field to change the details of this transaction
     </h6>
-    <p class="fs-6 fs-italics text-muted">Note that you cannot edit transaction date.</p>
   </div>
 </div>
 <div class="mb-7">
@@ -50,7 +49,37 @@
       <input type="text" name="customer_address" class="form-input" value="<?php echo $data['info']->address ; ?>" placeholder="Address">
     </div>
     <div class="col-6">
-      <input disabled class="form-input" value="<?= date('D').' '. date('jS').' '.date('M').' '.date('Y');?>">
+      <input disabled class="form-input" value="<?php echo $data['info']->t_date.' '.$data['info']->t_month ; ?>" placeholder="Address">
+    </div>
+    <div class="col-12">
+      <div class="row py-3">
+        <div class="col-6 col-md-3">
+          <select class="form-input" name="day">
+            <option value="">Edit transaction day</option>
+            <?php foreach($data['date'] as $date):?>
+            <option value="<?php echo $date->days;?>"><?php echo $date->days;?></option>
+            <?php endforeach;?>
+          </select>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <select class="form-input" name="date">
+            <option value="">Edit transaction date</option>
+            <?php foreach($data['date'] as $date):?>
+            <option value="<?php echo $date->dates;?>"><?php echo $date->dates;?></option>
+            <?php endforeach;?>
+          </select>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <select class="form-input" name="month">
+            <option value="<?php echo $data['info']->t_month ; ?>">Edit transaction month</option>
+            <?php foreach($data['date'] as $date):?>
+            <option value="<?php echo $date->months;?>"><?php echo $date->months;?></option>
+            <?php endforeach;?>
+          </select>
+        </div>
+      </div>
     </div>
   </div>
   <?php if($_SESSION['category'] == 'B&S'):?>

@@ -10,7 +10,7 @@ $page = 'posts/index';
   $this->userModel->updateVisit($page,$count);
 //  echo 'page visited '.$count.' times';
  }
-
+$dept = $data['t_total'] - $data['d_total'];
 flash('msg');?>
 <!-- BREADCRUMB-->
 <section class="au-breadcrumb m-t-75">
@@ -46,7 +46,7 @@ flash('msg');?>
             <div class="row">
                 <div class="col-md-6 col-lg-4">
                     <div class="statistic__item">
-                        <h2 class="number text-warning">&#8358;<?php echo $data['t_total'];?></h2>
+                        <h2 class="number text-warning">&#8358;<?php echo put_coma($data['t_total']);?></h2>
                         <span class="desc">Total transactions</span>
                         <div class="icon">
                             <i class="zmdi zmdi-money"></i>
@@ -55,7 +55,7 @@ flash('msg');?>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="statistic__item">
-                            <h2 class="number text-warning">&#8358;<?php echo $data['t_total'] - $data['d_total'];?></h2>
+                            <h2 class="number text-warning">&#8358;<?php echo put_coma($dept);?></h2>
                         <span class="desc">Total credits</span>
                         <div class="icon">
                             <i class="zmdi zmdi-money"></i>

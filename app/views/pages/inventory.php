@@ -54,9 +54,17 @@ flash('msg');?>
         <div class="card-header"><?php echo $_SESSION['user_name']?> Inventory</div>
         <div class="card-body">
             <div class="card-title">
-                <h3 class="title-2">Take control of your business's inventory managment</h3>
+                <h3 class="title-2">Take control of your business inventory managment</h3>
             </div>
             <hr>
+            <?php if($_SESSION['inventory'] == 'false'):?>
+                <form action="<?php echo URLROOT;?>/submissions/activate" method="post">
+                    <button type="submit" class="au-btn au-btn-icon au-btn--green">Activate Inventory</button>
+                </form>
+            <?php else:?>
+                <a href="<?php echo URLROOT;?>/inventory/today" class="au-btn au-btn-icon au-btn--green">
+                    <i class="zmdi zmdi-eye"></i>View Sales</a>
+            <?php endif;?>
         </div>
     </div>
 </div>

@@ -9,6 +9,16 @@
 
     // NOW NEW
 
+
+
+    public function load_date(){
+    $this->db->query("SELECT * FROM dating;");
+    $results = $this->db->resultset();
+    return $results;
+  }
+
+
+
     public function get_transactionz(){
       $this->db->query("SELECT DISTINCT(t_id) FROM transactions WHERE biz_id = :id ORDER BY id DESC LIMIT 8;");
       $this->db->bind(':id', $_SESSION['user_id']);
@@ -307,7 +317,7 @@
      // Update Post
     public function updatePost3($data){
       // Prepare Query
-      $this->db->query('UPDATE customers SET name = :customer_name, address = :customer_address, phone = :customer_phone, t_total = :total, paid = :paid WHERE t_id = :id');
+      $this->db->query('UPDATE customers SET name = :customer_name, address = :customer_address, phone = :customer_phone, t_total = :total, paid = :paid, t_date = :t_date, t_month = :t_month WHERE t_id = :id');
 
       // Bind Values
       $this->db->bind(':id', $data['id2']);
@@ -316,6 +326,8 @@
       $this->db->bind(':customer_phone', $data['customer_phone']);
       $this->db->bind(':total', $data['total']);
       $this->db->bind(':paid', $data['paid']);
+      $this->db->bind(':t_date', $data['c_date']);
+      $this->db->bind(':t_month', $data['c_month']);
       
       //Execute
       if($this->db->execute()){
