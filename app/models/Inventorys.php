@@ -6,6 +6,26 @@
       $this->db = new Database;
     }
 
+
+
+
+   public function load_date(){
+    $this->db->query("SELECT dates FROM dating;");
+    $results = $this->db->resultset();
+    return $results;
+  }
+
+  public function load_day(){
+    $this->db->query("SELECT days FROM dating WHERE days != '' ;");
+    $results = $this->db->resultset();
+    return $results;
+  }
+
+  public function load_month(){
+    $this->db->query("SELECT months FROM dating WHERE months != '' ;");
+    $results = $this->db->resultset();
+    return $results;
+  }
    
 
   //Function One === Get today's sales

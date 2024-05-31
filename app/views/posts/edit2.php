@@ -56,7 +56,7 @@
         <div class="col-6 col-md-3">
           <select class="form-input" name="day">
             <option value="">Change day</option>
-            <?php foreach($data['date'] as $date):?>
+            <?php foreach($data['day'] as $date):?>
             <option value="<?php echo $date->days;?>"><?php echo $date->days;?></option>
             <?php endforeach;?>
           </select>
@@ -74,7 +74,7 @@
         <div class="col-6 col-md-3">
           <select class="form-input" name="month">
             <option value="<?php echo $data['info']->t_month ; ?>">Change month</option>
-            <?php foreach($data['date'] as $date):?>
+            <?php foreach($data['month'] as $date):?>
             <option value="<?php echo $date->months;?>"><?php echo $date->months;?></option>
             <?php endforeach;?>
           </select>

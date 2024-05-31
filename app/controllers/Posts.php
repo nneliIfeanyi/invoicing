@@ -330,6 +330,8 @@
   //Edit2 Transaction 
     public function edit2($t_id){ 
       $date = $this->postModel->load_date();
+      $day = $this->postModel->load_day();
+      $month = $this->postModel->load_month();
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          $customer_info = $this->postModel->getInfo($t_id);
         if (empty($_POST['day']) && empty($_POST['date'])) {
@@ -400,7 +402,9 @@
         $data = [
           'post' => $post,
           'info' => $customer_info,
-          'date' => $date
+          'date' => $date,
+          'day' => $day,
+          'month' => $month
         ];
          $this->view('posts/edit2', $data);
     }
