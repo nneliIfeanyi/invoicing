@@ -20,14 +20,14 @@ flash('msg');?>
                                     <span>/</span>
                                 </li>
                                 <li class="list-inline-item">
-                                    Today's Sales
+                                    Previous Sales
                                 </li>
                             </ul>
                         </div>
                          <form action="<?php echo URLROOT;?>/inventory/download_today" method="post">
-                            <input type="hidden" name="date" value="<?= date('D jS');?>">
-                            <input type="hidden" name="month" value="<?= date('M');?>">
-                            <input type="hidden" name="year" value="<?= date('Y');?>">
+                            <input type="hidden" name="date" value="<?= $_POST['day'].' '.$_POST['date'];?>">
+                            <input type="hidden" name="month" value="<?= $_POST['month'];?>">
+                            <input type="hidden" name="year" value="<?= $_POST['year'];?>">
                                 <button type="submit" class="au-btn au-btn-icon au-btn--green">
                                     <i class="fas fa-download"></i>Download sales record</button>
                             </form>
@@ -41,13 +41,12 @@ flash('msg');?>
   
     <div class="container-fluid">
         <div class="row">
-            <h5 class="py-3 col-md-6">Today's Sales
-                (<span class="text-warning"><?= date('D-jS-M');?></span>)
+            <h5 class="py-3 col-md-6">Sales Record For 
+                (<span class="text-warning"><?= $_POST['day'].' '.$_POST['date'].' '.$_POST['month'].' '.$_POST['year'];?></span>)
             </h5>
             <p class="col-md-6 py-2">
-                <button data-toggle="modal" data-target="#mediumModal" class="btn btn-success btn-sm px-5 pull-right">
-                    <i class="fas fa-arrow-left"></i> &nbsp;Navigate
-                </button>
+                <a href="<?php echo URLROOT;?>/inventory/today" class="pull-right btn btn-sm btn-outline-dark">
+                    <i class="fas fa-arrow-left"></i> Back to today</a>
             </p>
         </div>
       <div class="row">
@@ -172,7 +171,7 @@ flash('msg');?>
             </div>
         </div>
       </div>
-      <!-- end modal medium -->
+<!-- end modal medium -->
 
 </div>
 

@@ -30,6 +30,37 @@
     }
 
 
+    public function previous_day(){
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SESSION['user_points'] < 10) {
+          flash('msg', 'Not enough Points.. you need at least 10 Points to view previous transactions', 'flash-msg alert alert-danger');
+          redirect('inventory/today');
+        }else{
+
+         $data = [
+          'day' => $_POST['day'],
+          'date' => $_POST['date'],
+          'month' => $_POST['month'],
+          'year' => $_POST['year']  
+          ];
+          $sales = $this->stockModel->get_previous($data);
+          $amount = $this->stockModel->get_previous_total_sold($data);
+          $sold = $this->stockModel->get_previous_num_goods_sold($data);
+          $data = [
+            'goods' => $sales,
+            'capital' => $amount,
+            'stock' => $sold
+          ];
+          $this->view('inventory/previous_day', $data);
+        }// Check for Points Ends
+        
+      }// Server Request Method Ends
+      else{
+        redirect('inventory/today');
+      }
+    }// Functions Ends
+
+
 
 
     public function edit_product($id){
@@ -64,7 +95,7 @@
 
     public function add_goods(){
      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        
+       $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING); 
         $qty = $_POST['qty'];
         $rate = $_POST['rate'];
         $name = $_POST['name'];
@@ -84,7 +115,7 @@
             //$this->userModel->deleteEmpty();
             $this->userModel->deleteEmpty2();
             flash('msg', 'Goods added successfully..');
-            redirect('inventory/goods');
+            redirect('inventory/current');
           }else{
 
             die('Something went wrong');

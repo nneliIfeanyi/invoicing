@@ -26,6 +26,14 @@
     $results = $this->db->resultset();
     return $results;
   }
+
+
+  public function load_year(){
+    $this->db->query("SELECT DISTINCT(t_year) FROM transactions WHERE biz_id = :id;");
+    $this->db->bind(':id', $_SESSION['user_id']);
+    $results = $this->db->resultset();
+    return $results;
+  }
    
 
   //Function One === Get today's sales
@@ -64,6 +72,49 @@
     $row = $this->db->sumColumn();
     return $row;
   }
+
+
+
+
+  //Function Two === Get previous day's sales
+
+  public function get_previous($data){
+    $dates = $data['day'].' '.$data['date'];
+    $this->db->query("SELECT * FROM transactions WHERE biz_id = :id AND t_date = :dates AND t_month = :months AND t_year = :year ORDER BY id DESC");
+    $this->db->bind(':id', $_SESSION['user_id']);
+    $this->db->bind(':dates', $dates);
+    $this->db->bind(':months', $data['month']);
+    $this->db->bind(':year', $data['year']);
+    $results = $this->db->resultset();
+    return $results;
+  }
+
+  public function get_previous_num_goods_sold($data){
+    $dates = $data['day'].' '.$data['date'];
+    $this->db->query("SELECT SUM(qty) FROM transactions WHERE biz_id = :id AND t_date = :dates AND t_month = :months AND t_year = :year");
+    $this->db->bind(':id', $_SESSION['user_id']);
+    $this->db->bind(':dates', $dates);
+    $this->db->bind(':months', $data['month']);
+    $this->db->bind(':year', $data['year']);
+    $row = $this->db->sumColumn();
+    return $row;
+  }
+
+  public function get_previous_total_sold($data){
+    $dates = $data['day'].' '.$data['date'];
+    $this->db->query("SELECT SUM(amount) FROM transactions WHERE biz_id = :id AND t_date = :dates AND t_month = :months AND t_year = :year");
+    $this->db->bind(':id', $_SESSION['user_id']);
+    $this->db->bind(':dates', $dates);
+    $this->db->bind(':months', $data['month']);
+    $this->db->bind(':year', $data['year']);
+    $row = $this->db->sumColumn();
+    return $row;
+  }
+
+
+
+
+
 
 
 
@@ -238,13 +289,21 @@
 
 
   public function get_initial_month(){
-      $this->db->query("SELECT i_month FROM inventory WHERE real_id = :real_id;");
+      $this->db->query("SELECT * FROM inventory WHERE real_id = :real_id;");
       $this->db->bind(':real_id', 'previous');
 
       $row = $this->db->single();
 
       return $row;
-    }
+  }
+
+
+
+
+
+
+
+
 
 
 }

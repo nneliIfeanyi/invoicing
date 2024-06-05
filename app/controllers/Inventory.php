@@ -82,13 +82,22 @@
       $sales = $this->stockModel->get_today();
       $amount = $this->stockModel->get_amount_sold();
       $sold = $this->stockModel->num_goods_sold();
-         //Set Data
+      $date = $this->stockModel->load_date();
+      $day = $this->stockModel->load_day();
+      $month = $this->stockModel->load_month();
+      $year = $this->stockModel->load_year();
+        //Set Data
         $data = [
           'goods' => $sales,
           'capital' => $amount,
-          'stock' => $sold
+          'stock' => $sold,
+          'date' => $date,
+          'day' => $day,
+          'month' => $month,
+          'year' => $year
         ];
-      // Load index view
+
+        // Load index view
       $this->view('inventory/today', $data);
     }
 
@@ -168,7 +177,59 @@
     }
 
 
+public function download_today(){
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $user = $this->userModel->getUserById($_SESSION['user_id']);
+        $sales = $this->stockModel->get_today();
+        $amount = $this->stockModel->get_amount_sold();
+        $sold = $this->stockModel->num_goods_sold();
+        if($user->points > 4) {
+          $points = $user->points - 5;
+          $data = [
+            'user' => $user,
+            'goods' => $sales,
+            'capital' => $amount,
+            'stock' => $sold
+          ];
 
+          $new_point_value = $this->pointModel->use3($points);
+          $_SESSION['user_points'] = $points;
+          $this->pointModel->history_add($_SESSION['user_id'],'debit','5','sales record download');
+          $this->view('inventory/download_today', $data);
+        }else{
+          flash('msg', 'Not enough Points.. Kindly fund your wallet and try again.', 'flash-msg alert alert-danger');
+           redirect('inventory/today');
+        }
+      }else{
+        redirect('inventory/today');
+      }
+     
+    }
+
+
+
+    public function download1(){
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $user = $this->userModel->getUserById($_SESSION['user_id']);
+        if($user->points < 4) {
+          $points = $user->points - 5;
+          $data = [
+            'user' => $user
+          ];
+
+          $new_point_value = $this->pointModel->use3($points);
+          $_SESSION['user_points'] = $points;
+          $this->pointModel->history_add($_SESSION['user_id'],'debit','5','sales record download');
+          $this->view('inventory/download1', $data);
+        }else{
+          flash('msg', 'Not enough Points.. Kindly fund your wallet and try again.', 'flash-msg alert alert-danger');
+           redirect('inventory/today');
+        }
+      }else{
+        redirect('inventory/today');
+      }
+     
+    }
 
 
 
