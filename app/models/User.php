@@ -38,7 +38,7 @@
      public function updateProfile($data){
      
       // Prepare Query
-      $this->db->query('UPDATE bizusers SET biz_dsc = :dsc, bizphone = :phone, email = :email, bizaddress = :address WHERE id = :id');
+      $this->db->query('UPDATE bizusers SET biz_dsc = :dsc, bizphone = :phone, email = :email, category = :category, bizaddress = :address WHERE id = :id');
 
       // Bind Values
       $this->db->bind(':id', $_SESSION['user_id']);
@@ -46,6 +46,7 @@
       $this->db->bind(':phone', $data['phone']);
       $this->db->bind(':email', $data['email']);
       $this->db->bind(':address', $data['address']);
+      $this->db->bind(':category', $data['category']);
     
       //Execute
       if($this->db->execute()){

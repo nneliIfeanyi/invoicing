@@ -412,13 +412,18 @@
     }
 
       public function update_profile(){
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SESSION['user_points'] < 10) {
+           flash('msg', 'Not enough Points.. Kindly fund your wallet and try again.', 'flash-msg alert alert-danger');
+            redirect('users/profile');
+        }else{
+          if($_SERVER['REQUEST_METHOD'] == 'POST') {
           $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
           $data = [
             'dsc' => trim($_POST['dsc']),
             'phone' => trim($_POST['phone']),
             'email' => trim($_POST['email']),
             'address' => trim($_POST['address']),
+            'category' => $_POST['category'],
             'phone_err' => '',
             'email_err' => '',
           ];
@@ -429,12 +434,17 @@
             $_SESSION['user_phone'] = $data['phone'];
             $_SESSION['address'] = $data['address'];
             $_SESSION['email'] = $data['email'];
+            $_SESSION['category'] = $data['category'];
+            $_SESSION['user_points'] = $_SESSION['user_points'] - 10;
+            $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+            $this->pointModel->history_add($_SESSION['user_id'],'debit','10','profile edit');
             flash('msg', 'Profile updated Successfully');
-           redirect('users/profile');
+            redirect('users/profile');
           }else{
              die('Something went wrong');
           }
         }//Edit profile Server request ends
+        }
       }
 
     // Create Session With User Info

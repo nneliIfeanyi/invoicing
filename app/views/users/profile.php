@@ -96,7 +96,26 @@
             <input type="email" name="email" required data-parsley-trigger="keyup" class="form-control form-control-lg <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?= $data['user']->email;?>">
             <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
           </div>
-    
+          <div class="form-group mb-3">
+            <label>Business category:</label>
+            <select class="form-control" name="category" required data-parsley-trigger="keyup">
+                <option value="">
+                    ---
+                </option>
+                <option value="B&S">
+                    Production
+                </option>
+                <option value="B&S">
+                    Trading
+                </option>
+                <option value="services">
+                    Service rendering
+                </option>
+                <option value="services">
+                    Freelancing
+                </option>
+            </select>
+        </div> 
           <div class="row">
             <div class="col-md-6">
               <input type="submit" class="btn btn-success btn-block mb-3" value="Update Profile">
