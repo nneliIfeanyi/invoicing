@@ -1,7 +1,7 @@
 <?php
   class Inventory extends Controller{
     public function __construct(){
-     if ($_SESSION['inventory'] == 'false') {
+     if (!isset($_SESSION['user_id']) || $_SESSION['inventory'] == 'false') {
         redirect('pages/inventory');
       }
       $this->postModel = $this->model('Post');

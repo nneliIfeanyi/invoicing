@@ -43,22 +43,22 @@ flash('msg');?>
 		              <thead>
 		                <tr class="border text-center text-muted">
 		                  <th style="text-align: left;">Instock</th>
-		                  <th style="text-align: left;">Description of goods</th>
+		                  <th style="text-align: left;">Describe goods</th>
 		                  <th style="text-align: left;">Unit cost</th>
 		                </tr>
 		              </thead>
 		              <tbody>
-		                <?php for ($i=1; $i < 16; $i++) { 
+		                <?php for ($i=1; $i < 8; $i++) { 
 		                  ?>
 		                  <tr>
 		                    <td>
 		                       <input min="0" name="qty[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[0-9.]+$" style="width: 14vw;">
 		                    </td>
 		                    <td>
-		                      <input name="name[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[a-zA-Z0-9. ']+$" type="text" style="width: 48vw;">
+		                      <input name="name[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[a-zA-Z0-9. ']+$" type="text" style="width: 40vw;">
 		                    </td>
 		                    <td>
-		                      <input name="rate[]" min="0" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" style="width: 28vw;">
+		                      <input name="rate[]" min="0" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" style="width: 21vw;">
 		                    </td>
 		                  </tr>
 		                  <?php

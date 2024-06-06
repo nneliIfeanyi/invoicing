@@ -102,7 +102,7 @@
                       <input min="0" name="qty[]" class="form-input" data-parsley-trigger="keyup" data-parsley-pattern="^[0-9.]+$" value="" style="width: 60px;">
                     </td>
                     <td>
-                      <select name="name[]" class="form-control" select2 style="width: 45vw;">
+                      <select name="name[]" class="form-control" style="width: 45vw;">
                       	<option value="">Please Select</option>
                       	<?php foreach($data['goods'] as $goods):?>
                       		<option value="<?= $goods->name;?>"><?= $goods->name;?></option>
@@ -135,7 +135,7 @@
       <?php elseif($data['entry_rows'] == 7):?>
       <section class="statistic">
         <div class="container-fluid">
-          <form action="" method="post" id="add_form">
+          <form action="<?php echo URLROOT;?>/submissions/add_transaction" method="post" id="add_form">
           <div class="form-group">
                   <div class="input-group">
                       <div class="input-group-addon">
@@ -217,7 +217,7 @@
     <section class="statistic">
       <div class="container-fluid">
         <div id="msg"></div>
-        <form action="" method="post" id="add_form">
+        <form action="<?php echo URLROOT;?>/submissions/add_transaction" method="post" id="add_form">
           <div class="form-group">
                   <div class="input-group">
                       <div class="input-group-addon">
@@ -289,7 +289,7 @@
               <input type="submit" id="submit" class="btn btn-success" value="Save Transaction">
             </div>
             <div class="col-4">
-              <a href="javascript:void()" onclick="history.back()" class="btn" style="color: #fe6b2a;"><i class="fa fa-backward"></i> Back</a>
+              <a href="javascript:void()" onclick="history.back()" class="btn text-warning"><i class="fa fa-backward"></i> Back</a>
             </div>
           </div>
         </form>

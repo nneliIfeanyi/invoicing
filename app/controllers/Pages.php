@@ -110,6 +110,9 @@
         $this->view('inventory/goods', $data);
      }
      else{
+      if (!isset($_SESSION['user_id'])) {
+        redirect('users/login');
+      }
        //Set Data
       $data = [
        

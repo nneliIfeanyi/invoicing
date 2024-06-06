@@ -35,10 +35,10 @@ flash('msg');?>
 <!-- END BREADCRUMB-->
   
     <div class="container-fluid">
-        <div class="text-center text-warning py-2 font-weight-bold"><span style="font-size: 17px"><?= date('M-Y') ;?></span></div>
+        <div class="text-center py-2 font-weight-bold">Current Stock <span class="text-warning" style="font-size: 17px"><?= date('M-Y') ;?></span></div>
       <div class="row">
-        <div class="col-6 shadow"><h3 class="py-3 text-center">Inventory Goods<br>
-          <span class="font-weight-bold text-warning">
+        <div class="col-6 shadow"><h3 class="py-3 text-center">Stocked Goods<br>
+          <span class="text-warning">
             <?php if(!empty($data['stock'])):?>
                 <?= $data['stock'];?>
             <?php else:?>
@@ -48,7 +48,7 @@ flash('msg');?>
           </h3>
         </div>
         <div class="col-6 shadow"><h3 class="py-3 text-center">Stock Capital<br>
-          <span class="font-weight-bold text-warning">
+          <span class="text-warning">
             <?php if(!empty($data['capital'])):?>
                 N<?= put_coma($data['capital']);?>
             <?php else:?>
@@ -100,7 +100,7 @@ flash('msg');?>
                               <td>
                                   <div class="table-data-feature">
                                     <a href="<?php echo URLROOT;?>/inventory/edit/<?= $goods->id;?>" class="btn btn-sm btn-success" >
-                                        <i class="zmdi zmdi-edit"></i>Edit
+                                        <i class="zmdi zmdi-edit"></i> Edit
                                     </a>
                                   </div>
                               </td>
