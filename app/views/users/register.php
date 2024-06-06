@@ -33,16 +33,16 @@
                 <option value="">
                     ---
                 </option>
-                <option value="B&S">
+                <option value="production">
                     Production
                 </option>
-                <option value="B&S">
+                <option value="trading">
                     Trading
                 </option>
                 <option value="services">
                     Service rendering
                 </option>
-                <option value="services">
+                <option value="freelancing">
                     Freelancing
                 </option>
             </select>

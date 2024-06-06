@@ -25,13 +25,14 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                            
                         </li>
-                       <?php if($_SESSION['category'] == 'services'):?>
+                        <!-- SESSION CATEGORY CHECK -->
+                       <?php if($_SESSION['category'] == 'services' || $_SESSION['category'] == 'freelancing'):?>
                         <li>
                             <a href="<?php echo URLROOT?>/posts/add/1">
                                 <i class="fas fa-plus"></i>Add Transaction</a>
                         </li>
                         <?php endif;?>
-                        <?php if($_SESSION['category'] == 'B&S'):?>
+                        <?php if($_SESSION['category'] == 'production' || $_SESSION['category'] == 'trading'):?>
                         <li>
                             <a href="<?php echo URLROOT?>/posts/add/1">
                                 <i class="fas fa-plus"></i>Record Sales</a>
@@ -40,19 +41,26 @@
                             <a href="<?php echo URLROOT?>/posts/sales">
                                 <i class="fas fa-lightbulb"></i>Sales</a>
                         </li>
-                        <?php endif;?>
-                        <li>
-                            <a href="<?php echo URLROOT?>/users/profile">
-                                <i class="fas fa-user"></i>Profile</a>
-                        </li>
+
                         <li>
                             <a href="<?php echo URLROOT?>/pages/inventory">
                                 <i class="fas fa-chart-line"></i>Inventory</a>
                         </li>
+                        <?php endif;?>
+                        <!-- CATEGORY CHECK ENDS -->
+
+
+                        <li>
+                            <a href="<?php echo URLROOT?>/users/profile">
+                                <i class="fas fa-user"></i>Profile</a>
+                        </li>
+                        
                         <li>
                             <a href="<?php echo URLROOT?>/pages/subscribe">
                                 <i class="fas fa-dollar"></i>Fund Wallet</a>
                         </li>
+
+
                         <!-- Load Previous version -->
                         <?php if('2024-05-16' > $_SESSION['reg_date']):?>
                         <li>
@@ -60,15 +68,19 @@
                                 <i class="fas fa-check"></i>Previous Transactions</a>
                         </li>
                         <?php endif;?>
+                        <!-- End Load Previous version -->
 
-                        <!-- Check for usertype -->
+
+                        <!-- Check If Admin -->
                          <?php if($_SESSION['user_type'] == "admin"):?>
                             <li>
                                 <a href="<?php echo URLROOT?>/admin">
                                     <i class="fas fa-check"></i>Admin</a>
                             </li>
                         <?php endif;?>
-                    
+                        <!-- End Check If Admin -->
+
+
                         <li>
                             <a href="<?php echo URLROOT?>/pages/referal">
                                 <i class="fas fa-user-plus"></i>Referal</a>
@@ -78,18 +90,18 @@
                                 <i class="fas fa-arrow-right"></i>Sell Points</a>
                         </li>
                        
-                        <!-- End Check for usertype -->
-                            <li>
-                                <a href="<?php echo URLROOT?>/pages/refresh">
-                                    <i class="fas fa-refresh"></i>Refresh</a>
-                            </li>
-                         <li>
+                       
+                        <li>
+                            <a href="<?php echo URLROOT?>/pages/refresh">
+                                <i class="fas fa-refresh"></i>Refresh</a>
+                        </li>
+                        <li>
                             <a href="<?php echo URLROOT?>/users/logout">
                                 <i class="fas fa-backward"></i>Sign out</a>
                         </li>
-                </nav>
-            </div>
-        </aside>
+                    </nav>
+                </div>
+            </aside>
         <!-- END MENU SIDEBAR-->
         <!-- PAGE CONTAINER-->
         <div class="page-container2">
@@ -170,73 +182,90 @@
                             <img src="<?php echo URLROOT;?>/logo/branding.png" alt="invoiceOnline" />
                         </div>
                          <?php endif;?> -->
-                        <h4 class="name"><?php echo $_SESSION['user_name'];?></h4>
+                        <h4 class="font-weight-bold"><?php echo $_SESSION['user_name'];?></h4>
                         <a href="<?php echo URLROOT?>/users/logout">Sign out</a>
                     </div>
                     <nav class="navbar-sidebar2">
-                        <ul class="list-unstyled navbar__list">
-                            <li>
-                                <a href="<?php echo URLROOT?>/posts">
-                                    <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                                <!-- <span class="inbox-num">3</span> -->
-                            </li>
-                           <?php if($_SESSION['category'] == 'services'):?>
-                            <li>
-                                <a href="<?php echo URLROOT?>/posts/add/1">
-                                    <i class="fas fa-plus"></i>Add Transaction</a>
-                            </li>
-                            <?php endif;?>
-                            <?php if($_SESSION['category'] == 'B&S'):?>
-                            <li>
-                                <a href="<?php echo URLROOT?>/posts/add/1">
-                                    <i class="fas fa-plus"></i>Record Sales</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo URLROOT?>/posts/sales">
-                                    <i class="fas fa-lightbulb"></i>Sales</a>
-                            </li>
-                            <?php endif;?>
-                            <li>
-                                <a href="<?php echo URLROOT?>/pages/inventory">
-                                <i class="fas fa-chart-line"></i>Inventory</a>
-                            </li>
-                             <li>
-                                <a href="<?php echo URLROOT?>/users/profile">
-                                    <i class="fas fa-user"></i>Profile</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo URLROOT?>/pages/subscribe">
-                                    <i class="fas fa-dollar"></i>Fund Wallet</a>
-                            </li>
-                            <!-- Load Previous version -->
-                            <?php if('2024-05-16' > $_SESSION['reg_date']):?>
-                            <li>
-                                <a href="<?php echo URLROOT?>/posts/archive">
-                                    <i class="fas fa-check"></i>Previous Transactions</a>
-                            </li>
-                            <?php endif;?>
+                    <ul class="list-unstyled navbar__list">
+                        <li>
+                            <a href="<?php echo URLROOT?>/posts">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                           
+                        </li>
+                        <!-- SESSION CATEGORY CHECK -->
+                       <?php if($_SESSION['category'] == 'services' || $_SESSION['category'] == 'freelancing'):?>
+                        <li>
+                            <a href="<?php echo URLROOT?>/posts/add/1">
+                                <i class="fas fa-plus"></i>Add Transaction</a>
+                        </li>
+                        <?php endif;?>
+                        <?php if($_SESSION['category'] == 'production' || $_SESSION['category'] == 'trading'):?>
+                        <li>
+                            <a href="<?php echo URLROOT?>/posts/add/1">
+                                <i class="fas fa-plus"></i>Record Sales</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URLROOT?>/posts/sales">
+                                <i class="fas fa-lightbulb"></i>Sales</a>
+                        </li>
 
-                            <!-- Check for usertype -->
-                             <?php if($_SESSION['user_type'] == "admin"):?>
-                                <li>
-                                    <a href="<?php echo URLROOT?>/admin">
-                                        <i class="fas fa-check"></i>Admin</a>
-                                </li>
-                            <?php endif;?>
-                                <li>
-                                    <a href="<?php echo URLROOT?>/pages/referal">
-                                        <i class="fas fa-user-plus"></i>Referal</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo URLROOT?>/pages/sell">
-                                        <i class="fas fa-arrow-right"></i>Sell Points</a>
-                                </li>
-                            <!-- End Check for usertype -->
+                        <li>
+                            <a href="<?php echo URLROOT?>/pages/inventory">
+                                <i class="fas fa-chart-line"></i>Inventory</a>
+                        </li>
+                        <?php endif;?>
+                        <!-- CATEGORY CHECK ENDS -->
+
+
+                        <li>
+                            <a href="<?php echo URLROOT?>/users/profile">
+                                <i class="fas fa-user"></i>Profile</a>
+                        </li>
+                        
+                        <li>
+                            <a href="<?php echo URLROOT?>/pages/subscribe">
+                                <i class="fas fa-dollar"></i>Fund Wallet</a>
+                        </li>
+
+
+                        <!-- Load Previous version -->
+                        <?php if('2024-05-16' > $_SESSION['reg_date']):?>
+                        <li>
+                            <a href="<?php echo URLROOT?>/posts/archive">
+                                <i class="fas fa-check"></i>Previous Transactions</a>
+                        </li>
+                        <?php endif;?>
+                        <!-- End Load Previous version -->
+
+
+                        <!-- Check If Admin -->
+                         <?php if($_SESSION['user_type'] == "admin"):?>
                             <li>
-                                <a href="<?php echo URLROOT?>/pages/refresh">
-                                    <i class="fas fa-refresh"></i>Refresh</a>
+                                <a href="<?php echo URLROOT?>/admin">
+                                    <i class="fas fa-check"></i>Admin</a>
                             </li>
-                        </ul>
+                        <?php endif;?>
+                        <!-- End Check If Admin -->
+
+
+                        <li>
+                            <a href="<?php echo URLROOT?>/pages/referal">
+                                <i class="fas fa-user-plus"></i>Referal</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URLROOT?>/pages/sell">
+                                <i class="fas fa-arrow-right"></i>Sell Points</a>
+                        </li>
+                       
+                       
+                        <li>
+                            <a href="<?php echo URLROOT?>/pages/refresh">
+                                <i class="fas fa-refresh"></i>Refresh</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo URLROOT?>/users/logout">
+                                <i class="fas fa-backward"></i>Sign out</a>
+                        </li>
                     </nav>
                 </div>
             </aside>

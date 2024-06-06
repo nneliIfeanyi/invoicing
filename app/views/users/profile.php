@@ -99,19 +99,19 @@
           <div class="form-group mb-3">
             <label>Business category:</label>
             <select class="form-control" name="category" required data-parsley-trigger="keyup">
-                <option value="">
-                    ---
+                <option value="<?= $data['user']->category;?>">
+                   <?= $data['user']->category;?>
                 </option>
-                <option value="B&S">
+                <option value="production">
                     Production
                 </option>
-                <option value="B&S">
+                <option value="trading">
                     Trading
                 </option>
                 <option value="services">
                     Service rendering
                 </option>
-                <option value="services">
+                <option value="freelancing">
                     Freelancing
                 </option>
             </select>
