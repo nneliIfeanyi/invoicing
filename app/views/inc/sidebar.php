@@ -145,13 +145,13 @@
                             <div class="header-button2">
                                 <div class="header-button-item js-item-menu">
                                     <i class="zmdi zmdi-search"></i>
-                                    <div class="search-dropdown js-dropdown">
+                                    <div class="search-dropdown js-dropdown" style="background: whitesmoke; padding: 7px 0;">
                                         <form action="<?= URLROOT?>/posts/search_results" 
                                               method="post" class="mt-2" id="search_form">
-                                            <input class="au-input au-input--full au-input--h60" type="text" placeholder="Search customer name" />
+                                            <input class="au-input au-input--full au-input--h60" name="search" type="text" placeholder="Customer name or number" />
                                         
-                                            <button type="submit" class="search-dropdown__icon">
-                                             <i class="zmdi zmdi-search"></i> 
+                                            <button type="submit" class="search-dropdown__icon" style="margin-top: 5px;">
+                                             <i class="zmdi zmdi-search text-warning"></i> 
                                             </button>
                                        </form>
                                     </div>

@@ -11,38 +11,31 @@
     }//ends construct function
 
     
-    // public function search_results(){
-    //  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //     //check if search input is text
-    //     if (isset($_POST['search'])) {
-    //       $search_input = trim($_POST['search']);
-    //       if (empty($search_input)) {
-    //         redirect('posts/index');
-    //       }else{
-    //         $search_results = $this->postModel->search_results($search_input);
-    //         $data = [
-    //           'search_input' =>$search_input,
-    //           'transactions' =>$search_results
-    //         ];
-    //         $this->view('posts/search_results', $data);
-    //       }
-    //       //check if search input is number
-    //     }elseif (isset($_POST['search2'])) {
-    //       $search_input = $_POST['search2'];
-    //        if (empty($search_input)) {
-    //          redirect('posts/index');
-    //        }else{
-    //         $search_results = $this->postModel->search_results2($search_input);
-    //         $data = [
-    //           'search_input' =>$search_input,
-    //           'transactions' =>$search_results
-    //         ];
-    //         $this->view('posts/search_results', $data);
-    //        }
-    //     }
-    //     //end search function
-    //   }
-    // }
+    public function search_results(){
+
+     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+          $search_input = trim($_POST['search']);
+          if (empty($search_input)) {
+            redirect('posts/index');
+          }else{
+            $search_results = $this->postModel->results($search_input);
+            $data = [
+              'search_input' =>$search_input,
+              'transactions' =>$search_results
+            ];
+            $this->view('posts/search_results', $data);
+          }
+      
+        
+      }//end search server request post method
+      else{
+        redirect('posts/index');
+      }
+    }//end search function
+
+
+
+
     public function archive(){
         $count = $this->postModel->get_count();
         $transactions = $this->postModel->get_transactions();

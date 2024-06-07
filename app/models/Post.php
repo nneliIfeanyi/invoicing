@@ -191,8 +191,8 @@
       return $results;
     }
 
-    public function search_results($search_input){
-      $this->db->query("SELECT DISTINCT(t_id) FROM invoicing WHERE customer_name LIKE '%$search_input%' AND biz_id = :id");
+    public function results($search_input){
+      $this->db->query("SELECT * FROM customers WHERE name LIKE '%$search_input%' OR phone LIKE '%$search_input%' AND biz_id = :id");
       $this->db->bind(':id', $_SESSION['user_id']);
       $results = $this->db->resultset();
       return $results;
