@@ -296,7 +296,7 @@
         <?php else:?>
         <section class="statistic">
           <div class="container-fluid">
-            <p class="h2 text-muted">Please choose invoice size
+            <p class="h3 text-muted">Please choose entry size
             </p><hr>
             <div class="row">
               <div class="col-md-6 mb-4">

@@ -427,7 +427,13 @@
             'phone_err' => '',
             'email_err' => '',
           ];
-
+          //check for email
+          // $email_check = $this->userModel->findUserByEmail($data['email']);
+          // if (!$email_check) {
+          //   flash('msg', 'You cannot change your email, Please', 'flash-msg alert alert-danger');
+          //   redirect('users/profile');
+          //   exit();
+          // }
           $edit_profile = $this->userModel->updateProfile($data);
           if ($edit_profile) {
             $_SESSION['user_dsc'] = $data['dsc'];

@@ -35,11 +35,11 @@
                         <?php if($_SESSION['category'] == 'production' || $_SESSION['category'] == 'trading'):?>
                         <li>
                             <a href="<?php echo URLROOT?>/posts/add/1">
-                                <i class="fas fa-plus"></i>Record Sales</a>
+                                <i class="fa-solid fa-pencil"></i>Record Sales</a>
                         </li>
                         <li>
                             <a href="<?php echo URLROOT?>/posts/sales">
-                                <i class="fas fa-lightbulb"></i>Sales</a>
+                                <i class="fas fa-lightbulb"></i>View Sales</a>
                         </li>
 
                         <li>
@@ -48,17 +48,50 @@
                         </li>
                         <?php endif;?>
                         <!-- CATEGORY CHECK ENDS -->
-
-
-                        <li>
-                            <a href="<?php echo URLROOT?>/users/profile">
-                                <i class="fas fa-user"></i>Profile</a>
-                        </li>
                         
-                        <li>
-                            <a href="<?php echo URLROOT?>/pages/subscribe">
-                                <i class="fas fa-dollar"></i>Fund Wallet</a>
+
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-wallet"></i>My Wallet
+                                <span class="arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="<?php echo URLROOT?>/pages/subscribe">
+                                        <i class="fas fa-dollar"></i>Fund Wallet</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo URLROOT?>/users/wallet_history">
+                                        <i class="fas fa-refresh"></i>Wallet History</a>
+                                </li>
+                            </ul>
                         </li>
+
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-user-check"></i>Account
+                                <span class="arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="<?php echo URLROOT?>/users/profile">
+                                        <i class="fas fa-user"></i>Profile</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo URLROOT?>/pages/referal">
+                                        <i class="fas fa-user-plus"></i>Referal</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo URLROOT?>/pages/sell">
+                                        <i class="fa-solid fa-naira-sign"></i>Sell Points</a>
+                                </li>
+                            </ul>
+                        </li>
+
 
 
                         <!-- Load Previous version -->
@@ -81,20 +114,13 @@
                         <!-- End Check If Admin -->
 
 
-                        <li>
-                            <a href="<?php echo URLROOT?>/pages/referal">
-                                <i class="fas fa-user-plus"></i>Referal</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URLROOT?>/pages/sell">
-                                <i class="fas fa-arrow-right"></i>Sell Points</a>
-                        </li>
+                        
                        
                        
-                        <li>
+                        <!-- <li>
                             <a href="<?php echo URLROOT?>/pages/refresh">
                                 <i class="fas fa-refresh"></i>Refresh</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="<?php echo URLROOT?>/users/logout">
                                 <i class="fas fa-backward"></i>Sign out</a>
@@ -145,19 +171,10 @@
                                                 <span class="text-warning">P</span><span style="color:#212529;"><?php echo $_SESSION['user_points'];?></span>
                                             </div>
                                         </div>
-                                        <!-- <div class="notifi__item">
-                                            <div class="bg-c2 img-cir img-40">
-                                                <i class="zmdi zmdi-cloud-download"></i>
-                                            </div>
-                                            <div class="content">
-                                                <button id="install">Install app</button><br>
-                                                <span class="text-warning">On this device</span>
-                                            </div>
-                                        </div> -->
                                         
                                         <div class="notifi__footer">
                                             <a href="<?php echo URLROOT;?>/users/wallet_history" class="text-warning text-muted">
-                                            View wallet history</a>
+                                           <i class="fas fa-refresh" style="margin-top: -3px"></i>&nbsp;View Wallet History</a>
                                         </div>
                                     </div>
                                 </div>
@@ -185,7 +202,7 @@
                         <h4 class="font-weight-bold"><?php echo $_SESSION['user_name'];?></h4>
                         <a href="<?php echo URLROOT?>/users/logout">Sign out</a>
                     </div>
-                    <nav class="navbar-sidebar2">
+                   <nav class="navbar-sidebar2">
                     <ul class="list-unstyled navbar__list">
                         <li>
                             <a href="<?php echo URLROOT?>/posts">
@@ -202,11 +219,11 @@
                         <?php if($_SESSION['category'] == 'production' || $_SESSION['category'] == 'trading'):?>
                         <li>
                             <a href="<?php echo URLROOT?>/posts/add/1">
-                                <i class="fas fa-plus"></i>Record Sales</a>
+                                <i class="fa-solid fa-pencil"></i>Record Sales</a>
                         </li>
                         <li>
                             <a href="<?php echo URLROOT?>/posts/sales">
-                                <i class="fas fa-lightbulb"></i>Sales</a>
+                                <i class="fas fa-lightbulb"></i>View Sales</a>
                         </li>
 
                         <li>
@@ -215,17 +232,50 @@
                         </li>
                         <?php endif;?>
                         <!-- CATEGORY CHECK ENDS -->
-
-
-                        <li>
-                            <a href="<?php echo URLROOT?>/users/profile">
-                                <i class="fas fa-user"></i>Profile</a>
-                        </li>
                         
-                        <li>
-                            <a href="<?php echo URLROOT?>/pages/subscribe">
-                                <i class="fas fa-dollar"></i>Fund Wallet</a>
+
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-wallet"></i>My Wallet
+                                <span class="arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="<?php echo URLROOT?>/pages/subscribe">
+                                        <i class="fas fa-dollar"></i>Fund Wallet</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo URLROOT?>/users/wallet_history">
+                                        <i class="fas fa-refresh"></i>Wallet History</a>
+                                </li>
+                            </ul>
                         </li>
+
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-user-check"></i>Account
+                                <span class="arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="<?php echo URLROOT?>/users/profile">
+                                        <i class="fas fa-user"></i>Profile</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo URLROOT?>/pages/referal">
+                                        <i class="fas fa-user-plus"></i>Referal</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo URLROOT?>/pages/sell">
+                                        <i class="fa-solid fa-naira-sign"></i>Sell Points</a>
+                                </li>
+                            </ul>
+                        </li>
+
 
 
                         <!-- Load Previous version -->
@@ -248,20 +298,13 @@
                         <!-- End Check If Admin -->
 
 
-                        <li>
-                            <a href="<?php echo URLROOT?>/pages/referal">
-                                <i class="fas fa-user-plus"></i>Referal</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URLROOT?>/pages/sell">
-                                <i class="fas fa-arrow-right"></i>Sell Points</a>
-                        </li>
+                        
                        
                        
-                        <li>
+                        <!-- <li>
                             <a href="<?php echo URLROOT?>/pages/refresh">
                                 <i class="fas fa-refresh"></i>Refresh</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="<?php echo URLROOT?>/users/logout">
                                 <i class="fas fa-backward"></i>Sign out</a>
