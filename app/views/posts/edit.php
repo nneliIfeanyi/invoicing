@@ -22,7 +22,7 @@
       <input disabled class="form-input" value="<?= date('D').' '. date('jS').' '.date('M').' '.date('Y');?>">
     </div>
   </div>
-  <?php if($_SESSION['category'] == 'B&S'):?>
+  <?php if($_SESSION['category'] == 'production' || $_SESSION['category'] == 'trading'):?>
     <div class="table-responsive">
     <table class="table table-striped border w-100">
       <thead>

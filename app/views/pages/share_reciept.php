@@ -78,7 +78,7 @@
 <div class="card">
 <div class="table-responsive mb-2">
   <h6 class="fw-semibold my-3 px-3 h4 text-primary">Items</h6>
-<?php if($data['user']->category == 'B&S'):?>
+<?php if($data['user']->category == 'trading' || $data['user']->category == 'production'):?>
 <div class="table-responsive mb-2">
   <h6 class="my-3 px-3 text-warning">Items</h6>
   <table class="table table-striped border">

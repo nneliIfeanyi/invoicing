@@ -87,7 +87,7 @@
 <div class="container-fluid">
 <div class="card">
   <!-- check for business category -->
-<?php if($_SESSION['category'] == 'B&S'):?>
+<?php if($_SESSION['category'] == 'trading' || $_SESSION['category'] == 'production'):?>
 <div class="table-responsive mb-2">
   <h6 class="my-3 px-3 text-warning">Items</h6>
   <table class="table table-striped border">

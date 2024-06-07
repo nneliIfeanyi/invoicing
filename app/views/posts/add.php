@@ -51,7 +51,7 @@
 </section>
 
   <!-- Check for business category -->
-  <?php if($_SESSION['category'] == 'B&S'):?>
+  <?php if($_SESSION['category'] == 'trading' || $_SESSION['category'] == 'production'):?>
     <div class="mb-5">
       <?php if($data['entry_rows'] == 3):?>
     <section class="statistic">
