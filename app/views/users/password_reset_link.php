@@ -7,8 +7,9 @@
         <div class="d-grid mx-3">
           <?php 
             $phone = ltrim($_SESSION['phone'], '\0');
+
           ?>
-          <a href="https://wa.me/234<?= $phone ;?>?text=password_reset%20link%20<?=URLROOT.'/pages/reset_password'?>" 
+          <a href="https://wa.me/234<?= $phone ;?>?text=password_reset%20link%20<?=URLROOT.'/pages/reset_password/'.$data['url'];?>" 
              class="btn btn-outline-success">
              <i class="fab fa-whatsapp"></i> Continue
           </a>

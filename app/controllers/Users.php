@@ -1,9 +1,12 @@
 <?php
   class Users extends Controller{
+
     public function __construct(){
       $this->userModel = $this->model('User');
       $this->pointModel = $this->model('Point');
     }
+
+
 
     public function index(){
       if ($_SESSION['user_type'] != "admin") {
@@ -176,16 +179,6 @@
         'phone_err' => ''
         ];
 
-        // if(password_verify($data['old'], $user->bizpassword)){
-        //  //update new password
-        //   $new = password_hash($data['new'], PASSWORD_DEFAULT);
-        //   $this->userModel->updatePassword($new);
-        //   flash('msg', 'Password updated Successfully');
-        //   redirect('users/profile');
-        // } else {
-        //   flash('msg', 'Password incorrect', 'flash-msg alert alert-danger');
-        //   redirect('users/profile');
-        // }
         if($this->userModel->findUserByEmail($data['email']) || $this->userModel->findUserByPhone($data['phone'])){
           if ($this->userModel->compareUserPhoneAndEmail($data['phone'],$data['email'])) {
             $_SESSION['phone'] = $data['phone'];
@@ -216,12 +209,20 @@
     }
 
     public function password_reset_link(){
-      if ($_SESSION['phone']) {
-        $this->view('users/password_reset_link');
-      }else{
-        die('Something went wrong');
-      }
-      
+      $url = substr(md5(time()), 22);
+      $next5 = strtotime("+5 minutes");
+      $link_exp_time = date('Y-m-d h:ia', $next5);
+      $data = [
+
+        'url' => $url,
+        'biz_id' => $_SESSION['phone'],
+        't_init' => date('Y-m-d h:ia'),
+        't_exp' => $link_exp_time,
+        'dates' => date('D-jS-M Y')
+      ];
+      $this->userModel->password_reset_history($data);
+      $this->view('users/password_reset_link', $data);
+     
     }
 
 

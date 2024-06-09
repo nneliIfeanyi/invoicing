@@ -191,6 +191,45 @@
       }
     }
 
+
+
+     public function password_reset_history($data){
+      // t_init means time initialized
+      // Prepare Query
+      $this->db->query('INSERT INTO recovery (biz_id, url, t_init, t_exp, dates) 
+      VALUES (:biz_id, :url, :t_init, :t_exp, :dates)');
+
+      // Bind Values
+      $this->db->bind(':biz_id', $data['biz_id']);
+      $this->db->bind(':url', $data['url']);
+      $this->db->bind(':t_init', $data['t_init']);
+      $this->db->bind(':t_exp', $data['t_exp']);
+      $this->db->bind(':dates', $data['dates']);
+      
+      //Execute
+
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
+
+    public function link_check($url){
+      $this->db->query("SELECT * FROM recovery WHERE url = :url;");
+      $this->db->bind(':url', $url);
+      $row = $this->db->single();
+     
+      return $row;
+      
+    }
+
+
+
+
+
     // Find User By ID
     public function getUserById($id){
       $this->db->query("SELECT * FROM bizusers WHERE id = :id");

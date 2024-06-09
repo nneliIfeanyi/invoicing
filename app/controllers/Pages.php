@@ -127,12 +127,18 @@
 
 
 
-     public function reset_password(){
-      if ($_SESSION['phone']) {
+     public function reset_password($url){
+      $link_check = $this->userModel->link_check($url);
+      $now = date('Y-m-d h:ia');
+      if ($now < $link_check->t_exp) {
+        echo $link_check->t_exp;
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
           $data = [
+            'url' => $url,
             'password' => trim($_POST['password']),
-            'password_err' => ''
+            'comfirm_password' => trim($_POST['comfirm_password']),
+            'password_err' => '',
+            'password_err2' => ''
           ];
 
           if(empty($data['password'])){
@@ -141,6 +147,9 @@
           }
           elseif(strlen($data['password']) < 6){
             $data['password_err'] = 'Password must have at least 6 characters.';
+             $this->view('pages/reset_password', $data);
+          }elseif($data['password'] !== $data['comfirm_password']){
+            $data['password_err2'] = 'Password does not match.';
              $this->view('pages/reset_password', $data);
           }else{
 
@@ -151,11 +160,22 @@
           redirect('users/login');
           }
         }//Server request method ends
-        $this->view('pages/reset_password');
-      }//If not isset session variable
-      else{
-        die('Something went wrong...Link is expired');
+
+        else{
+          $data = [
+
+          'url' => $url,
+          'password' => '',
+          'comfirm_password' => ''
+
+          ];
+
+          $this->view('pages/reset_password', $data);
+        }
+      }else{
+        die('Something went wrong, this link has expired');
       }
+      
     }//Password reset link method ends
 
 
