@@ -130,8 +130,8 @@
      public function reset_password($url){
       $link_check = $this->userModel->link_check($url);
       $now = date('Y-m-d h:ia');
+
       if ($now < $link_check->t_exp) {
-        echo $link_check->t_exp;
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
           $data = [
             'url' => $url,
