@@ -359,6 +359,41 @@
       }
      
     }
+
+
+    public function download_reciept2($t_id){
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $t_info = $this->postModel->getInfo($t_id);
+        $user = $this->userModel->getUserById($t_info->biz_id);
+        if($user->points > 4) {
+          $points = $user->points - 5;
+          $data = [
+            't_id' => $t_id,
+            't_info' => $t_info,
+            'user' => $user
+          ];
+
+          $new_point_value = $this->pointModel->use3($points);
+          $_SESSION['user_points'] = $points;
+          $this->pointModel->history_add($_SESSION['user_id'],'debit','5','Reciept download');
+          $this->view('pages/download_reciept2', $data);
+        }else{
+          flash('msg', 'Not enough Points.. Kindly fund your wallet and try again.', 'flash-msg alert alert-danger');
+          redirect('posts/preview/'.$t_id);
+        }
+      }else{
+        $t_info = $this->userModel->getInfoz($t_id);
+        $user = $this->userModel->getUserById($t_info->biz_id);
+      
+        $data = [
+          't_id' => $t_id,
+          't_info' => $t_info,
+          'user' => $user
+        ];
+        $this->view('pages/download_reciept2', $data);
+      }
+     
+    }
     
     public function referal(){
       if (!isset($_SESSION['user_id']) ) {

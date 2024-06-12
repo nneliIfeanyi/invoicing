@@ -84,6 +84,21 @@
     }
 
 
+     public function index2(){
+      $total = $this->postModel->getTotal();
+      $debt_all = $this->postModel->getTotal2();
+      $get_tID = $this->postModel->get_transactionz();
+    
+        $data = [
+          'transactions' =>$get_tID,
+          't_total' => $total,
+          'd_total' => $debt_all
+        ];
+        
+      $this->view('posts/index2', $data);
+    }
+
+
     public function sales(){
       $month = date('M');
       $monthly_total = $this->postModel->get_monthly_total($month);
@@ -368,6 +383,7 @@
             'c_month' => $_POST['month']
           ];
           $update = $this->postModel->updatePost2($data);
+          $this->postModel->doc_edited($t_id);
           }//end for each// code...
           if ($update) {
             $this->postModel->updatePost3($data);

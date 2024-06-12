@@ -31,12 +31,61 @@
 
 
 
-    public function get_transactionz(){
-      $this->db->query("SELECT DISTINCT(t_id) FROM transactions WHERE biz_id = :id ORDER BY id DESC LIMIT 8;");
-      $this->db->bind(':id', $_SESSION['user_id']);
-      $results = $this->db->resultset();
-      return $results;
-    }
+  public function get_transactionz(){
+    $this->db->query("SELECT DISTINCT(t_id) FROM transactions WHERE biz_id = :id ORDER BY id DESC LIMIT 8;");
+    $this->db->bind(':id', $_SESSION['user_id']);
+    $results = $this->db->resultset();
+    return $results;
+  }
+
+
+public function doc_edited($t_id){
+  $this->db->query('UPDATE customers SET edited = :trues  WHERE t_id = :id');
+
+  // Bind Values
+  $this->db->bind(':id', $t_id);
+  $this->db->bind(':trues', 'true');
+
+  //Execute
+  if($this->db->execute()){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+
+public function doc_download($t_id, $path){
+  $this->db->query('UPDATE customers SET initial_doc = :paths  WHERE t_id = :id');
+
+  // Bind Values
+  $this->db->bind(':id', $t_id);
+  $this->db->bind(':paths', $path);
+
+  //Execute
+  if($this->db->execute()){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+public function doc_redownload($t_id, $path){
+  $this->db->query('UPDATE customers SET edited_doc = :paths  WHERE t_id = :id');
+
+  // Bind Values
+  $this->db->bind(':id', $t_id);
+  $this->db->bind(':paths', $path);
+
+  //Execute
+  if($this->db->execute()){
+    return true;
+  } else {
+    return false;
+  }
+}
 
 
 
