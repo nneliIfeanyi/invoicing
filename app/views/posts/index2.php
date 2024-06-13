@@ -93,12 +93,14 @@ flash('msg');?>
                 $to_balance = $customer_info->t_total - $customer_info->paid;
               ?>
               <p>To balance: <span class="text-warning h6 fw-bold">&#8358;<?php echo put_coma($to_balance); ?>.00</span></p>
+
+
         <!-- Actions For Document Download And Share -->
         <div class="row mt-3"> 
             <?php if(empty($customer_info->initial_doc) AND $customer_info->edited == 'false'):?>
             <!-- File has not been downloaded and has not been edited -->
                 <div class="col-6"> 
-                 <form action="<?php echo URLROOT; ?>/pages/download_reciept/<?= $post->t_id ; ?>" method="POST">
+                 <form action="<?php echo URLROOT; ?>/pages/download_reciept2/<?= $post->t_id ; ?>" method="POST">
                   <input class="btn btn-sm btn-dark" name="generate-invoice" type="submit" value="Generate receipt">
                  </form>
                 </div>
@@ -111,15 +113,15 @@ flash('msg');?>
                 </div>
             <?php elseif(!empty($customer_info->initial_doc) AND $customer_info->edited == 'true' AND empty($customer_info->edited_doc)):?>
                 <div class="col-6"> 
-                 <form action="<?php echo URLROOT; ?>/pages/download_reciept/<?= $post->t_id ; ?>" method="POST">
+                 <form action="<?php echo URLROOT; ?>/pages/download_reciept2/<?= $post->t_id ; ?>" method="POST">
                   <input class="btn btn-sm btn-dark" name="generate-invoice" type="submit" value="Download edited copy">
                  </form>
                 </div>
             <?php elseif(!empty($customer_info->initial_doc) AND $customer_info->edited == 'true' AND !empty($customer_info->edited_doc)):?>
                 <div class="col-6"> 
-                 <!-- <button id="share2" class="btn btn-sm btn-outline-dark">
+                 <button id="share2" class="btn btn-sm btn-outline-dark">
                    <i class="fa fa-share-alt"></i> Share edited receipt 
-                 </button> -->
+                 </button>
                 </div>
            <?php endif;?>
                <div class="col-6">
