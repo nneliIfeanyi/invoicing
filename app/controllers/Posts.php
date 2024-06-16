@@ -118,75 +118,99 @@
     //Payment Gateway integrate
 
     public function pay_now($amount){
+      $me = $this->userModel->getUserById($_SESSION['user_id']);
+      $invitee = $this->userModel->getUserByRefId($_SESSION['refered_by']);
        if ($amount == 1000) {
          $_SESSION['user_points'] = $_SESSION['user_points'] + 210;
          $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
-         $this->pointModel->history_add($_SESSION['user_id'],'credit','210','Wallet funding');
-
-
-         $me = $this->userModel->getUserById($_SESSION['user_id']);
-         $invitee = $this->userModel->getUserByRefId($_SESSION['refered_by']);
-         if ($me->claimed == 'true') {
-           $value = $invitee->points + '50';
-           $this->pointModel->addPoints($invitee->id, $value);
-           $this->pointModel->history_add($invitee->id,'credit','50','referal top_up');
+         
+         if ($this->userModel->getInitial_funding($_SESSION['user_id'])) {
+          $this->pointModel->history_add($_SESSION['user_id'],'credit','210','Wallet funding');
+         }else{
+          $this->pointModel->history_add2($_SESSION['user_id'],'credit','210','Wallet funding','210');
          }
-         flash('msg', 'Points Purchase Successfull..');
-         redirect('users/profile');
+         
+        if ($me->claimed == 'true') {
+         $value = $invitee->points + '60';
+         $this->pointModel->addPoints($invitee->id, $value);
+         $this->pointModel->history_add($invitee->id,'credit','60','referal top_up');
+        }
+
+        flash('msg', 'Points Purchase Successfull..');
+        redirect('users/profile');
+
        }elseif ($amount == 500) {
          $_SESSION['user_points'] = $_SESSION['user_points'] + 100;
          $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
          $this->pointModel->history_add($_SESSION['user_id'],'credit','100','Wallet funding');
 
-         $me = $this->userModel->getUserById($_SESSION['user_id']);
-         $invitee = $this->userModel->getUserByRefId($_SESSION['refered_by']);
+          
+          if ($this->userModel->getInitial_funding($_SESSION['user_id'])) {
+             $this->pointModel->history_add($_SESSION['user_id'],'credit','100','Wallet funding');
+          }else{
+             $this->pointModel->history_add2($_SESSION['user_id'],'credit','100','Wallet funding','210');
+          }
+
+
          if ($me->claimed == 'true') {
-           $value = $invitee->points + '50';
+           $value = $invitee->points + '30';
            $this->pointModel->addPoints($invitee->id, $value);
-           $this->pointModel->history_add($invitee->id,'credit','50','referal top_up');
+           $this->pointModel->history_add($invitee->id,'credit','30','referal top_up');
          }
 
 
          flash('msg', 'Points Purchase Successfull..');
          redirect('users/profile');
-       }elseif ($amount == 200) {
-         $_SESSION['user_points'] = $_SESSION['user_points'] + 25;
-         $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
-         $this->pointModel->history_add($_SESSION['user_id'],'credit','25','Wallet funding');
-         flash('msg', 'Points Purchase Successfull..');
-         redirect('users/profile');
-       }elseif ($amount == 5000) {
-         $_SESSION['user_points'] = $_SESSION['user_points'] + 1050;
-         $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
-         $this->pointModel->history_add($_SESSION['user_id'],'credit','1050','Wallet funding');
 
-         $me = $this->userModel->getUserById($_SESSION['user_id']);
-         $invitee = $this->userModel->getUserByRefId($_SESSION['refered_by']);
-         if ($me->claimed == 'true') {
-           $value = $invitee->points + '50';
-           $this->pointModel->addPoints($invitee->id, $value);
-           $this->pointModel->history_add($invitee->id,'credit','50','referal top_up');
+         }elseif ($amount == 200) {
+           $_SESSION['user_points'] = $_SESSION['user_points'] + 25;
+           $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+           $this->pointModel->history_add($_SESSION['user_id'],'credit','25','Wallet funding');
+           flash('msg', 'Points Purchase Successfull..');
+           redirect('users/profile');
+
+         }elseif ($amount == 5000) {
+           $_SESSION['user_points'] = $_SESSION['user_points'] + 1050;
+           $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+           $this->pointModel->history_add($_SESSION['user_id'],'credit','1050','Wallet funding');
+
+           if ($this->userModel->getInitial_funding($_SESSION['user_id'])) {
+             $this->pointModel->history_add($_SESSION['user_id'],'credit','1050','Wallet funding');
+           }else{
+             $this->pointModel->history_add2($_SESSION['user_id'],'credit','1050','Wallet funding','210');
+           }
+
+           if ($me->claimed == 'true') {
+             $value = $invitee->points + '300';
+             $this->pointModel->addPoints($invitee->id, $value);
+             $this->pointModel->history_add($invitee->id,'credit','300','referal top_up');
+           }
+
+
+           flash('msg', 'Points Purchase Successfull..');
+           redirect('users/profile');
+         }elseif ($amount == 2500) {
+           $_SESSION['user_points'] = $_SESSION['user_points'] + 525;
+           $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
+           $this->pointModel->history_add($_SESSION['user_id'],'credit','525','Wallet funding');
+
+            
+            if ($this->userModel->getInitial_funding($_SESSION['user_id'])) {
+              $this->pointModel->history_add($_SESSION['user_id'],'credit','525','Wallet funding');
+            }else{
+              $this->pointModel->history_add2($_SESSION['user_id'],'credit','525','Wallet funding','210');
+            }
+
+
+           if ($me->claimed == 'true') {
+             $value = $invitee->points + '150';
+             $this->pointModel->addPoints($invitee->id, $value);
+             $this->pointModel->history_add($invitee->id,'credit','150','referal top_up');
+           }
+
+           flash('msg', 'Points Purchase Successfull..');
+           redirect('users/profile');
          }
-
-
-         flash('msg', 'Points Purchase Successfull..');
-         redirect('users/profile');
-       }elseif ($amount == 2500) {
-         $_SESSION['user_points'] = $_SESSION['user_points'] + 525;
-         $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
-         $this->pointModel->history_add($_SESSION['user_id'],'credit','525','Wallet funding');
-
-         $me = $this->userModel->getUserById($_SESSION['user_id']);
-         $invitee = $this->userModel->getUserByRefId($_SESSION['refered_by']);
-         if ($me->claimed == 'true') {
-           $value = $invitee->points + '50';
-           $this->pointModel->addPoints($invitee->id, $value);
-           $this->pointModel->history_add($invitee->id,'credit','50','referal top_up');
-         }
-
-         flash('msg', 'Points Purchase Successfull..');
-         redirect('users/profile');
-       }
     }
 
 

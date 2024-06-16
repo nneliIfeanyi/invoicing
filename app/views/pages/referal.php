@@ -36,7 +36,7 @@ flash('msg');?>
                                 <button type="submit" class="au-btn au-btn-icon au-btn--green">Activate Referal</button>
                             </form>
                         <?php else:?>
-                            <a href="<?php echo URLROOT;?>/users/referal/<?php echo $_SESSION['ref_id'];?>" class="au-btn au-btn-icon au-btn--green">
+                            <a href="<?php echo URLROOT;?>/users/referal/tips" class="au-btn au-btn-icon au-btn--green">
                                 <i class="zmdi zmdi-eye"></i>View Referals</a>
                         <?php endif;?>
                     </div>

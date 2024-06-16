@@ -32,11 +32,11 @@ flash('msg');?>
     </div>
 </section>
 <!-- END BREADCRUMB-->
-    <div class="container-fluid">
+    <?php if($data['ref_id'] === 'tips'):?>
+      <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
-              <!-- DATA TABLE -->
-              <h3 class="py-3">My Referals</h3>
+              <h3 class="py-3">Referals Tips</h3>
               <div class="alert alert-primary" role="alert">
                 Ensure the Business you invited funds their wallet with at least <span class="font-weight-bold">100Points.</span> Then you get <span class="font-weight-bold">100Points.
               </div>
@@ -46,6 +46,17 @@ flash('msg');?>
               <div class="alert alert-warning" role="alert">
                We buy <span class="font-weight-bold">1000Points</span> for N2000... <span class="font-weight-bold">2000Points</span> for N4000, like so.
               </div>
+              <a href="<?php echo URLROOT;?>/users/referal/<?= $_SESSION['ref_id'];?>" class="btn btn-success">Continue <i class="fas fa-arrow-right"></i></a>
+          </div>
+      </div>
+    </div>
+    <?php else:?>
+      <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <!-- DATA TABLE -->
+              <h3 class="py-3">My Referals</h3>
+              
               <div class="table-responsive table-responsive-data2">
                   <table class="table table-data2">
                       <thead>
@@ -60,7 +71,9 @@ flash('msg');?>
                           </tr>
                       </thead>
                       <tbody>
-                        <?php $count =1; foreach($data['referals'] as $user):?>
+                        <?php $count =1; foreach($data['referals'] as $user):
+                         $initial_funding = $this->userModel->getInitial_funding2($user->id);
+                        ?>
                           <tr class="tr-shadow">
                               <td><?= $count;?></td>
                               <td><?= $user->bizname;?></td>
@@ -70,33 +83,42 @@ flash('msg');?>
                               <td class="desc"><?= $user->bizcreated_at;?></td>
                             
                               <td>
-                                <?php if($user->points > 99 && $user->claimed == 'false'):?>
+                                <?php if(!empty($data['initial_funding'])):?>
                                   <span>Active</span>
-                                <?php elseif($user->points > 99 && $user->claimed == 'true'):?>
-                                  <span>Active</span>
-                                <?php elseif($user->points < 99 && $user->claimed == 'true'):?>
-                                  <span>Active</span>
-                                <?php elseif($user->points < 99 && $user->claimed == 'false'):?>
+                                <?php else:?>
                                   <span>Not Active</span>
                                 <?php endif;?>
                               </td>
 
 
                               <td>
-                                <?php if($user->points > 99 && $user->claimed == 'false'):?>
-                                  <span class="text-warning">P</span>100
-                                <?php elseif($user->points > 99 && $user->claimed == 'true'):?>
+                                <?php if($initial_funding == '210' && $user->claimed == 'false'):?>
+                                  <span class="text-warning">P</span>200
+                                <?php elseif($initial_funding == '210' && $user->claimed == 'true'):?>
+                                  <span style="text-decoration: line-through;"><span class="text-warning">P</span>200
+
+                                <?php elseif($initial_funding == '100' && $user->claimed == 'false'):?>
+                                 <span class="text-warning">P</span>100
+                                <?php elseif($initial_funding == '100' && $user->claimed == 'true'):?>
                                   <span style="text-decoration: line-through;"><span class="text-warning">P</span>100
-                                <?php elseif($user->points < 99 && $user->claimed == 'true'):?>
-                                  <span style="text-decoration: line-through;"><span class="text-warning">P</span>100
-                                <?php elseif($user->points < 99 && $user->claimed == 'false'):?>
-                                  <span>Not Active</span>
+
+                                <?php elseif($initial_funding == '1050' && $user->claimed == 'false'):?>
+                                 <span class="text-warning">P</span>1000
+                                <?php elseif($initial_funding == '1050' && $user->claimed == 'true'):?>
+                                  <span style="text-decoration: line-through;"><span class="text-warning">P</span>1000
+
+                                <?php elseif($initial_funding == '525' && $user->claimed == 'false'):?>
+                                 <span class="text-warning">P</span>500
+                                <?php elseif($initial_funding == '525' && $user->claimed == 'true'):?>
+                                  <span style="text-decoration: line-through;"><span class="text-warning">P</span>500
+                                <?php else:?>
+                                  <spa>Not Active</span>
                                 <?php endif;?>
                               </td>
 
                               <td>
                                   <div class="table-data-feature">
-                                    <?php if($user->claimed == 'false' && $user->points > 99):?>
+                                    <?php if($user->claimed == 'false' && !$initial_funding):?>
 
                                       <form action="<?php echo URLROOT; ?>/users/points_claim" method="post">
                                         <input type="hidden" name="id" value="<?= $user->id;?>">
@@ -105,13 +127,7 @@ flash('msg');?>
                                         </button>
                                       </form>
 
-
-                                      <?php elseif($user->points < 99 && $user->claimed == 'false'):?>
-
-                                      <span class="text-danger"></span>
-                                      <?php elseif($user->claimed == 'true' && $user->points < 99):?>
-                                        <span class="text-danger">Claimed</span>
-                                      <?php elseif($user->points > 99 && $user->claimed == 'true'):?>
+                                      <?php elseif($user->claimed == 'true'):?>
                                         <span class="text-danger">Claimed</span>
                                       <?php endif;?>
                                   </div>
@@ -126,8 +142,7 @@ flash('msg');?>
           </div>
       </div>
     </div>
-  </div>
-</div>
+    <?php endif;?>
 
 
 <?php require APPROOT . '/views/inc/footer2.php'; ?>

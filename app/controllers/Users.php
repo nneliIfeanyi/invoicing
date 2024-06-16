@@ -31,8 +31,10 @@
       }else{
         $referals = $this->userModel->load_referals($ref_id);
         $ref_count = $this->userModel->referals_count($ref_id);
+
          //Set Data
         $data = [
+          'ref_id' => $ref_id,
           'referals' => $referals,
           'ref_count' => $ref_count
         ];

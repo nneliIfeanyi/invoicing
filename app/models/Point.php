@@ -25,6 +25,26 @@
         return false;
       }
     }
+
+     public function history_add2($id,$type,$points,$dsc,$initial){
+      // Prepare Query
+      $this->db->query('INSERT INTO history (user_id, type, points, dsc, initial) 
+      VALUES (:user_id, :type, :points, :dsc, :initial)');
+
+      // Bind Values
+      $this->db->bind(':user_id', $id);
+      $this->db->bind(':type', $type);
+      $this->db->bind(':points', $points);
+      $this->db->bind(':dsc', $dsc);
+      $this->db->bind(':initial', $initial);
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
      
     //Get History
 

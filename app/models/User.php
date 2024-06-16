@@ -241,6 +241,32 @@
     }
 
 
+    public function getInitial_funding($id){
+      $this->db->query("SELECT * FROM history WHERE id = :id");
+      $this->db->bind(':id', $id);
+
+      $row = $this->db->single();
+      if($this->db->rowCount() > 0){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
+  public function getInitial_funding2($id){
+        $this->db->query("SELECT * FROM history WHERE id = :id");
+        $this->db->bind(':id', $id);
+
+        $row = $this->db->single();
+        if($this->db->rowCount() > 0){
+          return $row;
+        } else {
+          return false;
+        }
+      }
+
+
      public function getUserByRefId($id){
       $this->db->query("SELECT * FROM bizusers WHERE ref_id = :id");
       $this->db->bind(':id', $id);
