@@ -117,10 +117,10 @@
                         
                        
                        
-                        <!-- <li>
+                        <li>
                             <a href="<?php echo URLROOT?>/pages/refresh">
                                 <i class="fas fa-refresh"></i>Refresh</a>
-                        </li> -->
+                        </li>
                         <li>
                             <a href="<?php echo URLROOT?>/users/logout">
                                 <i class="fas fa-backward"></i>Sign out</a>
@@ -301,10 +301,10 @@
                         
                        
                        
-                        <!-- <li>
+                        <li>
                             <a href="<?php echo URLROOT?>/pages/refresh">
                                 <i class="fas fa-refresh"></i>Refresh</a>
-                        </li> -->
+                        </li>
                         <li>
                             <a href="<?php echo URLROOT?>/users/logout">
                                 <i class="fas fa-backward"></i>Sign out</a>

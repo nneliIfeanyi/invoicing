@@ -242,8 +242,10 @@
 
 
     public function getInitial_funding($id){
-      $this->db->query("SELECT * FROM history WHERE id = :id");
+      $this->db->query("SELECT * FROM history WHERE user_id = :id AND initial != :initial;");
       $this->db->bind(':id', $id);
+      $this->db->bind(':initial', '');
+
 
       $row = $this->db->single();
       if($this->db->rowCount() > 0){
@@ -255,9 +257,9 @@
 
 
   public function getInitial_funding2($id){
-        $this->db->query("SELECT * FROM history WHERE id = :id");
+        $this->db->query("SELECT * FROM history WHERE user_id = :id AND initial != :initial;");
         $this->db->bind(':id', $id);
-
+        $this->db->bind(':initial', '');
         $row = $this->db->single();
         if($this->db->rowCount() > 0){
           return $row;

@@ -120,6 +120,7 @@
     public function pay_now($amount){
       $me = $this->userModel->getUserById($_SESSION['user_id']);
       $invitee = $this->userModel->getUserByRefId($_SESSION['refered_by']);
+      
        if ($amount == 1000) {
          $_SESSION['user_points'] = $_SESSION['user_points'] + 210;
          $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
@@ -142,13 +143,12 @@
        }elseif ($amount == 500) {
          $_SESSION['user_points'] = $_SESSION['user_points'] + 100;
          $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
-         $this->pointModel->history_add($_SESSION['user_id'],'credit','100','Wallet funding');
 
           
           if ($this->userModel->getInitial_funding($_SESSION['user_id'])) {
              $this->pointModel->history_add($_SESSION['user_id'],'credit','100','Wallet funding');
           }else{
-             $this->pointModel->history_add2($_SESSION['user_id'],'credit','100','Wallet funding','210');
+             $this->pointModel->history_add2($_SESSION['user_id'],'credit','100','Wallet funding','100');
           }
 
 
@@ -172,12 +172,11 @@
          }elseif ($amount == 5000) {
            $_SESSION['user_points'] = $_SESSION['user_points'] + 1050;
            $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
-           $this->pointModel->history_add($_SESSION['user_id'],'credit','1050','Wallet funding');
 
            if ($this->userModel->getInitial_funding($_SESSION['user_id'])) {
              $this->pointModel->history_add($_SESSION['user_id'],'credit','1050','Wallet funding');
            }else{
-             $this->pointModel->history_add2($_SESSION['user_id'],'credit','1050','Wallet funding','210');
+             $this->pointModel->history_add2($_SESSION['user_id'],'credit','1050','Wallet funding','1050');
            }
 
            if ($me->claimed == 'true') {
@@ -192,13 +191,12 @@
          }elseif ($amount == 2500) {
            $_SESSION['user_points'] = $_SESSION['user_points'] + 525;
            $new_point_value = $this->pointModel->use3($_SESSION['user_points']);
-           $this->pointModel->history_add($_SESSION['user_id'],'credit','525','Wallet funding');
 
             
             if ($this->userModel->getInitial_funding($_SESSION['user_id'])) {
               $this->pointModel->history_add($_SESSION['user_id'],'credit','525','Wallet funding');
             }else{
-              $this->pointModel->history_add2($_SESSION['user_id'],'credit','525','Wallet funding','210');
+              $this->pointModel->history_add2($_SESSION['user_id'],'credit','525','Wallet funding','525');
             }
 
 
