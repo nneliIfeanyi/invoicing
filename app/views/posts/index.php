@@ -97,7 +97,7 @@ flash('msg');?>
             <div class="row mt-3"> 
             <?php if($_SESSION['user_phone'] == "08122321931"):?>
               <div class="col-6"> 
-                <a href="<?php echo URLROOT; ?>/posts/print_pos" 
+                <a href="<?php echo URLROOT; ?>/posts/print_pos/<?= $post->t_id;?>" 
                     class="btn btn-sm btn-dark">
                     Print receipt
                 </a>

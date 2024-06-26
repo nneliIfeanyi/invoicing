@@ -215,9 +215,26 @@
     // Print Pos --== PRINT POS ==== PRINT POS ==== POS-PRINT
 
 
-    public function print_pos(){
-     
-     $this->view('posts/print_pos');
+    public function print_pos($t_id){
+      if($_SESSION['user_points'] > 4) {
+        $t_info = $this->postModel->getInfo($t_id);
+        $user = $this->userModel->getUserById($t_info->biz_id);
+        $post = $this->postModel->getPostz($t_id);
+          $data = [
+            'post' => $post,
+            't_id' => $t_id,
+            't_info' => $t_info,
+            'user' => $user
+          ];
+          $points = $_SESSION['user_points'] -5;
+          $new_point_value = $this->pointModel->use3($points);
+          $_SESSION['user_points'] = $points;
+          $this->pointModel->history_add($_SESSION['user_id'],'debit','5','POS Reciept Print');
+          $this->view('posts/print_pos', $data);
+        }else{
+          flash('msg', 'Not enough Points.. Kindly fund your wallet and try again.', 'flash-msg alert alert-danger');
+          redirect('posts/index');
+        }
      
     }
 

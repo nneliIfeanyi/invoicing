@@ -8,15 +8,21 @@
 <body>
 <pre id="pre_print">
 --------------------------------
-<?= $_SESSION['user_name'].'<br>';?>
+<?= $_SESSION['user_name'].'<br>'.$_SESSION['user_phone'].'<br>';?>
+Reciept ID: <?= $data['t_id'].'<br>';?>
 --------------------------------
-Items 1
-                      3 x $20.00
-Items 2
-                      1 x $40.00
+
+ITEMS
+
+<?php $sum=0; foreach($data['post'] as $post):?>
+<?= $post->qty.' '.$post->dsc.'<br>';?>
+                      <?= $post->qty.'*'. '&#8358;'.$post->rate.'<br>';?>
+<?php $sum += $post->amount; endforeach;?>
 ********************************
-                   TOTAL $100.00
+                   TOTAL &#8358;<?= put_coma($sum);?>.00
 --------------------------------
+
+Thanks for patronage, pls call again..
 </pre>
 
 <button class="btn btn-success"
