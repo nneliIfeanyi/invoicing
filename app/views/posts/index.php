@@ -97,16 +97,8 @@ flash('msg');?>
             <div class="row mt-3"> 
             <?php if($_SESSION['user_phone'] == "08122321931"):?>
                 <pre id="pre_print">
-                --------------------------------
-                            TEST
-                --------------------------------
-                Items 1
-                                      3 x $20.00
-                Items 2
-                                      1 x $40.00
-                ********************************
-                                   TOTAL $100.00
-                --------------------------------
+                    <?= $_SESSION['user_name'];?>
+                    <?= $_SESSION['user_phone'];?>
                 </pre>
               <div class="col-6"> 
                 <button class="btn btn-green"
