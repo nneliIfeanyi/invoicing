@@ -96,10 +96,6 @@ flash('msg');?>
         
             <div class="row mt-3"> 
             <?php if($_SESSION['user_phone'] == "08122321931"):?>
-                <pre id="pre_print">
-                    <?= $_SESSION['user_name'];?>
-                    <?= $_SESSION['user_phone'];?>
-                </pre>
               <div class="col-6"> 
                 <button class="btn btn-green"
                         onclick="BtPrint(document.getElementById('pre_print').innerText)">Print text
@@ -123,7 +119,16 @@ flash('msg');?>
             </div>
           </div>
           <?php endforeach;?>
-
+            
+            <div class="text-center">
+                 <?php if($_SESSION['user_phone'] == "08122321931"):?>
+                <pre id="pre_print">
+                    <?= $_SESSION['user_name'];?>
+                    <?= $_SESSION['user_phone'];?>
+                </pre>
+                 <?php endif;?>
+            </div>
+            
             <div class="fs-6 fs-italics text-center mb-2">
               <i class="fa fa-spinner fa-spin"> </i> No more transactions...
             </div>
