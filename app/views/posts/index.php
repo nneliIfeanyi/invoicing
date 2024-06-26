@@ -96,11 +96,27 @@ flash('msg');?>
         
             <div class="row mt-3"> 
             <?php if($_SESSION['user_phone'] == "08122321931"):?>
+                <pre id="pre_print">
+                --------------------------------
+                            TEST
+                --------------------------------
+                Items 1
+                                      3 x $20.00
+                Items 2
+                                      1 x $40.00
+                ********************************
+                                   TOTAL $100.00
+                --------------------------------
+                </pre>
               <div class="col-6"> 
-                <a href="my.bluetoothprint.scheme://<?php echo URLROOT; ?>/posts/print_pos" 
+                <button class="btn btn-green"
+                        onclick="BtPrint(document.getElementById('pre_print').innerText)">Print text
+                    from pre block
+                </button>
+                <!-- <a href="my.bluetoothprint.scheme://<?php echo URLROOT; ?>/posts/print_pos" 
                     class="btn btn-sm btn-dark">
                     Print receipt
-                </a>
+                </a> -->
                </div>
            <?php else:?>
             <div class="col-6"> 
@@ -128,15 +144,16 @@ flash('msg');?>
     </div>
   </div>
 </section>
-        
+       
     
-<!-- <div style="position: fixed;bottom: 1vh;right: 1vw;">
-  <p data-bs-toggle="tooltip" data-bs-title="Add Transaction">
-    <a href="<?php echo URLROOT;?>/posts/add/1" style="font-size: 22px;">
-      <i class="fa fa-plus-circle fa-3x" style="color: #fe6b2a;"></i>
-    </a>
-  </p>
-</div> -->
+<script>
+    function BtPrint(prn){
+        var S = "#Intent;scheme=rawbt;";
+        var P =  "package=ru.a402d.rawbtprinter;end;";
+        var textEncoded = encodeURI(prn);
+        window.location.href="intent:"+textEncoded+S+P;
+    }
+</script>
 
 <?php if($visits->count <= 10):?>
 <script>
