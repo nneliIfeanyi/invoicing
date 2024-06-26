@@ -97,9 +97,10 @@ flash('msg');?>
             <div class="row mt-3"> 
             <?php if($_SESSION['user_phone'] == "08122321931"):?>
               <div class="col-6"> 
-                 <form action="<?php echo URLROOT; ?>/pages/invoice/<?= $post->t_id ; ?>" method="POST">
-                  <input class="btn btn-sm btn-dark" name="generate-invoice" type="submit" value="Print receipt">
-                 </form>
+                <a href="my.bluetoothprint.scheme://<?php echo URLROOT; ?>/posts/print_pos/<?= $post->t_id ; ?>" 
+                    class="btn btn-sm btn-dark">
+                    Print receipt
+                </a>
                </div>
            <?php else:?>
             <div class="col-6"> 

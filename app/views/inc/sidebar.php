@@ -42,10 +42,6 @@
                                 <i class="fas fa-lightbulb"></i>View Sales</a>
                         </li>
 
-                        <li>
-                            <a href="<?php echo URLROOT?>/pages/inventory">
-                                <i class="fas fa-chart-line"></i>Inventory</a>
-                        </li>
                         <?php endif;?>
                         <!-- CATEGORY CHECK ENDS -->
                         
@@ -117,10 +113,10 @@
                         
                        
                        
-                        <li>
+                        <!-- <li>
                             <a href="<?php echo URLROOT?>/pages/refresh">
                                 <i class="fas fa-refresh"></i>Refresh</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="<?php echo URLROOT?>/users/logout">
                                 <i class="fas fa-backward"></i>Sign out</a>
@@ -226,10 +222,6 @@
                                 <i class="fas fa-lightbulb"></i>View Sales</a>
                         </li>
 
-                        <li>
-                            <a href="<?php echo URLROOT?>/pages/inventory">
-                                <i class="fas fa-chart-line"></i>Inventory</a>
-                        </li>
                         <?php endif;?>
                         <!-- CATEGORY CHECK ENDS -->
                         
@@ -301,10 +293,10 @@
                         
                        
                        
-                        <li>
+                        <!-- <li>
                             <a href="<?php echo URLROOT?>/pages/refresh">
                                 <i class="fas fa-refresh"></i>Refresh</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="<?php echo URLROOT?>/users/logout">
                                 <i class="fas fa-backward"></i>Sign out</a>
