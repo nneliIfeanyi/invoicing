@@ -97,14 +97,10 @@ flash('msg');?>
             <div class="row mt-3"> 
             <?php if($_SESSION['user_phone'] == "08122321931"):?>
               <div class="col-6"> 
-                <button class="btn btn-green"
-                        onclick="BtPrint(document.getElementById('pre_print').innerText)">Print text
-                    from pre block
-                </button>
-                <!-- <a href="my.bluetoothprint.scheme://<?php echo URLROOT; ?>/posts/print_pos" 
+                <a href="<?php echo URLROOT; ?>/posts/print_pos" 
                     class="btn btn-sm btn-dark">
                     Print receipt
-                </a> -->
+                </a>
                </div>
            <?php else:?>
             <div class="col-6"> 
@@ -120,15 +116,6 @@ flash('msg');?>
           </div>
           <?php endforeach;?>
             
-            <div class="text-center">
-                 <?php if($_SESSION['user_phone'] == "08122321931"):?>
-                <pre id="pre_print">
-                    <?= $_SESSION['user_name'];?>
-                    <?= $_SESSION['user_phone'];?>
-                </pre>
-                 <?php endif;?>
-            </div>
-            
             <div class="fs-6 fs-italics text-center mb-2">
               <i class="fa fa-spinner fa-spin"> </i> No more transactions...
             </div>
@@ -141,16 +128,6 @@ flash('msg');?>
     </div>
   </div>
 </section>
-       
-    
-<script>
-    function BtPrint(prn){
-        var S = "#Intent;scheme=rawbt;";
-        var P =  "package=ru.a402d.rawbtprinter;end;";
-        var textEncoded = encodeURI(prn);
-        window.location.href="intent:"+textEncoded+S+P;
-    }
-</script>
 
 <?php if($visits->count <= 10):?>
 <script>
