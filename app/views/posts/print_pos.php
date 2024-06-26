@@ -8,7 +8,7 @@
 <body>
 <pre id="pre_print">
 --------------------------------
-<?= $_SESSION['user_name'];?>
+<?= $_SESSION['user_name'].'<br>';?>
 --------------------------------
 Items 1
                       3 x $20.00
