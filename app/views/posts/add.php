@@ -72,7 +72,7 @@
                 <div class="input-group-addon">
                     <i class="fa fa-phone"></i>
                 </div>
-                <input type="number" name="customer_phone" class="form-control" required data-parsley-length="[0, 11]" data-parsley-trigger="keyup" placeholder="Customer phone">
+                <input type="number" name="customer_phone" class="form-control"data-parsley-length="[0, 11]" data-parsley-trigger="keyup" placeholder="Customer phone">
             </div>
         </div>
 
@@ -84,7 +84,7 @@
                 <input type="text" name="customer_address" class="form-control" placeholder="Address">
             </div>
         </div>
-        <div class="col-6 py-3">
+        <div class="col-md-6 py-3">
           <input disabled class="form-input" value="<?= date('D').' '. date('jS').' '.date('M').' '.date('Y');?>">
         </div>
           <div class="card">
@@ -152,7 +152,7 @@
                       <div class="input-group-addon">
                           <i class="fa fa-phone"></i>
                       </div>
-                      <input type="number" name="customer_phone" class="form-control" required data-parsley-length="[0, 11]" data-parsley-trigger="keyup" placeholder="Customer phone">
+                      <input type="number" name="customer_phone" class="form-control"data-parsley-length="[0, 11]" data-parsley-trigger="keyup" placeholder="Customer phone">
                   </div>
               </div>
 
@@ -164,7 +164,7 @@
                       <input type="text" name="customer_address" class="form-control" placeholder="Address">
                   </div>
               </div>
-            <div class="py-3 col-6">
+            <div class="py-3 col-md-6">
               <input disabled class="form-input" value="<?= date('D').' '. date('jS').' '.date('M').' '.date('Y');?>">
             </div>
           <div class="card">
@@ -232,7 +232,7 @@
                       <div class="input-group-addon">
                           <i class="fa fa-phone"></i>
                       </div>
-                      <input type="number" name="customer_phone" class="form-control" required data-parsley-length="[0, 11]" data-parsley-trigger="keyup" placeholder="Customer phone">
+                      <input type="number" name="customer_phone" class="form-control"data-parsley-length="[0, 11]" data-parsley-trigger="keyup" placeholder="Customer phone">
                   </div>
               </div>
 
@@ -244,7 +244,7 @@
                       <input type="text" name="customer_address" class="form-control" placeholder="Address">
                   </div>
               </div>
-            <div class="col-6 py-3">
+            <div class="col-md-6 py-3">
               <input disabled class="form-input" value="<?= date('D').' '. date('jS').' '.date('M').' '.date('Y');?>">
             </div>
           <div class="card">
@@ -373,7 +373,7 @@
             <div class="input-group-addon">
                 <i class="fa fa-phone"></i>
             </div>
-            <input type="number" name="customer_phone" class="form-control" required data-parsley-length="[0, 11]" data-parsley-trigger="keyup" placeholder="Customer phone">
+            <input type="number" name="customer_phone" class="form-control"data-parsley-length="[0, 11]" data-parsley-trigger="keyup" placeholder="Customer phone">
         </div>
     </div>
 
@@ -385,7 +385,7 @@
             <input type="text" name="customer_address" class="form-control" placeholder="Address">
         </div>
     </div>
-    <div class="col-6">
+    <div class="col-md-6">
       <input disabled class="form-input" value="<?= date('D').' '. date('jS').' '.date('M').' '.date('Y');?>">
     </div>
 
@@ -426,7 +426,7 @@
         <input type="submit" id="submit" class="btn btn-success" value="Save Transaction">
       </div>
       <div class="col-4">
-        <a href="<?= URLROOT;?>/posts" class="btn" style="color: #fe6b2a;"><i class="fa fa-backward"></i> Back</a>
+        <a href="<?= URLROOT;?>/posts" class="btn text-warning"><i class="fa fa-backward"></i> Back</a>
       </div>
     </div>
   </div>

@@ -32,23 +32,15 @@
     <h6 class="text-warning card-title">Billed By</h6>
     <div class="row my-2">
       
-      <div class="col-md-6 shadow-sm p-3">
-        <label class="fs-6">Merchant name: &nbsp; &nbsp;
-          <span class="border-bottom fw-semibold"><?php echo $_SESSION['user_name']; ?></span><br>
-          <span class="text-muted" style="font-size: 14px; font-style: italic;"><?php echo $_SESSION['user_dsc']; ?></span>
+      <div class="col-md-6 shadow-sm ">
+        <label class="fs-6">
+          <span class="font-weight-bold"><?php echo $_SESSION['user_name']; ?></span><br>
+          <span class="text-muted" style="font-size: 14px;"><?php echo $_SESSION['user_dsc']; ?></span><br>
+          <span class=""><i class="fa fa-phone"></i>&nbsp; &nbsp;<?php echo $_SESSION['user_phone']; ?></span><br>
+          <span class=""><i class="fa fa-map-marker"></i>&nbsp; &nbsp;<?php echo $_SESSION['address']; ?></span>
         </label>
       </div>
-      <div class="col-md-6 shadow-sm p-3">
-        <label class="fs-6">Merchant phone: &nbsp; &nbsp;
-          <span class="border-bottom fw-semibold"><?php echo $_SESSION['user_phone']; ?></span>
-        </label>
-      </div>
-      <div class="col-md-6 shadow-sm p-3">
-        <label class="fs-6">Address: &nbsp; &nbsp;
-          <span class=""><?php echo $_SESSION['address']; ?></span>
-        </label>
-      </div>
-      <div class="col-md-6 shadow-sm p-3">
+      <div class="col-md-6 shadow-sm p-1">
         <label class="fs-6">Transaction ID: &nbsp; &nbsp;
           <span class=""><?php echo $data['t_id']; ?></span>
         </label>
@@ -60,22 +52,22 @@
   <div class="card card-body">
     <h6 class="card-title text-warning">Billed To</h6>
     <div class="row mb-2">
-      <div class="col-md-6 shadow-sm p-3">
+      <div class="col-md-6 shadow-sm p-2">
         <label class="fs-6">Customer name: &nbsp; &nbsp;
           <span class="border-bottom fw-semibold"><?= $data['customer_info']->name;?></span>
         </label>
       </div>
-      <div class="col-md-6 shadow-sm p-3">
+      <div class="col-md-6 shadow-sm p-2">
         <label class="fs-6">Customer phone: &nbsp; &nbsp;
           <span class="border-bottom fw-semibold"><?= $data['customer_info']->phone;?></span>
         </label>
       </div>
-      <div class="col-md-6 shadow-sm p-3">
+      <div class="col-md-6 shadow-sm p-2">
         <label class="fs-6">Customer Address: &nbsp; &nbsp;
           <span class="border-bottom fw-semibold"><?= $data['customer_info']->address;?></span>
         </label>
       </div>
-      <div class="col-md-6 shadow-sm p-3">
+      <div class="col-md-6 shadow-sm p-2">
         <label class="fs-6">Transaction Date: &nbsp; &nbsp;
           <span class="border-bottom fw-semibold"><?= $data['customer_info']->t_date.' '.$data['customer_info']->t_month.' '.$data['customer_info']->t_year ?></span>
         </label>
@@ -107,9 +99,9 @@
         </td>
         <td><?= $post->rate;?></td>
         <td>
-          <?php if($post->amount != 0):?>
-          <?= $post->amount;?>
-        <?php endif;?>
+          <?php if(!empty($post->qty) && !empty($post->rate)):?>
+            <?= $post->amount = $post->qty * $post->rate;?>
+          <?php endif;?>
         </td>
       </tr>
     <?php $sum += $post->amount; endforeach;?>

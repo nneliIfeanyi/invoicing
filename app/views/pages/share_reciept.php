@@ -26,24 +26,16 @@
 <div class="card card-body">
   <div class="row mb-2">
     <h6 class="fw-semibold h4 text-primary">Billed By</h6>
-    <div class="col-md-6 shadow-sm p-3">
-      <label class="fs-6">Merchant name: &nbsp; &nbsp;
-        <span class="border-bottom fw-semibold"><?= $data['user']->bizname;?></span><br>
-        <span class="text-muted" style="font-size: 14px; font-style: italic;"><?= $data['user']->biz_dsc;?></span>
-      </label>
-    </div>
-    <div class="col-md-6 shadow-sm p-3">
-      <label class="fs-6">Merchant phone: &nbsp; &nbsp;
-        <span class="border-bottom fw-semibold"><?= $data['user']->bizphone;?></span>
-      </label>
-    </div>
-    <div class="col-md-6 shadow-sm p-3">
-      <label class="fs-6">Address: &nbsp; &nbsp;
-        <span class=""><?= $data['user']->bizaddress;?></span>
-      </label>
-    </div>
+    <div class="col-md-6 shadow-sm ">
+        <label class="fs-6">
+          <span class="fw-bold"><?php echo $_SESSION['user_name']; ?></span><br>
+          <span class="text-muted" style="font-size: 14px;"><?php echo $_SESSION['user_dsc']; ?></span><br>
+          <span class=""><i class="fa fa-phone"></i>&nbsp; &nbsp;<?php echo $_SESSION['user_phone']; ?></span><br>
+          <span class=""><i class="fa fa-map-marker"></i>&nbsp; &nbsp;<?php echo $_SESSION['address']; ?></span>
+        </label>
+      </div>
 
-    <div class="col-md-6 shadow-sm p-3">
+    <div class="col-md-6 shadow-sm p-2">
         <label class="fs-6">Transaction ID: &nbsp; &nbsp;
           <span class=""><?php echo $data['t_id']; ?></span>
         </label>
@@ -53,22 +45,22 @@
 <div class="card card-body">
   <div class="row mb-2">
     <h6 class="fw-semibold h4 text-primary">Billed To</h6>
-    <div class="col-md-6 shadow-sm p-3">
+    <div class="col-md-6 shadow-sm p-2">
       <label class="fs-6">Customer name: &nbsp; &nbsp;
         <span class="border-bottom fw-semibold"><?= $data['customer_info']->name;?></span>
       </label>
     </div>
-    <div class="col-md-6 shadow-sm p-3">
+    <div class="col-md-6 shadow-sm p-2">
       <label class="fs-6">Customer phone: &nbsp; &nbsp;
         <span class="border-bottom fw-semibold"><?= $data['customer_info']->phone;?></span>
       </label>
     </div>
-    <div class="col-md-6 shadow-sm p-3">
+    <div class="col-md-6 shadow-sm p-2">
       <label class="fs-6">Customer Address: &nbsp; &nbsp;
         <span class="border-bottom fw-semibold"><?= $data['customer_info']->address;?></span>
       </label>
     </div>
-    <div class="col-md-6 shadow-sm p-3">
+    <div class="col-md-6 shadow-sm p-2">
       <label class="fs-6">Transaction Date: &nbsp; &nbsp;
         <span class="border-bottom fw-semibold"><?= $data['customer_info']->t_date.' '.$data['customer_info']->t_month.' '.$data['customer_info']->t_year ?></span>
       </label>
@@ -77,7 +69,6 @@
 </div>
 <div class="card">
 <div class="table-responsive mb-2">
-  <h6 class="fw-semibold my-3 px-3 h4 text-primary">Items</h6>
 <?php if($data['user']->category == 'trading' || $data['user']->category == 'production'):?>
 <div class="table-responsive mb-2">
   <h6 class="my-3 px-3 text-warning">Items</h6>
@@ -98,8 +89,8 @@
         </td>
         <td><?= $post->rate;?></td>
         <td>
-          <?php if($post->amount != 0):?>
-          <?= $post->amount;?>
+          <?php if(!empty($post->qty) && !empty($post->rate)):?>
+            <?= $post->amount = $post->qty * $post->rate;?>
         <?php endif;?>
         </td>
       </tr>
