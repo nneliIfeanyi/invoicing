@@ -93,11 +93,19 @@
       <?php $sum = 0; foreach($data['post'] as $post):
       ;?>
       <tr>
-        <td><?= $post->qty;?></td>
+        <td>
+          <?php if($post->qty != 0):?>
+            <?= $post->qty;?>
+          <?php endif;?>
+        </td>
         <td>
            <?= $post->dsc;?>
         </td>
-        <td><?= $post->rate;?></td>
+        <td>
+           <?php if($post->rate != 0):?>
+            <?= $post->rate;?>
+          <?php endif;?>
+        </td>
         <td>
           <?php if(!empty($post->qty) && !empty($post->rate)):?>
             <?= $post->amount = $post->qty * $post->rate;?>
@@ -156,7 +164,11 @@
       ;?>
       <tr>
         <td> <?= $post->dsc;?></td>
-        <td><?= $post->rate;?></td>
+        <td>
+           <?php if($post->rate != 0):?>
+            <?= $post->rate;?>
+          <?php endif;?>
+        </td>
       </tr>
       <?php $total=(int)$post->rate ;?>
     <?php $sum += $total; endforeach;?>

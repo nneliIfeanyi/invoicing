@@ -216,10 +216,17 @@ $sum = 0;
        $amt = '';
      }
 
-     if (strlen($qty) == 1) {
-       $qty = '0'.$qty;
-     }
+     // if (strlen($qty) == 1) {
+     //   $qty = '0'.$qty;
+     // }
      
+     if ($qty == '0' || $rate == '0') {
+       $qty = '';
+       $rate = '';
+     }else{
+      $qty = $qty;
+       $rate = $rate;
+     }
 
     // $balance = $total - $paid;
 

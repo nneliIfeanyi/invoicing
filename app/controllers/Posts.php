@@ -270,10 +270,10 @@
     // Add Post
     public function add($entry_rows){
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $t_id = 's'.date('s').date('i').date('s').'v'.rand(10,99999).'c' ;
-        
+        $t_id = 's'.date('s').date('i').date('s').'v'.rand(100,999).'c' ;
         $qty = $_POST['qty'];
         $rate = $_POST['rate'];
+        
         $dsc = $_POST['dsc'];
         $name = trim($_POST['customer_name']);
         $phone = trim($_POST['customer_phone']);
@@ -281,11 +281,19 @@
         $paid = $_POST['paid'];
         $total = 0;
         foreach($qty as $index=>$details ){
+          if (str_contains($qty[$index], '.') || str_contains($rate[$index], '.')) {
+           $qty[$index] = (float)$qty[$index];
+           $rate[$index] = (float)$rate[$index];
+          }else{
+           $qty[$index] = (int)$qty[$index];
+           $rate[$index] = (int)$rate[$index];
+          }
+          $amt = $qty[$index] * $rate[$index];
           $data = [
             'rate' => $rate[$index],
             'dsc' => $dsc[$index],
             'qty' => $qty[$index],
-            'amt' => (int)$qty[$index] * (int)$rate[$index],
+            'amt' => $amt,
             'biz_id' => $_SESSION['user_id'],
             'c_year' => date('Y'),
             'c_month' => date('M'),
@@ -297,7 +305,7 @@
             'customer_phone' => $phone,
             'customer_address' => $address,
             'paid' => $paid,
-            'total' => $total+=((int)$qty[$index] * (int)$rate[$index]),
+            'total' => $total+=$amt,
           ];
           $success = $this->postModel->addPost($data); 
         }//end for each
@@ -416,18 +424,26 @@
         $total = 0;
         if ($_SESSION['user_points'] > 2) {
           foreach($qty as $index=>$details ){
+            if (str_contains($qty[$index], '.') || str_contains($rate[$index], '.')) {
+             $qty[$index] = (float)$qty[$index];
+             $rate[$index] = (float)$rate[$index];
+            }else{
+             $qty[$index] = (int)$qty[$index];
+             $rate[$index] = (int)$rate[$index];
+            }
+            $amt = $qty[$index] * $rate[$index];
           $data = [
             'qty' => $qty[$index],
             'rate' => $rate[$index],
             'dsc' => $dsc[$index],
-            'amt' => (int)$qty[$index] * (int)$rate[$index],
+            'amt' => $amt,
             'customer_name' => $name,
             'customer_phone' => $phone,
             'customer_address' => $address,
             'paid' => $paid,
             'id' => $id[$index],
             'id2' => $t_id,
-            'total' => $total+=((int)$qty[$index] * (int)$rate[$index]),
+            'total' => $total+=$amt,
             'c_date' => $date,
             'c_month' => $_POST['month']
           ];
