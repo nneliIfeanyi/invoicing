@@ -17,7 +17,7 @@ ITEMS
 <?php $sum=0; foreach($data['post'] as $post):?>
 <?php if(!empty($post->dsc)):?>
 <?= $post->qty.' '.$post->dsc.'<br>';?>
-                <?= $post->qty.'*'. 'N'.$post->rate.'<br>';?>
+                    <?= $post->qty.'*'. 'N'.$post->rate.'<br>';?>
 <?php endif;?>
 <?php $sum += $post->amount; endforeach;?>
 ********************************
