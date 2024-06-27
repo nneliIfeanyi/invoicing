@@ -17,18 +17,19 @@ ITEMS
 <?php $sum=0; foreach($data['post'] as $post):?>
 <?php if(!empty($post->dsc)):?>
 <?= $post->dsc.'<br>';?>
-                    <b><?= $post->qty.'*'. 'N'.$post->rate.'<br>';?></b>
+                    <b><?= $post->qty.' '.'*'.' '.'N'.$post->rate.'<br>';?></b>
 <?php endif;?>
 <?php $sum += $post->amount; endforeach;?>
 ********************************
             <b>TOTAL N<?= put_coma($sum);?>.00</b>
 --------------------------------
 
-<em>Thanks for patronage, pls call again..</em>
-<b><?= date('D-jS-M-Y h:ia');?></b>
+<b>Thanks for patronage, pls call again..</b>
+
+<?= date('D-jS-M-Y h:ia');?>
 </pre>
 
-<button class="btn btn-success"
+<button style="margin-top: 20px;" 
     onclick="BtPrint(document.getElementById('pre_print').innerText)">Print receipt
  </button>
 </body>
