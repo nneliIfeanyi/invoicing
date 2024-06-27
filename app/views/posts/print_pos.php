@@ -8,8 +8,8 @@
 <body>
 <pre id="pre_print">
 --------------------------------
-<?= $_SESSION['user_name'].'<br>'.$_SESSION['user_phone'].'<br>';?>
-Reciept ID: <?= $data['t_id'].'<br>';?>
+<strong><?= $_SESSION['user_name'].'<br>'.$_SESSION['user_phone'].'<br>';?>
+Reciept ID: <?= $data['t_id'];?></strong>
 --------------------------------
 
 ITEMS
@@ -17,16 +17,15 @@ ITEMS
 <?php $sum=0; foreach($data['post'] as $post):?>
 <?php if(!empty($post->dsc)):?>
 <?= $post->dsc.'<br>';?>
-                    <?= $post->qty.'*'. 'N'.$post->rate.'<br>';?>
+                    <b><?= $post->qty.'*'. 'N'.$post->rate.'<br>';?></b>
 <?php endif;?>
 <?php $sum += $post->amount; endforeach;?>
 ********************************
-            TOTAL N<?= put_coma($sum);?>.00
+            <b>TOTAL N<?= put_coma($sum);?>.00</b>
 --------------------------------
 
-Thanks for patronage, pls call again..
-
-<?= date('D-jS-M-Y h:ia');?>
+<em>Thanks for patronage, pls call again..</em>
+<b><?= date('D-jS-M-Y h:ia');?></b>
 </pre>
 
 <button class="btn btn-success"
