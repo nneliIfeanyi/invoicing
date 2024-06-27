@@ -25,6 +25,8 @@ ITEMS
 --------------------------------
 
 Thanks for patronage, pls call again..
+
+<?= date('D-jS-M-Y h:ia');?>
 </pre>
 
 <button class="btn btn-success"
