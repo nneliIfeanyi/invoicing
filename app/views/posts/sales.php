@@ -40,7 +40,7 @@ flash('msg');?>
                 (<span class="text-warning"><?= date('M');?></span>)
               </h3>
               <div class="row">
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
                             <strong class="card-title">Total quantity sold</strong>
@@ -50,7 +50,7 @@ flash('msg');?>
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">

@@ -112,8 +112,8 @@ flash('msg');?>
  	<div class="row">
       <div class="col-md-4 mb-4">
         <div class="card">
-          <div class="m-4"><img src="<?php echo URLROOT?>/logo/agent1.jpg" height="286" alt="invoiceOnline Agent" class="card-img-top rounded-circle">
-          </div>
+          <!-- <div class="m-4"><img src="<?php echo URLROOT?>/logo/agent1.jpg" height="286" alt="invoiceOnline Agent" class="card-img-top rounded-circle">
+          </div> -->
             <hr>
             <div class="card-body">
               <p>
@@ -127,8 +127,8 @@ flash('msg');?>
       </div>
       <div class="col-md-4 mb-4">
         <div class="card">
-          <div class="m-4"><img src="<?php echo URLROOT?>/logo/agent2.jpg" height="286" alt="invoiceOnline Agent" class="card-img-top rounded-circle">
-          </div>
+          <!-- <div class="m-4"><img src="<?php echo URLROOT?>/logo/agent2.jpg" height="286" alt="invoiceOnline Agent" class="card-img-top rounded-circle">
+          </div> -->
             <hr>
             <div class="card-body">
               <p>

@@ -214,8 +214,8 @@
      <div class="row">
           <div class="col-md-4 mb-4">
             <div class="card bg-secondary">
-              <div class="m-5"><img src="<?php echo URLROOT?>/logo/agent1.jpg" height="300" alt="invoiceOnline Agent" class="card-img-top rounded-circle">
-              </div>
+              <!-- <div class="m-5"><img src="<?php echo URLROOT?>/logo/agent1.jpg" height="300" alt="invoiceOnline Agent" class="card-img-top rounded-circle">
+              </div> -->
                 <hr>
                 <div class="card-body">
                   <p>
@@ -229,8 +229,8 @@
           </div>
           <div class="col-md-4 mb-4">
             <div class="card bg-secondary">
-              <div class="m-5"><img src="<?php echo URLROOT?>/logo/agent2.jpg" height="300" alt="invoiceOnline Agent" class="card-img-top rounded-circle">
-              </div>
+              <!-- <div class="m-5"><img src="<?php echo URLROOT?>/logo/agent2.jpg" height="300" alt="invoiceOnline Agent" class="card-img-top rounded-circle">
+              </div> -->
                 <hr>
                 <div class="card-body">
                   <p>
@@ -242,19 +242,6 @@
                 </div>
             </div>
           </div>
-          <!-- <div class="col-md-4 mb-4">
-            <div class="card bg-secondary">
-                <img src="images/project-1.jpg" alt="" class="card-img-top">
-                <div class="card-body">
-                  <p>
-                    <strong class="text-muted">Name:</strong> <span class="text-primary"> NNELI IFEANYI VICTOR</span><br>
-                    <strong class="text-muted">Position:</strong> <span class="text-muted"> VENDOR</span><br>
-                    <strong class="text-muted">Office:</strong> <span class="fw-semibold"> N1000</span><br>
-                  </p>
-                  <a class="btn btn-success" href="https://wa.me/2349168655298?text=I%20need%20points_on_my_invoiceOnline_wallet"><i class="fab fa-whatsapp" aria-hidden="true"></i> Buy P900 for N1000</a>
-                </div>
-            </div>
-          </div> -->
         </div>
       <div class="my-5"></div>
     </div>
