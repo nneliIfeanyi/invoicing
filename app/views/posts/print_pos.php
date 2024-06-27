@@ -15,11 +15,13 @@ Reciept ID: <?= $data['t_id'].'<br>';?>
 ITEMS
 
 <?php $sum=0; foreach($data['post'] as $post):?>
+<?php if(!empty($post->dsc)):?>
 <?= $post->qty.' '.$post->dsc.'<br>';?>
-                      <?= $post->qty.'*'. '&#8358;'.$post->rate.'<br>';?>
+                <?= $post->qty.'*'. 'N'.$post->rate.'<br>';?>
+<?php endif;?>
 <?php $sum += $post->amount; endforeach;?>
 ********************************
-                   TOTAL &#8358;<?= put_coma($sum);?>.00
+            TOTAL N<?= put_coma($sum);?>.00
 --------------------------------
 
 Thanks for patronage, pls call again..
