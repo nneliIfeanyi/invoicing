@@ -34,37 +34,36 @@
           <span class=""><i class="fa fa-map-marker"></i>&nbsp; &nbsp;<?php echo $_SESSION['address']; ?></span>
         </label>
       </div>
-
-    <div class="col-md-6 shadow-sm p-2">
-        <label class="fs-6">Transaction ID: &nbsp; &nbsp;
-          <span class=""><?php echo $data['t_id']; ?></span>
-        </label>
-    </div>
   </div>
 </div>
 <div class="card card-body">
   <div class="row mb-2">
     <h6 class="fw-semibold h4 text-primary">Billed To</h6>
     <div class="col-md-6 shadow-sm p-2">
-      <label class="fs-6">Customer name: &nbsp; &nbsp;
+      <label class="fs-6">Customer name: &nbsp;
         <span class="border-bottom fw-semibold"><?= $data['customer_info']->name;?></span>
       </label>
     </div>
     <div class="col-md-6 shadow-sm p-2">
-      <label class="fs-6">Customer phone: &nbsp; &nbsp;
+      <label class="fs-6">Customer phone: &nbsp;
         <span class="border-bottom fw-semibold"><?= $data['customer_info']->phone;?></span>
       </label>
     </div>
     <div class="col-md-6 shadow-sm p-2">
-      <label class="fs-6">Customer Address: &nbsp; &nbsp;
+      <label class="fs-6">Customer Address: &nbsp;
         <span class="border-bottom fw-semibold"><?= $data['customer_info']->address;?></span>
       </label>
     </div>
     <div class="col-md-6 shadow-sm p-2">
-      <label class="fs-6">Transaction Date: &nbsp; &nbsp;
+      <label class="fs-6">Transaction Date: &nbsp;
         <span class="border-bottom fw-semibold"><?= $data['customer_info']->t_date.' '.$data['customer_info']->t_month.' '.$data['customer_info']->t_year ?></span>
       </label>
     </div>
+    <div class="col-md-6 shadow-sm p-1">
+        <label class="fs-6">Transaction ID: &nbsp;
+          <span class=""><?php echo $data['t_id']; ?></span>
+        </label>
+      </div>
   </div>
 </div>
 <div class="card">

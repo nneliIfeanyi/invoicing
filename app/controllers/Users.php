@@ -473,7 +473,11 @@
         $_SESSION['reg_date'] = $user->bizcreated_at;
         $_SESSION['ref_id'] = $user->ref_id;
         $_SESSION['inventory'] = $user->inventory;
-        redirect('posts');
+         echo "
+              <script>
+                history.go(-2);
+              </script>
+        ";
       }
 
     // Logout & Destroy Session

@@ -30,8 +30,7 @@
 <div class="container-fluid">
   <div class="card card-body">
     <h6 class="text-warning card-title">Billed By</h6>
-    <div class="row my-2">
-      
+    <div class="row">
       <div class="col-md-6 shadow-sm ">
         <label class="fs-6">
           <span class="font-weight-bold"><?php echo $_SESSION['user_name']; ?></span><br>
@@ -40,36 +39,36 @@
           <span class=""><i class="fa fa-map-marker"></i>&nbsp; &nbsp;<?php echo $_SESSION['address']; ?></span>
         </label>
       </div>
-      <div class="col-md-6 shadow-sm p-1">
-        <label class="fs-6">Transaction ID: &nbsp; &nbsp;
-          <span class=""><?php echo $data['t_id']; ?></span>
-        </label>
-      </div>
     </div>
   </div>
 </div>
 <div class="container-fluid">
   <div class="card card-body">
     <h6 class="card-title text-warning">Billed To</h6>
-    <div class="row mb-2">
+    <div class="row">
       <div class="col-md-6 shadow-sm p-2">
-        <label class="fs-6">Customer name: &nbsp; &nbsp;
+        <label class="fs-6">Customer name: &nbsp;
           <span class="border-bottom fw-semibold"><?= $data['customer_info']->name;?></span>
         </label>
       </div>
       <div class="col-md-6 shadow-sm p-2">
-        <label class="fs-6">Customer phone: &nbsp; &nbsp;
+        <label class="fs-6">Customer phone: &nbsp;
           <span class="border-bottom fw-semibold"><?= $data['customer_info']->phone;?></span>
         </label>
       </div>
       <div class="col-md-6 shadow-sm p-2">
-        <label class="fs-6">Customer Address: &nbsp; &nbsp;
+        <label class="fs-6">Customer Address: &nbsp;
           <span class="border-bottom fw-semibold"><?= $data['customer_info']->address;?></span>
         </label>
       </div>
       <div class="col-md-6 shadow-sm p-2">
-        <label class="fs-6">Transaction Date: &nbsp; &nbsp;
+        <label class="fs-6">Transaction Date: &nbsp;
           <span class="border-bottom fw-semibold"><?= $data['customer_info']->t_date.' '.$data['customer_info']->t_month.' '.$data['customer_info']->t_year ?></span>
+        </label>
+      </div>
+      <div class="col-md-6 shadow-sm p-1">
+        <label class="fs-6">Transaction ID: &nbsp;
+          <span class=""><?php echo $data['t_id']; ?></span>
         </label>
       </div>
     </div>
