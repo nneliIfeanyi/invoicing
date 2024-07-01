@@ -84,6 +84,94 @@
     }
 
 
+    // Load All creditors
+    public function creditors(){
+      $total = $this->postModel->getTotal();
+      $debt_all = $this->postModel->getTotal2();
+      $get_tID = $this->postModel->get_creditors();
+      $get_tID_num = $this->postModel->get_creditors_num();
+    
+        $data = [
+          'transactions' =>$get_tID,
+          't_total' => $total,
+          'num' =>$get_tID_num,
+          'd_total' => $debt_all
+        ];
+        
+      $this->view('posts/creditors', $data);
+    }
+
+    // Send reminder message
+    public function remind($val){
+      if (isset($_GET['t_id'])) {
+        $t_id = $_GET['t_id'];
+        $get_creditor = $this->postModel->get_creditor($t_id);
+          $data = [
+          'val' => $val,
+          't_id' => $t_id,
+          'creditor' => $get_creditor
+        ];
+        
+      $this->view('posts/remind', $data);
+
+      }elseif(isset($_POST['whatsapp_msg'])){
+        if($_SESSION['user_points'] > 4) {
+        $points = $_SESSION['user_points'] - 5;
+          $data = [
+            't_id' => $_POST['t_id'], 
+            'phone' => $_POST['customer_phone'],
+            'message' => $_POST['message']
+          ];
+        $new_point_value = $this->pointModel->use3($points);
+        $_SESSION['user_points'] = $points;
+        $this->pointModel->history_add($_SESSION['user_id'],'debit','5','Sent WhatsApp reminder');
+        $phone = ltrim($data['phone'], '\0');
+        header("location: https://wa.me/234".$phone."?text=".$data['message']);
+        }else{
+          flash('msg', 'Not enough Points.. Kindly fund your wallet and try again.', 'flash-msg alert alert-danger');
+          redirect('posts/creditors');
+        }
+      }elseif(isset($_POST['sms_msg'])){
+        if($_SESSION['user_points'] > 6) {
+          $points = $_SESSION['user_points'] - 7;
+
+          $email = "stanvicbest@gmail.com"; 
+          $password = "824NXJ46mYhmSY$"; 
+          $message = $_POST['message']; 
+          $sender_name = "Stanvic"; 
+          $recipients = $_POST['customer_phone']; 
+          $forcednd = "1"; 
+          $data = array("email" => $email, "password" => $password,"message"=>$message, "sender_name"=>$sender_name,"recipients"=>$recipients,"forcednd"=>$forcednd); 
+          $data_string = json_encode($data); 
+          $ch = curl_init('https://app.multitexter.com/v2/app/sms'); 
+          curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST"); 
+          curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string); 
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+          curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: ' . strlen($data_string))); 
+          $result = curl_exec($ch); 
+          $res_array = json_decode($result); 
+          print_r($res_array);
+
+          $data = [
+            't_id' => $_POST['t_id'], 
+            'phone' => $_POST['customer_phone'],
+            'message' => $_POST['message']
+          ];
+
+          $new_point_value = $this->pointModel->use3($points);
+          $_SESSION['user_points'] = $points;
+          $this->pointModel->history_add($_SESSION['user_id'],'debit','7','Sent SMS reminder');
+          flash('msg', 'Reminder sent successfully');
+           redirect('posts/creditors');
+        }else{
+          flash('msg', 'Not enough Points.. Kindly fund your wallet and try again.', 'flash-msg alert alert-danger');
+          redirect('posts/creditors');
+        }
+      }
+
+    }
+
+
      public function index2(){
       $total = $this->postModel->getTotal();
       $debt_all = $this->postModel->getTotal2();
@@ -281,13 +369,10 @@
         $paid = $_POST['paid'];
         $total = 0;
         foreach($qty as $index=>$details ){
-          if (str_contains($qty[$index], '.') || str_contains($rate[$index], '.')) {
+          
            $qty[$index] = (float)$qty[$index];
            $rate[$index] = (float)$rate[$index];
-          }else{
-           $qty[$index] = (int)$qty[$index];
-           $rate[$index] = (int)$rate[$index];
-          }
+          
           $amt = $qty[$index] * $rate[$index];
           $data = [
             'rate' => $rate[$index],
@@ -424,13 +509,9 @@
         $total = 0;
         if ($_SESSION['user_points'] > 2) {
           foreach($qty as $index=>$details ){
-            if (str_contains($qty[$index], '.') || str_contains($rate[$index], '.')) {
              $qty[$index] = (float)$qty[$index];
              $rate[$index] = (float)$rate[$index];
-            }else{
-             $qty[$index] = (int)$qty[$index];
-             $rate[$index] = (int)$rate[$index];
-            }
+            
             $amt = $qty[$index] * $rate[$index];
           $data = [
             'qty' => $qty[$index],
