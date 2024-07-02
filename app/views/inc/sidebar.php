@@ -44,7 +44,11 @@
 
                         <?php endif;?>
                         <!-- CATEGORY CHECK ENDS -->
-                        
+                        <li>
+                            <a href="<?php echo URLROOT?>/posts/creditors">
+                                <i class="fas fa-money-bill-alt"></i>Creditors</a>
+                           
+                        </li>
 
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
@@ -224,7 +228,11 @@
 
                         <?php endif;?>
                         <!-- CATEGORY CHECK ENDS -->
-                        
+                        <li>
+                            <a href="<?php echo URLROOT?>/posts/creditors">
+                                <i class="fas fa-money-bill-alt"></i>Creditors</a>
+                           
+                        </li>
 
                         <li class="has-sub">
                             <a class="js-arrow" href="#">

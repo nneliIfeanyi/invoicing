@@ -3,6 +3,7 @@
     <!-- Jquery JS-->
     <script src="<?= URLROOT;?>/vendor/jquery-3.2.1.min.js"></script>
     <script src="<?= URLROOT ;?>/js/parsley.min.js"></script>
+    <script src="<?= URLROOT ;?>/js/w3.js"></script>
     <!-- Bootstrap JS-->
     <script src="<?= URLROOT;?>/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="<?php echo URLROOT; ?>/vendor/bootstrap-4.1/bootstrap.min.js"></script>

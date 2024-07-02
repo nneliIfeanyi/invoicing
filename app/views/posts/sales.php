@@ -40,17 +40,16 @@ flash('msg');?>
                 (<span class="text-warning"><?= date('M');?></span>)
               </h3>
               <div class="row">
-                <!-- <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">Total quantity sold</strong>
+                <div class="col-md-6">
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label for="textarea-input" class=" form-control-label">Filter records</label>
                         </div>
-                        <div class="card-body">
-                            <p class="card-text font-weight-bold"><?= $data['all_qty'];?>
-                            </p>
+                        <div class="col-md-12">
+                            <input class="form-control" placeholder="Search for goods sold" oninput="w3.filterHTML('#id01', '.item', this.value)"> 
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
@@ -64,7 +63,7 @@ flash('msg');?>
                 </div>
               </div>
               <div class="table-responsive table-responsive-data2">
-                  <table class="table table-data2">
+                  <table class="table table-data2" id="id01">
                       <thead>
                           <tr>
                             <!-- <th>#</th> -->
@@ -78,7 +77,7 @@ flash('msg');?>
                       </thead>
                       <tbody>
                         <?php $count =1; foreach($data['sales'] as $sales):?>
-                          <tr class="tr-shadow">
+                          <tr class="tr-shadow item">
                               <!-- <td><?= $count;?></td> -->
                               <td><?= $sales->qty;?></td>
                               <td>
