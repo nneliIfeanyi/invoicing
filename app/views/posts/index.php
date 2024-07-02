@@ -56,7 +56,7 @@ flash('msg');?>
                 <div class="col-md-6 col-lg-4">
                     <div class="statistic__item">
                             <h2 class="number text-warning">&#8358;<?php echo put_coma($dept);?></h2>
-                        <span class="desc">Total credits</span>
+                        <span class="desc">Total credits</span><br>
                         <a href="<?php echo URLROOT?>/posts/creditors" class="btn-sm text-muted">View Creditors &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
                         <div class="icon">
                             <i class="zmdi zmdi-money"></i>

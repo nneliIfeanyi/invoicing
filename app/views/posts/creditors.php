@@ -91,7 +91,7 @@ flash('msg');?>
 
     <div class="row mt-3"> 
         <div class="col-6"> 
-             <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#remind<?= $post->t_id;?>">
+             <button class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#remind<?= $post->t_id;?>">
                  <i class="fa fa-bell"></i> Reminder
              </button>
         </div>
