@@ -90,14 +90,13 @@ flash('msg');?>
       <p>To balance: <span class="text-warning h6 fw-bold">&#8358;<?php echo put_coma($to_balance); ?>.00</span></p>
 
     <div class="row mt-3"> 
-        <div class="col-6"> 
+        <div class="col-4"> 
              <button class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#remind<?= $post->t_id;?>">
                  <i class="fa fa-bell"></i> Reminder
              </button>
         </div>
-       <div class="col-6">
-         <a href="<?= URLROOT;?>/posts/preview/<?php echo $post->t_id;?>" class="btn btn-sm btn-success">
-            <i class="fa fa-eye"></i> Preview transaction</a>
+       <div class="col-8">
+         <a href="<?= URLROOT;?>/posts/preview/<?php echo $post->t_id;?>" class="btn btn-sm btn-success">Preview transaction</a>
       </div>   
     </div>
   </div>
