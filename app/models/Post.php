@@ -181,24 +181,37 @@ public function doc_redownload($t_id, $path){
       return $results;
     }
 
+// CREDITORS SECTION
+
+     public function get_creditors(){
+      $this->db->query("SELECT * FROM customers WHERE biz_id = :id AND t_total != paid ORDER BY id DESC");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $results = $this->db->resultset();
+      return $results;
+    }
+
+    // Determine how many creditors
+    public function get_creditors_num(){
+      $this->db->query("SELECT * FROM customers WHERE biz_id = :id AND t_total != paid ORDER BY id DESC");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->resultset();
+      if ($this->db->rowCount() > 0) {
+        return $this->db->rowCount();
+      }else{
+        return false;
+      }
+    }
+
+    // Get single creditor
+    public function get_creditor($t_id){
+      $this->db->query("SELECT * FROM customers WHERE t_id = :id ; ");
+      $this->db->bind(':id', $t_id);
+      $result = $this->db->single();
+      return $result;
+    }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// CREDITORS SECTION ENDS
 
 
     public function get_transactions(){

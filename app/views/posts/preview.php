@@ -31,7 +31,7 @@
   <div class="card card-body">
     <h6 class="text-warning card-title">Billed By</h6>
     <div class="row">
-      <div class="col-md-6 shadow-sm ">
+      <div class="col-md-6">
         <label class="fs-6">
           <span class="font-weight-bold"><?php echo $_SESSION['user_name']; ?></span><br>
           <span class="text-muted" style="font-size: 14px;"><?php echo $_SESSION['user_dsc']; ?></span><br>
@@ -40,11 +40,8 @@
         </label>
       </div>
     </div>
-  </div>
-</div>
-<div class="container-fluid">
-  <div class="card card-body">
-    <h6 class="card-title text-warning">Billed To</h6>
+<hr>
+    <h6 class="card-title text-warning mt-2">Billed To</h6>
     <div class="row">
       <div class="col-md-6 shadow-sm p-2">
         <label class="fs-6">Customer name: &nbsp;
@@ -57,7 +54,7 @@
         </label>
       </div>
       <div class="col-md-6 shadow-sm p-2">
-        <label class="fs-6">Customer Address: &nbsp;
+        <label class="fs-6">Address: &nbsp;
           <span class="border-bottom fw-semibold"><?= $data['customer_info']->address;?></span>
         </label>
       </div>
@@ -66,16 +63,13 @@
           <span class="border-bottom fw-semibold"><?= $data['customer_info']->t_date.' '.$data['customer_info']->t_month.' '.$data['customer_info']->t_year ?></span>
         </label>
       </div>
-      <div class="col-md-6 shadow-sm p-1">
+      <div class="col-md-6 p-1">
         <label class="fs-6">Transaction ID: &nbsp;
           <span class=""><?php echo $data['t_id']; ?></span>
         </label>
       </div>
     </div>
-  </div>
 </div>
-
-<div class="container-fluid">
 <div class="card">
   <!-- check for business category -->
 <?php if($_SESSION['category'] == 'trading' || $_SESSION['category'] == 'production'):?>
@@ -221,7 +215,7 @@
     <i class="zmdi zmdi-edit"></i> Edit
   </a>
  
-  <button class="btn"  onclick="history.back()">
+  <button class="btn"  onclick="history.go(-1)">
     <i class="fa fa-backward"></i> Go Back
   </button>
 </div>
@@ -246,7 +240,7 @@
           <p class="lead">Do you wish to Continue?</p>
         </div>
         <div class="modal-footer d-flex justify-content-between">
-          <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
+          <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
           <form action="<?php echo URLROOT; ?>/posts/delete2/<?php echo $data['t_id'];?>" method="post">
             <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Yes, Continue</button>
           </form>

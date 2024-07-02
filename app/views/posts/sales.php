@@ -23,8 +23,8 @@ flash('msg');?>
                                 </li>
                             </ul>
                         </div>
-                        <a href="<?php echo URLROOT;?>/inventory" class="au-btn au-btn-icon au-btn--green">
-                            go to invetory</a>
+                        <a href="<?php echo URLROOT;?>/posts/add/1" class="au-btn au-btn-icon au-btn--green">
+                          <i class="fa fa-plus"></i>  Record sales</a>
                     </div>
                 </div>
             </div>

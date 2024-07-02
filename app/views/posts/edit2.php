@@ -144,9 +144,9 @@
   <label>Cash paid: <span style="font-size: 12px;">(leave this box empty if no amount was paid)</span></label>
   <input type="number" name="paid" class="form-control" value="<?= $data['info']->paid;?>">
 </div>
-<div class="d-grid gap-2">
+<div class="d-flex justify-content-between">
   <button type="submit" class="btn btn-success mt-2">Update Transactions</button>
-  <!-- <a href="<?= URLROOT;?>/posts/show/<?= $data['info']->t_id;?>" class="btn"><i class="fa fa-backward"></i> Back</a> -->
+  <a href="<?= URLROOT;?>/posts" class="btn text-warning"><i class="fa fa-backward"></i> Back</a>
 </div>
 </form>
 </div>

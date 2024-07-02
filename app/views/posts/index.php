@@ -57,9 +57,11 @@ flash('msg');?>
                     <div class="statistic__item">
                             <h2 class="number text-warning">&#8358;<?php echo put_coma($dept);?></h2>
                         <span class="desc">Total credits</span>
+                        <a href="<?php echo URLROOT?>/posts/creditors" class="btn-sm text-muted">View Creditors &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
                         <div class="icon">
                             <i class="zmdi zmdi-money"></i>
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -92,7 +94,7 @@ flash('msg');?>
               <?php 
                 $to_balance = $customer_info->t_total - $customer_info->paid;
               ?>
-              <p>To balance: <span class="text-warning h6 fw-bold">&#8358;<?php echo $to_balance; ?>.00</span></p>
+              <p>To balance: <span class="text-warning h6 fw-bold">&#8358;<?php echo put_coma($to_balance); ?>.00</span></p>
         
             <div class="row mt-3"> 
             <?php if($_SESSION['user_phone'] == "08122321931"):?>
