@@ -324,33 +324,52 @@
     }
 
 
-    //gets all customers by phone number
-    public function get_customers(){
-      $this->db->query("SELECT DISTINCT(customer_phone) FROM invoicing WHERE biz_id = :id ORDER BY id DESC");
+
+
+
+
+
+
+
+
+
+    //Gets All Customers From Customers Table
+
+    public function getCustomers(){
+      $this->db->query("SELECT * FROM customers WHERE biz_id = :id ORDER BY id DESC ;");
       $this->db->bind(':id', $_SESSION['user_id']);
-      $results = $this->db->resultset();
-      return $results;
-    }
-
-    public function get_customersName($phone){
-      $this->db->query("SELECT customer_name FROM invoicing WHERE customer_phone = :phone ORDER BY id DESC");
-      $this->db->bind(':phone', $phone);
-      $result = $this->db->single();
-      return $result;
-    }
-    public function get_customersAddress($phone){
-      $this->db->query("SELECT customer_address FROM invoicing WHERE customer_phone = :phone ORDER BY id DESC");
-      $this->db->bind(':phone', $phone);
-      $result = $this->db->single();
+      $result = $this->db->resultset();
       return $result;
     }
 
-    public function get_history($phone){
-      $this->db->query("SELECT DISTINCT(t_id) FROM invoicing WHERE customer_phone = :phone ORDER BY id DESC");
-      $this->db->bind(':phone', $phone);
-      $results = $this->db->resultset();
-      return $results;
+
+
+    public function getCustomers_count(){
+      $this->db->query("SELECT * FROM customers WHERE biz_id = :id ORDER BY id DESC ;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+      $this->db->resultset();
+      return $this->db->rowCount();
     }
+
+    //Gets All Customers From Customers Table
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
      public function page_visit_count($page){

@@ -46,24 +46,38 @@ flash('msg');?>
             <div class="row">
                 <div class="col-md-6 col-lg-4">
                     <div class="statistic__item">
-                        <h2 class="number text-warning">&#8358;<?php echo put_coma($data['t_total']);?></h2>
-                        <span class="desc">Total transactions</span>
+                        <h2 class="number text-warning"><?php echo $_SESSION['user_points'];?>.00</h2>
+                        <span class="desc">Available Points</span><br>
+                        <a href="<?php echo URLROOT?>/pages/subscribe" class="btn-sm text-muted">Fund Wallet &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
                         <div class="icon">
                             <i class="zmdi zmdi-money"></i>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
+
+                 <div class="col-md-6 col-lg-4">
                     <div class="statistic__item">
-                            <h2 class="number text-warning">&#8358;<?php echo put_coma($dept);?></h2>
-                        <span class="desc">Total credits</span><br>
-                        <a href="<?php echo URLROOT?>/posts/creditors" class="btn-sm text-muted">View Creditors &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
+                            <h2 class="number text-warning">&#8358;<?php echo put_coma($data['t_total']);?></h2>
+                        <span class="desc">Total Sales</span><br>
+                        <a href="<?php echo URLROOT?>/posts/sales" class="btn-sm text-muted">View Sales Book &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
                         <div class="icon">
                             <i class="zmdi zmdi-money"></i>
                         </div>
                         
                     </div>
                 </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="statistic__item">
+                            <h2 class="number text-warning">&#8358;<?php echo put_coma($dept);?></h2>
+                        <span class="desc">Total credits</span><br>
+                        <a href="<?php echo URLROOT?>/posts/creditors" class="btn-sm text-muted">View Credit Book &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
+                        <div class="icon">
+                            <i class="zmdi zmdi-money"></i>
+                        </div>
+                        
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -73,6 +87,7 @@ flash('msg');?>
     <div class="section__content section__content--p30">
         <div class="container-fluid">
           <h1 class="h3">Recent Transactions</h1>
+          <p class="lead mb-2">Today <span class="text-warning">|</span> <?php echo date('D-jS-M-Y'); ?></p>
           <?php if(!empty($data['transactions'])):?>
             <?php foreach($data['transactions'] as $post):
               $customer_info = $this->postModel->getInfo($post->t_id);
@@ -119,7 +134,7 @@ flash('msg');?>
           <?php endforeach;?>
             
             <div class="fs-6 fs-italics text-center mb-2">
-              <i class="fa fa-spinner fa-spin"> </i> No more transactions...
+              <i class="fa fa-spinner fa-spin"> </i> Showing last 4 transactions<br><a href="<?php echo URLROOT?>/posts/creditors" class="btn-sm text-muted">View All Transactions &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
             </div>
           <?php else:?>
             <div class="lead">
@@ -130,7 +145,9 @@ flash('msg');?>
     </div>
   </div>
 </section>
-
+<div class="container-fluid m-t-75">
+   <h1 class="h3">Frequently Asked Questions</h1> 
+</div>
 <?php if($visits->count <= 10):?>
 <script>
 

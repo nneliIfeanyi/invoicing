@@ -32,7 +32,7 @@
 
 
   public function get_transactionz(){
-    $this->db->query("SELECT DISTINCT(t_id) FROM transactions WHERE biz_id = :id ORDER BY id DESC LIMIT 8;");
+    $this->db->query("SELECT DISTINCT(t_id) FROM transactions WHERE biz_id = :id ORDER BY id DESC LIMIT 4;");
     $this->db->bind(':id', $_SESSION['user_id']);
     $results = $this->db->resultset();
     return $results;
@@ -87,8 +87,113 @@ public function doc_redownload($t_id, $path){
   }
 }
 
+  
+// THE YESTERDAY SALES VIEW  //
+  public function get_yesterday($day,$month,$year){
+      $this->db->query("SELECT * FROM transactions WHERE biz_id = :id AND dsc != :empty AND t_date = :day AND t_month = :month AND t_year = :year ORDER BY id DESC");
+      $this->db->bind(':id', $_SESSION['user_id']);
+       $this->db->bind(':empty', '');
+       $this->db->bind(':day', $day);
+       $this->db->bind(':month', $month);
+       $this->db->bind(':year', $year);
+      $results = $this->db->resultset();
+      return $results;
+    }
+
+    public function get_yesterday_count($day,$month,$year){
+      $this->db->query("SELECT * FROM transactions WHERE biz_id = :id AND dsc != :empty AND t_date = :day AND t_month = :month AND t_year = :year ORDER BY id DESC");
+      $this->db->bind(':id', $_SESSION['user_id']);
+       $this->db->bind(':empty', '');
+       $this->db->bind(':day', $day);
+       $this->db->bind(':month', $month);
+       $this->db->bind(':year', $year);
+       $this->db->resultset();
+      return $this->db->rowCount();
+    }
+
+    public function get_yesterday_total($day,$month,$year){
+      $this->db->query("SELECT SUM(amount) FROM transactions WHERE biz_id = :id  AND t_date = :day AND t_month = :month AND t_year = :year;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+       $this->db->bind(':day', $day);
+       $this->db->bind(':month', $month);
+       $this->db->bind(':year', $year);
+      //Execute
+      $row = $this->db->sumColumn();
+      return $row;
+    }
+// THE YESTERDAY SALES VIEW  ENDS //
 
 
+
+
+
+// THE TODAY SALES VIEW  //
+  public function get_today($day,$month,$year){
+      $this->db->query("SELECT * FROM transactions WHERE biz_id = :id AND dsc != :empty AND t_date = :day AND t_month = :month AND t_year = :year ORDER BY id DESC");
+      $this->db->bind(':id', $_SESSION['user_id']);
+       $this->db->bind(':empty', '');
+       $this->db->bind(':day', $day);
+       $this->db->bind(':month', $month);
+       $this->db->bind(':year', $year);
+      $results = $this->db->resultset();
+      return $results;
+    }
+
+     public function get_today_count($day,$month,$year){
+      $this->db->query("SELECT * FROM transactions WHERE biz_id = :id AND dsc != :empty AND t_date = :day AND t_month = :month AND t_year = :year ORDER BY id DESC");
+      $this->db->bind(':id', $_SESSION['user_id']);
+       $this->db->bind(':empty', '');
+       $this->db->bind(':day', $day);
+       $this->db->bind(':month', $month);
+       $this->db->bind(':year', $year);
+       $this->db->resultset();
+      return $this->db->rowCount();
+    }
+
+    public function get_today_total($day,$month,$year){
+      $this->db->query("SELECT SUM(amount) FROM transactions WHERE biz_id = :id  AND t_date = :day AND t_month = :month AND t_year = :year;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+       $this->db->bind(':day', $day);
+       $this->db->bind(':month', $month);
+       $this->db->bind(':year', $year);
+      //Execute
+      $row = $this->db->sumColumn();
+      return $row;
+    }
+// THE TODAY SALES VIEW  ENDS //
+
+
+    // THIS WEEK SALES VIEW  //
+  public function get_week($week,$year){
+      $this->db->query("SELECT * FROM transactions WHERE biz_id = :id AND dsc != :empty AND t_week = :week AND t_year = :year ORDER BY id DESC");
+      $this->db->bind(':id', $_SESSION['user_id']);
+       $this->db->bind(':empty', '');
+       $this->db->bind(':week', $week);
+       $this->db->bind(':year', $year);
+      $results = $this->db->resultset();
+      return $results;
+    }
+
+     public function get_week_count($week,$year){
+      $this->db->query("SELECT * FROM transactions WHERE biz_id = :id AND dsc != :empty AND t_week = :week AND t_year = :year ORDER BY id DESC");
+      $this->db->bind(':id', $_SESSION['user_id']);
+       $this->db->bind(':empty', '');
+       $this->db->bind(':week', $week);
+       $this->db->bind(':year', $year);
+       $this->db->resultset();
+      return $this->db->rowCount();
+    }
+
+    public function get_week_total($week,$year){
+      $this->db->query("SELECT SUM(amount) FROM transactions WHERE biz_id = :id AND t_week = :week AND t_year = :year;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+       $this->db->bind(':week', $week);
+       $this->db->bind(':year', $year);
+      //Execute
+      $row = $this->db->sumColumn();
+      return $row;
+    }
+// THIS WEEK SALES VIEW  ENDS //
 
 
 // THE MONTHLY VIEW STUFF //
@@ -101,6 +206,16 @@ public function doc_redownload($t_id, $path){
       $results = $this->db->resultset();
       return $results;
     }
+
+    public function get_salez_count($month){
+      $this->db->query("SELECT * FROM transactions WHERE biz_id = :id AND dsc != :empty AND t_month = :month ORDER BY id DESC");
+      $this->db->bind(':id', $_SESSION['user_id']);
+       $this->db->bind(':empty', '');
+       $this->db->bind(':month', $month);
+       $this->db->resultset();
+      return $this->db->rowCount();
+    }
+
 
     public function get_monthly_total($month){
       $this->db->query("SELECT SUM(amount) FROM transactions WHERE biz_id = :id AND t_month = :month;");
@@ -294,8 +409,8 @@ public function doc_redownload($t_id, $path){
     // Add Post
     public function addPost($data){
       // Prepare Query
-      $this->db->query('INSERT INTO transactions (biz_id, t_id, qty, dsc, rate, amount, t_date, t_month, t_year, t_time) 
-      VALUES (:biz_id, :t_id, :qty, :dsc, :rate, :amt, :c_date, :c_month, :c_year, :c_time)');
+      $this->db->query('INSERT INTO transactions (biz_id, t_id, qty, dsc, rate, amount, t_date, t_week, t_month, t_year, t_time) 
+      VALUES (:biz_id, :t_id, :qty, :dsc, :rate, :amt, :c_date, :c_week, :c_month, :c_year, :c_time)');
 
       // Bind Values
       $this->db->bind(':biz_id', $data['biz_id']);
@@ -305,6 +420,7 @@ public function doc_redownload($t_id, $path){
       $this->db->bind(':rate', $data['rate']);
       $this->db->bind(':amt', $data['amt']);
       $this->db->bind(':c_date', $data['c_date']);
+      $this->db->bind(':c_week', date('W'));
       $this->db->bind(':c_month', $data['c_month']);
       $this->db->bind(':c_year', $data['c_year']);
       $this->db->bind(':c_time', $data['c_time']);
@@ -320,8 +436,8 @@ public function doc_redownload($t_id, $path){
     // Add Post
     public function add_customer($data){
       // Prepare Query
-      $this->db->query('INSERT INTO customers (biz_id, t_id, name, address, phone, paid, t_total, t_date, t_month, t_year, t_time) 
-      VALUES (:biz_id, :t_id, :customer_name, :customer_address, :customer_phone, :paid, :total, :c_date, :c_month, :c_year, :c_time)');
+      $this->db->query('INSERT INTO customers (biz_id, t_id, name, address, phone, paid, t_total, t_date, t_week, t_month, t_year, t_time) 
+      VALUES (:biz_id, :t_id, :customer_name, :customer_address, :customer_phone, :paid, :total, :c_date, :c_week, :c_month, :c_year, :c_time)');
 
       // Bind Values
       $this->db->bind(':biz_id', $data['biz_id']);
@@ -332,6 +448,7 @@ public function doc_redownload($t_id, $path){
       $this->db->bind(':paid', $data['paid']);
       $this->db->bind(':total', $data['total']);
       $this->db->bind(':c_date', $data['c_date']);
+      $this->db->bind(':c_week', date('W'));
       $this->db->bind(':c_month', $data['c_month']);
       $this->db->bind(':c_year', $data['c_year']);
       $this->db->bind(':c_time', $data['c_time']);

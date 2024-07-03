@@ -189,14 +189,49 @@
 
     public function sales(){
       $month = date('M');
+      $today = date('D jS');
+      $year = date('Y');
+      $week = date('W');
+      $previous = strtotime('yesterday');
+      $yesterday = date('D jS', $previous);
+
+
       $monthly_total = $this->postModel->get_monthly_total($month);
       $all_sold = $this->postModel->get_monthly_qty($month);
-      $get_tID = $this->postModel->get_salez($month);
+      $get_this_month = $this->postModel->get_salez($month);
+      $get_this_month_count = $this->postModel->get_salez_count($month);
+
+      //today
+      $get_today = $this->postModel->get_today($today,$month,$year);
+      $get_today_count = $this->postModel->get_today_count($today,$month,$year);
+      $today_total = $this->postModel->get_today_total($today,$month,$year);
+
+      //Week
+      $get_week = $this->postModel->get_week($week,$year);
+      $get_week_count = $this->postModel->get_week_count($week,$year);
+      $week_total = $this->postModel->get_week_total($week,$year);
+
+      //yesterday
+      $get_yesterday = $this->postModel->get_yesterday($yesterday,$month,$year);
+      $get_yesterday_count = $this->postModel->get_yesterday_count($yesterday,$month,$year);
+      $yesterday_total = $this->postModel->get_yesterday_total($yesterday,$month,$year);
+
     
         $data = [
-          'sales' =>$get_tID,
+          'sales' => $get_this_month,
+          'today_sales' => $get_today,
+          'today_total' => $today_total,
+          'yesterday_sales' => $get_yesterday,
+          'yesterday_total' => $yesterday_total,
+          'yesterday' => $yesterday,
           'total' => $monthly_total,
-          'all_qty' => $all_sold
+          'all_qty' => $all_sold,
+          'yestercount' => $get_yesterday_count,
+          'tocount' => $get_today_count,
+          'monthcount' => $get_this_month_count,
+          'week_sales' => $get_week,
+          'week_total' => $week_total,
+          'weekcount' => $get_week_count
         ];
         
       $this->view('posts/sales', $data);

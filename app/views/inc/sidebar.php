@@ -39,14 +39,14 @@
                         </li>
                         <li>
                             <a href="<?php echo URLROOT?>/posts/sales">
-                                <i class="fas fa-lightbulb"></i>View Sales</a>
+                                <i class="fas fa-book"></i>Sales Book</a>
                         </li>
 
                         <?php endif;?>
                         <!-- CATEGORY CHECK ENDS -->
                         <li>
                             <a href="<?php echo URLROOT?>/posts/creditors">
-                                <i class="fas fa-money-bill-alt"></i>Creditors</a>
+                                <i class="fas fa-money-bill-alt"></i>Credit Book</a>
                            
                         </li>
 
@@ -114,7 +114,10 @@
                         <!-- End Check If Admin -->
 
 
-                        
+                        <li>
+                            <a href="https://wa.me/2349168655298" target="_blank">
+                                <i class="fab fa-whatsapp"></i>Contact us</a>
+                        </li>
                        
                        
                         <!-- <li>
@@ -223,14 +226,14 @@
                         </li>
                         <li>
                             <a href="<?php echo URLROOT?>/posts/sales">
-                                <i class="fas fa-lightbulb"></i>View Sales</a>
+                                <i class="fas fa-book"></i>Sales Book</a>
                         </li>
 
                         <?php endif;?>
                         <!-- CATEGORY CHECK ENDS -->
                         <li>
                             <a href="<?php echo URLROOT?>/posts/creditors">
-                                <i class="fas fa-money-bill-alt"></i>Creditors</a>
+                                <i class="fas fa-money-bill-alt"></i>Credit Book</a>
                            
                         </li>
 
@@ -298,7 +301,10 @@
                         <!-- End Check If Admin -->
 
 
-                        
+                        <li>
+                            <a href="https://wa.me/2349168655298" target="_blank">
+                                <i class="fab fa-whatsapp"></i>Contact us</a>
+                        </li>
                        
                        
                         <!-- <li>

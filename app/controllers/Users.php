@@ -473,11 +473,7 @@
         $_SESSION['reg_date'] = $user->bizcreated_at;
         $_SESSION['ref_id'] = $user->ref_id;
         $_SESSION['inventory'] = $user->inventory;
-         echo "
-              <script>
-                history.go(-2);
-              </script>
-        ";
+        redirect('posts');
       }
 
     // Logout & Destroy Session
@@ -507,4 +503,20 @@
         return false;
       }
     }
+
+
+    public function customers(){
+      $load_customers = $this->userModel->getCustomers();
+      $customers_count = $this->userModel->getCustomers_count();
+      $data = [
+        'customers' => $load_customers,
+        'customers_count' => $customers_count
+      ];
+
+      $this->view('users/customers', $data);
+    }
+
+
+
+
   }
