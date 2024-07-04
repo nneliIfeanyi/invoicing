@@ -126,7 +126,7 @@
           ];
         $new_point_value = $this->pointModel->use3($points);
         $_SESSION['user_points'] = $points;
-        $this->pointModel->history_add($_SESSION['user_id'],'debit','5','Sent WhatsApp reminder');
+        $this->pointModel->history_add($_SESSION['user_id'],'debit','5','Sent WhatsApp');
         $phone = ltrim($data['phone'], '\0');
         header("location: https://wa.me/234".$phone."?text=".$data['message']);
         }else{
