@@ -24,7 +24,7 @@ flash('msg');
                                 <li class="list-inline-item seprate">
                                     <span>/</span>
                                 </li>
-                                <li class="list-inline-item">Reminder</li>
+                                <li class="list-inline-item">Send Message</li>
                             </ul>
                         </div>
                         <a href="<?php echo URLROOT;?>/posts/creditors" class="au-btn au-btn-icon au-btn--green">
@@ -40,7 +40,7 @@ flash('msg');
 <div class="container-fluid">
 <?php if($data['val'] == 'whatsapp'):?>
 <section class="card card-body">
-    <h5>You are about to send a whatsApp reminder message to <span class="text-warning"><?= $data['creditor']->name;?></h5>
+    <h5>You are about to send a whatsApp message to <span class="text-warning"><?= $data['creditor']->name;?></h5>
     <hr>
     <form method="POST" action="<?php echo URLROOT?>/posts/remind/whatsapp"> 
         <input type="hidden" name="customer_phone" value="<?= $data['creditor']->phone;?>"> 
@@ -62,7 +62,7 @@ flash('msg');
 </section>        
 <?php elseif($data['val'] == 'sms'):?>
 <section class="card card-body">
-    <h5>You are about to send an SMS reminder message to <span class="text-warning"><?= $data['creditor']->name;?></h5>
+    <h5>You are about to send an SMS to <span class="text-warning"><?= $data['creditor']->name;?></h5>
 
     <hr>
     <form method="POST" action="<?php echo URLROOT?>/posts/remind/sms" id="remind_form">
