@@ -162,7 +162,7 @@
 
           $new_point_value = $this->pointModel->use3($points);
           $_SESSION['user_points'] = $points;
-          $this->pointModel->history_add($_SESSION['user_id'],'debit','7','Sent SMS reminder');
+          $this->pointModel->history_add($_SESSION['user_id'],'debit','7','Sent SMS');
           flash('msg', 'SMS sent successfully');
            redirect('posts/creditors');
         }else{
