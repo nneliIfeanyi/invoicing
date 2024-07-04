@@ -24,7 +24,7 @@ flash('msg');?>
                             </ul>
                         </div>
                         <a href="<?php echo URLROOT;?>/users/wallet_history" class="au-btn au-btn-icon au-btn--green">
-                            Wallet History</a>
+                         <i class="fa fa-refresh"></i>   Wallet History</a>
                     </div>
                 </div>
             </div>

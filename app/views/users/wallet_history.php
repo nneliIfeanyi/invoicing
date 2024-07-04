@@ -24,7 +24,7 @@ flash('msg');?>
                             </ul>
                         </div>
                         <a href="<?php echo URLROOT;?>/pages/subscribe" class="au-btn au-btn-icon au-btn--green">
-                            Fund wallet</a>
+                         <i class="fa-solid fa-wallet"></i>   Fund wallet</a>
                     </div>
                 </div>
             </div>

@@ -34,7 +34,7 @@ flash('msg');?>
 <!-- END BREADCRUMB-->
 <!-- Today Sales -->
             <div class="">
-               <h3 class="p-3">My Customers</h3>
+               <h3 class="p-3"><i class="fa fa-user"></i> My Customers</h3>
                 <div class="row">
                   <?php if($data['customers_count'] > 10):?>
                  <div class="col-md-6">

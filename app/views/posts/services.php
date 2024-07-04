@@ -59,9 +59,9 @@ flash('msg');?>
         <div class="tab-content pl-3 pt-2" id="nav-tabContent">
         <!-- Today Sales -->
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-               <h3 class="py-3">Today's Sales 
-                  (<span class="text-warning"><?= date('D-jS-M-Y');?></span>)
-                </h3>
+               <h4 class="py-3">
+                <i class="fa fa-tasks"></i>  <span class="text-warning"><?= date('D-jS-M-Y');?></span>
+                </h4>
                 <div class="row">
                   <?php if($data['tocount'] > 10):?>
                  <div class="col-md-6">
@@ -126,12 +126,14 @@ flash('msg');?>
             <div class="tab-pane fade show" id="nav-week" role="tabpanel" aria-labelledby="nav-week-tab">
                 <?php 
 
-                    $week_start = date('D-jS-M', strtotime('last monday'));
-                    $week_end = date('D-jS-M', strtotime('this sunday'));
+                    $week_start = date('D-jS', strtotime('last monday'));
+                    $week_end = date('D-jS', strtotime('this sunday'));
                 ?>
-               <h3 class="py-3">From
-                  (<span class="text-warning"><?= $week_start;?></span>) To (<span class="text-warning"><?= $week_end;?></span>)
-                </h3>
+               <h4 class="py-3">
+                 <i class="fa fa-tasks"></i> <span class="text-warning"><?= $week_start;?></span> 
+                  <i class="fa fa-arrow-circle-right"></i> 
+                  <span class="text-warning"><?= $week_end;?></span>
+                </h4>
                 <div class="row">
                   <?php if($data['weekcount'] > 10):?>
                  <div class="col-md-6">
@@ -194,9 +196,9 @@ flash('msg');?>
 
            <!-- Yesterday Sales -->
             <div class="tab-pane fade show" id="nav-yesterday" role="tabpanel" aria-labelledby="nav-yesterday-tab">
-               <h3 class="py-3">Yesterday's Sales 
-                  (<span class="text-warning"><?= $data['yesterday'];?></span>)
-                </h3>
+               <h4 class="py-3">
+                <i class="fa fa-tasks"></i>  <span class="text-warning"><?= $data['yesterday'];?></span>
+                </h4>
                 <div class="row">
                   <?php if($data['yestercount'] > 10):?>
                  <div class="col-md-6">
@@ -258,9 +260,9 @@ flash('msg');?>
 
             <!-- Current Month Sales -->
             <div class="tab-pane fade" id="nav-month" role="tabpanel" aria-labelledby="nav-month-tab">
-               <h3 class="py-3">Current Month Sales 
+               <h4 class="py-3"><i class="fa fa-tasks"></i> Current Month
                   (<span class="text-warning"><?= date('M');?></span>)
-                </h3>
+                </h4>
                 <div class="row">
                 <?php if($data['monthcount'] > 10):?>
                  <div class="col-md-6">
