@@ -73,11 +73,13 @@
       $total = $this->postModel->getTotal();
       $debt_all = $this->postModel->getTotal2();
       $get_tID = $this->postModel->get_transactionz();
+      $month_total = $this->postModel->get_monthly_total(date('M'));
     
         $data = [
           'transactions' =>$get_tID,
           't_total' => $total,
-          'd_total' => $debt_all
+          'd_total' => $debt_all,
+          'month_total' => $month_total
         ];
         
       $this->view('posts/index', $data);
@@ -234,7 +236,11 @@
           'weekcount' => $get_week_count
         ];
         
-      $this->view('posts/sales', $data);
+      if ($_SESSION['category'] == 'services' || $_SESSION['category'] == 'freelancing') {
+        $this->view('posts/services', $data);
+      }else{
+        $this->view('posts/sales', $data);
+      }
     }
 
 

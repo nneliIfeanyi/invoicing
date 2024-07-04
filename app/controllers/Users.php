@@ -75,13 +75,11 @@
         if (!isset($_SESSION['user_id']) ) {
          redirect('users/login');
         }
-        $customers = $this->userModel->get_customers();
         $user = $this->userModel->getUserById($_SESSION['user_id']);
         
         
           $data = [
             'user' => $user,
-            'customers' => $customers,
           ];
 
           // Load index view

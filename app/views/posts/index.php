@@ -57,8 +57,8 @@ flash('msg');?>
 
                  <div class="col-md-6 col-lg-4">
                     <div class="statistic__item">
-                            <h2 class="number text-warning">&#8358;<?php echo put_coma($data['t_total']);?></h2>
-                        <span class="desc">Total Sales</span><br>
+                        <h2 class="number text-warning">&#8358;<?php echo put_coma($data['month_total']);?></h2>
+                        <span class="desc"><?= date('M');?> Sales</span><br>
                         <a href="<?php echo URLROOT?>/posts/sales" class="btn-sm text-muted">View Sales Book &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
                         <div class="icon">
                             <i class="zmdi zmdi-money"></i>
@@ -134,7 +134,7 @@ flash('msg');?>
           <?php endforeach;?>
             
             <div class="fs-6 fs-italics text-center mb-2">
-              <i class="fa fa-spinner fa-spin"> </i> Showing last 4 transactions<br><a href="<?php echo URLROOT?>/posts/creditors" class="btn-sm text-muted">View All Transactions &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
+              <i class="fa fa-spinner fa-spin"> </i> Showing last 4 transactions<br><a href="<?php echo URLROOT?>/posts/sales" class="btn-sm text-muted">View All Transactions &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
             </div>
           <?php else:?>
             <div class="lead">
@@ -144,54 +144,23 @@ flash('msg');?>
     
     </div>
   </div>
+</section><hr />
+<section class="statistic">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Leave A Feedback</h4>
+                </div>
+                <div class="card-body">
+                    <p>Send us a message</p>
+                    <a href="https://wa.me/2349168655298" class="text-warning" target="_blank">
+                                <i class="fab fa-whatsapp font-weight-bold"></i> WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-<div class="container-fluid m-t-75">
-   <h1 class="h3">Frequently Asked Questions</h1> 
-</div>
-<?php if($visits->count <= 10):?>
-<script>
 
-    setTimeout(displayMessage, 2100);
-
-    function displayMessage() {
-    const body = document.body;
-    const url = "<?php echo URLROOT;?>/pages/about#points";
-    const panel = document.createElement('div');
-    panel.setAttribute('class','flash-msg1 card card-body');
-    body.appendChild(panel);
-
-    const msg = document.createElement('h3');
-    msg.textContent = 'Introducing The Use Of Points';
-    panel.appendChild(msg);
-    msg.setAttribute('class','font-weight-bold  border-bottom border-warning');
-
-    const msg1 = document.createElement('p');
-    msg1.textContent = 'See how it works..';
-    panel.appendChild(msg1);
-    msg1.setAttribute('class','lead py-4');
-
-    const div = document.createElement('div');
-    div.setAttribute('class','d-flex justify-content-between');
-    panel.appendChild(div);
-
-    const closeBtn = document.createElement('button');
-    closeBtn.textContent = 'Ignore';
-    closeBtn.setAttribute('class','  mt-3 btn btn-outline-primary btn-sm');
-    div.appendChild(closeBtn);
-
-    const btn = document.createElement('button');
-    btn.textContent = 'Learn more';
-    btn.setAttribute('class',' mt-3 btn btn-success btn-sm');
-    div.appendChild(btn);
-
-    closeBtn.addEventListener('click', () => panel.parentNode.removeChild(panel));
-    btn.addEventListener('click', () => window.location.href = url);
-
-} 
-</script>
-<?php endif;?>
 <?php require APPROOT . '/views/inc/footer2.php'; ?>
-<script type="text/javascript">
-    $('#search_form').parsley();
-    $('#loader').fadeIn();
-</script>
+
