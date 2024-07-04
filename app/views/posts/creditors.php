@@ -25,10 +25,10 @@ flash('msg');?>
                             </ul>
                         </div>
                         <?php if($_SESSION['category'] == 'services' || $_SESSION['category'] == 'freelancing'):?>
-                            <a href="<?php echo URLROOT;?>/posts/add/1" class="au-btn au-btn-icon au-btn--green">
+                            <a href="<?php echo URLROOT;?>/posts/sales" class="au-btn au-btn-icon au-btn--green">
                             <i class="fa fa-book"></i>Services</a>
                         <?php else:?>
-                            <a href="<?php echo URLROOT;?>/posts/add/1" class="au-btn au-btn-icon au-btn--green">
+                            <a href="<?php echo URLROOT;?>/posts/sales" class="au-btn au-btn-icon au-btn--green">
                             <i class="fa fa-book"></i>Sales book</a>
                         <?php endif;?>
                     </div>
