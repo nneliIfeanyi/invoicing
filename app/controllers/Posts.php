@@ -163,7 +163,7 @@
           $new_point_value = $this->pointModel->use3($points);
           $_SESSION['user_points'] = $points;
           $this->pointModel->history_add($_SESSION['user_id'],'debit','7','Sent SMS reminder');
-          flash('msg', 'Reminder sent successfully');
+          flash('msg', 'SMS sent successfully');
            redirect('posts/creditors');
         }else{
           flash('msg', 'Not enough Points.. Kindly fund your wallet and try again.', 'flash-msg alert alert-danger');
