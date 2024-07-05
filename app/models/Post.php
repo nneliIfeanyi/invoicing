@@ -227,6 +227,16 @@ public function doc_redownload($t_id, $path){
     }
 
 
+    public function get_monthly_total_capital($month){
+      $this->db->query("SELECT SUM(capital) FROM transactions WHERE biz_id = :id AND t_month = :month;");
+      $this->db->bind(':id', $_SESSION['user_id']);
+       $this->db->bind(':month', $month);
+      //Execute
+      $row = $this->db->sumColumn();
+      return $row;
+    }
+
+
 
 
      public function get_monthly_qty($month){
@@ -409,8 +419,8 @@ public function doc_redownload($t_id, $path){
     // Add Post
     public function addPost($data){
       // Prepare Query
-      $this->db->query('INSERT INTO transactions (biz_id, t_id, qty, dsc, rate, amount, t_date, t_week, t_month, t_year, t_time) 
-      VALUES (:biz_id, :t_id, :qty, :dsc, :rate, :amt, :c_date, :c_week, :c_month, :c_year, :c_time)');
+      $this->db->query('INSERT INTO transactions (biz_id, t_id, qty, dsc, rate, amount, capital, t_date, t_week, t_month, t_year, t_time) 
+      VALUES (:biz_id, :t_id, :qty, :dsc, :rate, :amt, :capital, :c_date, :c_week, :c_month, :c_year, :c_time)');
 
       // Bind Values
       $this->db->bind(':biz_id', $data['biz_id']);
@@ -419,6 +429,7 @@ public function doc_redownload($t_id, $path){
       $this->db->bind(':dsc', $data['dsc']);
       $this->db->bind(':rate', $data['rate']);
       $this->db->bind(':amt', $data['amt']);
+      $this->db->bind(':capital', $data['capital']);
       $this->db->bind(':c_date', $data['c_date']);
       $this->db->bind(':c_week', date('W'));
       $this->db->bind(':c_month', $data['c_month']);
@@ -488,7 +499,7 @@ public function doc_redownload($t_id, $path){
      // Update Post
     public function updatePost2($data){
       // Prepare Query
-      $this->db->query('UPDATE transactions SET qty =:qty, dsc = :dsc, rate = :rate, amount = :amt, t_date = :t_date, t_month = :t_month WHERE id = :id');
+      $this->db->query('UPDATE transactions SET qty =:qty, dsc = :dsc, rate = :rate, amount = :amt, capital = :capital, t_date = :t_date, t_month = :t_month WHERE id = :id');
 
       // Bind Values
       $this->db->bind(':id', $data['id']);
@@ -496,6 +507,7 @@ public function doc_redownload($t_id, $path){
       $this->db->bind(':dsc', $data['dsc']);
       $this->db->bind(':rate', $data['rate']);
        $this->db->bind(':amt', $data['amt']);
+       $this->db->bind(':capital', $data['capital']);
       $this->db->bind(':t_date', $data['c_date']);
       $this->db->bind(':t_month', $data['c_month']);
       

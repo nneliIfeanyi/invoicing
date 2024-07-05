@@ -90,6 +90,7 @@
           <th>Qty</th>
           <th>Description of Goods</th>
           <th>Rate</th>
+          <!-- <th>C_P</th> -->
         </tr>
       </thead>
       <tbody>
@@ -104,6 +105,9 @@
           <td>
             <input type="text" name="rate[]"  class="form-control" value="<?= $post->rate;?>" style="width: 22vw;">
           </td>
+         <!--  <td data-toggle="tooltip" data-title="Enter Per Unit Cost Price.">
+            <input type="text" name="cp[]"  class="form-control" value="" style="width: 22vw;">
+          </td> -->
         </tr>
         <input type="hidden" name="post_id[]" value="<?= $post->id;?>">
       <?php endforeach;?>

@@ -74,12 +74,13 @@
       $debt_all = $this->postModel->getTotal2();
       $get_tID = $this->postModel->get_transactionz();
       $month_total = $this->postModel->get_monthly_total(date('M'));
-    
+      $profit = $month_total - $this->postModel->get_monthly_total_capital(date('M'));
         $data = [
           'transactions' =>$get_tID,
           't_total' => $total,
           'd_total' => $debt_all,
-          'month_total' => $month_total
+          'month_total' => $month_total,
+          'profit' =>$profit
         ];
         
       $this->view('posts/index', $data);
@@ -126,7 +127,7 @@
           ];
         $new_point_value = $this->pointModel->use3($points);
         $_SESSION['user_points'] = $points;
-        $this->pointModel->history_add($_SESSION['user_id'],'debit','5','Sent WhatsApp');
+        $this->pointModel->history_add($_SESSION['user_id'],'debit','5','Sent WhatsApp message');
         $phone = ltrim($data['phone'], '\0');
         header("location: https://wa.me/234".$phone."?text=".$data['message']);
         }else{
@@ -402,7 +403,7 @@
         $t_id = 's'.date('s').date('i').date('s').'v'.rand(100,999).'c' ;
         $qty = $_POST['qty'];
         $rate = $_POST['rate'];
-        
+        $c_p = $_POST['cp'];
         $dsc = $_POST['dsc'];
         $name = trim($_POST['customer_name']);
         $phone = trim($_POST['customer_phone']);
@@ -413,8 +414,10 @@
           
            $qty[$index] = (float)$qty[$index];
            $rate[$index] = (float)$rate[$index];
-          
+           $c_p[$index] = (float)$c_p[$index];
+
           $amt = $qty[$index] * $rate[$index];
+          $capital = $qty[$index] * $c_p[$index];
           $data = [
             'rate' => $rate[$index],
             'dsc' => $dsc[$index],
@@ -432,6 +435,7 @@
             'customer_address' => $address,
             'paid' => $paid,
             'total' => $total+=$amt,
+            'capital' => $capital
           ];
           $success = $this->postModel->addPost($data); 
         }//end for each
@@ -543,6 +547,7 @@
         $qty = $_POST['qty'];
         $rate = $_POST['rate'];
         $dsc = $_POST['dsc'];
+        $c_p = $_POST['cp'];
         $name = trim($_POST['customer_name']);
         $phone = trim($_POST['customer_phone']);
         $address =trim($_POST['customer_address']);
@@ -552,8 +557,10 @@
           foreach($qty as $index=>$details ){
              $qty[$index] = (float)$qty[$index];
              $rate[$index] = (float)$rate[$index];
+             $c_p[$index] = (float)$c_p[$index];
             
             $amt = $qty[$index] * $rate[$index];
+            $capital = $qty[$index] * $c_p[$index];
           $data = [
             'qty' => $qty[$index],
             'rate' => $rate[$index],
@@ -567,7 +574,8 @@
             'id2' => $t_id,
             'total' => $total+=$amt,
             'c_date' => $date,
-            'c_month' => $_POST['month']
+            'c_month' => $_POST['month'],
+            'capital' => $capital
           ];
           $update = $this->postModel->updatePost2($data);
           $this->postModel->doc_edited($t_id);

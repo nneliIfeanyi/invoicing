@@ -85,7 +85,23 @@ flash('msg');?>
                         
                     </div>
                 </div>
-
+                <?php if($_SESSION['category'] == 'production' || $_SESSION['category'] == 'trading'):?>
+                <div class="col-md-6 col-lg-4">
+                    <div class="statistic__item">
+                            <?php if(!empty($data['profit'])):?>
+                                <h2 class="number text-warning">&#8358;<?php echo put_coma($data['profit']);?></h2>
+                            <?php else:?>
+                                <h2 class="number text-warning">&#8358;0.00</h2>
+                            <?php endif;?>
+                        <span class="desc"><?= date('M');?> Returns</span><br>
+                        <!-- <a href="<?php echo URLROOT?>/posts/creditors" class="btn-sm text-muted">View Credit Book &nbsp; &nbsp;<i class="fas fa-forward"></i> </a> -->
+                        <div class="icon">
+                            <i class="zmdi zmdi-money"></i>
+                        </div>
+                        
+                    </div>
+                </div>
+            <?php endif;?>
             </div>
         </div>
     </div>

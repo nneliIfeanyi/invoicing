@@ -95,7 +95,7 @@
                   <th>Qty</th>
                   <th>Description</th>
                   <th>Rate</th>
-                  <th>Amount</th>
+                  <th>C_P</th>
                 </tr>
               </thead>
               <tbody>
@@ -111,7 +111,8 @@
                     <td>
                       <input name="rate[]" min="0" id="input" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
                     </td>
-                    <td data-toggle="tooltip" data-title="automatically calculated">
+                    <td data-toggle="tooltip" data-title="Cost Price. This would be used to determine your net profit per month.">
+                      <input name="cp[]" min="0"  data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
                     </td>
                   </tr>
                   <?php
@@ -175,7 +176,7 @@
                   <th>Qty</th>
                   <th>Description</th>
                   <th>Rate</th>
-                  <th>Amount</th>
+                  <th>C_P</th>
                 </tr>
               </thead>
               <tbody>
@@ -191,7 +192,8 @@
                     <td>
                       <input type="number" name="rate[]" min="0" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
                     </td>
-                    <td data-toggle="tooltip" data-title="automatically calculated">
+                     <td data-toggle="tooltip" data-title="Cost Price. This would be used to determine your net profit per month.">
+                      <input name="cp[]" min="0"  data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
                     </td>
                   </tr>
                   <?php
@@ -255,7 +257,7 @@
                   <th>Qty</th>
                   <th>Description</th>
                   <th>Rate</th>
-                  <th>Amount</th>
+                  <th>C_P</th>
                 </tr>
               </thead>
               <tbody>
@@ -271,7 +273,8 @@
                     <td>
                       <input type="number" name="rate[]" min="0" data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
                     </td>
-                    <td data-toggle="tooltip" data-title="automatically calculated">
+                     <td data-toggle="tooltip" data-title="Cost Price. This would be used to determine your net profit per month.">
+                      <input name="cp[]" min="0"  data-parsley-pattern="^[0-9.]+$" data-parsley-trigger="keyup" class="form-input" value="" style="width: 22vw;">
                     </td>
                   </tr>
                   <?php
