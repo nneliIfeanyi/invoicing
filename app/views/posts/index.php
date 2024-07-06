@@ -93,7 +93,7 @@ flash('msg');?>
                             <?php else:?>
                                 <h2 class="number text-warning">&#8358;0.00</h2>
                             <?php endif;?>
-                        <span class="desc"><?= date('M');?> Returns</span><br>
+                        <span class="desc"><?= date('M');?> Profit</span><br>
                         <!-- <a href="<?php echo URLROOT?>/posts/creditors" class="btn-sm text-muted">View Credit Book &nbsp; &nbsp;<i class="fas fa-forward"></i> </a> -->
                         <div class="icon">
                             <i class="zmdi zmdi-money"></i>
