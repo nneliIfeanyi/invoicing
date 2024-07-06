@@ -499,7 +499,7 @@ public function doc_redownload($t_id, $path){
      // Update Post
     public function updatePost2($data){
       // Prepare Query
-      $this->db->query('UPDATE transactions SET qty =:qty, dsc = :dsc, rate = :rate, amount = :amt, capital = :capital, t_date = :t_date, t_month = :t_month WHERE id = :id');
+      $this->db->query('UPDATE transactions SET qty =:qty, dsc = :dsc, rate = :rate, amount = :amt, t_date = :t_date, t_month = :t_month WHERE id = :id');
 
       // Bind Values
       $this->db->bind(':id', $data['id']);
@@ -507,7 +507,7 @@ public function doc_redownload($t_id, $path){
       $this->db->bind(':dsc', $data['dsc']);
       $this->db->bind(':rate', $data['rate']);
        $this->db->bind(':amt', $data['amt']);
-       $this->db->bind(':capital', $data['capital']);
+       // $this->db->bind(':capital', $data['capital']);
       $this->db->bind(':t_date', $data['c_date']);
       $this->db->bind(':t_month', $data['c_month']);
       

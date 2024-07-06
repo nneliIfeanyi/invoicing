@@ -547,7 +547,7 @@
         $qty = $_POST['qty'];
         $rate = $_POST['rate'];
         $dsc = $_POST['dsc'];
-        $c_p = $_POST['cp'];
+        // $c_p = $_POST['cp'];
         $name = trim($_POST['customer_name']);
         $phone = trim($_POST['customer_phone']);
         $address =trim($_POST['customer_address']);
@@ -560,7 +560,7 @@
              $c_p[$index] = (float)$c_p[$index];
             
             $amt = $qty[$index] * $rate[$index];
-            $capital = $qty[$index] * $c_p[$index];
+            // $capital = $qty[$index] * $c_p[$index];
           $data = [
             'qty' => $qty[$index],
             'rate' => $rate[$index],
@@ -575,7 +575,7 @@
             'total' => $total+=$amt,
             'c_date' => $date,
             'c_month' => $_POST['month'],
-            'capital' => $capital
+            // 'capital' => $capital
           ];
           $update = $this->postModel->updatePost2($data);
           $this->postModel->doc_edited($t_id);
