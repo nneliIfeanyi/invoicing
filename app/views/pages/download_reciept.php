@@ -25,17 +25,12 @@ class MYPDF extends TCPDF {
         $user_dsc = htmlspecialchars_decode(BIZDSC);
         $user_logo = USERLOGO;
 
-        if(!$conn = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME))
-        {
-          die("failed to connect");
-        }
         
         if (!empty($user_logo)) {
           // Logo
           $image_file = URLROOT.'/'.$user_logo;
           // Logo
           $this->Image("$image_file", 174, 8, 24, 24);
-          //$this->Image($image_file, 30, 2, 24, 24, 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
           $this->Ln(2);
           // Set font
           $this->SetTextColor(10, 113, 11);
@@ -52,6 +47,11 @@ class MYPDF extends TCPDF {
           $this->SetTextColor(10, 113, 11);
           $this->cell(86, 0, '_____________________________________________________________________________________________________', 0, '', '', '');
         }else{
+          $image_file = URLROOT.'/logo/logo.png';
+          // Logo
+          $this->Image("$image_file", 174, 8, 24, 24);
+          $this->Ln(2);
+          // Set font
           $this->SetTextColor(10, 113, 11);
           $this->SetFont('helvetica', 'B', 20);
           $this->cell(0, 4, "$user_name", 0, 1, "L");
@@ -59,13 +59,12 @@ class MYPDF extends TCPDF {
           $this->SetFont('helvetica', 'N', 12);
           $this->cell(0, 2, "$user_dsc", 0, 1, "L");
           $this->SetFont('times', 'I', 12);
-          $this->cell(0, 3, "Address: $user_address", 0, 0, "L");
-          $this->SetFont('helvetica', 'B', 15);
-          $this->cell(0, 2, "Hotline: $user_phone", 0, 1, "R");
-         
-         
-          $this->SetTextColor(28, 81, 5);
-          $this->cell(86, 0, '-------------------------------------------------------------------------------------------------------------', 0, '', '', '');
+          $this->cell(0, 3, "Address: $user_address", 0, 1, "L");
+          $this->SetFont('helvetica', 'B', 12);
+          $this->cell(0, 2, "Hotline: $user_phone", 0, 0, "L");
+          $this->Ln(3);
+          $this->SetTextColor(10, 113, 11);
+          $this->cell(86, 0, '_____________________________________________________________________________________________________', 0, '', '', '');
         }
        
         
@@ -88,8 +87,26 @@ class MYPDF extends TCPDF {
     }
 }
 
+if(!$conn = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME))
+{
+  die("failed to connect");
+}
+$t_id = ID;
+$biz_id = BIZID;
+$category = CATEGORY;
+$sql = "SELECT * FROM transactions WHERE biz_id = '$biz_id' AND t_id = '$t_id' ";
+$query = mysqli_query($conn, $sql);
+$row = mysqli_num_rows($query);
+
 // create new PDF document
-$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+if ($row == 3) {
+  $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(202, 202), true, 'UTF-8', false);
+}elseif($row == 7){
+  $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(227, 206), true, 'UTF-8', false);
+}else{
+  $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+}
+
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
@@ -133,16 +150,6 @@ $pdf->SetFont('times', 'B', 12);
 // add a page
 $pdf->AddPage();
 
-if(!$conn = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME))
-{
-  die("failed to connect");
-}
-$t_id = ID;
-$biz_id = BIZID;
-$category = CATEGORY;
-$sql = "SELECT * FROM transactions WHERE biz_id = '$biz_id' AND t_id = '$t_id' ";
-$query = mysqli_query($conn, $sql);
-
 $sql2 = "SELECT * FROM customers WHERE biz_id = '$biz_id' AND t_id = '$t_id' ";
 $query2 = mysqli_query($conn, $sql2);
 $result = mysqli_fetch_assoc($query2);
@@ -154,10 +161,6 @@ $paid = $result['paid'];
 $date = $result['t_date'].' '.$result['t_month'].' '.$result['t_year'];
 $time = $result['t_time'];
 $sum = 0;
-   //add background image
-   //$url_bg = URLROOT.'/'.USERLOGO;
-   //$pdf->Image("$url_bg", 60, 70, 90);
-   //$pdf->Image($url_bg, 60, 70, 90, 30, 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
   $pdf->Ln(18);
   $pdf->SetFont('helvetica', 'N', '12');
@@ -195,7 +198,7 @@ $sum = 0;
 
 
   //check for business category
-  if ($category == 'trading' || $category == 'production') {
+  if ($category !== 'trading' || $category !== 'production') {
    $pdf->Ln(12);
    $pdf->SetFillColor(0, 0, 0);
    $pdf->SetTextColor(255,255,255);
@@ -239,14 +242,13 @@ $sum = 0;
      $pdf->Cell(55, 10, $amt, 0, 0, "L");
    }//while loo ends for business category B&S
 
-   $pdf->Ln(14);
+   $pdf->Ln(2);
    $pdf->SetTextColor(10, 93, 11);
    $pdf->SetFont('helvetica', 'B', '13');
    $pdf->Cell(18, 4, '', 0, 0, "R");
    $pdf->Cell(95, 4, 'Total:', 0, 0, "R");
    $pdf->Cell(30, 4, '', 0, 0, "R");
    $pdf->Cell(55, 4, 'N'.put_coma($total), 0, 0, "L");
-
 
    if (!empty($paid)) {
      $pdf->Ln(8);
