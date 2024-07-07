@@ -103,6 +103,8 @@ if ($row == 3) {
   $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(202, 202), true, 'UTF-8', false);
 }elseif($row == 7){
   $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(227, 206), true, 'UTF-8', false);
+}elseif($row == 5){
+  $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(220, 204), true, 'UTF-8', false);
 }else{
   $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 }
