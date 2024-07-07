@@ -200,7 +200,7 @@ $sum = 0;
 
 
   //check for business category
-  if ($category !== 'trading' || $category !== 'production') {
+  if ($category == 'trading' || $category == 'production') {
    $pdf->Ln(12);
    $pdf->SetFillColor(0, 0, 0);
    $pdf->SetTextColor(255,255,255);
