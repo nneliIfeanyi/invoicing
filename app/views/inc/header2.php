@@ -66,7 +66,7 @@
         animation-fill-mode: forwards;
       }
       .flash-msg{
-        position: absolute;
+        position: fixed;
         top: 80px;
         right: 0;
         width: auto;

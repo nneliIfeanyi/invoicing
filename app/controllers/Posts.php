@@ -442,9 +442,18 @@
           ];
           $success = $this->postModel->addPost($data); 
         }//end for each
-
+        if ($data['paid'] > $data['total']) {
+          $this->postModel->deleteEmpty($t_id);
+          $success = '';
+            echo "
+                  <div class='flash-msg alert alert-danger'>
+                    Something went wrong... Amount paid is greater than total price.
+                </div>
+                  
+            ";
+            exit();
+        }
         if ($success) {
-            //$this->postModel->deleteEmpty();
             $this->postModel->add_customer($data);
             flash('msg', 'Invoice recorded and saved successfully..');
             $redirect = URLROOT.'/posts/preview/'.$t_id;

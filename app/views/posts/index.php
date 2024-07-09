@@ -48,7 +48,7 @@ flash('msg');?>
                     <div class="statistic__item">
                         <h2 class="number text-warning"><?php echo $_SESSION['user_points'];?>.00</h2>
                         <span class="desc">Available Points</span><br>
-                        <a href="<?php echo URLROOT?>/pages/subscribe" class="btn-sm text-muted">Fund Wallet &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
+                        <a href="<?php echo URLROOT?>/pages/subscribe" class="btn-sm text-muted">Fund Wallet &nbsp; &nbsp;<i class="fas fa-chevron-right"></i> </a>
                         <div class="icon">
                             <i class="zmdi zmdi-money"></i>
                         </div>
@@ -63,7 +63,7 @@ flash('msg');?>
                             <h2 class="number text-warning">&#8358;<?php echo put_coma($data['month_total']);?></h2>
                         <?php endif;?>
                         <span class="desc"><?= date('M');?> Sales</span><br>
-                        <a href="<?php echo URLROOT?>/posts/sales" class="btn-sm text-muted">View Sales Book &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
+                        <a href="<?php echo URLROOT?>/posts/sales" class="btn-sm text-muted">View Sales Book &nbsp; &nbsp;<i class="fas fa-chevron-right"></i> </a>
                         <div class="icon">
                             <i class="zmdi zmdi-money"></i>
                         </div>
@@ -78,7 +78,7 @@ flash('msg');?>
                                 <h2 class="number text-warning">&#8358;0.00</h2>
                             <?php endif;?>
                         <span class="desc">Total credits</span><br>
-                        <a href="<?php echo URLROOT?>/posts/creditors" class="btn-sm text-muted">View Credit Book &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
+                        <a href="<?php echo URLROOT?>/posts/creditors" class="btn-sm text-muted">View Credit Book &nbsp; &nbsp;<i class="fas fa-chevron-right"></i> </a>
                         <div class="icon">
                             <i class="zmdi zmdi-money"></i>
                         </div>

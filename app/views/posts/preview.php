@@ -211,7 +211,7 @@
   
 </div><hr/>
 <div class="d-flex justify-content-between my-4">
-  <a href="<?= URLROOT;?>/posts/edit2/<?php echo $data['customer_info']->t_id; ?>" class="btn text-warning">
+  <a href="<?= URLROOT;?>/posts/edit2/<?php echo $data['customer_info']->t_id; ?>" class="btn btn-warning">
     <i class="zmdi zmdi-edit"></i> Edit
   </a>
  
@@ -220,14 +220,10 @@
   </button>
 </div>
 </div>
-<div class="border shadow border-danger text-center py-3">
-  <h6 class=" m-0 fw-semibold">
-    Danger Zone
-  </h6>
-  <p class="lead">This action can not be reversed.</p>
+<div class="border shadow text-center py-4 mt-5">
   <button 
     data-toggle="modal" data-target="#deleteModal<?= $data['t_id'];?>" 
-    class="btn btn-sm btn-outline-danger">
+    class="btn btn-outline-danger">
     <i class="fa fa-trash"></i> Delete transaction
   </button>
 </div>

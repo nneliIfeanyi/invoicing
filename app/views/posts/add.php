@@ -458,9 +458,9 @@
 
                 },
                 success:function (response) {
-                    $('#add_form').parsley().reset();
+                    //$('#add_form').parsley().reset();
                     $('#submit').attr('disabled', false);
-                    $('#submit').val('Transaction saved successfully');
+                    $('#submit').val('Save Transaction');
                     $('#msg').html(response);
                 }
             });

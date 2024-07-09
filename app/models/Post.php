@@ -562,10 +562,10 @@ public function doc_redownload($t_id, $path){
 
      
     
-    public function deleteEmpty(){
+    public function deleteEmpty($t_id){
       // Prepare Query
-      $this->db->query("DELETE FROM invoicing WHERE qty = '' AND rate = '' AND dsc = '' ");
-      
+      $this->db->query("DELETE FROM transactions WHERE t_id = :t_id; ");
+      $this->db->bind(':t_id', $t_id);
       //Execute
       if($this->db->execute()){
         return true;
