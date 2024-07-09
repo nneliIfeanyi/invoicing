@@ -38,6 +38,13 @@
     return $results;
   }
 
+   public function get_transactionz_rows(){
+    $this->db->query("SELECT DISTINCT(t_id) FROM transactions WHERE biz_id = :id ORDER BY id DESC LIMIT 4;");
+    $this->db->bind(':id', $_SESSION['user_id']);
+    $this->db->resultset();
+    return $this->db->rowCount();
+  }
+
 
 public function doc_edited($t_id){
   $this->db->query('UPDATE customers SET edited = :trues  WHERE t_id = :id');

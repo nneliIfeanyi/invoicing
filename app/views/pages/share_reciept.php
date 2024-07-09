@@ -28,10 +28,10 @@
     <h6 class="fw-semibold h4 text-primary">Billed By</h6>
     <div class="col-md-6 shadow-sm ">
         <label class="fs-6">
-          <span class="fw-bold"><?php echo $_SESSION['user_name']; ?></span><br>
-          <span class="text-muted" style="font-size: 14px;"><?php echo $_SESSION['user_dsc']; ?></span><br>
-          <span class=""><i class="fa fa-phone"></i>&nbsp; &nbsp;<?php echo $_SESSION['user_phone']; ?></span><br>
-          <span class=""><i class="fa fa-map-marker"></i>&nbsp; &nbsp;<?php echo $_SESSION['address']; ?></span>
+          <span class="fw-bold"><?php echo $data['user']->bizname; ?></span><br>
+          <span class="text-muted" style="font-size: 14px;"><?php echo $data['user']->biz_dsc; ?></span><br>
+          <span class=""><i class="fa fa-phone"></i>&nbsp; &nbsp;<?php echo $data['user']->bizphone; ?></span><br>
+          <span class=""><i class="fa fa-map-marker"></i>&nbsp; &nbsp;<?php echo $data['user']->bizaddress; ?></span>
         </label>
       </div>
   </div>

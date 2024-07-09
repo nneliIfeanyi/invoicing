@@ -156,10 +156,17 @@ flash('msg');?>
             </div>
           </div>
           <?php endforeach;?>
+                
+                <?php if($data['rows'] == 4 ):?>
+                    <div class="fs-6 fs-italics text-center mb-2">
+                      <i class="fa fa-spinner fa-spin"> </i> Showing last <?= $data['rows'];?> transactions<br><a href="<?php echo URLROOT?>/posts/sales" class="btn-sm text-muted">View All Transactions &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
+                    </div>
+                <?php else:?>
+                    <div class="fs-6 fs-italics text-center mb-2">
+                      <i class="fa fa-spinner fa-spin"> </i> No more transactions
+                    </div>
+                <?php endif;?>
             
-            <div class="fs-6 fs-italics text-center mb-2">
-              <i class="fa fa-spinner fa-spin"> </i> Showing last 4 transactions<br><a href="<?php echo URLROOT?>/posts/sales" class="btn-sm text-muted">View All Transactions &nbsp; &nbsp;<i class="fas fa-forward"></i> </a>
-            </div>
           <?php else:?>
             <div class="lead">
               <p>Your transactions will appear here.</p>

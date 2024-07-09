@@ -75,12 +75,14 @@
       $get_tID = $this->postModel->get_transactionz();
       $month_total = $this->postModel->get_monthly_total(date('M'));
       $profit = $month_total - $this->postModel->get_monthly_total_capital(date('M'));
+      $rows = $this->postModel->get_transactionz_rows();
         $data = [
           'transactions' =>$get_tID,
           't_total' => $total,
           'd_total' => $debt_all,
           'month_total' => $month_total,
-          'profit' =>$profit
+          'profit' =>$profit,
+          'rows' => $rows
         ];
         
       $this->view('posts/index', $data);
