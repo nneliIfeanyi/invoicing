@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/assets/css/font-awesome.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/assets/css/styles.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/font-awesome.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/bootstrap.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css" />
     <link rel="icon" href="<?php echo URLROOT; ?>/assets/images/favicon.png" />
-    <title>Free E-Book | Start Your Own Blog</title>
+    <title><?php echo SITENAME; ?></title>
 </head>
 
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
         <div class="container">
-            <a href="<?php echo URLROOT; ?>/pages" class="navbar-brand">
-                <img src="<?php echo URLROOT; ?>/assets/images/logo.png" alt="" width="225" />
+            <a href="<?php echo URLROOT; ?>/pages" class="navbar-brand fw-bold">
+                <img src="<?php echo URLROOT; ?>/images/favicon.png" alt="Site-logo" width="25" /> <?php echo SITENAME; ?>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
                 <span class="navbar-toggler-icon"></span>
@@ -46,12 +46,12 @@
             <div class="container-xl">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="image-container mb-5 px-4">
-                            <img src="<?php echo URLROOT; ?>/assets/images/header-ebook.png" alt="" class="img-fluid" />
+                        <div class="image-container mb-3 px-1">
+                            <img src="<?php echo URLROOT; ?>/images/showcase2.png" alt="" class="img-fluid" />
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="text-container p-4 d-flex flex-column justify-content-center h-100 mb-5">
+                        <div class="text-container p-5 d-flex flex-column justify-content-center mb-5">
                             <h1 class="display-3 fw-bold">Welcome to <?php echo SITENAME; ?></h1>
                             <p class="lead">
                                 Your Professional Online Business Solution For Small And Medium Scale Business Enterprise
@@ -60,9 +60,9 @@
                             <!-- Form -->
                             <div class="form-container text-center">
                                 <div class="d-grid">
-                                    <button class="btn btn-primary btn-lg text-white">
-                                        Register Your Business
-                                    </button>
+                                    <a href="<?php echo URLROOT; ?>/users/register" class="btn btn-outline-primary btn-lg text-white">
+                                        Register Your Business &nbsp;<i class="fa fa-chevron-right"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                 <div class="col-md-4 d-flex gap-4">
                     <i class="fas fa-user fa-3x text-primary"></i>
                     <div>
-                        <h5 class="fw-bold">Unlock Your Blogging Potential</h5>
+                        <h5 class="fw-bold">Unlock Your Potential</h5>
                         <p class="text-muted">
                             Discover the key to unleashing your true blogging potential. Our
                             ebook provides expert guidance on creating compelling content
