@@ -54,7 +54,7 @@
 
       .flash-msg1{
         position: fixed;
-        top: 77px;
+        bottom: 0;
         right: 0;
         width: auto;
         z-index: 500;
@@ -66,8 +66,9 @@
         animation-fill-mode: forwards;
       }
       .flash-msg{
+        margin: 0;
         position: fixed;
-        top: 80px;
+        bottom: 0;
         right: 0;
         width: auto;
         z-index: 500;
