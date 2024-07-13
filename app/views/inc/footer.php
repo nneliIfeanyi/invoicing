@@ -1,38 +1,25 @@
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="copyright">
+        &copy; Copyright <strong><span><?php echo SITENAME; ?></span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+        Designed by <a href="#">BootstrapMade</a>
+    </div>
+</footer><!-- End Footer -->
 
-<script src="<?php echo URLROOT; ?>/js/jquery.js"></script>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-<script src="<?= URLROOT ;?>/js/parsley.min.js"></script>
-<script src="<?php echo URLROOT; ?>/js/bootstrap.bundle.min.js"></script>
-<script>
-  // document.addEventListener('DOMContentLoaded', userScroll);
-     const tooltip = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    const tooltipList = [...tooltip].map((tooltipTrigger) => new bootstrap.Tooltip(tooltipTrigger));
-    //popover
-    const popover = document.querySelectorAll('[data-bs-toggle="popover"]');
-    const popoverList = [...popover].map((popoverTrigger) => new bootstrap.Popover(popoverTrigger));
-</script>
-<script src="<?php echo URLROOT; ?>/app.js"></script>
-<script>
-  $(document).ready(function(){
-    $('#loader').fadeOut();
-  });
-</script>
+<!-- Vendor JS Files -->
+<script src="<?php echo URLROOT; ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo URLROOT; ?>/assets/vendor/simple-datatables/simple-datatables.js"></script>
 
-<script>
-  $(document).ready(function(){
-    $('a').each(function(){
-      $(this).click(function(){
-         $('#loader').fadeIn();
-      });
-    });
-  });
-</script>
+<!-- Template Main JS File -->
+<script src="<?php echo URLROOT; ?>/assets/js/main.js"></script>
+</body>
 
-
-<!-- <script>
-  $(document).ready(function(){
-    $('#link1').click(function(){
-      $('#loader').fadeIn();
-    });
-  });
-</script> -->
+</html>

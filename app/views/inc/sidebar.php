@@ -1,323 +1,236 @@
-<body class="animsition">
-    <div class="page-wrapper">
-        <!-- MENU SIDEBAR-->
-        <aside class="menu-sidebar2">
-            <div class="logo">
-                <a href="#" class="text-light font-weight-bold">
-                    invoice<span class="text-warning">Online</span>
-                    <!-- <img src="<?php echo URLROOT;?>/logo/branding.png" alt="invoiceOnline" /> -->
-                </a>
-            </div>
-            <div class="menu-sidebar2__content js-scrollbar1">
-                <!-- <div class="account2">
-                    <?php if(!empty($_SESSION['logo'])):?>
-                    <div class="image img-cir img-120">
-                        <img src="<?php echo URLROOT;?>/logo/branding.png" alt="invoiceOnline" />
-                    </div>
-                    <?php endif;?>
-                    <h4 class="name"><?php echo $_SESSION['user_name'];?></h4>
-                    <a href="<?php echo URLROOT;?>/users/logout">Sign out</a>
-                </div> -->
-                <nav class="navbar-sidebar2">
-                    <ul class="list-unstyled navbar__list">
-                        <li>
-                            <a href="<?php echo URLROOT?>/posts">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                           
-                        </li>
-                        <!-- SESSION CATEGORY CHECK -->
-                       <?php if($_SESSION['category'] == 'services' || $_SESSION['category'] == 'freelancing'):?>
-                        <li>
-                            <a href="<?php echo URLROOT?>/posts/add/1">
-                                <i class="fas fa-plus"></i>Add Transaction</a>
-                        </li>
-                        <?php endif;?>
-                        <?php if($_SESSION['category'] == 'production' || $_SESSION['category'] == 'trading'):?>
-                        <li>
-                            <a href="<?php echo URLROOT?>/posts/add/1">
-                                <i class="fa-solid fa-pencil"></i>Record Sales</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URLROOT?>/posts/sales">
-                                <i class="fas fa-book"></i>Sales Book</a>
-                        </li>
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
 
-                        <?php endif;?>
-                        <!-- CATEGORY CHECK ENDS -->
-                        <li>
-                            <a href="<?php echo URLROOT?>/posts/creditors">
-                                <i class="fas fa-money-bill-alt"></i>Credit Book</a>
-                           
-                        </li>
+    <ul class="sidebar-nav" id="sidebar-nav">
 
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fa-solid fa-wallet"></i>My Wallet
-                                <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                            </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="<?php echo URLROOT?>/pages/subscribe">
-                                        <i class="fas fa-dollar"></i>Fund Wallet</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo URLROOT?>/users/wallet_history">
-                                        <i class="fas fa-refresh"></i>Wallet History</a>
-                                </li>
-                            </ul>
-                        </li>
+        <li class="nav-item">
+            <a class="nav-link " href="index.html">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
 
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fa-solid fa-user-check"></i>Account
-                                <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                            </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="<?php echo URLROOT?>/users/profile">
-                                        <i class="fas fa-user"></i>Profile</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo URLROOT?>/pages/referal">
-                                        <i class="fas fa-user-plus"></i>Referal</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo URLROOT?>/pages/sell">
-                                        <i class="fa-solid fa-naira-sign"></i>Sell Points</a>
-                                </li>
-                            </ul>
-                        </li>
-
-
-
-                        <!-- Load Previous version -->
-                        <?php if('2024-05-16' > $_SESSION['reg_date']):?>
-                        <li>
-                            <a href="<?php echo URLROOT?>/posts/archive">
-                                <i class="fas fa-check"></i>Previous Transactions</a>
-                        </li>
-                        <?php endif;?>
-                        <!-- End Load Previous version -->
-
-
-                        <!-- Check If Admin -->
-                         <?php if($_SESSION['user_type'] == "admin"):?>
-                            <li>
-                                <a href="<?php echo URLROOT?>/admin">
-                                    <i class="fas fa-check"></i>Admin</a>
-                            </li>
-                        <?php endif;?>
-                        <!-- End Check If Admin -->
-
-
-                        <li>
-                            <a href="https://wa.me/2349168655298" target="_blank">
-                                <i class="fab fa-whatsapp"></i>Contact us</a>
-                        </li>
-                       
-                       
-                        <!-- <li>
-                            <a href="<?php echo URLROOT?>/pages/refresh">
-                                <i class="fas fa-refresh"></i>Refresh</a>
-                        </li> -->
-                        <li>
-                            <a href="<?php echo URLROOT?>/users/logout">
-                                <i class="fas fa-backward"></i>Sign out</a>
-                        </li>
-                    </nav>
-                </div>
-            </aside>
-        <!-- END MENU SIDEBAR-->
-        <!-- PAGE CONTAINER-->
-        <div class="page-container2">
-            <!-- STRAIGHT LINE HEADER -->
-            <header class="header-desktop2">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="header-wrap2">
-                            <div class="logo d-block d-lg-none">
-                                <a href="#" class="text-light font-weight-bold">
-                                    invoice<span class="text-warning">Online</span>
-                                    <!-- <img src="<?php echo URLROOT;?>/logo/branding.png" alt="invoiceOnline" /> -->
-                                </a>
-                            </div>
-                            <div class="header-button2">
-                                <div class="header-button-item js-item-menu">
-                                    <i class="zmdi zmdi-search"></i>
-                                    <div class="search-dropdown js-dropdown" style="background: whitesmoke; padding: 7px 0;">
-                                        <form action="<?= URLROOT?>/posts/search_results" 
-                                              method="post" class="mt-2" id="search_form">
-                                            <input class="au-input au-input--full au-input--h60" name="search" type="text" placeholder="Customer name or number" />
-                                        
-                                            <button type="submit" class="search-dropdown__icon" style="margin-top: 5px;">
-                                             <i class="zmdi zmdi-search text-warning"></i> 
-                                            </button>
-                                       </form>
-                                    </div>
-                                </div>
-                                <div class="header-button-item has-noti js-item-menu">
-                                    <i class="zmdi zmdi-notifications"></i>
-                                    <div class="notifi-dropdown js-dropdown">
-                                        <div class="notifi__title">
-                                            <p>You have 1 Notification</p>
-                                        </div>
-                                        <div class="notifi__item">
-                                            <div class="bg-c1 img-cir img-40">
-                                                <i class="zmdi zmdi-money"></i>
-                                            </div>
-                                            <div class="content">
-                                                <p>Your wallet balance is</p>
-                                                <span class="text-warning">P</span><span style="color:#212529;"><?php echo $_SESSION['user_points'];?></span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="notifi__footer">
-                                            <a href="<?php echo URLROOT;?>/users/wallet_history" class="text-warning text-muted">
-                                           <i class="fas fa-refresh" style="margin-top: -3px"></i>&nbsp;View Wallet History</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="header-button-item mr-0 js-sidebar-btn d-lg-none">
-                                    <i class="zmdi zmdi-menu"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <aside class="menu-sidebar2 js-right-sidebar d-block d-lg-none">
-                <div class="logo">
-                    <a href="#">
-                        <img src="<?php echo URLROOT;?>/logo/branding.png" alt="invoiceOnline" />
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="components-alerts.html">
+                        <i class="bi bi-circle"></i><span>Alerts</span>
                     </a>
-                </div>
-                <div class="menu-sidebar2__content js-scrollbar2">
-                    <div class="account2">
-                        <!-- <?php if(empty($_SESSION['logo'])):?>
-                        <div class="image img-cir img-120">
-                            <img src="<?php echo URLROOT;?>/logo/branding.png" alt="invoiceOnline" />
-                        </div>
-                         <?php endif;?> -->
-                        <h4 class="font-weight-bold"><?php echo $_SESSION['user_name'];?></h4>
-                        <a href="<?php echo URLROOT?>/users/logout">Sign out</a>
-                    </div>
-                   <nav class="navbar-sidebar2">
-                    <ul class="list-unstyled navbar__list">
-                        <li>
-                            <a href="<?php echo URLROOT?>/posts">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                           
-                        </li>
-                        <!-- SESSION CATEGORY CHECK -->
-                       <?php if($_SESSION['category'] == 'services' || $_SESSION['category'] == 'freelancing'):?>
-                        <li>
-                            <a href="<?php echo URLROOT?>/posts/add/1">
-                                <i class="fas fa-plus"></i>Add Transaction</a>
-                        </li>
-                        <?php endif;?>
-                        <?php if($_SESSION['category'] == 'production' || $_SESSION['category'] == 'trading'):?>
-                        <li>
-                            <a href="<?php echo URLROOT?>/posts/add/1">
-                                <i class="fa-solid fa-pencil"></i>Record Sales</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URLROOT?>/posts/sales">
-                                <i class="fas fa-book"></i>Sales Book</a>
-                        </li>
+                </li>
+                <li>
+                    <a href="components-accordion.html">
+                        <i class="bi bi-circle"></i><span>Accordion</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-badges.html">
+                        <i class="bi bi-circle"></i><span>Badges</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-breadcrumbs.html">
+                        <i class="bi bi-circle"></i><span>Breadcrumbs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-buttons.html">
+                        <i class="bi bi-circle"></i><span>Buttons</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-cards.html">
+                        <i class="bi bi-circle"></i><span>Cards</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-carousel.html">
+                        <i class="bi bi-circle"></i><span>Carousel</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-list-group.html">
+                        <i class="bi bi-circle"></i><span>List group</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-modal.html">
+                        <i class="bi bi-circle"></i><span>Modal</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-tabs.html">
+                        <i class="bi bi-circle"></i><span>Tabs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-pagination.html">
+                        <i class="bi bi-circle"></i><span>Pagination</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-progress.html">
+                        <i class="bi bi-circle"></i><span>Progress</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-spinners.html">
+                        <i class="bi bi-circle"></i><span>Spinners</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="components-tooltips.html">
+                        <i class="bi bi-circle"></i><span>Tooltips</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Components Nav -->
 
-                        <?php endif;?>
-                        <!-- CATEGORY CHECK ENDS -->
-                        <li>
-                            <a href="<?php echo URLROOT?>/posts/creditors">
-                                <i class="fas fa-money-bill-alt"></i>Credit Book</a>
-                           
-                        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="forms-elements.html">
+                        <i class="bi bi-circle"></i><span>Form Elements</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-layouts.html">
+                        <i class="bi bi-circle"></i><span>Form Layouts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-editors.html">
+                        <i class="bi bi-circle"></i><span>Form Editors</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-validation.html">
+                        <i class="bi bi-circle"></i><span>Form Validation</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Forms Nav -->
 
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fa-solid fa-wallet"></i>My Wallet
-                                <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                            </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="<?php echo URLROOT?>/pages/subscribe">
-                                        <i class="fas fa-dollar"></i>Fund Wallet</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo URLROOT?>/users/wallet_history">
-                                        <i class="fas fa-refresh"></i>Wallet History</a>
-                                </li>
-                            </ul>
-                        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="tables-general.html">
+                        <i class="bi bi-circle"></i><span>General Tables</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="tables-data.html">
+                        <i class="bi bi-circle"></i><span>Data Tables</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Tables Nav -->
 
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fa-solid fa-user-check"></i>Account
-                                <span class="arrow">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                            </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="<?php echo URLROOT?>/users/profile">
-                                        <i class="fas fa-user"></i>Profile</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo URLROOT?>/pages/referal">
-                                        <i class="fas fa-user-plus"></i>Referal</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo URLROOT?>/pages/sell">
-                                        <i class="fa-solid fa-naira-sign"></i>Sell Points</a>
-                                </li>
-                            </ul>
-                        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="charts-chartjs.html">
+                        <i class="bi bi-circle"></i><span>Chart.js</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="charts-apexcharts.html">
+                        <i class="bi bi-circle"></i><span>ApexCharts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="charts-echarts.html">
+                        <i class="bi bi-circle"></i><span>ECharts</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Charts Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="icons-bootstrap.html">
+                        <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="icons-remix.html">
+                        <i class="bi bi-circle"></i><span>Remix Icons</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="icons-boxicons.html">
+                        <i class="bi bi-circle"></i><span>Boxicons</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Icons Nav -->
 
+        <li class="nav-heading">Pages</li>
 
-                        <!-- Load Previous version -->
-                        <?php if('2024-05-16' > $_SESSION['reg_date']):?>
-                        <li>
-                            <a href="<?php echo URLROOT?>/posts/archive">
-                                <i class="fas fa-check"></i>Previous Transactions</a>
-                        </li>
-                        <?php endif;?>
-                        <!-- End Load Previous version -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>Profile</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>F.A.Q</span>
+            </a>
+        </li><!-- End F.A.Q Page Nav -->
 
-                        <!-- Check If Admin -->
-                         <?php if($_SESSION['user_type'] == "admin"):?>
-                            <li>
-                                <a href="<?php echo URLROOT?>/admin">
-                                    <i class="fas fa-check"></i>Admin</a>
-                            </li>
-                        <?php endif;?>
-                        <!-- End Check If Admin -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-contact.html">
+                <i class="bi bi-envelope"></i>
+                <span>Contact</span>
+            </a>
+        </li><!-- End Contact Page Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-register.html">
+                <i class="bi bi-card-list"></i>
+                <span>Register</span>
+            </a>
+        </li><!-- End Register Page Nav -->
 
-                        <li>
-                            <a href="https://wa.me/2349168655298" target="_blank">
-                                <i class="fab fa-whatsapp"></i>Contact us</a>
-                        </li>
-                       
-                       
-                        <!-- <li>
-                            <a href="<?php echo URLROOT?>/pages/refresh">
-                                <i class="fas fa-refresh"></i>Refresh</a>
-                        </li> -->
-                        <li>
-                            <a href="<?php echo URLROOT?>/users/logout">
-                                <i class="fas fa-backward"></i>Sign out</a>
-                        </li>
-                    </nav>
-                </div>
-            </aside>
-            <!-- END HEADER DESKTOP-->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-login.html">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span>Login</span>
+            </a>
+        </li><!-- End Login Page Nav -->
 
-            
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-error-404.html">
+                <i class="bi bi-dash-circle"></i>
+                <span>Error 404</span>
+            </a>
+        </li><!-- End Error 404 Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-blank.html">
+                <i class="bi bi-file-earmark"></i>
+                <span>Blank</span>
+            </a>
+        </li><!-- End Blank Page Nav -->
+
+    </ul>
+
+</aside><!-- End Sidebar-->

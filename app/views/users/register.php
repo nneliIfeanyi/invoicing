@@ -1,94 +1,89 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<main>
+  <div class="container">
 
-<div class="row">
-  <div class="col-md-6 mx-auto">
-    <div class="card card-body bg-light my-5">
-      <div class="shadow-lg p-4 rounded-4 border text-bg-success mb-3" style="margin-top: -50px;">
-        <h1 class="h4 m-0">Simple And Easy To Use Online Invoicing Software For Business Owners.</h1>
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+            <div class="d-flex justify-content-center py-4">
+              <a href="index.html" class="logo d-flex align-items-center w-auto">
+                <img src="<?php echo URLROOT; ?>/assets/img/logo.png" alt="Site logo">
+                <span class=""><?php echo SITENAME; ?></span>
+              </a>
+            </div><!-- End Logo -->
+
+            <div class="card mb-3">
+
+              <div class="card-body">
+
+                <div class="pt-4 pb-2">
+                  <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                  <p class="text-center small">Enter your personal details to create account</p>
+                </div>
+
+                <form class="row g-3 needs-validation" novalidate>
+                  <div class="col-12">
+                    <label for="yourName" class="form-label">Your Name</label>
+                    <input type="text" name="name" class="form-control" id="yourName" required>
+                    <div class="invalid-feedback">Please, enter your name!</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="yourEmail" class="form-label">Your Email</label>
+                    <input type="email" name="email" class="form-control" id="yourEmail" required>
+                    <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="yourUsername" class="form-label">Username</label>
+                    <div class="input-group has-validation">
+                      <span class="input-group-text" id="inputGroupPrepend">@</span>
+                      <input type="text" name="username" class="form-control" id="yourUsername" required>
+                      <div class="invalid-feedback">Please choose a username.</div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="yourPassword" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="yourPassword" required>
+                    <div class="invalid-feedback">Please enter your password!</div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                      <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                      <div class="invalid-feedback">You must agree before submitting.</div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                  </div>
+                  <div class="col-12">
+                    <p class="small mb-0">Already have an account? <a href="<?php echo URLROOT; ?>/users/login">Log in</a></p>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+
+            <div class="credits">
+              <!-- All the links in the footer should remain intact. -->
+              <!-- You can delete the links only if you purchased the pro version. -->
+              <!-- Licensing information: https://bootstrapmade.com/license/ -->
+              <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+              Designed by <a href="#">BootstrapMade</a>
+            </div>
+
+          </div>
+        </div>
       </div>
-      <p class="text-primary fw-semibold">Create An Account</p>
-      <p>Please fill this form to register with us</p>
-      <form action="<?php echo URLROOT; ?>/users/register" method="post" id="register_form">
-        <div class="form-group mb-3">
-            <label>Business Name:</label>
-            <input type="text" name="name" id="business-name" data-parsley-length="[0, 30]" required data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['name']; ?>">
-        </div> 
-        <div class="form-group mb-3">
-            <label>Business Description:</label>
-            <input type="text" name="biz_dsc" data-parsley-length="[0, 35]" required data-parsley-trigger="keyup" class="form-control form-control-lg <?php echo (!empty($data['biz_dsc_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['biz_dsc']; ?>">
-            <span class="invalid-feedback"><?php echo $data['biz_dsc_err']; ?></span>
-        </div> 
-        <div class="form-group mb-3">
-            <label>Hotline:</label>
-            <input type="number" name="phone" required data-parsley-trigger="keyup" data-parsley-length="[10, 11]" class="form-control form-control-lg <?php echo (!empty($data['phone_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['phone']; ?>">
-            <span class="invalid-feedback"><?php echo $data['phone_err']; ?></span>
-        </div> 
-        <div class="form-group mb-3">
-            <label>Business Address:</label>
-            <input type="text" name="address" class="form-control form-control-lg" data-parsley-length="[0, 40]" data-parsley-trigger="keyup" value="<?php echo $data['address']; ?>">
-        </div>
-        <div class="form-group mb-3">
-            <label>Business category:</label>
-            <select class="form-control" name="category" required data-parsley-trigger="keyup">
-                <option value="">
-                    ---
-                </option>
-                <option value="production">
-                    Production
-                </option>
-                <option value="trading">
-                    Trading
-                </option>
-                <option value="services">
-                    Service rendering
-                </option>
-                <option value="freelancing">
-                    Freelancing
-                </option>
-            </select>
-        </div>  
-        <div class="form-group mb-3">
-            <label>Email:</label>
-            <input type="email" name="email" required data-parsley-trigger="keyup" class="form-control form-control-lg <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email']; ?>">
-            <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
-        </div>    
-        <div class="form-group mb-3">
-            <label>Password:</label>
-            <input type="password" name="password" class="form-control form-control-lg <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['password']; ?>">
-            <span class="invalid-feedback"><?php echo $data['password_err']; ?></span>
-        </div>
-        <div class="form-group mb-3">
-            <label>Confirm Password:</label>
-            <input type="password" name="confirm_password" class="form-control form-control-lg <?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['confirm_password']; ?>">
-            <span class="invalid-feedback"><?php echo $data['confirm_password_err']; ?></span>
-        </div>
 
-        <div class="row">
-          <div class="col-md-6">
-            <input type="submit" class="btn btn-success btn-block mb-3" value="Register">
-          </div>
-          <div class="col-md-6">
-              <a href="<?php echo URLROOT;?>/users/login" class="text-dark text-muted fs-6">Have an account? Login</a>
-          </div>
-          <div class="col">
-           <p class="text-muted pt-3" style="font-size:12px;"> <i class="fa fa-info-circle"></i> You will be redirected to the login page once your registration is completed.</p>
-          </div>
-        </div>
-      </form>
-    </div>
+    </section>
+
   </div>
-  
-<?php require APPROOT . '/views/inc/footer.php'; ?>
-<script type="text/javascript">
-    $('#register_form').parsley();
-    $('#loader').fadeIn();
-</script>
+</main><!-- End #main -->
 
-
-<!-- <script>
-  $(document).ready(function(){
-    $('#link1').click(function(){
-      $('#loader').fadeIn();
-    });
-  });
-</script> -->
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
